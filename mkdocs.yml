@@ -14,6 +14,7 @@ nav:
     - Traefik : traefik.md
     - Traefik Entry Points: entrypoints.md
     - Traefik Dynamic Files: dynamic.md
+    - UCG: UCG.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md
@@ -27,11 +28,13 @@ nav:
     - Portainer: portainer.md
     - Vaultwarden: vaultwarden.md
     - Uptime-Kuma: kuma.md
-    - Unifi: unifi.md
     - Motioneye: motioneye.md
+  - Archive:
+    - USG: USG.md
+
 
 theme:
-  logo: images/xandermansystems.png
+  #logo: images/xandermansystems.png
   name: 'material'
   palette:
     primary: deep purple

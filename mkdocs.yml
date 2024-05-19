@@ -14,7 +14,7 @@ nav:
     - Traefik : traefik.md
     - Traefik Entry Points: entrypoints.md
     - Traefik Dynamic Files: dynamic.md
-    - UCG: UCG.md
+    - Unifi Cloud Gateway Ultra: Unifi Cloud Gateway Ultra.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md

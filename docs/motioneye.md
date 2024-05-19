@@ -47,7 +47,9 @@ Connected to MotionEye currently is a Dahua camera which overlooks the front of 
 
 This is an ONVIF/RTSP compatible camera and is setup as such.
 
+I also have a very old Sanyo IP and a Blink camera which are both being used as internal cameras.
+
 ##Future Plans
 
 I do like Motioneye and have been using it for quite some time.  
-My future plans unfortunately don't include Motioneye.  I will want to eventually source a dedicated system for my cameras (I will be getting more) but I plan on using BlueIris. 
+My future plans unfortunately don't include Motioneye.  I will be getting more cameras (mainly external) and I plan on using BlueIris. 

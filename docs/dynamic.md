@@ -46,7 +46,7 @@ http:
           X-Forwarded-Proto: https
         PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"
 ```
-This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services
+This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
 
 ##Application Specific Dynamic Files
 
@@ -69,7 +69,7 @@ http:
     pihole1:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.2:80"
+          - url: "http://10.36.100.2:80"
         passHostHeader: true
 ```  
 
@@ -92,7 +92,7 @@ http:
     pihole2:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.3:80"
+          - url: "http://10.36.100.3:80"
         passHostHeader: true
 ```
 The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /admin that the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and is outlined within the main config dynamic file along with the headers.
@@ -116,7 +116,7 @@ http:
     cctv:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:8765"
+          - url: "http://10.36.100.199:8765"
         passHostHeader: true
 ```
 
@@ -137,7 +137,7 @@ http:
     cuthbert-dupe:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:8200"
+          - url: "http://10.36.100.199:8200"
         passHostHeader: true
 ```
 
@@ -158,7 +158,7 @@ http:
     ncc-1702-dupe:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.2:8200"
+          - url: "http://10.36.100.2:8200"
         passHostHeader: true
 ```
 
@@ -179,7 +179,7 @@ http:
     glances:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:61208"
+          - url: "http://10.36.100.199:61208"
         passHostHeader: true
 ```
 
@@ -190,7 +190,7 @@ http:
   routers:
     kuma:
       entryPoints:
-        - "websecure-ext"
+        - "websecure-int"
       rule: "Host(`subdomain.domain.co.uk`)"
       tls:
         certResolver: production
@@ -200,7 +200,7 @@ http:
     kuma:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:3001"
+          - url: "http://10.36.100.199:3001"
         passHostHeader: true
 ```
 
@@ -221,7 +221,7 @@ http:
     portainer-cuthbert:
       loadBalancer:
         servers:
-          - url: "https://192.168.0.199:9443"
+          - url: "https://10.36.100.199:9443"
         passHostHeader: true
 ```
 
@@ -242,11 +242,11 @@ http:
     portainer-ncc-1702:
       loadBalancer:
         servers:
-          - url: "https://192.168.0.2:9443"
+          - url: "https://10.36.100.2:9443"
         passHostHeader: true
 ```
 
-###Unifi (cuthbert)
+###Unifi (UCG)
 
 ```yaml
 http:
@@ -263,11 +263,11 @@ http:
     unifi:
       loadBalancer:
         servers:
-          - url: "https://192.168.0.199:8443"
+          - url: "https://10.36.100.1:443"
         passHostHeader: true
 ```
 !!!note
-    Unifi's Web UI listens on 8443 so the URL needs to be HTTPS
+    Unifi's Web UI listens on 443 so the URL needs to be HTTPS
 
 ###Vaultwarden (Cuthbert)
 
@@ -286,6 +286,6 @@ http:
     vaultwarden:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:83"
+          - url: "http://10.36.100.199:83"
         passHostHeader: true
 ```

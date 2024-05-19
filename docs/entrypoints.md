@@ -65,7 +65,7 @@ http:
   routers:
     kuma:
       entryPoints:
-        - "websecure-ext"
+        - "websecure-int"
       rule: "Host(`sudomain.domain.co.uk`)"
       tls:
         certResolver: production
@@ -75,7 +75,7 @@ http:
     kuma:
       loadBalancer:
         servers:
-          - url: "http://192.168.0.199:3001"
+          - url: "http://10.36.100.199:3001"
         passHostHeader: true
 ```
 

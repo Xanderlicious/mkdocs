@@ -33,9 +33,10 @@ The reason for doing this is so I can provide a static IP Address to each of my 
 
 ```bash
 docker network create --subnet 172.19.0.0/24 proxy
+docker network create --subnet 172.18.0.0/24 monitoring
 ```  
 
-This creates a /24 subnet named ***proxy***
+This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring***
 
 ###Cuthbert
 
@@ -97,8 +98,6 @@ With the exception of Traefik & Monitoring, all of my compose file reside in the
 │   └── docker-compose.yml
 ├── homepage
 │   └── docker-compose.yml
-├── monitoring-stack
-│   └── monitoring-stack.yml
 ├── navidrome
 │   └── docker-compose.yml
 ├── plex-overseerr

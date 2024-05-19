@@ -15,43 +15,94 @@ I install portainer on both servers where there are many containers running and 
 My main Portainer instance is installed on my primary server, [TiTAN](https://docs.xanderman.co.uk/titan), as part of a stack with [Traefik](https://docs.xanderman.co.uk/traefik/)
 
 
-##Standalone Installation
+##Portainer & Portainer Agent
 
-I install portainer on other servers using the below docker run command:
+I install portainer on other servers using the below compose file which installs both Portainer and Portainer Agent:
 
-```bash
-docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ee:2.20.1
+###Cuthbert
+
+```yaml
+networks:
+  default:
+    name: cuthbert-network
+    external: true
+
+services:
+  portainer-ee:
+    ports:
+      - 8000:8000
+      - 9443:9443
+    container_name: portainer
+    networks:
+      default:
+        ipv4_address: "172.22.0.2"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    image: portainer/portainer-ee:2.19.5
+  agent:
+    ports:
+      - 9001:9001
+    container_name: portainer_agent
+    networks:
+      default:
+        ipv4_address: "172.22.0.3"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    image: portainer/agent:2.19.5
+
+volumes:
+  portainer_data:
+    external: true
+    name: portainer_data
 ```
 
-To allow my main instance to be able to link to these other environments, I would install *"Portainer Agent"* using the below docker run command:
+###NCC-1702
 
-```bash
-docker run -d  -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:2.20.1
+```yaml
+networks:
+  default:
+    name: cuthbert-network
+    external: true
+
+services:
+  portainer-ee:
+    ports:
+      - 8000:8000
+      - 9443:9443
+    container_name: portainer
+    networks:
+      default:
+        ipv4_address: "172.22.0.2"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    image: portainer/portainer-ee:2.19.5
+  agent:
+    ports:
+      - 9001:9001
+    container_name: portainer_agent
+    networks:
+      default:
+        ipv4_address: "172.22.0.3"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    image: portainer/agent:2.19.5
+
+volumes:
+  portainer_data:
+    external: true
+    name: portainer_data
 ```
 
-It is advisable to ensure both portainer and portainer agent are running the same version (the version is specified at the end of the command)
+##Dynamic Files
 
-
-##Upgrading Portainer
-
-To upgrade portainer and portainer agent, before running the 2 commands above (with the newly specified version at the end) you would first need to stop the container and remove the old version with the commands below:
-
-###Portainer
-
-``` bash
-docker stop portainer
-docker rm portainer
-```
-
-###Portainer Agent
-
-``` bash
-docker stop portainer_agent
-docker rm portainer_agent
-```
-
-###Dynamic Files
-
-Even though I can reach the portainer environments for Cuthbert and NCC-1702 through TiTAN & portainer agent, I have still setup domain names for each of them individually.
+Even though I can reach the portainer environments for Cuthbert and NCC-1702 through TiTAN, I have still setup domain names for each of them individually.
 
 This requires the setup of dynamic files which are detailed [here](https://docs.xanderman.co.uk/dynamic/#portainer-cuthbert) and [here](https://docs.xanderman.co.uk/dynamic/#portainer-ncc-1702)

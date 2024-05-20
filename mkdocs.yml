@@ -38,7 +38,7 @@ theme:
   name: 'material'
   palette:
     primary: deep purple
-    accent: green
+    accent: cyan
   font:
     text: Roboto
   features:

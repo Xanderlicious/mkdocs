@@ -30,7 +30,7 @@ The local IP to specify here, would not be the IP Address of where the service i
 
 ##Defining EntryPoints
 
-The entrypoints themselves are defined in the [traefik.yml](https://www.xanlab.co.uk/traefik/#traefikyml) file.
+The entrypoints themselves are defined in the [traefik.yml](https://docs.xanderman.co.uk/traefik/#traefikyml) file.
 
 ##Selecting an EntryPoint to use
 
@@ -58,7 +58,7 @@ labels:
 
 For services that are running on a different host to where traefik is running, I can specify the entrypoint to use within the dynamic file I have setup for that service.
 
-The example below, shows a basic dynamic file for Uptime-Kuma where I have specified the entry point as "websecure-ext"
+The example below, shows a basic dynamic file for Uptime-Kuma where I have specified the entry point as "websecure-int"
 
 ```yaml
 http:

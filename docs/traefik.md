@@ -35,7 +35,6 @@ directory location:
     ├── app-portainer-ncc-1702.yml
     ├── app-prom.yml
     ├── app-ubuntu.yml
-    ├── app-unifi.yml
     ├── app-vaultwarden.yml
     ├── app-xbvr.yml
     └── config.yml
@@ -45,12 +44,18 @@ directory location:
 
 ##docker-compose.yml
 
-Below is the Docker Compose file (you will notice this also includes [Portainer](https://www.xanlab.co.uk/portainer/))
+Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xanderman.co.uk/portainer/))
 
 ``` yaml
+networks:
+  default:
+    name: proxy
+    external: true
+
 services:
+
   traefik:
-    image: traefik:3.0.0-rc3
+    image: traefik:3.0.1
     container_name: traefik
     restart: always
     networks:
@@ -82,7 +87,7 @@ services:
       - traefik.http.routers.traefik_https.service=api@internal
 
   portainer:
-    image: portainer/portainer-ee:2.20.1
+    image: portainer/portainer-ee:2.19.5
     container_name: portainer
     networks:
       default:
@@ -105,11 +110,6 @@ services:
 volumes:
   portainer_data:
   traefik-logs:
-
-networks:
-  default:
-    name: proxy
-    external: true
 ```
 
 ##traefik.yml

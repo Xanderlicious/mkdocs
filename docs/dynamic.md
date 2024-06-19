@@ -95,7 +95,7 @@ http:
           - url: "http://10.36.100.3:80"
         passHostHeader: true
 ```
-The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /admin that the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and is outlined within the main config dynamic file along with the headers.
+The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /admin that the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
 
 

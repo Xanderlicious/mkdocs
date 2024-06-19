@@ -82,7 +82,7 @@ docker compose pull && docker compose up -d --force-recreate
 
 This will ensure the container is re-created.
 
-With the exception of Traefik & Monitoring, all of my compose file reside in the following location
+With the exception of Traefik & Monitoring on TiTAN, all of my compose files reside in the following locations
 
 ###TiTAN
 
@@ -109,7 +109,7 @@ With the exception of Traefik & Monitoring, all of my compose file reside in the
 └── tautulli
     └── docker-compose.yml
 
-11 directories, 11 files
+10 directories, 10 files
 ```
 
 ###Cuthbert
@@ -124,20 +124,16 @@ With the exception of Traefik & Monitoring, all of my compose file reside in the
 │   └── docker-compose.yml
 ├── kuma
 │   └── docker-compose.yml
-├── mongodb
-│   └── docker-compose.yml
 ├── monitoring
 │   └── docker-compose.yml
 ├── motioneye
-│   └── docker-compose.yml
-├── unifi
 │   └── docker-compose.yml
 ├── vaultwarden
 │   └── docker-compose.yml
 └── xbvr
     └── docker-compose.yml
 
-10 directories, 10 files
+8 directories, 8 files
 ```
 
 ###NCC-1702

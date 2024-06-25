@@ -62,8 +62,6 @@ services:
       default:
         ipv4_address: "172.19.0.2"
     ports:
-      - 80:80
-      - 81:81
       - 443:443
       - 444:444
     environment:
@@ -131,30 +129,12 @@ api:
 
 # --- EntryPoints ---
 entryPoints:
-  web-int:
-    address: :80
-    http:
-      middlewares:
-        - default-headers@file
-      redirections:
-        entryPoint:
-          to: websecure-int
-          scheme: https
   websecure-int:
     address: :443
     http:
       middlewares:
         - default-headers@file
 
-  web-ext:
-    address: :81
-    http:
-      middlewares:
-        - default-headers@file
-      redirections:
-        entryPoint:
-          to: websecure-ext
-          scheme: https
   websecure-ext:
     address: :444
     http:

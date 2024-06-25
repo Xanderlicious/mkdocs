@@ -3,18 +3,12 @@
 
 EntryPoints are the network entry points into Traefik. They define the port which will receive the packets, and whether to listen for TCP or UDP.
 
-With my configuration, I have setup 4 entrypoints  
-
-![](<images/dash entrypoints.png>)
+With my configuration, I have setup 2 entrypoints.  One for internal and one for external. 
 
 ##External EntryPoints
 
 The external entrypoints are for my external services and have been setup on non-standard ports.  
-In order for this to work, I have had to create the following port-forwarding rules within my router
-
-http & https requests would come in on their standard ports of 80 & 443.  The port forwarding rules will take these request that comes in on ports 80 & 443 and forward these to the local IP Address where Traefik is running on ports 81 & 444 respectively.
-
-![](<images/unifi port forwarding.png>)
+In order for this to work, I have had to create the neccessary port-forwarding rules within my Cloud Gateway Ultra.
 
 ##Internal EntryPoints
 
@@ -22,7 +16,7 @@ The internal entrypoints are for my internal-only facing services and have been 
 
 In order for this to work, I would still create my DNS A records with my domain provider in the usual way to specify the subdomain for the service.  (This will allow Lets Encrypt to still issue a valid certificate)  
 
-I also need to create some local DNS records for the same subdomains to allow them to still route internally.  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise this across to the other.  
+I also need to create some local DNS records for the same subdomains to allow them to still route internally. (as they wouldn't be able to route externally)  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise this across to the other.  
 
 The local IP to specify here, would not be the IP Address of where the service is running, but the IP Address of where Traefik is running.
 
@@ -65,7 +59,7 @@ http:
   routers:
     kuma:
       entryPoints:
-        - "websecure-int"
+        - "websecure-intwd"
       rule: "Host(`sudomain.domain.co.uk`)"
       tls:
         certResolver: production

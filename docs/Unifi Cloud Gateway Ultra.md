@@ -12,11 +12,7 @@ This thing is awesome.  I no longer have to run a seperate mongodb and Unifi net
 
 Installing this has allowed me to revamp my network.  I've changed the IPv4 subnet that I use across my network.
 
-I used to use a 192.168.x.x subnet and this was as a result of a limitation with the USG.  Without the controller software built in, It was difficult to get the USG to change - I tried many times over SSH but it just didn't want to take.  Maybe I was doing something wrong?  With this new CGU however, I can do all of this using the network controller very easily.
-
-I have now setup a /24 subnet using 10.36.100.0 subnet - The numbers here are relevant and make it memorable to me.
-
-I also have plans for setting up multiple vLAN's but currently with the dumb switches I have, this isn't yet possible.
+I have now setup a /24 subnet using 10.36.100.0 subnet - The numbers here are relevant and memorable to me.
 
 
 ###Dynamic File

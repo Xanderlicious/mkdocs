@@ -10,9 +10,7 @@ Below is the web view for TiTAN.
 
 ![](<images/glances webview.png>)
 
-##File Locations
-
-###compose files
+##Compose File Locations
 
 === "TiTAN"
 
@@ -37,24 +35,6 @@ Below is the web view for TiTAN.
     ├── glances
     │   └── docker-compose.yml
     ```
-
-###Appdata
-
-=== "TiTAN"
-
-    ``` bash
-    ├─ ssd/
-    │  └─ appdata/
-    │     └─ glances/
-    ```
-
-=== "Cuthbert"
-
-    ``` bash
-    ├─ ~/appdata/
-    │    └─ glances/
-    ```
-
 
 ##docker-compose.yml  
 
@@ -147,5 +127,5 @@ Below is the web view for TiTAN.
 
 ####Dynamic File
 
-For Glances running on Cuthbert, I have a dynamic file setup so its routed through Traefik and with SSL.  This file is located [here](https://docs.xanderman.co.uk/dynamic/#glances-cuthbert)
+For Glances running on Cuthbert and NCC-1702, I have a dynamic file setup so its routed through Traefik and with SSL.  These files are located [here](https://docs.xanderman.co.uk/dynamic/#glances-cuthbert) & [here](https://docs.xanderman.co.uk/dynamic/#glances-ncc-1702)
 

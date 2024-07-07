@@ -55,18 +55,21 @@ networks:
 services:
 
   traefik:
-    image: traefik:3.0.1
+    image: traefik:3.1.0-rc3
     container_name: traefik
     restart: always
     networks:
       default:
         ipv4_address: "172.19.0.2"
     ports:
+      - 80:80
+      - 81:81
       - 443:443
       - 444:444
+      - 8088:8088
     environment:
-      - CF_API_EMAIL=<e-mail address>
-      - CF_DNS_API_TOKEN=<cloudflare DNS API token>
+      - CF_API_EMAIL=${CF_API_EMAIL}
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -128,18 +131,38 @@ api:
   debug: true
 
 # --- EntryPoints ---
-entryPoints:
+#internal
+  web-int:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+ 
   websecure-int:
     address: :443
     http:
       middlewares:
-        - default-headers@file
+        - global-default-headers@file
+
+#external
+  web-ext:
+    address: :81
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
 
   websecure-ext:
     address: :444
     http:
       middlewares:
-        - default-headers@file
+        - global-default-headers@file
+
+  metrics:
+    address: :8088
 
 # -- CertificateResolver ---
 certificatesResolvers:
@@ -170,8 +193,21 @@ providers:
 log:
   level: "INFO"
   filePath: "/var/log/traefik/traefik.log"
+
 accessLog:
   filePath: "/var/log/traefik/access.log"
+
+# --- metrics ---
+metrics:
+  prometheus:
+    addRoutersLabels: true
+    addServicesLabels: true
+    entryPoint: metrics
+    buckets:
+        - 0.1
+        - 0.3
+        - 1.2
+        - 5.0
 ```
 
 ##Dynamic Files Directory

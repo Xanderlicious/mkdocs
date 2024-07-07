@@ -5,19 +5,22 @@ Homepage is a highly customizable application dashboard with integrations for ov
 
 This allows me to have an "at a glance" view of my services and their health.
 
-The below screenshot shows my current iteration but I'm always swapping and changing how it looks
+The below screenshot shows a recent iteration but I'm always swapping and changing how it looks
 
 ![](<images/homepage dash.png>)
 
-```
+
 docker-compose file location
 
+``` bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ homepage/
+```
 
 Appdata
 
+``` bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ homepage/

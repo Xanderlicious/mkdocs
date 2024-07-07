@@ -50,6 +50,7 @@ theme:
     - content.code.copy
     - content.code.annotation
     - content.code.select
+    - content.tabs.link
   language: en
   icon:
     repo: fontawesome/brands/git-alt

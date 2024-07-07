@@ -51,7 +51,7 @@ This "default-headers" middleware is applied directly at each entrypoint within 
 
 ##Application Specific Dynamic Files
 
-###Primary Pi-Hole (ncc-1702)
+###Primary Pi-Hole (NCC-1702)
 
 ``` yaml
 http:
@@ -74,7 +74,7 @@ http:
         passHostHeader: true
 ```  
 
-###Alternate Pi-Hole (ncc-1703)  
+###Alternate Pi-Hole (NCC-1703)  
 
 ``` yaml
 http:
@@ -142,7 +142,7 @@ http:
         passHostHeader: true
 ```
 
-###Duplicati (ncc-1702)
+###Duplicati (NCC-1702)
 
 ``` yaml
 http:
@@ -247,7 +247,7 @@ http:
         passHostHeader: true
 ```
 
-###Portainer (ncc-1702)
+###Portainer (NCC-1702)
 
 ``` yaml
 http:

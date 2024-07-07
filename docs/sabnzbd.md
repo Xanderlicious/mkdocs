@@ -5,15 +5,18 @@ SABnzbd is my Usenet Downloader of choice
 
 This application takes .nzb files from an indexer and downloads the file you are wanting.
 
-```
+
 docker-compose file location
 
+``` bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ sabnzbd/
+```
 
 Appdata
 
+``` bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ sabnzbd/

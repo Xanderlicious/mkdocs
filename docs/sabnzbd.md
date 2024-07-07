@@ -1,10 +1,7 @@
 
 ![](images/sabnzbd.png)
 
-SABnzbd is my Usenet Downloader of choice
-
-This application takes .nzb files from an indexer and downloads the file you are wanting.
-
+The free and easy binary newsreader
 
 docker-compose file location
 

@@ -10,7 +10,7 @@ Duplicati is an application that runs on each server and essentially runs backup
 ###TiTAN  
 (with traefik labels)
 
-```yaml
+``` yaml
 networks:
   default:
     name: proxy
@@ -50,7 +50,7 @@ services:
 ###Cuthbert & NCC-1702  
 (without traefik labels as on seperate host to traefik)
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network
@@ -77,7 +77,8 @@ services:
     restart: unless-stopped
 ```
 
-###Traefik Dynamic File  
+###Traefik Dynamic File
+ 
 [Cuthbert](https://docs.xanderman.co.uk/dynamic/#duplicati-cuthbert) and [NCC-1702](https://docs.xanderman.co.uk/dynamic/#duplicati-ncc-1702)
 
 ##Add Backup

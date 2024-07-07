@@ -38,7 +38,7 @@ For services that run on the same host where traefik is installed, this is done 
 
 Below is an example section of the docker-compose file for Navidrome showing the different labels I have configured.  You can see the third one in the list is for "entrypoint" and its been specified as "websecure-int"
 
-```yaml
+```yaml hl_lines="4"
 labels:
             - traefik.enable=true
             - traefik.http.services.navidrome.loadbalancer.server.port=4533

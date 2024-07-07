@@ -162,7 +162,7 @@ entryPoints:
 certificatesResolvers:
   production:
     acme:
-      email: xander.france@gmail.com
+      email: <e-mail address>>
       storage: acme.json
       dnsChallenge:
         provider: cloudflare

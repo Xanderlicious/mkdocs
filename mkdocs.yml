@@ -52,7 +52,7 @@ theme:
     - content.code.select
   language: en
   icon:
-    repo: fontawesome/brands/github
+    repo: fontawesome/brands/git-alt
 
 extra:
   consent:
@@ -77,4 +77,5 @@ markdown_extensions:
   - pymdownx.details
 
 repo_url: https://github.com/xanderlicious/mkdocs.git
+repo_name: xanderlicious/mkdocs
 

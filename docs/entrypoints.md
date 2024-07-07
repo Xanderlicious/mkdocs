@@ -36,7 +36,7 @@ Telling each service what entrypoint they are to use is pretty straight forward.
 
 For services that run on the same host where traefik is installed, this is done with the use of Traefik Labels.
 
-Below is an example section of the docker-compose file for Navidrome showing the different labels I have configured.  You can see the third one in the list is for "entrypoint" and its been specified as "websecure-int"
+Below is an example section of the docker-compose file for Navidrome showing the different labels I have configured.  You can see highlighted in the list is where the entrypoint to use is specified.
 
 ```yaml hl_lines="4"
 labels:

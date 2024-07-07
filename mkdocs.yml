@@ -48,6 +48,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.code.annotation
     - content.code.select
   language: en
   icon:

@@ -26,7 +26,45 @@ The local IP to specify here, would not be the IP Address of where the service i
 
 ##Defining EntryPoints
 
-The entrypoints themselves are defined in the [traefik.yml](https://docs.xanderman.co.uk/traefik/#traefikyml) file.
+The entrypoints themselves are defined in the [traefik.yml](https://docs.xanderman.co.uk/traefik/#traefikyml) file. (section shown below)
+
+```yaml linenums="10"
+entryPoints:
+
+#internal
+  web-int:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+ 
+  websecure-int:
+    address: :443
+    http:
+      middlewares:
+        - global-default-headers@file
+
+#external
+  web-ext:
+    address: :81
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+
+  websecure-ext:
+    address: :444
+    http:
+      middlewares:
+        - global-default-headers@file
+
+  metrics:
+    address: :8088
+```
+
 
 ##Selecting an EntryPoint to use
 

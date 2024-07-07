@@ -34,7 +34,7 @@ nav:
 
 
 theme:
-  #logo: images/brainiac.jpg
+  logo: images/server-solid.svg
   name: 'material'
   palette:
     primary: deep purple

@@ -162,11 +162,7 @@ entryPoints:
 certificatesResolvers:
   production:
     acme:
-<<<<<<< HEAD
       email: <e-mail address>>
-=======
-      email: x
->>>>>>> 67b7d17 (amended the traefik.yml file - equal spacing for the different sections)
       storage: acme.json
       dnsChallenge:
         provider: cloudflare

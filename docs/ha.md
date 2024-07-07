@@ -7,15 +7,18 @@ Currently, I have only setup the energy meter within home assistant so it can sh
 
 ![](images/energyusage.png)
 
-```
+
 docker-compose file location
 
+``` bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ ha/
+```
 
 Appdata
 
+``` bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ ha/
@@ -23,7 +26,7 @@ Appdata
 
 ##docker-compose.yml
 
-```yaml
+``` yaml
 networks:
   default:
     name: proxy
@@ -58,4 +61,3 @@ services:
        - traefik.http.routers.ha.tls.domains[0].main=domain.co.uk
        - traefik.http.routers.ha.tls.domains[0].sans=*.domain.co.uk
 ```
-

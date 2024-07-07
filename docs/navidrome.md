@@ -1,17 +1,20 @@
 
 ![](images/navidrome.png)
 
-Navidrome is a self-hosted, open source music server and streamer. It gives you freedom to listen to your music collection from any browser or mobile device.
+Navidrome is a self-hosted, open source music player and streamer. It gives you freedom to listen to your music collection from any browser or mobile device.
 
-```
+
 docker-compose file location
 
+```bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ navidrome/
+```
 
 Appdata
 
+```bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ navidrome/

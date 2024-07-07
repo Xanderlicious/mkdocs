@@ -125,12 +125,11 @@ global:
   checkNewVersion: true
   sendAnonymousUsage: false
 
-# --- Enable API and Dashboard ---
 api:
   dashboard: true
   debug: true
 
-# --- EntryPoints ---
+entryPoints:
 #internal
   web-int:
     address: :80
@@ -160,11 +159,10 @@ api:
   metrics:
     address: :8088
 
-# -- CertificateResolver ---
 certificatesResolvers:
   production:
     acme:
-      email: <e-mail address>
+      email: xander.france@gmail.com
       storage: acme.json
       dnsChallenge:
         provider: cloudflare
@@ -172,11 +170,9 @@ certificatesResolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
 
-# -- Disable TLS Cert verification check (Optional) ---
 serversTransport:
   insecureSkipVerify: true
 
-# --- specify providers here (docker socket & dynamic files directory location) ---
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
@@ -185,14 +181,13 @@ providers:
     directory: /ssd/appdata/traefik/dynamic/
     watch: true
 
-# --- logs ---
 log:
   level: "INFO"
   filePath: "/var/log/traefik/traefik.log"
+
 accessLog:
   filePath: "/var/log/traefik/access.log"
 
-# --- metrics ---
 metrics:
   prometheus:
     addRoutersLabels: true

@@ -2,6 +2,8 @@
 
 Welcome to the official documentation page for Xander's Homelab
 
+[](index.md)
+
 I'm Xander (AKA Alex) and within this site you will find all the nerdy details of how I've created my homelab.
 
 I work in IT, totally self-taught and I certainly don't claim to be an expert.  

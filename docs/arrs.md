@@ -5,11 +5,8 @@
 
 
 *Sonarr = TV Shows*
-
 *Radarr = Films*
-
 *Lidarr = Music*
-
 *Readarr = Books*
 
 They allow easy organisation of all of your media.  It has the abillity to rename everything appropriately according to a naming convention you specify.

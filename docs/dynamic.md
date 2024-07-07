@@ -14,7 +14,7 @@ I also have a dynamic "config.yml" file where I can specify middlewares that can
 
 ##config.yml
 
-```yaml
+``` yaml
 http:
 
   middlewares:
@@ -46,13 +46,14 @@ http:
           X-Forwarded-Proto: https
         PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"
 ```
+
 This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
 
 ##Application Specific Dynamic Files
 
 ###Primary Pi-Hole (ncc-1702)
 
-```yaml
+``` yaml
 http:
   routers:
     pihole1:
@@ -75,7 +76,7 @@ http:
 
 ###Alternate Pi-Hole (ncc-1703)  
 
-```yaml
+``` yaml
 http:
   routers:
     pihole2:
@@ -101,7 +102,7 @@ The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /a
 
 ###MotionEye (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     cctv:
@@ -122,7 +123,7 @@ http:
 
 ###Duplicati (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     cuthbert-dupe:
@@ -143,7 +144,7 @@ http:
 
 ###Duplicati (ncc-1702)
 
-```yaml
+``` yaml
 http:
   routers:
     ncc-1702-dupe:
@@ -164,7 +165,7 @@ http:
 
 ###Glances (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     glances:
@@ -183,9 +184,30 @@ http:
         passHostHeader: true
 ```
 
+###Glances (NCC-1702)
+
+``` yaml
+http:
+  routers:
+    glances:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: glances
+
+  services:
+    glances:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.2:61208"
+        passHostHeader: true
+```
+
 ###Uptime-Kuma (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     kuma:
@@ -206,7 +228,7 @@ http:
 
 ###Portainer (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     portainer-cuthbert:
@@ -227,7 +249,7 @@ http:
 
 ###Portainer (ncc-1702)
 
-```yaml
+``` yaml
 http:
   routers:
     portainer-ncc-1702:
@@ -248,7 +270,7 @@ http:
 
 ###Unifi (UCG)
 
-```yaml
+``` yaml
 http:
   routers:
     unifi:
@@ -271,7 +293,7 @@ http:
 
 ###Vaultwarden (Cuthbert)
 
-```yaml
+``` yaml
 http:
   routers:
     vaultwarden:

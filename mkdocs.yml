@@ -34,7 +34,7 @@ nav:
 
 
 theme:
-  #logo: images/xandermansystems.png
+  logo: images/brainiac.jpg
   name: 'material'
   palette:
     primary: deep purple

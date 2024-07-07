@@ -54,9 +54,9 @@ labels:
 
 For services that are running on a different host to where traefik is running, I can specify the entrypoint to use within the dynamic file I have setup for that service.
 
-The example below, shows a basic dynamic file for Uptime-Kuma where I have specified the entry point as "websecure-int"
+The example below, shows a basic dynamic file for Uptime-Kuma where, again highlighted, I have specified the entry point as "websecure-int"
 
-```yaml
+```yaml hl_lines="5"
 http:
   routers:
     kuma:

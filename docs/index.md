@@ -2,7 +2,7 @@
 
 Welcome to the official documentation page for Xander's Homelab
 
-[](index.md)
+![](images/Brainiac.jpg)
 
 I'm Xander (AKA Alex) and within this site you will find all the nerdy details of how I've created my homelab.
 

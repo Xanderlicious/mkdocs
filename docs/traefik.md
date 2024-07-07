@@ -12,39 +12,39 @@ With Traefik, I also have the abillity to specify multiple entry points (2 inter
 The section [Traefik Entry Points](https://docs.xanderman.co.uk/entrypoints/) will explain more about these.
 
 
-directory location:
+directory location layout:
 
-```
+``` bash
 /ssd/appdata/traefik/
 ├── data
 │   ├── acme.json
 │   └── traefik.yml
 ├── docker-compose.yml
-└── dynamic
-    ├── app-cctv.yml
-    ├── app-cuthbert-dupe.yml
-    ├── app-docs.yml
-    ├── app-glances.yml
-    ├── app-graphs.yml
-    ├── app-kuma.yml
-    ├── app-ncc-1702-dupe.yml
-    ├── app-piglances.yml
-    ├── app-pihole1.yml
-    ├── app-pihole2.yml
-    ├── app-portainer-cuthbert.yml
-    ├── app-portainer-ncc-1702.yml
-    ├── app-prom.yml
-    ├── app-ubuntu.yml
-    ├── app-vaultwarden.yml
-    ├── app-xbvr.yml
-    └── config.yml
-
-2 directories, 21 files
+├── dynamic
+│   ├── app-cctv.yml
+│   ├── app-cuthbert-dupe.yml
+│   ├── app-glances.yml
+│   ├── app-graphs.yml
+│   ├── app-kuma.yml
+│   ├── app-ncc-1702-dupe.yml
+│   ├── app-piglances.yml
+│   ├── app-pihole1.yml
+│   ├── app-pihole2.yml
+│   ├── app-portainer-cuthbert.yml
+│   ├── app-portainer-ncc-1702.yml
+│   ├── app-prom.yml
+│   ├── app-ubuntu.yml
+│   ├── app-unifi.yml
+│   ├── app-vaultwarden.yml
+│   ├── app-xbvr.yml
+│   └── config.yml
+└── .env
 ```
 
 ##docker-compose.yml
 
 Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xanderman.co.uk/portainer/))
+Sensitive information is placed in a hidden .env file which is then referenced within the docker-compose.
 
 ``` yaml
 networks:
@@ -139,13 +139,11 @@ api:
         entryPoint:
           to: websecure
           scheme: https
- 
   websecure-int:
     address: :443
     http:
       middlewares:
         - global-default-headers@file
-
 #external
   web-ext:
     address: :81
@@ -154,13 +152,11 @@ api:
         entryPoint:
           to: websecure
           scheme: https
-
   websecure-ext:
     address: :444
     http:
       middlewares:
         - global-default-headers@file
-
   metrics:
     address: :8088
 
@@ -193,7 +189,6 @@ providers:
 log:
   level: "INFO"
   filePath: "/var/log/traefik/traefik.log"
-
 accessLog:
   filePath: "/var/log/traefik/access.log"
 

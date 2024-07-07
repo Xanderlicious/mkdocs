@@ -76,6 +76,6 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
-repo_url: https://github.com/xanderlicious/mkdocs.git
+repo_url: https://github.com/xanderlicious/mkdocs
 repo_name: xanderlicious/mkdocs
 

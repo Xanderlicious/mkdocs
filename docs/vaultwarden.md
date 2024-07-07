@@ -18,7 +18,7 @@ Features included:
 
 ##docker-compose.yml
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network
@@ -37,8 +37,8 @@ services:
     volumes:
       - /home/xander/appdata/Vaultwarden/data:/data
     environment:
-      - ADMIN_TOKEN=<hashed string using argon2>
-      - DOMAIN=https://sudomain.domain.co.uk
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
+      - DOMAIN=${DOMAIN}
 ```
 ###Dynamic File
 

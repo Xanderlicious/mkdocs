@@ -7,7 +7,7 @@ I have this setup so that if motion is detected, recording occurs which is then 
 
 ##docker-compose.yml
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network

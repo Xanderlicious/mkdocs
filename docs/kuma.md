@@ -8,17 +8,17 @@ It also provides the abillity to provide notifications via Telegram, Discord, Go
 
 ![](<images/kuma screenshot.png>)
 
-```
 appdata 
 
+``` bash
 ├─ ~/appdata
-│  └─ glances/
+│  └─ Kuma/
 └──── docker-compose.yml
 ```
 
 ##docker-compose.yml
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network

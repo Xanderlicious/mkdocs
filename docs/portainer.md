@@ -8,7 +8,7 @@ To quote Portainer themselves:
 
 I use portainer (with portainer agent) to give me a quick and easy cursory overview of all of my containers and their status.
 
-I install portainer on both servers where there are many containers running and also on my primary pi-hole where this very site runs.
+I install portainer on both servers where there are many containers running and also on my primary pi-hole.
 
 ![](<images/Portainer Envs.png>)
 
@@ -21,7 +21,7 @@ I install portainer on other servers using the below compose file which installs
 
 ###Cuthbert
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network
@@ -62,7 +62,7 @@ volumes:
 
 ###NCC-1702
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network

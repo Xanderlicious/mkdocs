@@ -76,5 +76,5 @@ markdown_extensions:
   - admonition
   - pymdownx.details
 
-repo_url: https://github.com/xanderlicious/xanlab-mkdocs.git
+repo_url: https://github.com/xanderlicious/mkdocs.git
 

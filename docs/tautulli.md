@@ -7,15 +7,18 @@ It provides you with very detailed information about your Plex Media Server and 
 
 ![](<images/tautulli graph.png>)
 
-```bash
+
 docker-compose file location
 
+```bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ tautulli/
+```
 
-Appdata
+Appdata files location
 
+```bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ tautulli/

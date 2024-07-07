@@ -3,7 +3,9 @@
 
 EntryPoints are the network entry points into Traefik. They define the port which will receive the packets, and whether to listen for TCP or UDP.
 
-With my configuration, I have setup 2 entrypoints.  One for internal and one for external. 
+![](<images/traefik entrypoints.png>)
+
+With my configuration, I have setup 5 entrypoints.  2 for internal, 2 for external and 1 for Prometheus metrics. 
 
 ##External EntryPoints
 
@@ -16,7 +18,7 @@ The internal entrypoints are for my internal-only facing services and have been 
 
 In order for this to work, I would still create my DNS A records with my domain provider in the usual way to specify the subdomain for the service.  (This will allow Lets Encrypt to still issue a valid certificate)  
 
-I also need to create some local DNS records for the same subdomains to allow them to still route internally. (as they wouldn't be able to route externally)  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise this across to the other.  
+I also need to create some local DNS records for the same subdomains to allow them to still route internally. (as they wouldn't be able to route externally)  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise across to the other.  
 
 The local IP to specify here, would not be the IP Address of where the service is running, but the IP Address of where Traefik is running.
 
@@ -59,7 +61,7 @@ http:
   routers:
     kuma:
       entryPoints:
-        - "websecure-intwd"
+        - "websecure-int"
       rule: "Host(`sudomain.domain.co.uk`)"
       tls:
         certResolver: production

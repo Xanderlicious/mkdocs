@@ -12,7 +12,7 @@ With Traefik, I also have the abillity to specify multiple entry points (2 inter
 The section [Traefik Entry Points](https://docs.xanderman.co.uk/entrypoints/) will explain more about these.
 
 
-directory location layout:
+##Directory Location Layout:
 
 ``` bash
 /ssd/appdata/traefik/

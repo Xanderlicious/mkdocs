@@ -26,7 +26,7 @@ db.getSiblingDB("MONGO_DBNAME").createUser({user: "MONGO_USER", pwd: "MONGO_PASS
 ```
 ###docker-compose.yml
 
-```yaml
+``` yaml
 networks:
   default:
     name: cuthbert-network
@@ -109,14 +109,15 @@ About half way down the page you will see the following option (ensure you set t
 ![](<images/inform host.png>)
 
 You can also manually adopt a device via SSH
-```bash
+
+``` bash
 ssh ubnt@<device-address>
 ```
 The default password for a Unifi Access Point will be ***ubnt***
 
 Once connected, run the following command to allow the controller to adobt the device:
 
-```sh
+``` bash
 set-inform http://<controller-address>:8080/inform
 ```
 

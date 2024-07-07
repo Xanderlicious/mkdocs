@@ -30,7 +30,6 @@ The entrypoints themselves are defined in the [traefik.yml](https://docs.xanderm
 
 ```yaml linenums="8"
 entryPoints:
-
 #internal
   web-int:
     address: :80

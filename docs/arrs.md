@@ -14,19 +14,20 @@
 
 They allow easy organisation of all of your media.  It has the abillity to rename everything appropriately according to a naming convention you specify.
 
-It also has the abillity to link in with NZB or Torrent sites and allows quick and easy download (via your downloader of choice - I use [SABnzbd](https://www.xanlab.co.uk/sabnzbd/)) of any episiodes, films, music and/or books you might be missing.
+It also has the abillity to link in with a newsreader (I use [SABnzbd](https://www.xanlab.co.uk/sabnzbd/))
 
-Essentially it does all the hard work for you.  You provide it with the TV Shows, it will then seek out the episodes, downloads them, renames them and then moves them to a folder so they are then automatically made available within Plex.
 
-```
 docker-compose file location
 
+``` bash
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ arrs/
+```
 
 Appdata
 
+``` bash
 ├─ ssd/
 │  └─ appdata/
 │     └─ sonarr/
@@ -162,4 +163,3 @@ services:
             - 8787:8787
         restart: unless-stopped
 ```
-

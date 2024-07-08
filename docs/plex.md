@@ -21,14 +21,16 @@ services:
         hostname: TiTAN
         volumes:
             - /ssd/appdata/Plex:/config
-            - /megaraid/mediastore/Movies:/movies
-            - /megaraid/mediastore/StandUp:/standup
-            - /megaraid/mediastore/TV:/tv
-            - /ironwolf/music/MusicCollection:/music
+            - /megaraid/mediastore/Movies:/movies:ro
+            - /megaraid/mediastore/StandUp:/standup:ro
+            - /megaraid/mediastore/TV:/tv:ro
+            - /ironwolf/music/MusicCollection:/music:ro
         networks:
           default:
             ipv4_address: 172.19.0.100
         restart: always
+        devices:
+            - /dev/dri:/dev/dri
         environment:
             - PGID=1000
             - PUID=1000
@@ -81,6 +83,6 @@ services:
 
 ##Overseerr
 
-Overseerr is a 3rd part application that gives your plex users the abillity to request content that you don't currently have.
+Overseerr is a 3rd party application that gives your plex users the abillity to request content that you don't currently have listed.
 
 This "request" can then be approved or declined by the server admin (you!)

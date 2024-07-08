@@ -1,6 +1,5 @@
 https://docs.xanderman.co.uk/*
- sslProxyHeaders:
-    X-Forwarded-Proto: https
+  X-Forwarded-Proto: https
   referrerPolicy: same-origin
   hostsProxyHeaders: "X-Forwarded-Host"
   frameDeny: true
@@ -11,10 +10,7 @@ https://docs.xanderman.co.uk/*
   stsPreload: true
   stsSeconds: 2592000
   customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
-  customResponseHeaders:
-    X-Robots-Tag: none,noarchive,nosnippet,notranslate,noimageindex"
-    X-Forwarded-Proto: "https"
-    server: ""
-  customRequestHeaders:
-    X-Forwarded-Proto: https
+  X-Robots-Tag: none,noarchive,nosnippet,notranslate,noimageindex"
+  X-Forwarded-Proto: "https"
+  server: ""
   PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"

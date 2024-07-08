@@ -1,9 +1,8 @@
-https://docs.xanderman.co.uk
+https://docs.xanderman.co.uk/*
  sslProxyHeaders:
-    X-Forwarded-Proto: "https"
-  referrerPolicy: "same-origin"
-  hostsProxyHeaders:
-    - "X-Forwarded-Host"
+    X-Forwarded-Proto: https
+  referrerPolicy: same-origin
+  hostsProxyHeaders: "X-Forwarded-Host"
   frameDeny: true
   browserXssFilter: true
   contentTypeNosniff: true
@@ -13,7 +12,7 @@ https://docs.xanderman.co.uk
   stsSeconds: 2592000
   customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
   customResponseHeaders:
-    X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+    X-Robots-Tag: none,noarchive,nosnippet,notranslate,noimageindex"
     X-Forwarded-Proto: "https"
     server: ""
   customRequestHeaders:

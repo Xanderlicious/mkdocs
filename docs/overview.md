@@ -11,7 +11,7 @@ Other pages on this site will go into lots of detail of the different servers, t
 
 I have a Gigabit internet connection provided by Virgin Media here in the UK.  
 With this, I am able to achieve over 1Gb down and 100Mb up.  
-The superhub they provide has been placed into "modem only" (or bridged) mode which allows me to connect this to my Unifi Security Gateway router.  
+The superhub they provide has been placed into "modem only" (or bridged) mode which allows me to connect this to my Unifi Cloud Gateway Ultra.  
 From here I then have a multitude of switches and access points.
 
 
@@ -19,9 +19,9 @@ From here I then have a multitude of switches and access points.
 
 ![](images/pihole.png)
 
-I am currently running two raspberry pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are sync'd with [gravity sync](https://github.com/vmstan/gravity-sync?tab=readme-ov-file).
+I am currently running two raspberry Pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are both kept in sync with [gravity sync](https://github.com/vmstan/gravity-sync?tab=readme-ov-file).
 
-The primary pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" protocol and allows me to connect to my internal-only facing services from outside of my network
+The primary Pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" protocol and allows me to connect to my internal-only facing services from outside of my network
 
 I have 2 main servers and an assortment of PC's, mobile phones, laptops and a gaming console.
 

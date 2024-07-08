@@ -10,6 +10,6 @@ https://docs.xanderman.co.uk/*
   stsPreload: true
   stsSeconds: 2592000
   customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
-  X-Robots-Tag: none, noarchive, nosnippet, notranslate, noimageindex
+  X-Robots-Tag: none; noarchive; nosnippet; notranslate; noimageindex
   server: ""
-  PermissionsPolicy: geolocation=(self), camera=(), microphone=(),
+  PermissionsPolicy: geolocation=(self); camera=(); microphone=()

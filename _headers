@@ -1,21 +1,21 @@
 https://docs.xanderman.co.uk
  sslProxyHeaders:
-          X-Forwarded-Proto: "https"
-        referrerPolicy: "same-origin"
-        hostsProxyHeaders:
-          - "X-Forwarded-Host"
-        frameDeny: true
-        browserXssFilter: true
-        contentTypeNosniff: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsPreload: true
-        stsSeconds: 2592000
-        customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
-        customResponseHeaders:
-          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
-          X-Forwarded-Proto: "https"
-          server: ""
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-        PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"
+    X-Forwarded-Proto: "https"
+  referrerPolicy: "same-origin"
+  hostsProxyHeaders:
+    - "X-Forwarded-Host"
+  frameDeny: true
+  browserXssFilter: true
+  contentTypeNosniff: true
+  forceSTSHeader: true
+  stsIncludeSubdomains: true
+  stsPreload: true
+  stsSeconds: 2592000
+  customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
+  customResponseHeaders:
+    X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+    X-Forwarded-Proto: "https"
+    server: ""
+  customRequestHeaders:
+    X-Forwarded-Proto: https
+  PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"

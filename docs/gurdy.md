@@ -1,0 +1,17 @@
+Gurdy is a dedicated host to serve [CheckMK](https://docs.xanderman.co.uk/monitoring/#checkmk)
+
+![](images/gurdy.png)
+
+**Specs**
+
+- HP Machine of some description (will update when I eventually find out the model)  
+- Intel i5 6500 CPU  
+- 16GB RAM (2 x 8GB)
+- 250GB Samsung Evo SSD for OS
+
+Operating System
+
+![](images/ubuntu.png)
+
+My operating system of choice is Ubuntu Server
+Current version - 24.04 LTS

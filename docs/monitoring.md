@@ -6,7 +6,7 @@ This is where a proper monitoring solution comes into play and there are many, m
 
 ![](images/checkmk.png)
 
-In my honest opinion, one of the best, if not THE best here is CheckMK.  This is quite an advanced monitoring tool with many features but it needs to be implemented properly and ideally have dedicated hardware.  I don't have this deployed just yet but its definately on my list of "must have's"
+In my honest opinion, one of the best, if not THE best here is CheckMK.  This is quite an advanced monitoring tool with many features but it needs to be implemented properly and ideally have dedicated hardware.
 
 CheckMK will allow me to not only monitor the health and status of many different aspects of each of my devices (servers and desktops) but will also allow me to monitor the health and status of my router and access points via SNMP.
 

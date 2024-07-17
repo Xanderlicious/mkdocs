@@ -117,7 +117,7 @@ volumes:
 
 The traefik.yml file lives inside the "data" directory and is used to: 
 
-enable/disable the dashboard, define entry points, assign middleware at a global level (rather than at an application level), specify your certificate resolver details, detail your docker provider and the docker socket address aswell as dynamic files/directory location.  Finally you can also optionally provide the location of log files.
+enable/disable the dashboard, define entry points, assign middleware at a global level (rather than at an application level), specify your certificate resolver details, detail your docker provider and the docker socket address aswell as dynamic files/directory location.  Finally you can also, optionally, provide the location of log files and details of any collector of metrics.
 
 
 ``` yaml

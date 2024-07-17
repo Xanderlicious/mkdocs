@@ -4,7 +4,9 @@ Gurdy is a dedicated host to serve [CheckMK](https://docs.xanderman.co.uk/monito
 
 **Specs**
 
-- HP Machine of some description (will update when I eventually find out the model)  
+![](<images/HP 280 G2 SFF.jpg>)
+
+- HP 280 G2 SFF Business PC  
 - Intel i5 6500 CPU  
 - 16GB RAM (2 x 8GB)
 - 250GB Samsung Evo SSD for OS

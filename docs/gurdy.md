@@ -2,9 +2,9 @@ Gurdy is a dedicated host to serve [CheckMK](https://docs.xanderman.co.uk/monito
 
 ![](images/gurdy.png)
 
-**Specs**
-
 ![](<images/HP 280 G2 SFF.jpg>)
+
+**Specs**
 
 - HP 280 G2 SFF Business PC  
 - Intel i5 6500 CPU  

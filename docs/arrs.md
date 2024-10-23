@@ -11,7 +11,7 @@
 
 They allow easy organisation of all of your media.  It has the abillity to rename everything appropriately according to a naming convention you specify.
 
-It also has the abillity to link in with a newsreader (I use [SABnzbd](https://www.xmsystems.co.uk/sabnzbd/))
+It also has the abillity to link in with a newsreader (I use [SABnzbd](https://docs.xmsystems.co.uk/sabnzbd/))
 
 
 ## docker-compose file location

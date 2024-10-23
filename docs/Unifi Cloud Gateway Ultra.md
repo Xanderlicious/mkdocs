@@ -19,6 +19,6 @@ I have now setup a /24 subnet using 10.36.100.0 subnet - The numbers here are re
 
 I do still need to specify a traefik dynamic file so that I can connect to the Network Controller firmware using my domain and SSL
 
-This Dynamic File can be found [here](https://docs.xmsystems.co.uk/dynamic/#unifi-cgu)
+This Dynamic File can be found [here](https://docs.xmsystems.co.uk/dynamic/#unifi-ucg)
   
 

@@ -64,4 +64,4 @@ volumes:
 
 Even though I can reach the portainer environment for Cuthbert through TiTAN, I have still setup its own individual domain name.
 
-This requires the setup of dynamic files which are detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-cuthbert)
+This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-cuthbert)

@@ -7,12 +7,11 @@ Other pages on this site will go into lots of detail of the different servers, t
 
 ## Internet & Network
 
-![](images/virginmedia.png)
+![](<images/cityfibre.png>)
 
-I have a Gigabit internet connection provided by Virgin Media here in the UK.  
-With this, I am able to achieve over 1Gb down and 100Mb up.  
-The superhub they provide has been placed into "modem only" (or bridged) mode which allows me to connect this to my Unifi Cloud Gateway Ultra.  
-From here I then have a multitude of switches and access points.
+I have an FTTP internet connection provided by "No One" here in the UK.  This is provided over the "City Fibre" full fibre network. 
+This provides me with a symmetrical gigabit connection.  
+My Unifi Cloud Gateway Ultra is able to plug directly into the ONT.
 
 
 ## Hardware & Devices

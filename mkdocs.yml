@@ -4,6 +4,10 @@ site_url: https://docs.xanderman.co.uk/
 nav:
   - Welcome: index.md
   - Overview: overview.md
+  - Devices: 
+    - Unifi Cloud Gateway Ultra: Unifi Cloud Gateway Ultra.md
+    - Unifi USW-Lite-16-PoE: Unifi USW-Lite-16-PoE.md
+    - Unifi Access Points: Unifi Access Points.md
   - Servers:
     - TiTAN: titan.md
     - Cuthbert: cuthbert.md
@@ -15,7 +19,6 @@ nav:
     - Traefik : traefik.md
     - Traefik Entry Points: entrypoints.md
     - Traefik Dynamic Files: dynamic.md
-    - Unifi Cloud Gateway Ultra: Unifi Cloud Gateway Ultra.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md

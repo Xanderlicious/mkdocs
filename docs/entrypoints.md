@@ -7,26 +7,24 @@ EntryPoints are the network entry points into Traefik. They define the port whic
 
 With my configuration, I have setup 5 entrypoints.  2 for internal, 2 for external and 1 for Prometheus metrics. 
 
-##External EntryPoints
+## External EntryPoints
 
 The external entrypoints are for my external services and have been setup on non-standard ports.  
 In order for this to work, I have had to create the neccessary port-forwarding rules within my Cloud Gateway Ultra.
 
-##Internal EntryPoints
+## Internal EntryPoints
 
 The internal entrypoints are for my internal-only facing services and have been setup on http & https standard ports (80 & 443).  To be able to connect to and use these services, the device requesting the connection would need to reside on the Local Area Network or be connected to the VPN.
 
-In order for this to work, I would still create my DNS A records with my domain provider in the usual way to specify the subdomain for the service.  (This will allow Lets Encrypt to still issue a valid certificate)  
-
-I also need to create some local DNS records for the same subdomains to allow them to still route internally. (as they wouldn't be able to route externally)  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise across to the other.  
+I have created some local DNS records for the these internal subdomains to allow them to route internally. (as they wouldn't be able to route externally)  This is done within my Pi-Hole's.  I only need to create them on one Pi-Hole as Gravity Sync would then syncronise across to the other.  
 
 The local IP to specify here, would not be the IP Address of where the service is running, but the IP Address of where Traefik is running.
 
 ![](<images/pihole dns.png>)
 
-##Defining EntryPoints
+## Defining EntryPoints
 
-The entrypoints themselves are defined in the [traefik.yml](https://docs.xanderman.co.uk/traefik/#traefikyml) file. (section shown below)
+The entrypoints themselves are defined in the [traefik.yml](https://docs.xmsystems.co.uk/traefik/#traefikyml) file. (section shown below)
 
 ```yaml linenums="8"
 entryPoints:
@@ -61,11 +59,11 @@ entryPoints:
 ```
 
 
-##Selecting an EntryPoint to use
+## Selecting an EntryPoint to use
 
 Telling each service what entrypoint they are to use is pretty straight forward.
 
-###Labels
+### Labels
 
 For services that run on the same host where traefik is installed, this is done with the use of Traefik Labels.
 
@@ -83,7 +81,7 @@ labels:
             - traefik.http.routers.navidrome.tls.domains[0].sans=*.domain.co.uk
 ```
 
-###Dynamic File
+### Dynamic File
 
 For services that are running on a different host to where traefik is running, I can specify the entrypoint to use within the dynamic file I have setup for that service.
 

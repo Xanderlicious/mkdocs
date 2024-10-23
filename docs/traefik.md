@@ -9,10 +9,10 @@ It also uses Lets Encrypt and provides a valid SSL certificate
 ![alt text](<images/cloudflare + letsencrypt.png>)
 
 With Traefik, I also have the abillity to specify multiple entry points (2 internal and 2 external)  This allows me to keep my internal services internal and only have my external services showing to the world.  
-The section [Traefik Entry Points](https://docs.xanderman.co.uk/entrypoints/) will explain more about these.
+The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) will explain more about these.
 
 
-##Directory Location Layout:
+## Directory Location Layout:
 
 ``` bash
 /ssd/appdata/traefik/
@@ -41,9 +41,9 @@ The section [Traefik Entry Points](https://docs.xanderman.co.uk/entrypoints/) wi
 └── .env
 ```
 
-##docker-compose.yml
+## docker-compose.yml
 
-Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xanderman.co.uk/portainer/))
+Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xmsystems.co.uk/portainer/))
 Sensitive information is placed in a hidden .env file which is then referenced within the docker-compose.
 
 ``` yaml
@@ -113,7 +113,7 @@ volumes:
   traefik-logs:
 ```
 
-##traefik.yml
+## traefik.yml
 
 The traefik.yml file lives inside the "data" directory and is used to: 
 
@@ -206,4 +206,4 @@ Dynamic files can be very useful for services that are running on other hosts an
 
 As its "dynamic" you can make changes to these files and they will instantly take effect without needing to restart traefik
 
-The section [Traefik Dynamic Files](https://docs.xanderman.co.uk/dynamic/) goes into more detail about these files and shows examples.
+The section [Traefik Dynamic Files](https://docs.xmsystems.co.uk/dynamic/) goes into more detail about these files and shows examples.

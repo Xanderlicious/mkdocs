@@ -1,6 +1,6 @@
 ![](images/CGU.png)
 
-###Unifi Cloud Gateway Ultra (CGU)
+### Unifi Cloud Gateway Ultra (CGU)
 
 As an interim measure, I have upgraded my USG to the new Unifi Cloud Gateway Ultra
 
@@ -15,10 +15,10 @@ Installing this has allowed me to revamp my network.  I've changed the IPv4 subn
 I have now setup a /24 subnet using 10.36.100.0 subnet - The numbers here are relevant and memorable to me.
 
 
-###Dynamic File
+### Dynamic File
 
 I do still need to specify a traefik dynamic file so that I can connect to the Network Controller firmware using my domain and SSL
 
-This Dynamic File can be found [here](https://docs.xanderman.co.uk/dynamic/#unifi-cgu)
+This Dynamic File can be found [here](https://docs.xmsystems.co.uk/dynamic/#unifi-cgu)
   
 

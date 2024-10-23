@@ -1,5 +1,5 @@
 site_name: xanderman systems
-site_url: https://docs.xanderman.co.uk/
+site_url: https://docs.xmsystems.co.uk/
 
 nav:
   - Welcome: index.md
@@ -25,9 +25,7 @@ nav:
     - SABnzbd: sabnzbd.md
     - Arrs: arrs.md
     - Homepage: homepage.md
-    - Glances: glances.md
     - Home Assistant: ha.md
-    - Duplicati: duplicati.md
     - Monitoring: monitoring.md
     - Portainer: portainer.md
     - Vaultwarden: vaultwarden.md
@@ -35,6 +33,8 @@ nav:
     - Motioneye: motioneye.md
   - Archive:
     - USG: USG.md
+    - Duplicati: duplicati.md
+    - Glances: glances.md
 
 
 theme:

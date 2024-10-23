@@ -1,4 +1,4 @@
-Gurdy is a dedicated host to serve [CheckMK](https://docs.xanderman.co.uk/monitoring/#checkmk)
+Gurdy is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk)
 
 ![](images/gurdy.png)
 
@@ -16,4 +16,4 @@ Operating System
 ![](images/ubuntu.png)
 
 My operating system of choice is Ubuntu Server
-Current version - 24.04 LTS
+Current version - 24.04.1 LTS

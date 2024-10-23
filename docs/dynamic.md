@@ -12,7 +12,7 @@ I also have a dynamic "config.yml" file where I can specify middlewares that can
 !!! info
     You can create just one dynamic file but I prefer to keep them seperate for ease of maintenance & manageabillity
 
-##config.yml
+## config.yml
 
 ``` yaml
 http:
@@ -49,9 +49,9 @@ http:
 
 This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
 
-##Application Specific Dynamic Files
+## Application Specific Dynamic Files
 
-###Primary Pi-Hole (NCC-1702)
+### Primary Pi-Hole (NCC-1702)
 
 ``` yaml
 http:
@@ -74,7 +74,7 @@ http:
         passHostHeader: true
 ```  
 
-###Alternate Pi-Hole (NCC-1703)  
+### Alternate Pi-Hole (NCC-1703)  
 
 ``` yaml
 http:
@@ -100,7 +100,7 @@ The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /a
 
 
 
-###MotionEye (Cuthbert)
+### MotionEye (Cuthbert)
 
 ``` yaml
 http:
@@ -121,7 +121,7 @@ http:
         passHostHeader: true
 ```
 
-###Duplicati (Cuthbert)
+### Duplicati (Cuthbert)
 
 ``` yaml
 http:
@@ -142,28 +142,7 @@ http:
         passHostHeader: true
 ```
 
-###Duplicati (NCC-1702)
-
-``` yaml
-http:
-  routers:
-    ncc-1702-dupe:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: ncc-1702-dupe
-
-  services:
-    ncc-1702-dupe:
-      loadBalancer:
-        servers:
-          - url: "http://10.36.100.2:8200"
-        passHostHeader: true
-```
-
-###Glances (Cuthbert)
+### Glances (Cuthbert)
 
 ``` yaml
 http:
@@ -184,28 +163,7 @@ http:
         passHostHeader: true
 ```
 
-###Glances (NCC-1702)
-
-``` yaml
-http:
-  routers:
-    glances:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: glances
-
-  services:
-    glances:
-      loadBalancer:
-        servers:
-          - url: "http://10.36.100.2:61208"
-        passHostHeader: true
-```
-
-###Uptime-Kuma (Cuthbert)
+### Uptime-Kuma (Cuthbert)
 
 ``` yaml
 http:
@@ -226,7 +184,7 @@ http:
         passHostHeader: true
 ```
 
-###Portainer (Cuthbert)
+### Portainer (Cuthbert)
 
 ``` yaml
 http:
@@ -247,28 +205,7 @@ http:
         passHostHeader: true
 ```
 
-###Portainer (NCC-1702)
-
-``` yaml
-http:
-  routers:
-    portainer-ncc-1702:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: portainer-ncc-1702
-
-  services:
-    portainer-ncc-1702:
-      loadBalancer:
-        servers:
-          - url: "https://10.36.100.2:9443"
-        passHostHeader: true
-```
-
-###Unifi (UCG)
+### Unifi (UCG)
 
 ``` yaml
 http:
@@ -291,7 +228,7 @@ http:
 !!!note
     Unifi's Web UI listens on 443 so the URL needs to be HTTPS
 
-###Vaultwarden (Cuthbert)
+### Vaultwarden (Cuthbert)
 
 ``` yaml
 http:

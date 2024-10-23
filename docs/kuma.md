@@ -8,15 +8,23 @@ It also provides the abillity to provide notifications via Telegram, Discord, Go
 
 ![](<images/kuma screenshot.png>)
 
-appdata 
+## docker-compose file location
 
-``` bash
+```sh
+├─ ~/
+│  └─ docker-compose/
+│     └─ kuma/
+```
+
+## appdata 
+
+``` sh
 ├─ ~/appdata
 │  └─ Kuma/
 └──── docker-compose.yml
 ```
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -46,5 +54,5 @@ services:
 
 Uptime-Kuma is running on a different host to where Traefik is running so I have a dynamic file setup to ensure its routed through Traefik and with SSL.  
 
-This file is located [here](https://docs.xanderman.co.uk/dynamic/#uptime-kuma-cuthbert)
+This file is located [here](https://docs.xmsystems.co.uk/dynamic/#uptime-kuma-cuthbert)
 

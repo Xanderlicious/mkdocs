@@ -5,7 +5,7 @@ To give you an idea of what my setup looks like, this page will explain at a hig
 Other pages on this site will go into lots of detail of the different servers, their OS's, the applications i'm running and my networking setup.
 
 
-## Internet & Network
+## Internet
 
 ![](<images/cityfibre.png>)
 
@@ -14,7 +14,7 @@ This provides me with a symmetrical gigabit connection.
 My Unifi Cloud Gateway Ultra is able to plug directly into the ONT.
 
 
-## Hardware & Devices
+## DNS & VPN
 
 ![](images/pihole.png)
 
@@ -34,7 +34,7 @@ Pretty much everything I host on my 2 main servers (including this site), runs i
 
 All written and configured using docker compose.
 
-##Future Plans
+## Future Plans
 
 I do have some other, more powerful, hardware waiting to be deployed and I have plans to upgrade some of my existing networking gear.
 

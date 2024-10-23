@@ -5,7 +5,26 @@ Motioneye is a video surveillance program that offers motion detection.
 
 I have this setup so that if motion is detected, recording occurs which is then stored for upto a month.
 
-##docker-compose.yml
+## docker-compose file location
+```sh
+── ~/
+│  └─ docker-compose/
+│     ├── motioneye
+│     │   └── docker-compose.yml
+```
+
+## Appdata
+
+```sh
+── ~/
+│  └─ appdata/
+│     └─ sonarr/
+|     └─ radarr/
+|     └─ lidarr/
+|     └─ readarr/
+```
+
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -37,7 +56,7 @@ services:
 
 As this is hosted on a different host to where Traefik is running, a dynamic file is required for it to be routed through Traefik and with SSL.
 
-This file is located [here](https://docs.xanderman.co.uk/dynamic/#motioneye-cuthbert)
+This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-cuthbert)
 
 ##Cameras
 

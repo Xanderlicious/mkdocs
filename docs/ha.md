@@ -8,23 +8,23 @@ Currently, I have only setup the energy meter within home assistant so it can sh
 ![](images/energyusage.png)
 
 
-docker-compose file location
+## docker-compose file location
 
-``` bash
+``` sh
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ ha/
 ```
 
-Appdata
+## Appdata
 
-``` bash
+``` sh
 ├─ ssd/
 │  └─ appdata/
 │     └─ ha/
 ```
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:

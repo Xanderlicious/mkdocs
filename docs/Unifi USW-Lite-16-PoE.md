@@ -1,6 +1,6 @@
 ![](images/unifiliteswitch.png)
 
-###Unifi USW Lite 16 PoE
+### Unifi USW Lite 16 PoE
 
 Also as an interim measure, I have installed 2 of these Unifi Lite 16 port switches.
 One for upstairs and one for downstairs.

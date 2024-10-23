@@ -2,7 +2,7 @@
 
 I like to host all of my services using docker.
 
-##Installation
+## Installation
 
 Installation of docker within Ubuntu Server is done so by following the instructions on the official docker documentation site  
 
@@ -16,20 +16,17 @@ Once installed, running `docker --version` should then return something similar 
 
 ![](<images/docker version.png>)  
 
-##Network Configuration
+## Network Configuration
 
 Before spinning up some docker containers, I need to ensure I have setup my docker networks.
 
-I use 3 main networks (1 on each server)
+I use 3 docker networks (2 on titan and 1 on cuthbert)
 
-###TiTAN
+### TiTAN
 
 TiTAN runs a Traefik Reverse Proxy so to ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.    
 The creation of the network is a simple command and is one that specifies a subnet.  
-The reason for doing this is so I can provide a static IP Address to each of my services.  
-
-!!! info 
-    I found that if I didn't do this, when it came to restarting services (plex especially) Tautulli couldn't locate the plex server due to the apps IP Address changing and therefore was unable to report any stats.  This ensures it always gets the same IP Address regardless
+The reason for doing this is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
 
 ```bash
 docker network create --subnet 172.19.0.0/24 proxy
@@ -38,7 +35,7 @@ docker network create --subnet 172.18.0.0/24 monitoring
 
 This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring***
 
-###Cuthbert
+### Cuthbert
 
 The "cuthbert-network" docker network has been created for all of the containers running on cuthbert  
 Just like TiTAN containers, they have all been provided with static IP Addresses  
@@ -49,20 +46,9 @@ docker network create --subnet 172.22.0.0/24 cuthbert-network
 
 This creates a /24 subnet named ***cuthbert-network***
 
-###NCC-1702
+## Docker Commands
 
-The "pi-network" docker network has been created for all of the containers running on NCC-1702
-Like TiTAN & Cuthbert, all containers are provided with a static IP Address.
-
-```bash
-docker network create --subnet 172.16.0.0/24 pi-network
-```
-
-This creates a /24 network named ***pi-network***
-
-##Docker Commands
-
-With the exception of Portainer, I deploy all of my docker containers using compose.  
+I deploy all of my docker containers using docker compose.  
 
 This is where I will write out everything the container needs in a YAML file.
 
@@ -84,15 +70,11 @@ This will ensure the container is re-created.
 
 With the exception of Traefik & Monitoring on TiTAN, all of my compose files reside in the following locations
 
-###TiTAN
+### TiTAN
 
-```
+```sh
 /ssd/docker-compose/
 ├── arrs
-│   └── docker-compose.yml
-├── duplicati
-│   └── docker-compose.yml
-├── glances
 │   └── docker-compose.yml
 ├── ha
 │   └── docker-compose.yml
@@ -109,43 +91,27 @@ With the exception of Traefik & Monitoring on TiTAN, all of my compose files res
 └── tautulli
     └── docker-compose.yml
 
-10 directories, 10 files
+8 directories, 8 files
 ```
 
-###Cuthbert
+### Cuthbert
 
-```
+```sh
 ~/docker-compose/
 ├── cloudflare
 │   └── docker-compose.yml
-├── duplicati
-│   └── docker-compose.yml
-├── glances
-│   └── docker-compose.yml
 ├── kuma
+│   └── docker-compose.yml
+├── mkdocs
 │   └── docker-compose.yml
 ├── monitoring
 │   └── docker-compose.yml
 ├── motioneye
 │   └── docker-compose.yml
+├── portainer
+│   └── docker-compose.yml
 ├── vaultwarden
 │   └── docker-compose.yml
-└── xbvr
-    └── docker-compose.yml
 
-8 directories, 8 files
-```
-
-###NCC-1702
-
-```
-~/docker-compose/
-├── duplicati
-│   └── docker-compose.yml
-├── glances
-│   └── docker-compose.yml
-└── mkdocs
-    └── docker-compose.yml
-
-3 directories, 3 files
+7 directories, 7 files
 ```

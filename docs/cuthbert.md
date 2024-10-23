@@ -9,7 +9,7 @@ Cuthbert is my secondary server and is more of a NAS than anything else.
 - HP Microserver Gen 8  
 - Intel Celeron G1610T CPU  
 - 8GB Registered ECC RAM (2 x 4GB)
-- 120GB SSD for OS (connected to the ODD port)
+- 250GB SSD for OS (connected to the ODD port)
 - 4 X 3TB WD Red drives  
     - Each configured in a JBOD array
     - Mounted as: 
@@ -23,4 +23,4 @@ Cuthbert is my secondary server and is more of a NAS than anything else.
 ![](images/ubuntu.png)
 
 My operating system of choice is Ubuntu Server  
-Current version - 22.04.4 LTS
+Current version - 24.04.1 LTS

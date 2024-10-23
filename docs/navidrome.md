@@ -4,7 +4,7 @@
 Navidrome is a self-hosted, open source music player and streamer. It gives you freedom to listen to your music collection from any browser or mobile device.
 
 
-docker-compose file location
+## docker-compose file location
 
 ```bash
 ├─ ssd/
@@ -12,7 +12,7 @@ docker-compose file location
 │     └─ navidrome/
 ```
 
-Appdata
+## Appdata
 
 ```bash
 ├─ ssd/
@@ -20,7 +20,7 @@ Appdata
 │     └─ navidrome/
 ```  
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:

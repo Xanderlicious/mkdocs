@@ -10,23 +10,23 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 ![](<images/homepage dash.png>)
 
 
-docker-compose file location
+## docker-compose file location
 
-``` bash
+``` sh
 ├─ ssd/
 │  └─ docker-compose/
 │     └─ homepage/
 ```
 
-Appdata
+## Appdata
 
-``` bash
+``` sh
 ├─ ssd/
 │  └─ appdata/
 │     └─ homepage/
 ```
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:

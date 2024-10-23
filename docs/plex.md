@@ -5,7 +5,7 @@ Having access to all of my Films, TV Shows & Music wherever I am and on whatever
 
 Installation of Plex is done as part of a docker-compose stack with Overseerr
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -81,7 +81,9 @@ services:
             - traefik.http.routers.overseerr.tls.domains[0].sans=*.domain.co.uk
 ```
 
-##Overseerr
+## Overseerr
+
+![](images/overseerr.svg)
 
 Overseerr is a 3rd party application that gives your plex users the abillity to request content that you don't currently have listed.
 

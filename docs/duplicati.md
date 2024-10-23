@@ -1,13 +1,16 @@
 
 ![](images/duplicati.png)
 
+!!!info
+    I have retired duplicati for the time being
+
 Duplicati is an application that runs on each server and essentially runs backup tasks every 3 days to back up my "Appdata" and "Docker Volumes" to Google Drive
 
 ![](<images/duplicati web ui.png>)
 
 ##docker-compose.yml
 
-###TiTAN  
+### TiTAN  
 (with traefik labels)
 
 ``` yaml
@@ -47,7 +50,7 @@ services:
         - traefik.http.routers.titan-dupe.tls.domains[0].sans=*.domain.co.uk
 ```
 
-###Cuthbert & NCC-1702  
+### Cuthbert  
 (without traefik labels as on seperate host to traefik)
 
 ``` yaml
@@ -79,7 +82,7 @@ services:
 
 ###Traefik Dynamic File
  
-[Cuthbert](https://docs.xanderman.co.uk/dynamic/#duplicati-cuthbert) and [NCC-1702](https://docs.xanderman.co.uk/dynamic/#duplicati-ncc-1702)
+[Cuthbert](https://docs.xmsystems.co.uk/dynamic/#duplicati-cuthbert)
 
 ##Add Backup
 

@@ -1,8 +1,8 @@
-[Uptime-Kuma](https://docs.xanderman.co.uk/kuma/) is good for quickly understanding if a service or application is up or down and while it can also provide you with an excellent array of notification options, it doesn't really do anything else in terms of monitoring your homelab estate.
+[Uptime-Kuma](https://docs.xmsystems.co.uk/kuma/) is good for quickly understanding if a service or application is up or down and while it can also provide you with an excellent array of notification options, it doesn't really do anything else in terms of monitoring your homelab estate.
 
 This is where a proper monitoring solution comes into play and there are many, many options.
 
-##CheckMK
+## CheckMK
 
 ![](images/checkmk.png)
 
@@ -12,7 +12,7 @@ CheckMK will allow me to not only monitor the health and status of many differen
 
 ![](<images/checkmk dash.png>)
 
-##Grafana / Prometheus
+## Grafana / Prometheus
 
 ![](images/grafana.png)
 
@@ -22,7 +22,7 @@ Grafana will essentially allow me to create some very pretty looking graphs.
 
 There are also a number of other options i would like to explore using
 
-###Varken / InfluxDB
+### Varken / InfluxDB
 
 ![](images/varken.jpg)
 

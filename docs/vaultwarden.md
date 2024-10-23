@@ -16,7 +16,7 @@ Features included:
 - YubiKey and Duo support
 - Emergency Access
 
-##docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -40,11 +40,11 @@ services:
       - ADMIN_TOKEN=${ADMIN_TOKEN}
       - DOMAIN=${DOMAIN}
 ```
-###Dynamic File
+### Dynamic File
 
-The dynamic file for Vaultwarden is located [here](https://docs.xanderman.co.uk/dynamic/#vaultwarden-cuthbert)
+The dynamic file for Vaultwarden is located [here](https://docs.xmsystems.co.uk/dynamic/#vaultwarden-cuthbert)
 
-##Clients
+## Clients
 
 Clients can be either a desktop app, a mobile app or even a browser extention.
 
@@ -52,7 +52,7 @@ Each are configured to point to the self-hosted URL
 Upon entering the Master Password, this then allows access to the data stored which is not just passwords,  I also hold various other sensitive information such as license keys and PIN numbers.  
 Features offered within the clients offer the abillity to "autofill" fields whenever there is a match detected.
 
-##Admin Page
+## Admin Page
 
 This page allows a server administrator to view all the registered users and to delete them. It also allows inviting new users, even when registration is disabled.
 

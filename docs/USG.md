@@ -1,6 +1,9 @@
 
 ![](images/unifi.jpeg)
 
+!!!info
+    RETIRED!
+
 As previously mentioned, my router and access points are Unifi.
 
 ![](images/USG.jpeg)
@@ -13,7 +16,7 @@ Instructions for installation of this have been taken from github:
 
 [unifi-network-application](https://github.com/linuxserver/docker-unifi-network-application)
 
-##MongoDB
+## MongoDB
 
 I setup MongoDB seperately and as advised, I have pinned the version to 4.4.  
 
@@ -24,7 +27,7 @@ As I have set this up seperately, I created the necessary init script (javascrip
 ```js
 db.getSiblingDB("MONGO_DBNAME").createUser({user: "MONGO_USER", pwd: "MONGO_PASS", roles: [{role: "dbOwner", db: "MONGO_DBNAME"}]});
 ```
-###docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:
@@ -51,8 +54,8 @@ services:
       start_period: 40s
 ```
 
-##unifi-network-application
-###docker-compose.yml
+## unifi-network-application
+### docker-compose.yml
 
 ```yaml
 networks:
@@ -86,17 +89,19 @@ services:
       - /home/xander/appdata/unifi:/config
 ```
 
-###Dynamic File
+### Dynamic File
 
 As this is running on a seperate host to where Traefik is running, I have created a Dynamic file to have it routed through Traefik and with SSL.
 
-That Dynamic file can be located [here](https://docs.xanderman.co.uk/dynamic/#unifi-cuthbert)
+That Dynamic file can be located [here](https://docs.xmsystems.co.uk/dynamic/#unifi-cuthbert)
+!!!info
+      This file no longer exists and has been replaced with [Unifi UCG](https://docs.xmsystems.co.uk/dynamic/#unifi-ucg)
 
 Once installed, I was then able to navigate to the DNS name I have specified.  
 It is here where I am then able to restore the backup that I previously captured.
 
 
-##Device Adoption
+## Device Adoption
 
 To be able to adopt other devices like an access point, the inform URL within the controller needs to be changed to something the device is able to see.  By default, it will be set to the Docker network IP Address and a device on the outside, won't be able to see this.
 

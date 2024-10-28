@@ -10,7 +10,7 @@ In my honest opinion, one of the best, if not THE best here is CheckMK.  This is
 
 CheckMK will allow me to not only monitor the health and status of many different aspects of each of my devices (servers and desktops) but will also allow me to monitor the health and status of my router and access points via SNMP.
 
-![](<images/checkmk dash.png>)
+![Sample Screenshot](<images/checkmk dash.png>)
 
 ## Grafana / Prometheus
 

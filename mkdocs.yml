@@ -1,4 +1,4 @@
-site_name: xanderman systems
+site_name: XMsystems
 site_url: https://docs.xmsystems.co.uk/
 
 nav:
@@ -41,6 +41,7 @@ theme:
   logo: images/server-solid.svg
   name: 'material'
   palette:
+    scheme: slate
     primary: deep purple
     accent: cyan
   font:

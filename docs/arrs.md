@@ -22,7 +22,7 @@ It also has the abillity to link in with a newsreader (I use [SABnzbd](https://d
 │     └─ arrs/
 ```
 
-Appdata
+## Appdata
 
 ```sh
 ├─ ssd/

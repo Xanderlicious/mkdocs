@@ -200,7 +200,7 @@ metrics:
         - 5.0
 ```
 
-##Dynamic Files Directory
+## Dynamic Files Directory
 
 Dynamic files can be very useful for services that are running on other hosts and are/aren't running in docker
 

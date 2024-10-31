@@ -8,18 +8,15 @@ To quote Portainer themselves:
 
 I use portainer (with portainer agent) to give me a quick and easy cursory overview of all of my containers and their status.
 
-I install portainer on both servers where there are many containers running and also on my primary pi-hole.
+Portainer is installed and running on both servers where there are many containers running.
 
 ![](<images/Portainer Envs.png>)
 
 My main Portainer instance is installed on my primary server, [TiTAN](https://docs.xmsystems.co.uk/titan), as part of a stack with [Traefik](https://docs.xmsystems.co.uk/traefik/)
 
+I install portainer on my other server using the below compose file which installs both Portainer and Portainer Agent
 
 ## Portainer & Portainer Agent
-
-I install portainer on other servers using the below compose file which installs both Portainer and Portainer Agent:
-
-### Cuthbert
 
 ``` yaml
 networks:
@@ -60,7 +57,7 @@ volumes:
     name: portainer_data
 ```
 
-## Dynamic Files
+## Dynamic File
 
 Even though I can reach the portainer environment for Cuthbert through TiTAN, I have still setup its own individual domain name.
 

@@ -22,16 +22,13 @@ The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) wi
 ├── docker-compose.yml
 ├── dynamic
 │   ├── app-cctv.yml
-│   ├── app-cuthbert-dupe.yml
-│   ├── app-glances.yml
+│   ├── app-cmk.yml
+│   ├── app-docs.yml
 │   ├── app-graphs.yml
 │   ├── app-kuma.yml
-│   ├── app-ncc-1702-dupe.yml
-│   ├── app-piglances.yml
 │   ├── app-pihole1.yml
 │   ├── app-pihole2.yml
 │   ├── app-portainer-cuthbert.yml
-│   ├── app-portainer-ncc-1702.yml
 │   ├── app-prom.yml
 │   ├── app-ubuntu.yml
 │   ├── app-unifi.yml

@@ -2,8 +2,7 @@ TiTAN is my primary server and is where the majority of my media and services li
 
 This is my old gaming rig and resides in a Fractal Define R4 case
 
-![](<images/titan sys info.png>)
-
+![](images/titansysinfo.png)
 
 **Specs**
 

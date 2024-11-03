@@ -1,6 +1,6 @@
 Cuthbert is my secondary server and is more of a NAS than anything else.
 
-![](<images/cuthbert sysinfo.png>)
+![](images/cuthbertsysinfo2.png)
 
 ![](<images/hp gen8.jpeg>)
 

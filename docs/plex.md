@@ -83,7 +83,7 @@ services:
 
 ## Overseerr
 
-![](images/overseerr.svg)
+![](images/overseerr.png)
 
 Overseerr is a 3rd party application that gives your plex users the abillity to request content that you don't currently have listed.
 

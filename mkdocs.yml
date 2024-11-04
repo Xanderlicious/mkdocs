@@ -41,7 +41,7 @@ theme:
   logo: images/server-solid.svg
   name: 'material'
   palette:
-    scheme: default
+    scheme: slate
     primary: purple
     accent: teal
   font:

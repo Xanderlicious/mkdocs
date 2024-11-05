@@ -1,12 +1,16 @@
 
 # Sonarr - Radarr - Lidarr - Readarr
 
-![](images/Arrs.png)
-
-
+![](images/Sonarr.png)
 *Sonarr = TV Shows*
+
+![](images/radarr.png)
 *Radarr = Films*
+
+![](images/lidarr.png)
 *Lidarr = Music*
+
+![](images/readarr.png)
 *Readarr = Books*
 
 They allow easy organisation of all of your media.  It has the abillity to rename everything appropriately according to a naming convention you specify.

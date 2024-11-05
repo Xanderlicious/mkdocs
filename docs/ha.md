@@ -1,5 +1,5 @@
 
-![](images/homeassistant.jpeg)
+![](images/homeassistant.png)
 
 I've only just started with the whole smart home automation craze and its one I want to learn more about.
 

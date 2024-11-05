@@ -1,5 +1,5 @@
 
-![](images/motioneye.jpeg)
+![](images/motioneye.png)
 
 Motioneye is a video surveillance program that offers motion detection.
 
@@ -60,7 +60,7 @@ This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-cuth
 
 ##Cameras
 
-![](images/dahua.jpeg)
+![](images/dahua.png)
 
 Connected to MotionEye currently is a Dahua camera which overlooks the front of my house and my cars.
 

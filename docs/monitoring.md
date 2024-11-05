@@ -14,7 +14,7 @@ CheckMK will allow me to not only monitor the health and status of many differen
 
 ## Grafana / Prometheus
 
-![](images/grafana.png)
+![](images/grafana.png) ![](images/prometheus.png)
 
 I currently use (and will probably continue to use even after deploying CheckMK) Prometheus & Grafana (using node exporter and cadvisor alongside)
 

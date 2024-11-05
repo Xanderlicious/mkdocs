@@ -28,13 +28,13 @@ nav:
     - Home Assistant: ha.md
     - Monitoring: monitoring.md
     - Portainer: portainer.md
-    - Vaultwarden: vaultwarden.md
     - Uptime-Kuma: kuma.md
     - Motioneye: motioneye.md
   - Archive:
     - USG: USG.md
     - Duplicati: duplicati.md
     - Glances: glances.md
+    - Vaultwarden: vaultwarden.md
 
 
 theme:

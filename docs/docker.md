@@ -24,9 +24,11 @@ I use 3 docker networks (2 on titan and 1 on cuthbert)
 
 ### TiTAN
 
-TiTAN runs a Traefik Reverse Proxy so to ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.    
+TiTAN runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
+
 The creation of the network is a simple command and is one that specifies a subnet.  
-The reason for doing this is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
+
+The reason for specifying a subnet is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
 
 ```bash
 docker network create --subnet 172.19.0.0/24 proxy

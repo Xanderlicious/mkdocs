@@ -23,7 +23,7 @@ This is my old gaming rig and resides in a Fractal Define R4 case
 
 **Operating System**
 
-![](images/ubuntu.png)
+![](images/ubuntulogo.png)
 
 My operating system of choice is Ubuntu Server  
 Current version - 22.04.4 LTS

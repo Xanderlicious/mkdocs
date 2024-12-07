@@ -20,7 +20,7 @@ Cuthbert is my secondary server and is more of a NAS than anything else.
 
 **Operating System**
 
-![](images/ubuntu.png)
+![](images/ubuntulogo.png)
 
 My operating system of choice is Ubuntu Server  
 Current version - 24.04.1 LTS

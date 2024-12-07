@@ -13,7 +13,7 @@ Gurdy is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monito
 
 Operating System
 
-![](images/ubuntu.png)
+![](images/ubuntulogo.png)
 
 My operating system of choice is Ubuntu Server
 Current version - 24.04.1 LTS

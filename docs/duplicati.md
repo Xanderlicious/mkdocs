@@ -82,7 +82,26 @@ services:
 
 ### Traefik Dynamic File
  
-[Cuthbert](https://docs.xmsystems.co.uk/dynamic/#duplicati-cuthbert)
+### Duplicati (Cuthbert)
+
+``` yaml
+http:
+  routers:
+    cuthbert-dupe:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: cuthbert-dupe
+
+  services:
+    cuthbert-dupe:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.199:8200"
+        passHostHeader: true
+```
 
 ## Add Backup
 

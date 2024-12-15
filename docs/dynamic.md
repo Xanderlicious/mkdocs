@@ -121,48 +121,6 @@ http:
         passHostHeader: true
 ```
 
-### Duplicati (Cuthbert)
-
-``` yaml
-http:
-  routers:
-    cuthbert-dupe:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: cuthbert-dupe
-
-  services:
-    cuthbert-dupe:
-      loadBalancer:
-        servers:
-          - url: "http://10.36.100.199:8200"
-        passHostHeader: true
-```
-
-### Glances (Cuthbert)
-
-``` yaml
-http:
-  routers:
-    glances:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: glances
-
-  services:
-    glances:
-      loadBalancer:
-        servers:
-          - url: "http://10.36.100.199:61208"
-        passHostHeader: true
-```
-
 ### Uptime-Kuma (Cuthbert)
 
 ``` yaml
@@ -227,24 +185,3 @@ http:
 ```
 !!!note
     Unifi's Web UI listens on 443 so the URL needs to be HTTPS
-
-### Vaultwarden (Cuthbert)
-
-``` yaml
-http:
-  routers:
-    vaultwarden:
-      entryPoints:
-        - "websecure-int"
-      rule: "Host(`subdomain.domain.co.uk`)"
-      tls:
-        certResolver: production
-      service: vaultwarden
-
-  services:
-    vaultwarden:
-      loadBalancer:
-        servers:
-          - url: "http://10.36.100.199:83"
-        passHostHeader: true
-```

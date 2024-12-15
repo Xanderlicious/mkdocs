@@ -4,11 +4,11 @@ site_url: https://docs.xmsystems.co.uk/
 nav:
   - Welcome: index.md
   - Overview: overview.md
-  - Devices: 
+  - Network: 
     - Unifi Cloud Gateway Ultra: Unifi Cloud Gateway Ultra.md
     - Unifi USW-Lite-16-PoE: Unifi USW-Lite-16-PoE.md
     - Unifi Access Points: Unifi Access Points.md
-  - Servers:
+  - Servers & Devices:
     - TiTAN: titan.md
     - Cuthbert: cuthbert.md
     - Gurdy: gurdy.md
@@ -16,9 +16,10 @@ nav:
     - NCC-1703: NCC-1703.md
   - Docker: docker.md
   - Applications:
-    - Traefik : traefik.md
-    - Traefik Entry Points: entrypoints.md
-    - Traefik Dynamic Files: dynamic.md
+    - Traefik Proxy:
+      - Traefik : traefik.md
+      - Traefik Entry Points: entrypoints.md
+      - Traefik Dynamic Files: dynamic.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md
@@ -30,6 +31,7 @@ nav:
     - Portainer: portainer.md
     - Uptime-Kuma: kuma.md
     - Motioneye: motioneye.md
+    - Ghost: ghost.md
   - Archive:
     - USG: USG.md
     - Duplicati: duplicati.md

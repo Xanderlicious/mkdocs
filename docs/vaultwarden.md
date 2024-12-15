@@ -42,7 +42,26 @@ services:
 ```
 ### Dynamic File
 
-The dynamic file for Vaultwarden is located [here](https://docs.xmsystems.co.uk/dynamic/#vaultwarden-cuthbert)
+### Vaultwarden (Cuthbert)
+
+``` yaml
+http:
+  routers:
+    vaultwarden:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: vaultwarden
+
+  services:
+    vaultwarden:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.199:83"
+        passHostHeader: true
+```
 
 ## Clients
 

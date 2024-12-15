@@ -95,5 +95,26 @@ Below is the web view for TiTAN.
 
 #### Dynamic File
 
-For Glances running on Cuthbert and NCC-1702, I have a dynamic file setup so its routed through Traefik and with SSL.  These files are located [here](https://docs.xmsystems.co.uk/dynamic/#glances-cuthbert)
+For Glances running on Cuthbert and NCC-1702, I have a dynamic file setup so its routed through Traefik and with SSL.
+
+### Glances (Cuthbert)
+
+``` yaml
+http:
+  routers:
+    glances:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: glances
+
+  services:
+    glances:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.199:61208"
+        passHostHeader: true
+```
 

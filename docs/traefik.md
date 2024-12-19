@@ -133,7 +133,7 @@ entryPoints:
     http:
       redirections:
         entryPoint:
-          to: websecure
+          to: websecure-int
           scheme: https
   websecure-int:
     address: :443
@@ -146,7 +146,7 @@ entryPoints:
     http:
       redirections:
         entryPoint:
-          to: websecure
+          to: websecure-ext
           scheme: https
   websecure-ext:
     address: :444

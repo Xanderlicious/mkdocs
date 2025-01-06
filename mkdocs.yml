@@ -1,4 +1,4 @@
-site_name: XM Systems
+site_name: XanderMan Systems
 site_url: https://docs.xmsystems.co.uk/
 
 nav:
@@ -16,10 +16,10 @@ nav:
     - NCC-1703: NCC-1703.md
   - Docker: docker.md
   - Applications:
-    - Traefik Proxy:
-      - Traefik : traefik.md
-      - Traefik Entry Points: entrypoints.md
-      - Traefik Dynamic Files: dynamic.md
+    - Traefik: traefik.md
+    - Traefik - Entry Points: entrypoints.md
+    - Traefik - Dynamic Files: dynamic.md
+    - Orbital-Sync: orbital-sync.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md
@@ -52,6 +52,7 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.tracking
+    - navigation.sections
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -59,6 +60,7 @@ theme:
     - content.code.select
     - content.tabs.link
   language: en
+
   icon:
     repo: fontawesome/brands/git-alt
 

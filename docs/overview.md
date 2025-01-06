@@ -18,7 +18,7 @@ My Unifi Cloud Gateway Ultra is able to plug directly into the ONT.
 
 ![](images/pihole.png)
 
-I am currently running two raspberry Pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are both kept in sync with [gravity sync](https://github.com/vmstan/gravity-sync?tab=readme-ov-file).
+I am currently running two raspberry Pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are both kept in sync with [orbital-sync](https://github.com/mattwebbio/orbital-sync).
 
 The primary Pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" protocol and allows me to connect to my internal-only facing services from outside of my network
 

@@ -6,7 +6,7 @@ I used to use "Gravity Sync" for this but changed to "orbital-sync" for a couple
 Another reason is that this is incredibly easy to setup as its a simple docker container with an easy to configure docker-compose file.
 
 There is an example on the applications github page but my example is shown below.
-(I have added "container_name" & "restart" options)
+(I have added "container_name", "network_mode" & "restart" options)
 
 ```yaml
 services:

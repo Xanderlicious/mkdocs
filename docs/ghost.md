@@ -67,7 +67,6 @@ services:
       database__connection__password: ${database__connection__password}
       database__connection__database: ghost2
       url: https://subdomain.domain.co.uk
-      #NODE_ENV: development
     volumes:
       - /ssd/appdata/ghost/sal:/var/lib/ghost/content
 

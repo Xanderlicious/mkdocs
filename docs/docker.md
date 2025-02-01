@@ -8,9 +8,11 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-As I use Ubuntu Server across my server estate, which is a debian based distro, I install using the apt repository
+I predominantly use Ubuntu Server which is based off Debian but I am starting to switch to using actual Debian itself.
 
-- [Docker apt installation instructions](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)  
+- [Ubuntu - Docker install instructions](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+
+- [Debian - Docker install instructions](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
 
 Once installed, running `docker --version` should then return something similar to the following:  
 

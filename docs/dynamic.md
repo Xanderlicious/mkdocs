@@ -23,7 +23,7 @@ http:
       redirectRegex
         permanent: true
         regex: "^https://pihole1.domain.com/?$"
-        replacement: "pihole2.domain.com/admin"
+        replacement: "pihole1.domain.com/admin"
 
     pihole2-redirect:
       redirectRegex

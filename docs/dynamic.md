@@ -78,7 +78,7 @@ http:
     pihole1:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.2:80"
+          - url: "https://10.36.100.2"
         passHostHeader: true
 ```  
 
@@ -101,7 +101,7 @@ http:
     pihole2:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.3:80"
+          - url: "https://10.36.100.3"
         passHostHeader: true
 ```
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.

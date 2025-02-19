@@ -19,9 +19,17 @@ http:
 
   middlewares:
     
-    addprefix-pihole:
-      addPrefix:
-        prefix: "/admin"
+    pihole1-redirect:
+      redirectRegex
+        permanent: true
+        regex: "^https://pihole1.domain.com/?$"
+        replacement: "pihole2.domain.com/admin"
+
+    pihole2-redirect:
+      redirectRegex
+        permanent: true
+        regex: "^https://pihole2.domain.com/?$"
+        replacement: "pihole2.domain.com/admin"
 
     default-headers:
       headers:
@@ -61,7 +69,7 @@ http:
         - "websecure-int"
       rule: "Host(`subdomain.domain.co.uk`)"
       middlewares:
-        - addprefix-pihole
+        - pihole1-redirect
       tls:
         certResolver: production
       service: pihole1
@@ -84,7 +92,7 @@ http:
         - "websecure-int"
       rule: "Host(`subdomain.domain.co.uk`)"
       middlewares:
-        - addprefix-pihole
+        - pihole2-redirect
       tls:
         certResolver: production
       service: pihole2
@@ -96,8 +104,7 @@ http:
           - url: "http://10.36.100.3:80"
         passHostHeader: true
 ```
-The Pi-Hole's dynamic config file has an "addprefix" middleware to add on the /admin that the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
-
+The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
 
 ### MotionEye (Cuthbert)

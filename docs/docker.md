@@ -8,11 +8,13 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-I predominantly use Ubuntu Server which is based off Debian but I am starting to switch to using actual Debian itself.
+I predominantly use Ubuntu Server which is based off Debian but I am starting to switch to using actual Debian itself.  I am also using Fedora 41 on my laptop as my daily driver so starting to mess around with running this as a server OS.  Below are links to docker installation instructions for all three.
 
-- [Ubuntu - Docker install instructions](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+- [Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
-- [Debian - Docker install instructions](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
+- [Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
+
+- [Fedora](https://docs.docker.com/engine/install/fedora/#install-using-the-repository)
 
 Once installed, running `docker --version` should then return something similar to the following:  
 
@@ -60,7 +62,7 @@ This is where I will write out everything the container needs in a YAML file.
 To pull and deploy the image according to the details in the YAML, from the same directory as where the compose file resides, I would run the following command:
 
 ```bash
-docker compose pull && docker compose up -d
+docker compose pull; docker compose up -d
 ```
 
 The -d at the end will run the container ***detached*** meaning the terminal window can be closed and the container will continue running.
@@ -68,7 +70,7 @@ The -d at the end will run the container ***detached*** meaning the terminal win
 Should I need to make changes to my YAML configuration (change some environment settings or change the docker image being used), I can re-deploy the container with a similar command:
 
 ```bash
-docker compose pull && docker compose up -d --force-recreate
+docker compose pull; docker compose up -d --force-recreate
 ```
 
 This will ensure the container is re-created.

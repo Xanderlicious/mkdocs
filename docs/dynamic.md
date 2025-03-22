@@ -107,7 +107,7 @@ http:
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
 
-### MotionEye (Cuthbert)
+### MotionEye (Phobos)
 
 ``` yaml
 http:
@@ -124,11 +124,11 @@ http:
     cctv:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.199:8765"
+          - url: "http://10.36.100.4:8765"
         passHostHeader: true
 ```
 
-### Uptime-Kuma (Cuthbert)
+### Uptime-Kuma (Phobos)
 
 ``` yaml
 http:
@@ -145,28 +145,28 @@ http:
     kuma:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.199:3001"
+          - url: "http://10.36.100.4:3001"
         passHostHeader: true
 ```
 
-### Portainer (Cuthbert)
+### Portainer (Phobos)
 
 ``` yaml
 http:
   routers:
-    portainer-cuthbert:
+    portainer-phobos:
       entryPoints:
         - "websecure-int"
       rule: "Host(`subdomain.domain.co.uk`)"
       tls:
         certResolver: production
-      service: portainer-cuthbert
+      service: portainer-phobos
 
   services:
-    portainer-cuthbert:
+    portainer-phobos:
       loadBalancer:
         servers:
-          - url: "https://10.36.100.199:9443"
+          - url: "https://10.36.100.4:9443"
         passHostHeader: true
 ```
 

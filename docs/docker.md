@@ -8,13 +8,9 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-I predominantly use Ubuntu Server which is based off Debian but I am starting to switch to using actual Debian itself.  I am also using Fedora 41 on my laptop as my daily driver so starting to mess around with running this as a server OS.  Below are links to docker installation instructions for all three.
+I predominantly use Ubuntu Server which is based off Debian.  Below is a link to the official installation instructions.
 
 - [Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-
-- [Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
-
-- [Fedora](https://docs.docker.com/engine/install/fedora/#install-using-the-repository)
 
 Once installed, running `docker --version` should then return something similar to the following:  
 
@@ -41,17 +37,17 @@ docker network create --subnet 172.18.0.0/24 monitoring
 
 This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring***
 
-### Cuthbert
+### Phobos
 
-The "cuthbert-network" docker network has been created for all of the containers running on cuthbert  
+The "phobos-network" docker network has been created for all of the containers running on phobos  
 Just like TiTAN containers, they have all been provided with static IP Addresses.
 As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.   
 
 ```bash
-docker network create --subnet 172.22.0.0/24 cuthbert-network
+docker network create --subnet 172.20.0.0/24 phobos-network
 ```  
 
-This creates a /24 subnet named ***cuthbert-network***
+This creates a /24 subnet named ***phobos-network***
 
 ## Docker Commands
 
@@ -101,10 +97,10 @@ With the exception of Traefik & Monitoring on TiTAN, all of my compose files res
 8 directories, 8 files
 ```
 
-### Cuthbert
+### Phobos
 
 ```sh
-~/docker-compose/
+/ssd/docker/docker-compose/
 ├── cloudflare
 │   └── docker-compose.yml
 ├── kuma

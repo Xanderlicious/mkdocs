@@ -1,4 +1,6 @@
-Cuthbert is my secondary server and is more of a NAS than anything else.
+Cuthbert used to be my secondary server and acted as more of a NAS than anything else.
+
+*This has now been replaced by ![Phobos](https://docs.xmsystems.co.uk/phobos/)*
 
 ![](images/cuthbertsysinfo2.png)
 

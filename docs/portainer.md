@@ -21,7 +21,7 @@ I install portainer on my other server using the below compose file which instal
 ``` yaml
 networks:
   default:
-    name: cuthbert-network
+    name: phobos-network
     external: true
 
 services:
@@ -32,7 +32,7 @@ services:
     container_name: portainer
     networks:
       default:
-        ipv4_address: "172.22.0.2"
+        ipv4_address: "172.20.0.2"
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -44,7 +44,7 @@ services:
     container_name: portainer_agent
     networks:
       default:
-        ipv4_address: "172.22.0.3"
+        ipv4_address: "172.20.0.3"
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -59,6 +59,6 @@ volumes:
 
 ## Dynamic File
 
-Even though I can reach the portainer environment for Cuthbert through TiTAN, I have still setup its own individual domain name.
+Even though I can reach the portainer environment for Phobos through TiTAN, I have still setup its own individual domain name.
 
 This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-cuthbert)

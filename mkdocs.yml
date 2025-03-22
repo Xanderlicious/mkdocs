@@ -10,7 +10,6 @@ nav:
     - Unifi Access Points: Unifi Access Points.md
   - Servers & Devices:
     - TiTAN: titan.md
-    - Cuthbert: cuthbert.md
     - Phobos: phobos.md
     - Gurdy: gurdy.md
     - NCC-1702: NCC-1702.md
@@ -38,7 +37,7 @@ nav:
     - Duplicati: duplicati.md
     - Glances: glances.md
     - Vaultwarden: vaultwarden.md
-
+    - Cuthbert: cuthbert.md
 
 theme:
   logo: images/server-solid.svg

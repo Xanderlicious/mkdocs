@@ -29,7 +29,7 @@ I have this setup so that if motion is detected, recording occurs which is then 
 ``` yaml
 networks:
   default:
-    name: cuthbert-network
+    name: phobos-network
     external: true
 
 services:
@@ -40,16 +40,17 @@ services:
     hostname: XAN-CAMERAS
     networks:
       default:
-        ipv4_address: "172.22.0.7"
+        ipv4_address: "172.20.0.7"
     restart: unless-stopped
     ports:
       - "8765:8765"
-      - "8383:8081"
+      - "8081:8081"
+      - "8082:8082"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/xander/appdata/motioneye/shared:/shared
       - /home/xander/appdata/motioneye/etc:/etc/motioneye
-      - /disk1/recordings/xan-cam/:/recordings
+      - /disk1/cctv/recordings/xan-cam/:/recordings
 ```
 
 ###Dynamic File
@@ -64,11 +65,11 @@ This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-cuth
 
 Connected to MotionEye currently is a Dahua camera which overlooks the front of my house and my cars.
 
-This is an ONVIF/RTSP compatible camera and is setup as such.
-
-I also have a very old Sanyo IP and a Blink camera which are both being used as internal cameras.
+I also have a Reolink wifi camera which is being used internally as kind of a pet and toddler camera.
 
 ##Future Plans
 
 I do like Motioneye and have been using it for quite some time.  
 My future plans unfortunately don't include Motioneye.  I will be getting more cameras (mainly external) and I plan on using BlueIris. 
+
+I have also been looking into Frigate with the use of a Coral TPU for object detection.

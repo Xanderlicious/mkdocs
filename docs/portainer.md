@@ -36,8 +36,9 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-    image: portainer/portainer-ee:2.19.5
+      - /ssd/docker/appdata/portainer_data:/data
+    image: portainer/portainer-ee:2.27.2
+
   agent:
     ports:
       - 9001:9001
@@ -49,16 +50,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
-    image: portainer/agent:2.19.5
-
-volumes:
-  portainer_data:
-    external: true
-    name: portainer_data
+    image: portainer/agent:2.27.2
 ```
 
 ## Dynamic File
 
 Even though I can reach the portainer environment for Phobos through TiTAN, I have still setup its own individual domain name.
 
-This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-cuthbert)
+This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-phobos)

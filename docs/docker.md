@@ -8,7 +8,7 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-I predominantly use Ubuntu Server which is based off Debian.  Below is a link to the official installation instructions.
+My OS of choice is Ubuntu Server.  Below is a link to the official installation instructions.
 
 - [Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
@@ -111,10 +111,17 @@ With the exception of Traefik & Monitoring on TiTAN, all of my compose files res
 │   └── docker-compose.yml
 ├── motioneye
 │   └── docker-compose.yml
+├── orbital-sync
+│   └── docker-compose.yml
+├── peppermint
+│   └── docker-compose.yml
+│   └─ .env
+├── pihole
+│   └── docker-compose.yml
 ├── portainer
 │   └── docker-compose.yml
-├── vaultwarden
-│   └── docker-compose.yml
+└── vaultwarden
+    └── docker-compose.yml
 
-7 directories, 7 files
+10 directories, 11 files
 ```

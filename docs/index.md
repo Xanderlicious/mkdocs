@@ -4,14 +4,14 @@ Welcome to the official documentation site for my Homelab.
 
 ![](images/Brainiac.jpg)
 
-I'm Xander (AKA Alex) and within this site you will find all the nerdy details of how I've created my homelab.
+I'm Xander (AKA Alex) and within this site you will find all the nerdy details of my homelab.
 
-I work in IT, totally self-taught and I certainly don't claim to be an expert.  However, everything you are about to read will contain explicit details about the different services I host and the code I have configured to make it how I want it.  
+I work in IT, totally self-taught and I certainly don't claim to be an expert.  However, everything you are about to read will contain details about the different services I host and the code I have configured to make it how I want it.  
 
 For me though, this sites main purpose, is to document everything I can about my systems, the services I run and all the code that has been written.  
 *(will help me should anything need re-building)*
 
-I have also created a blog site at https://blog.xmsystems.co.uk where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
+I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
 
 If you like what you see, please support me and buy me a beer using the link below.
 

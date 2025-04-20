@@ -19,7 +19,7 @@ nav:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md
     - Traefik - Dynamic Files: dynamic.md
-    - Orbital-Sync: orbital-sync.md
+    - Nebula-Sync: nebula-sync.md
     - Plex & Overseerr: plex.md
     - Tautulli: tautulli.md
     - Navidrome: navidrome.md

@@ -2,6 +2,8 @@
 
 To give you an idea of what my setup looks like, this page will explain at a high level what sort of network I have and the different pieces of hardware I'm running.
 
+## Network Diagram
+
 ![XanderNET](images/network-diagram.png)
 
 Other pages on this site will go into lots of detail of the different servers, their OS's, the applications i'm running and my networking setup.

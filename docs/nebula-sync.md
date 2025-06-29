@@ -25,7 +25,7 @@ services:
     environment:
     - TZ=Europe/London
     - PRIMARY=https://pi-hole1.domain.com|${PRIMARY_PASSWORD}
-    - REPLICAS=https://pi-hole2.domain.com|${REPLICA1_PASSWORD}
+    - REPLICAS=https://pi-hole2.domain.com|${REPLICA1_PASSWORD},https://pi-hole3.domain.com|${REPLICA2_PASSWORD}
     - FULL_SYNC=true
     - RUN_GRAVITY=true
     - CRON=0 * * * *

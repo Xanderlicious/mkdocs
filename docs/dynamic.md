@@ -31,6 +31,12 @@ http:
         regex: "^https://pihole2.domain.com/?$"
         replacement: "pihole2.domain.com/admin"
 
+    pihole3-redirect:
+      redirectRegex
+        permanent: true
+        regex: "^https://pihole3.domain.com/?$"
+        replacement: "pihole3.domain.com/admin"
+
     default-headers:
       headers:
         sslProxyHeaders:
@@ -104,6 +110,30 @@ http:
           - url: "https://10.36.100.3"
         passHostHeader: true
 ```
+
+### 2nd Alternate Pi-Hole (NCC-1704)  
+
+``` yaml
+http:
+  routers:
+    pihole3:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      middlewares:
+        - pihole3-redirect
+      tls:
+        certResolver: production
+      service: pihole3
+
+  services:
+    pihole3:
+      loadBalancer:
+        servers:
+          - url: "https://10.36.100.4"
+        passHostHeader: true
+```
+
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
 

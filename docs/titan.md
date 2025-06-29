@@ -8,7 +8,8 @@ This is my old gaming rig and resides in a Fractal Define R4 case
 
 - Intel i7 7700k CPU (kaby lake)  
 - Asus Z270 Gaming Motherboard  
-- 64GB Corsair Vengance 3200mHz RAM (4x16GB)  
+- 64GB Corsair Vengance 3200mHz RAM (4x16GB)
+- Nvidia GTX 1660 6GB VRAM
 - Megaraid RAID card  
 - 2 X 1TB Seagate SSD's   
     - 1 for OS 
@@ -19,7 +20,7 @@ This is my old gaming rig and resides in a Fractal Define R4 case
 - 6 X 8TB Seagate SAS drives 
     - Configured in a RAID6 array 
     - Mounted as /megaraid  
-- Corsair RM850x PSU  
+- Corsair RM850x PSU
 
 **Operating System**
 

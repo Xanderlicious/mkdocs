@@ -53,8 +53,8 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.tracking
-    - navigation.sections
-    - navigation.paths
+    - navigation.expand
+    - navigation.path
     - search.suggest
     - search.highlight
     - content.code.copy

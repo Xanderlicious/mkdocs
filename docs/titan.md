@@ -6,25 +6,24 @@ This is my old gaming rig and resides in a Fractal Define R4 case
 
 **Specs**
 
-- Intel i7 7700k CPU (kaby lake)  
-- Asus Z270 Gaming Motherboard  
+- Intel i5 12600 CPU (alder lake)  
+- Asus PRIME B660M-A D4 Motherboard  
 - 64GB Corsair Vengance 3200mHz RAM (4x16GB)
-- Nvidia GTX 1660 6GB VRAM
-- Megaraid RAID card  
-- 2 X 1TB Seagate SSD's   
-    - 1 for OS 
-    - 1 for my appdata  
-        - Mounted as /ssd  
+- LSI Megaraid SAS 9260-8i RAID card
+    - 6 X 8TB Seagate SAS drives 
+        Configured in a RAID6 array 
+        Mounted as /megaraid
+- 1 X 2TB NVME WD BLACK SN770  
+    - Used for the OS
+- 1 X 1TB Seagate SSD 
+    - Used for appdata  
+        Mounted as /ssd  
 - 1 X 4TB Seagate Ironwolf drive
-    - Mounted as /ironwolf  
-- 6 X 8TB Seagate SAS drives 
-    - Configured in a RAID6 array 
-    - Mounted as /megaraid  
+        Mounted as /ironwolf
 - Corsair RM850x PSU
 
 **Operating System**
 
-![](images/ubuntulogo.png)
+![](images/debian-logo.jpg)
 
-My operating system of choice is Ubuntu Server  
-Current version - 22.04.4 LTS
+Running Debian 13 (trixie)

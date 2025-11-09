@@ -13,14 +13,21 @@ This was incredibly easy to setup as its a simple docker container with an easy 
 I therefore changed to this and it is working very well.
 
 There is an example on the applications github page but my example is shown below.
-(I have added "network_mode", "restart" options aswell as my timezone)
+(I have added the container to the "phobos-network" docker network and assigned it an IP Address.  Specified "restart" option and added my timezone)
 
 ```yaml
+networks:
+  default:
+    name: phobos-network
+    external: true
+
 services:
   nebula-sync:
     image: ghcr.io/lovelaze/nebula-sync:latest
     container_name: nebula-sync
-    network_mode: host
+    networks:
+      default:
+        ipv4_address: "172.20.0.13"
     restart: always
     environment:
     - TZ=Europe/London

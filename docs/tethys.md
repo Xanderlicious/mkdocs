@@ -1,4 +1,4 @@
-Gurdy is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk)
+Tethys is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk)
 
 ![](images/tethys.png)
 

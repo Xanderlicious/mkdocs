@@ -1,6 +1,6 @@
 # Welcome
 
-Welcome to the official documentation site for my Homelab.
+Welcome to the official documentation site for XM Systems
 
 ![](images/Brainiac.jpg)
 

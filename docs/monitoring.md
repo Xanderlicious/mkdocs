@@ -153,7 +153,7 @@ Grafana will essentially allow me to create some very pretty looking graphs.
 
 As you can see from the prometheus.yml file detailed above, I have targets configured for "traefik", "node_exporter" & "cadvisor" (on both titan & phobos) and I have also installed and configured targets for some plex collectors (homers & ppe)
 
-Grafana and Prometheus, despite being installed on Titan (where traefik is installed) I decided not to use traefik labels and instead I have created dynamic files for each of these [here](https://docs.xmsystems.co.uk/dynamic/#Prometheus) & [here](https://docs.xmsystems.co.uk/dynamic/#Grafana)
+Grafana and Prometheus, despite being installed on Titan (where traefik is installed) I decided not to use traefik labels and instead I have created dynamic files for each of these [here](https://docs.xmsystems.co.uk/dynamic/#prometheus-titan) & [here](https://docs.xmsystems.co.uk/dynamic/#grafana-titan)
 
 
 

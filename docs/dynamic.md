@@ -136,6 +136,46 @@ http:
 
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
+### Prometheus (Titan)
+
+```yaml
+http:
+  routers:
+    prom:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: prom
+
+  services:
+    prom:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.150:9090"
+        passHostHeader: true
+```
+### Grafana (Titan)
+
+```yaml
+http:
+  routers:
+    graphs:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: graphs
+
+  services:
+    graphs:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.150:3000"
+        passHostHeader: true
+```
 
 ### MotionEye (Phobos)
 
@@ -222,3 +262,24 @@ http:
 ```
 !!!note
     Unifi's Web UI listens on 443 so the URL needs to be HTTPS
+
+### CheckMK (Tethys)
+
+```yaml
+http:
+  routers:
+    cmk:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: cmk
+
+  services:
+    cmk:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.152:80"
+        passHostHeader: true
+```

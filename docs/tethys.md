@@ -1,6 +1,6 @@
 Gurdy is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk)
 
-![](images/gurdy.png)
+![](images/tethys.png)
 
 ![](<images/HP 280 G2 SFF.jpg>)
 
@@ -13,7 +13,6 @@ Gurdy is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monito
 
 Operating System
 
-![](images/ubuntulogo.png)
+![](images/debian.png)
 
-My operating system of choice is Ubuntu Server
-Current version - 24.04.1 LTS
+My operating system of choice is Debian 13

@@ -8,9 +8,10 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-My OS of choice is Ubuntu Server.  Below is a link to the official installation instructions.
+My servers are either running Ubuntu Server or Debian. Below are links to the official installation instructions for both.
 
 - [Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+- [Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
 
 Once installed, running `docker --version` should then return something similar to the following:  
 
@@ -20,7 +21,7 @@ Once installed, running `docker --version` should then return something similar 
 
 Before spinning up some docker containers, I need to ensure I have setup my docker networks.
 
-I use 3 docker networks (2 on titan and 1 on cuthbert)
+I use 4 docker networks (2 on titan, 1 on phobos & 1 on tethys)
 
 ### TiTAN
 
@@ -48,6 +49,15 @@ docker network create --subnet 172.20.0.0/24 phobos-network
 ```  
 
 This creates a /24 subnet named ***phobos-network***
+
+### Tethys
+
+Similally with Phobos, I also have created a docker network for containers running on Tethys.
+
+```bash
+docker network create --subnet 172.20.0.0/24 tethys-network
+```
+This creates a /24 subnet named ***tethys-network***  
 
 ## Docker Commands
 
@@ -79,29 +89,51 @@ With the exception of Traefik & Monitoring on TiTAN, all of my compose files res
 /ssd/docker-compose/
 ├── arrs
 │   └── docker-compose.yml
+├── dozzle
+│   └── docker-compose.yml
+├── ghost
+│   └── docker-compose.yml
 ├── ha
 │   └── docker-compose.yml
 ├── homepage
 │   └── docker-compose.yml
+├── homers
+│   └── docker-compose.yml
+├── it-tools
+│   └── docker-compose.yml
 ├── navidrome
 │   └── docker-compose.yml
-├── plex-overseerr
+├── overseerr
+│   └── docker-compose.yml
+├── plex
 │   └── docker-compose.yml
 ├── podgrab
+│   └── docker-compose.yml
+├── ppe
 │   └── docker-compose.yml
 ├── sabnzbd
 │   └── docker-compose.yml
 └── tautulli
     └── docker-compose.yml
 
-8 directories, 8 files
+14 directories, 14 files
 ```
 
 ### Phobos
 
 ```sh
 /ssd/docker/docker-compose/
+├── checkmk
+│   └── docker-compose.yml
 ├── cloudflare
+│   └── docker-compose.yml
+├── dockpeek
+│   └── docker-compose.yml
+├── dozzle-agent
+│   └── docker-compose.yml
+├── frigate
+│   └── docker-compose.yml
+├── headscale
 │   └── docker-compose.yml
 ├── kuma
 │   └── docker-compose.yml
@@ -111,17 +143,40 @@ With the exception of Traefik & Monitoring on TiTAN, all of my compose files res
 │   └── docker-compose.yml
 ├── motioneye
 │   └── docker-compose.yml
-├── orbital-sync
+├── nebula-sync
 │   └── docker-compose.yml
-├── peppermint
+├── nginx
 │   └── docker-compose.yml
-│   └─ .env
 ├── pihole
 │   └── docker-compose.yml
 ├── portainer
 │   └── docker-compose.yml
-└── vaultwarden
+├── ubuntu
+│   └── docker-compose.yml
+├── vaultwarden
+│   └── docker-compose.yml
+└── wazuh-agent
+    ├── config
+    │   └── wazuh-agent-conf
     └── docker-compose.yml
 
 10 directories, 11 files
 ```
+
+### Tethys
+
+```sh
+/home/xander/docker/docker-compose/
+├── checkmk
+│   └── docker-compose.yml
+├── dozzle-agent
+│   └── docker-compose.yml
+└── portainer
+    └── docker-compose.yml
+
+3 directories, 3 files
+```
+Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
+These are services/applications that I am still either testing or refining.
+
+If I plan on implmenting them log term then I will be creating pages for these.

@@ -17,9 +17,9 @@ The sites status page also displays details about when the SSL/TLS certificate e
 ## docker-compose file location
 
 ```sh
-├─ /ssd/docker
-│  └─ docker-compose/
-│     └─ kuma/docker-compose.yml
+├─ /ssd/docker/docker-compose/
+│  └─ kuma/
+│     └─ docker-compose.yml
 ```
 
 ## appdata 

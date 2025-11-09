@@ -17,17 +17,16 @@ The sites status page also displays details about when the SSL/TLS certificate e
 ## docker-compose file location
 
 ```sh
-├─ ~/
+├─ /ssd/docker
 │  └─ docker-compose/
-│     └─ kuma/
+│     └─ kuma/docker-compose.yml
 ```
 
 ## appdata 
 
 ``` sh
 ├─ ~/appdata
-│  └─ Kuma/
-└──── docker-compose.yml
+│  └─ kumav2/
 ```
 
 ## docker-compose.yml
@@ -35,17 +34,17 @@ The sites status page also displays details about when the SSL/TLS certificate e
 ``` yaml
 networks:
   default:
-    name: cuthbert-network
+    name: phobos-network
     external: true
 
 services:
 
     uptime-kuma:
-        image: louislam/uptime-kuma:1
+        image: louislam/uptime-kuma:2
         container_name: uptime-kuma
         networks:
           default:
-            ipv4_address: "172.22.0.8"
+            ipv4_address: "172.20.0.5"
         ports:
             - 3001:3001
         environment:
@@ -53,12 +52,12 @@ services:
         restart: always
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:ro
-            - /home/xander/appdata/Kuma:/app/data
+            - /ssd/docker/appdata/kumav2:/app/data
 ```
 
 ###Dynamic File
 
 Uptime-Kuma is running on a different host to where Traefik is running so I have a dynamic file setup to ensure its routed through Traefik and with SSL.  
 
-This file is located [here](https://docs.xmsystems.co.uk/dynamic/#uptime-kuma-cuthbert)
+This file is located [here](https://docs.xmsystems.co.uk/dynamic/#uptime-kuma-phobos)
 

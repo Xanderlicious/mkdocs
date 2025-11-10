@@ -3,13 +3,6 @@
 
 Having access to all of my Films, TV Shows & Music wherever I am and on whatever device I'm using is really what started my journey down this rabbit hole 
 
-Installation of Plex is done as part of a docker-compose stack with Overseerr
-
-With me having an Nvidia gfx card, I utilise this for transcoding.  
-This requires the necessary drivers installing and also the correct config adding into the docker-compose file.
-
-![](images/nvidia-smi.png)
-
 ### docker-compose.yml
 
 ``` yaml

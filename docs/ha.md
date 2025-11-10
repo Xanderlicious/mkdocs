@@ -8,7 +8,7 @@ Currently, I have only setup the energy meter within home assistant so it can sh
 ![](images/energyusage.png)
 
 
-## docker-compose file location
+### docker-compose file location
 
 ``` sh
 ├─ ssd/
@@ -16,7 +16,7 @@ Currently, I have only setup the energy meter within home assistant so it can sh
 │     └─ ha/
 ```
 
-## Appdata
+### Appdata
 
 ``` sh
 ├─ ssd/
@@ -24,7 +24,7 @@ Currently, I have only setup the energy meter within home assistant so it can sh
 │     └─ ha/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:

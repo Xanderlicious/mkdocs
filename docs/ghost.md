@@ -4,7 +4,7 @@ Ghost is an open source blog & newsletter platform
 
 I have set this up so there are 2 instances (and 2 separate databases)
 
-## docker-compose file location
+### docker-compose file location
 
 ```sh
 ├─ ssd/
@@ -12,7 +12,7 @@ I have set this up so there are 2 instances (and 2 separate databases)
 │     └─ ghost
 ```
 
-## Appdata
+### Appdata
 
 ```sh
 ├─ ssd/
@@ -22,7 +22,7 @@ I have set this up so there are 2 instances (and 2 separate databases)
 |     └─ sal/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ```yaml
 networks:

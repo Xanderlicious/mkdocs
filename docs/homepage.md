@@ -10,7 +10,7 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 ![](<images/homepage dash.png>)
 
 
-## docker-compose file location
+### docker-compose file location
 
 ``` sh
 ├─ ssd/
@@ -18,7 +18,7 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 │     └─ homepage/
 ```
 
-## Appdata
+### Appdata
 
 ``` sh
 ├─ ssd/
@@ -26,7 +26,7 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 │     └─ homepage/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:

@@ -3,7 +3,7 @@
 
 The free and easy binary newsreader
 
-## docker-compose file location
+### docker-compose file location
 
 ``` bash
 ├─ ssd/
@@ -11,7 +11,7 @@ The free and easy binary newsreader
 │     └─ sabnzbd/
 ```
 
-## Appdata
+### Appdata
 
 ``` bash
 ├─ ssd/
@@ -19,7 +19,7 @@ The free and easy binary newsreader
 │     └─ sabnzbd/
 ```  
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:

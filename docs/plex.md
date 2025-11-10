@@ -10,7 +10,7 @@ This requires the necessary drivers installing and also the correct config addin
 
 ![](images/nvidia-smi.png)
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:
@@ -21,18 +21,11 @@ networks:
 services:
 
   plex:
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
     image: plexinc/pms-docker
     container_name: plex
-    hostname: TiTAN
+    hostname: Titan
     volumes:
-      - /ssd/appdata/Plex:/config
+      - /ssd/docker/appdata/Plex:/config
       - /megaraid/mediastore/Movies:/movies:ro
       - /megaraid/mediastore/StandUp:/standup:ro
       - /megaraid/mediastore/TV:/tv:ro
@@ -40,16 +33,15 @@ services:
     networks:
       default:
         ipv4_address: 172.19.0.100
-    runtime: nvidia
-    restart: always
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
     environment:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
-      - VERSION=plexpass
+      - VERSION=docker
       - ADVERTISE_IP=https://subdomain.domain.co.uk:443
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=all
     ports:
       - 32400:32400/tcp
       - 32469:32469/tcp
@@ -67,37 +59,4 @@ services:
       - traefik.http.routers.plex.tls.certresolver=production
       - traefik.http.routers.plex.tls.domains[0].main=domain.co.uk
       - traefik.http.routers.plex.tls.domains[0].sans=*.domain.co.uk
-
-  overseerr:
-    image: linuxserver/overseerr
-    container_name: overseerr
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    volumes:
-      - /ssd/appdata/overseerr/config:/config
-    ports:
-      - 5055:5055
-    restart: unless-stopped
-    networks:
-      default:
-        ipv4_address: 172.19.0.109
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.overseerr.loadbalancer.server.port=5055
-      - traefik.http.routers.overseerr.rule=Host(`subdomain.domain.co.uk`)
-      - traefik.http.routers.overseerr.entrypoints=websecure-ext
-      - traefik.http.routers.overseerr.tls=true
-      - traefik.http.routers.overseerr.tls.certresolver=production
-      - traefik.http.routers.overseerr.tls.domains[0].main=domain.co.uk
-      - traefik.http.routers.overseerr.tls.domains[0].sans=*.domain.co.uk
 ```
-
-## Overseerr
-
-![](images/overseerr.png)
-
-Overseerr is a 3rd party application that gives your plex users the abillity to request content that you don't currently have listed.
-
-This "request" can then be approved or declined by the server admin (you!)

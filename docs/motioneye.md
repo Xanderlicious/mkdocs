@@ -5,7 +5,7 @@ Motioneye is a video surveillance program that offers motion detection.
 
 I have this setup so that if motion is detected, recording occurs which is then stored for upto a month.
 
-## docker-compose file location
+### docker-compose file location
 ```sh
 ── ~/
 │  └─ docker-compose/
@@ -13,7 +13,7 @@ I have this setup so that if motion is detected, recording occurs which is then 
 │     │   └── docker-compose.yml
 ```
 
-## Appdata
+### Appdata
 
 ```sh
 ── ~/
@@ -24,7 +24,7 @@ I have this setup so that if motion is detected, recording occurs which is then 
 |     └─ readarr/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:
@@ -37,7 +37,7 @@ services:
     privileged: True
     image: ccrisan/motioneye:master-amd64
     container_name: motioneye
-    hostname: XAN-CAMERAS
+    hostname: XMS-CAMERAS
     networks:
       default:
         ipv4_address: "172.20.0.7"
@@ -53,13 +53,13 @@ services:
       - /disk1/cctv/recordings/xan-cam/:/recordings
 ```
 
-###Dynamic File
+### Dynamic File
 
 As this is hosted on a different host to where Traefik is running, a dynamic file is required for it to be routed through Traefik and with SSL.
 
-This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-cuthbert)
+This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-phobos)
 
-##Cameras
+## Cameras
 
 ![](images/dahua.png)
 
@@ -67,7 +67,7 @@ Connected to MotionEye currently is a Dahua camera which overlooks the front of 
 
 I also have a Reolink wifi camera which is being used internally as kind of a pet and toddler camera.
 
-##Future Plans
+## Future Plans
 
 I do like Motioneye and have been using it for quite some time.  
 My future plans unfortunately don't include Motioneye.  I will be getting more cameras (mainly external) and I plan on using BlueIris. 

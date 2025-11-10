@@ -12,7 +12,7 @@ I also have a dynamic "config.yml" file where I can specify middlewares that can
 !!! info
     You can create just one dynamic file but I prefer to keep them seperate for ease of maintenance & manageabillity
 
-## config.yml
+### config.yml
 
 ``` yaml
 http:

@@ -16,7 +16,7 @@ Features included:
 - YubiKey and Duo support
 - Emergency Access
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:

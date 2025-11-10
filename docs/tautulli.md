@@ -8,7 +8,7 @@ It provides you with very detailed information about your Plex Media Server and 
 ![](<images/tautulli graph.png>)
 
 
-## docker-compose file location
+### docker-compose file location
 
 ```bash
 ├─ ssd/
@@ -16,7 +16,7 @@ It provides you with very detailed information about your Plex Media Server and 
 │     └─ tautulli/
 ```
 
-## Appdata files location
+### Appdata files location
 
 ```bash
 ├─ ssd/
@@ -24,7 +24,7 @@ It provides you with very detailed information about your Plex Media Server and 
 │     └─ tautulli/
 ```  
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:

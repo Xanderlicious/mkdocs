@@ -18,7 +18,7 @@ They allow easy organisation of all of your media.  It has the abillity to renam
 It also has the abillity to link in with a newsreader (I use [SABnzbd](https://docs.xmsystems.co.uk/sabnzbd/))
 
 
-## docker-compose file location
+### docker-compose file location
 
 ```sh
 ├─ ssd/
@@ -26,7 +26,7 @@ It also has the abillity to link in with a newsreader (I use [SABnzbd](https://d
 │     └─ arrs/
 ```
 
-## Appdata
+### Appdata
 
 ```sh
 ├─ ssd/
@@ -37,7 +37,7 @@ It also has the abillity to link in with a newsreader (I use [SABnzbd](https://d
 |     └─ readarr/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` YAML
 networks:

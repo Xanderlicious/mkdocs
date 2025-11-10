@@ -1,15 +1,15 @@
-# Overview
+## Overview
 
 To give you an idea of what my setup looks like, this page will explain at a high level what sort of network I have and the different pieces of hardware I'm running.
 
-## Network Diagram
+### Network Diagram
 
 ![XanderNET](images/network-diagram.png)
 
 Other pages on this site will go into lots of detail of the different servers, their OS's, the applications i'm running and my networking setup.
 
 
-## Internet
+### Internet
 
 ![](images/cityfibretransparent.png)
 
@@ -18,7 +18,7 @@ This provides me with a symmetrical gigabit connection.
 My Unifi Cloud Gateway Ultra is able to plug directly into the ONT.
 
 
-## DNS & VPN
+### DNS & VPN
 
 ![](images/pihole.png)
 
@@ -29,7 +29,7 @@ The primary Pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" pr
 I have 2 main servers and an assortment of PC's, mobile phones, laptops and a gaming console.
 
 
-## Applications
+### Applications
 
 ![](images/docker.png)
 
@@ -38,7 +38,7 @@ Pretty much everything I host on my 2 main servers (including this site), runs i
 
 All written and configured using docker compose.
 
-## Future Plans
+### Future Plans
 
 I do have some other, more powerful, hardware waiting to be deployed and I have plans to upgrade some of my existing networking gear.
 

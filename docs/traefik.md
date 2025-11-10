@@ -12,7 +12,7 @@ With Traefik, I also have the abillity to specify multiple entry points (2 inter
 The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) will explain more about these.
 
 
-## Directory Location Layout:
+### Directory Location Layout:
 
 ``` bash
 /ssd/appdata/traefik/
@@ -38,7 +38,7 @@ The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) wi
 └── .env
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xmsystems.co.uk/portainer/))
 Sensitive information is placed in a hidden .env file which is then referenced within the docker-compose.
@@ -110,7 +110,7 @@ volumes:
   traefik-logs:
 ```
 
-## traefik.yml
+### traefik.yml
 
 The traefik.yml file lives inside the "data" directory and is used to: 
 
@@ -197,7 +197,7 @@ metrics:
         - 5.0
 ```
 
-## Dynamic Files Directory
+### Dynamic Files Directory
 
 Dynamic files can be very useful for services that are running on other hosts and are/aren't running in docker
 

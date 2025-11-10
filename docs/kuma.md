@@ -14,7 +14,7 @@ If a site or a container (or both) are down, there is a warning notice displayed
 
 The sites status page also displays details about when the SSL/TLS certificate expires.  Traefik and Lets Encrypt will automatically take care of renewing these automatically but should this fail for whatever reason, this can alert you to that fact.
 
-## docker-compose file location
+### docker-compose file location
 
 ```sh
 ├─ /ssd/docker/docker-compose/
@@ -22,14 +22,14 @@ The sites status page also displays details about when the SSL/TLS certificate e
 │     └─ docker-compose.yml
 ```
 
-## appdata 
+### appdata 
 
 ``` sh
 ├─ ~/appdata
 │  └─ kumav2/
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 
 ``` yaml
 networks:
@@ -55,7 +55,7 @@ services:
             - /ssd/docker/appdata/kumav2:/app/data
 ```
 
-###Dynamic File
+### Dynamic File
 
 Uptime-Kuma is running on a different host to where Traefik is running so I have a dynamic file setup to ensure its routed through Traefik and with SSL.  
 

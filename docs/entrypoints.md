@@ -22,7 +22,7 @@ The local IP to specify here, would not be the IP Address of where the service i
 
 ![](<images/pihole dns.png>)
 
-## Defining EntryPoints
+### Defining EntryPoints
 
 The entrypoints themselves are defined in the [traefik.yml](https://docs.xmsystems.co.uk/traefik/#traefikyml) file. (section shown below)
 
@@ -102,9 +102,9 @@ http:
     kuma:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.199:3001"
+          - url: "http://10.36.100.151:3001"
         passHostHeader: true
 ```
 
 !!! info
-    Technically, I can still do this for services running on the same host as Traefik and omit the labels but I find it more straight forward to use labels where I am able to
+    Technically, I can still do this for services running on the same host as Traefik and omit the labels and I have chosen to do this for some services (Grafana and Prometheus springs to mind here)

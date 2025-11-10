@@ -16,7 +16,7 @@ My main Portainer instance is installed on my primary server, [TiTAN](https://do
 
 I install portainer on my other server using the below compose file which installs both Portainer and Portainer Agent
 
-## Portainer & Portainer Agent
+### Portainer & Portainer Agent
 
 ``` yaml
 networks:
@@ -53,7 +53,7 @@ services:
     image: portainer/agent:2.27.2
 ```
 
-## Dynamic File
+### Dynamic File
 
 Even though I can reach the portainer environment for Phobos through TiTAN, I have still setup its own individual domain name.
 

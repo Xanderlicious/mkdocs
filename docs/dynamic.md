@@ -130,7 +130,7 @@ http:
     pihole3:
       loadBalancer:
         servers:
-          - url: "https://10.36.100.4"
+          - url: "https://10.36.100.151"
         passHostHeader: true
 ```
 
@@ -194,7 +194,7 @@ http:
     cctv:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.4:8765"
+          - url: "http://10.36.100.151:8765"
         passHostHeader: true
 ```
 
@@ -215,7 +215,7 @@ http:
     kuma:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.4:3001"
+          - url: "http://10.36.100.151:3001"
         passHostHeader: true
 ```
 
@@ -236,7 +236,7 @@ http:
     portainer-phobos:
       loadBalancer:
         servers:
-          - url: "https://10.36.100.4:9443"
+          - url: "https://10.36.100.151:9443"
         passHostHeader: true
 ```
 
@@ -281,5 +281,26 @@ http:
       loadBalancer:
         servers:
           - url: "http://10.36.100.152:80"
+        passHostHeader: true
+```
+
+### Portainer (Tethys)
+
+``` yaml
+http:
+  routers:
+    portainer-tethys:
+      entryPoints:
+        - "websecure-int"
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: portainer-tethys
+
+  services:
+    portainer-tethys:
+      loadBalancer:
+        servers:
+          - url: "https://10.36.100.152:9443"
         passHostHeader: true
 ```

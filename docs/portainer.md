@@ -17,6 +17,7 @@ My main Portainer instance is installed on my primary server, [TiTAN](https://do
 I install portainer on my other server using the below compose file which installs both Portainer and Portainer Agent
 
 ### Portainer & Portainer Agent
+### Phobos
 
 ``` yaml
 networks:
@@ -37,7 +38,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /ssd/docker/appdata/portainer_data:/data
-    image: portainer/portainer-ee:2.27.2
+    image: portainer/portainer-ee:2.33.3
 
   agent:
     ports:
@@ -50,11 +51,47 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
-    image: portainer/agent:2.27.2
+    image: portainer/agent:2.33.3
+```
+
+### Tethys
+
+```yaml
+networks:
+  default:
+    name: tethys-network
+    external: true
+
+services:
+  portainer-ee:
+    ports:
+      - 9443:9443
+    container_name: portainer_CMK
+    networks:
+      default:
+        ipv4_address: "172.21.0.2"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/xander/docker/appdata/portainer_data:/data
+    image: portainer/portainer-ee:2.33.3
+
+  agent:
+    ports:
+      - 9001:9001
+    container_name: portainer_agent
+    networks:
+      default:
+        ipv4_address: "172.21.0.3"
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    image: portainer/agent:2.33.3
 ```
 
 ### Dynamic File
 
-Even though I can reach the portainer environment for Phobos through TiTAN, I have still setup its own individual domain name.
+Even though I can reach the portainer environment for Phobos and Tethys through TiTAN, I have still setup their own individual domain names.
 
-This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-phobos)
+This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-phobos) for Phobos and [here](https://docs.xmsystems.co.uk/dynamic/#portainer-tethys) for Tethys

@@ -5,7 +5,7 @@ It compliments your existing static configuration.
 
 ![](<images/traefik dynamic configuration.png>)
 
-I use Dynamic files mainly to route services that run in docker on a different host to where traefik is hosted through traefik and assign valid SSL certificates.
+I use Dynamic files mainly to route services that run on different hosts (different to the host where traefik is installed) through traefik and assign valid SSL certificates.
 
 I also have a dynamic "config.yml" file where I can specify middlewares that can then be called/referenced in other dynamic files which are individually created per service/application.
 

@@ -4,24 +4,6 @@ Ghost is an open source blog & newsletter platform
 
 I have set this up so there are 2 instances (and 2 separate databases)
 
-### docker-compose file location
-
-```sh
-├─ ssd/
-│  └─ docker-compose/
-│     └─ ghost
-```
-
-### Appdata
-
-```sh
-├─ ssd/
-│  └─ appdata/
-│     └─ db/
-|     └─ xms/
-|     └─ sal/
-```
-
 ### docker-compose.yml
 
 ```yaml

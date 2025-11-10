@@ -9,23 +9,6 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 
 ![](<images/homepage dash.png>)
 
-
-### docker-compose file location
-
-``` sh
-├─ ssd/
-│  └─ docker-compose/
-│     └─ homepage/
-```
-
-### Appdata
-
-``` sh
-├─ ssd/
-│  └─ appdata/
-│     └─ homepage/
-```
-
 ### docker-compose.yml
 
 ``` yaml

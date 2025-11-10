@@ -17,26 +17,6 @@ They allow easy organisation of all of your media.  It has the abillity to renam
 
 It also has the abillity to link in with a newsreader (I use [SABnzbd](https://docs.xmsystems.co.uk/sabnzbd/))
 
-
-### docker-compose file location
-
-```sh
-├─ ssd/
-│  └─ docker-compose/
-│     └─ arrs/
-```
-
-### Appdata
-
-```sh
-├─ ssd/
-│  └─ appdata/
-│     └─ sonarr/
-|     └─ radarr/
-|     └─ lidarr/
-|     └─ readarr/
-```
-
 ### docker-compose.yml
 
 ``` YAML

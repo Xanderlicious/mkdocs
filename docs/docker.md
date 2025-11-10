@@ -81,7 +81,7 @@ docker compose pull; docker compose up -d --force-recreate
 
 This will ensure the container is re-created.
 
-With the exception of Traefik & Monitoring on TiTAN, all of my compose files reside in the following locations
+All of my compose files reside in the following locations
 
 ### TiTAN
 

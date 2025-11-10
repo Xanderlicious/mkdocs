@@ -14,21 +14,6 @@ If a site or a container (or both) are down, there is a warning notice displayed
 
 The sites status page also displays details about when the SSL/TLS certificate expires.  Traefik and Lets Encrypt will automatically take care of renewing these automatically but should this fail for whatever reason, this can alert you to that fact.
 
-### docker-compose file location
-
-```sh
-├─ /ssd/docker/docker-compose/
-│  └─ kuma/
-│     └─ docker-compose.yml
-```
-
-### appdata 
-
-``` sh
-├─ ~/appdata
-│  └─ kumav2/
-```
-
 ### docker-compose.yml
 
 ``` yaml

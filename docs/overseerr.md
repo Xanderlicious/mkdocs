@@ -4,9 +4,6 @@ Overseerr is a 3rd party application that gives your plex users the abillity to 
 
 This "request" can then be approved or declined by the server admin
 
-
-
-
 ### docker-compose.yml
 
 ```yaml

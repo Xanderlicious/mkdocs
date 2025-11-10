@@ -11,33 +11,6 @@ It also uses Lets Encrypt and provides a valid SSL certificate
 With Traefik, I also have the abillity to specify multiple entry points (2 internal and 2 external)  This allows me to keep my internal services internal and only have my external services showing to the world.  
 The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) will explain more about these.
 
-
-### Directory Location Layout:
-
-``` bash
-/ssd/appdata/traefik/
-├── data
-│   ├── acme.json
-│   └── traefik.yml
-├── docker-compose.yml
-├── dynamic
-│   ├── app-cctv.yml
-│   ├── app-cmk.yml
-│   ├── app-docs.yml
-│   ├── app-graphs.yml
-│   ├── app-kuma.yml
-│   ├── app-pihole1.yml
-│   ├── app-pihole2.yml
-│   ├── app-portainer-cuthbert.yml
-│   ├── app-prom.yml
-│   ├── app-ubuntu.yml
-│   ├── app-unifi.yml
-│   ├── app-vaultwarden.yml
-│   ├── app-xbvr.yml
-│   └── config.yml
-└── .env
-```
-
 ### docker-compose.yml
 
 Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xmsystems.co.uk/portainer/))

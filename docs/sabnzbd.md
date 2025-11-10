@@ -1,23 +1,7 @@
 
 ![](images/sabnzbd.png)
 
-The free and easy binary newsreader
-
-### docker-compose file location
-
-``` bash
-├─ ssd/
-│  └─ docker-compose/
-│     └─ sabnzbd/
-```
-
-### Appdata
-
-``` bash
-├─ ssd/
-│  └─ appdata/
-│     └─ sabnzbd/
-```  
+The free and easy binary newsreader  
 
 ### docker-compose.yml
 

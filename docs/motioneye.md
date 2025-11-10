@@ -3,26 +3,7 @@
 
 Motioneye is a video surveillance program that offers motion detection.
 
-I have this setup so that if motion is detected, recording occurs which is then stored for upto a month.
-
-### docker-compose file location
-```sh
-── ~/
-│  └─ docker-compose/
-│     ├── motioneye
-│     │   └── docker-compose.yml
-```
-
-### Appdata
-
-```sh
-── ~/
-│  └─ appdata/
-│     └─ sonarr/
-|     └─ radarr/
-|     └─ lidarr/
-|     └─ readarr/
-```
+I have this setup in constant record where data is recorded and stored for upto a month
 
 ### docker-compose.yml
 

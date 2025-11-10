@@ -13,24 +13,6 @@ Below is the web view for TiTAN.
 
 ![](<images/glances webview.png>)
 
-## Compose File Locations
-
-=== "TiTAN"
-
-    ``` bash
-    ├─ ssd/
-    │  └─ docker-compose/
-    │     └─ glances/
-    ```
-
-=== "Cuthbert"
-
-    ``` bash
-    docker-compose/
-    ├── glances
-    │   └── docker-compose.yml
-    ```
-
 ## docker-compose.yml  
 
 === "TiTAN"

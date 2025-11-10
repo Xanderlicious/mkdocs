@@ -9,15 +9,15 @@ TiTAN is my primary server and is where the majority of my media and services li
 - 64GB Corsair Vengance 3200mHz RAM (4x16GB)
 - LSI Megaraid SAS 9260-8i RAID card
     - 6 X 8TB Seagate SAS drives 
-        Configured in a RAID6 array resulting in ~32TB of usable space
-        Mounted as /megaraid
+    - Configured in a RAID6 array resulting in ~32TB of usable space
+    - Mounted as /megaraid
 - 1 X 2TB NVME WD BLACK SN770  
     - Used for the OS
 - 1 X 1TB Seagate SSD 
     - Used for appdata  
-        Mounted as /ssd  
+    - Mounted as /ssd  
 - 1 X 4TB Seagate Ironwolf drive
-        Mounted as /ironwolf
+    - Mounted as /ironwolf
 - Corsair RM850x PSU
 - Fractal Define R4 case
 

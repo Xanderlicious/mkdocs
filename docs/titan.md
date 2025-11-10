@@ -25,4 +25,4 @@ TiTAN is my primary server and is where the majority of my media and services li
 
 ![](images/debian.png)
 
-Running Debian 13 (trixie)o
+Running Debian 13 (trixie)

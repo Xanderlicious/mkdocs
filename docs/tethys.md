@@ -15,4 +15,4 @@ Operating System
 
 ![](images/debian.png)
 
-My operating system of choice is Debian 13
+Running Debian 13 (trixie)

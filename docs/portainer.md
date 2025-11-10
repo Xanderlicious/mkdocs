@@ -1,5 +1,5 @@
 
-![](images/portainer_new_logo.jpeg)
+![](images/portainer_new_logo.jpg)
 
 To quote Portainer themselves:
 

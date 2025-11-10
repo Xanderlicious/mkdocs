@@ -2,7 +2,7 @@
 
 This is where a proper monitoring solution comes into play and there are many, many options.
 
-## CheckMK
+# CheckMK
 
 ![](images/checkmk.png)
 
@@ -16,7 +16,7 @@ Above is a sample screenshot taken from somewhere on the internet
 
 I currently run CheckMK in a docker container as the .deb package to install directly isn't avaialble for Debian 13 just yet
 
-#docker-compose.yml
+## docker-compose.yml
 
 ```yaml
 networks:
@@ -53,13 +53,13 @@ volumes:
 
 To allow a connection to its dashboard via my domain (and using SSL) I have created a dynamic file for traefik [here](https://docs.xmsystems.co.uk/dynamic/#checkmk-tethys)
 
-## Grafana / Prometheus
+# Grafana / Prometheus
 
 ![](images/grafana.png) ![](images/prometheus.png)
 
 I currently use (and will probably continue to use even after deploying CheckMK) Prometheus & Grafana (using node exporter and cadvisor alongside)
 
-#docker-compose.yml
+## docker-compose.yml
 
 ```yaml
 networks:
@@ -134,7 +134,7 @@ services:
     privileged: true
 ```
 
-#prometheus.yml
+## prometheus.yml
 
 ```yaml
 global:

@@ -20,20 +20,20 @@ nav:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md
     - Traefik - Dynamic Files: dynamic.md
-    - Nebula-Sync: nebula-sync.md
+    - Portainer: portainer.md
     - Plex: plex.md
+    - Navidrome: navidrome.md
     - Overseerr: overseerr.md
     - Tautulli: tautulli.md
-    - Navidrome: navidrome.md
-    - SABnzbd: sabnzbd.md
     - Arrs: arrs.md
+    - SABnzbd: sabnzbd.md
     - Homepage: homepage.md
     - Home Assistant: ha.md
     - Monitoring: monitoring.md
-    - Portainer: portainer.md
     - Uptime-Kuma: kuma.md
     - Motioneye: motioneye.md
     - Ghost: ghost.md
+    - Nebula-Sync: nebula-sync.md
   - Archive:
     - USG: USG.md
     - Duplicati: duplicati.md

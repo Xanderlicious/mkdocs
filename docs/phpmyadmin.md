@@ -5,6 +5,8 @@ phpMyAdmin is software that enables you to administer your MySQL databases withi
 
 You can use phpMyAdmin to perform most administration tasks, including creating a database, running queries, and adding user accounts.  All from the comfort of a GUI
 
+I have set this up to give me easy administrative access to the databases used for the sites hosted using [ghost](https://docs.xmsystems.co.uk/ghost/)
+
 ### docker-compose.yml
 
 ``` yaml

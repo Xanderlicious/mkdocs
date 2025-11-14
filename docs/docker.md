@@ -25,7 +25,7 @@ I use 4 docker networks (2 on titan, 1 on phobos & 1 on tethys)
 
 ### Titan
 
-TiTAN runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
+Titan runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
 
 The creation of the network is a simple command and is one that specifies a subnet.  
 

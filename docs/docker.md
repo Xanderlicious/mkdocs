@@ -23,7 +23,7 @@ Before spinning up some docker containers, I need to ensure I have setup my dock
 
 I use 4 docker networks (2 on titan, 1 on phobos & 1 on tethys)
 
-### TiTAN
+### Titan
 
 TiTAN runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
 

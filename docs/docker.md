@@ -176,6 +176,181 @@ All of my compose files reside in the following locations
 
 3 directories, 3 files
 ```
+
+### Appdata
+
+All of my containers have their data stored in the following locations (which are referenced in their respective compose files)
+
+## Titan
+
+```sh
+/ssd/docker/appdata/
+├── dozzle
+│   └── data
+├── ghost
+│   ├── db
+│   │   ├── db-default
+│   │   ├── db-lenny-sal
+│   │   ├── db-stan-sal
+│   │   └── db-xms
+│   ├── default
+│   ├── lenny-sal
+│   ├── stan-sal
+│   └── xms
+├── ha
+│   └── config
+├── homepage
+│   ├── app
+│   ├── bookmarks.yaml
+│   ├── custom.css
+│   ├── custom.js
+│   ├── docker.yaml
+│   ├── icons
+│   ├── images
+│   ├── kubernetes.yaml
+│   ├── logs
+│   ├── proxmox.yaml
+│   ├── services.yaml
+│   ├── settings.yaml
+│   └── widgets.yaml
+├── homers
+│   └── config.toml
+├── Lidarr
+├── monitoring
+│   ├── docker-compose.yml
+│   ├── grafana
+│   │   └── grafana-data
+│   └── prometheus
+│       └── prometheus.yml
+├── Navidrome
+│   ├── cache
+│   │   ├── backgrounds
+│   │   ├── images
+│   ├── navidrome.db
+│   ├── navidrome.db-shm
+│   ├── navidrome.db-wal
+│   └── plugins
+├── overseerr
+│   └── config
+│       ├── db
+│       ├── logs
+│       └── settings.json
+├── phpmyadmin
+│   ├── config.user.inc.php
+│   └── custom
+│       └── phpmyadmin
+│           └── theme
+├── Plex
+│   └── Library
+│       └── Application Support
+│           └── Plex Media Server
+├── podgrab
+│   └── config
+│       ├── backups
+│       └── podgrab.db
+├── portainer
+│   └── data
+├── Radarr
+├── Readarr
+├── Sonarr
+├── Tautulli
+├── traefik
+│   ├── data
+│   │   ├── acme.json
+│   │   ├── traefik.yml
+│   │   └── traefik.yml.bak
+│   ├── docker-compose.yml
+│   ├── dynamic
+│   │   ├── app-blog-lenny-sal.yml
+│   │   ├── app-blog-stan-sal.yml
+│   │   ├── app-blog-xms.yml
+│   │   ├── app-cctv.yml
+│   │   ├── app-cmk.yml
+│   │   ├── app-docs.yml
+│   │   ├── app-dozzle.yml
+│   │   ├── app-graphs.yml
+│   │   ├── app-kuma.yml
+│   │   ├── app-phpmyadmin.yml
+│   │   ├── app-pihole1.yml
+│   │   ├── app-pihole2.yml
+│   │   ├── app-pihole3.yml
+│   │   ├── app-portainer-phobos.yml
+│   │   ├── app-portainer-tethys.yml
+│   │   ├── app-prom.yml
+│   │   ├── app-ubuntu.yml
+│   │   ├── app-unifi.yml
+│   │   ├── app-vaultwarden.yml
+│   │   ├── app-wazuh.yml
+│   │   ├── app-workout.yml
+│   │   ├── config.yml
+│   │   └── tls.yml
+│   └── logs
+│       ├── access.log
+│       └── traefik.log
+└── wazuh
+    └── wazuh-docker
+```
+
+## Phobos
+
+```sh
+/ssd/docker/appdata/
+├── frigate
+│   └── config
+├── headscale
+│   ├── config
+│   │   └── config.yaml
+│   └── data
+├── kumav2
+│   ├── db-config.json
+│   ├── docker-tls
+│   ├── kuma.db
+│   ├── kuma.db-shm
+│   ├── kuma.db-wal
+│   ├── screenshots
+│   └── upload
+│       ├── logo1.png
+│       └── logo2.png
+├── motioneye
+│   ├── etc
+│   │   ├── camera-1.conf
+│   │   ├── camera-2.conf
+│   │   ├── motion.conf
+│   │   ├── motioneye.conf
+│   │   ├── prefs.json
+│   │   └── tasks.pickle
+│   └── shared
+│       └── recordings
+├── nginx
+│   ├── bicycle_crunches.gif
+│   ├── crunch_kicks.gif
+│   ├── done.gif
+│   ├── flutter_kicks.gif
+│   ├── index.html
+│   ├── jumping_jacks.gif
+│   ├── knee_sit_ups.gif
+│   ├── plank.gif
+│   └── rest.gif
+├── pihole
+│   ├── etc-dnsmasq.d
+│   └── etc-pihole
+├── portainer_data
+└── vaultwarden
+    └── data
+```
+
+## Tethys
+
+```sh
+~/docker/appdata/
+├── checkmk
+│   ├── cmkxms
+│   └── plugins
+│       └── mk_docker.py
+├── portainer
+└── portainer_data
+```
+
 Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
 These are services/applications that I am still either testing or refining.
 

@@ -35,5 +35,7 @@ services:
 
 ### Dynamic File
 
+Even though this is hosted on Titan, I have opted to setup a dynamic file rather than mess around with labels
+
 This file is located [here](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-titan)
 

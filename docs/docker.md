@@ -81,9 +81,11 @@ docker compose pull; docker compose up -d --force-recreate
 
 This will ensure the container is re-created.
 
+### compose files
+
 All of my compose files reside in the following locations
 
-### TiTAN
+## TiTAN
 
 ```sh
 /ssd/docker-compose/
@@ -119,7 +121,7 @@ All of my compose files reside in the following locations
 14 directories, 14 files
 ```
 
-### Phobos
+## Phobos
 
 ```sh
 /ssd/docker/docker-compose/
@@ -163,7 +165,7 @@ All of my compose files reside in the following locations
 10 directories, 11 files
 ```
 
-### Tethys
+## Tethys
 
 ```sh
 /home/xander/docker/docker-compose/

@@ -33,6 +33,7 @@ nav:
     - Uptime-Kuma: kuma.md
     - Motioneye: motioneye.md
     - Ghost: ghost.md
+    - phpMyAdmin: phpmyadmin.md
     - Nebula-Sync: nebula-sync.md
   - Archive:
     - USG: USG.md

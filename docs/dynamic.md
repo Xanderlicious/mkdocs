@@ -63,6 +63,25 @@ http:
 
 This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
 
+TLS options are also specified in its own dynamic file.
+
+### tls.yml
+
+```yaml
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+      curvePreferences:
+        - CurveP521
+        - CurveP384
+      sniStrict: true
+```
+
 ## Application Specific Dynamic Files
 
 ### Primary Pi-Hole (NCC-1702)
@@ -174,6 +193,27 @@ http:
       loadBalancer:
         servers:
           - url: "http://10.36.100.150:3000"
+        passHostHeader: true
+```
+
+### phpMyAdmin (Titan)
+
+```yaml
+http:
+  routers:
+    phpmyadmin:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: phpmyadmin
+
+  services:
+    phpmyadmin:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.150:84"
         passHostHeader: true
 ```
 

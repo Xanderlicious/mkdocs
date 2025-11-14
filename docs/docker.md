@@ -81,11 +81,11 @@ docker compose pull; docker compose up -d --force-recreate
 
 This will ensure the container is re-created.
 
-### compose files
+## compose files
 
 All of my compose files reside in the following locations
 
-## TiTAN
+### TiTAN
 
 ```sh
 /ssd/docker-compose/
@@ -107,6 +107,8 @@ All of my compose files reside in the following locations
 │   └── docker-compose.yml
 ├── overseerr
 │   └── docker-compose.yml
+├── phpmyadmin
+│   └── docker-compose.yml
 ├── plex
 │   └── docker-compose.yml
 ├── podgrab
@@ -118,10 +120,10 @@ All of my compose files reside in the following locations
 └── tautulli
     └── docker-compose.yml
 
-14 directories, 14 files
+15 directories, 15 files
 ```
 
-## Phobos
+### Phobos
 
 ```sh
 /ssd/docker/docker-compose/
@@ -165,7 +167,7 @@ All of my compose files reside in the following locations
 10 directories, 11 files
 ```
 
-## Tethys
+### Tethys
 
 ```sh
 /home/xander/docker/docker-compose/
@@ -179,11 +181,11 @@ All of my compose files reside in the following locations
 3 directories, 3 files
 ```
 
-### Appdata
+## Appdata
 
 All of my containers have their data stored in the following locations (which are referenced in their respective compose files)
 
-## Titan
+### Titan
 
 ```sh
 /ssd/docker/appdata/
@@ -293,7 +295,7 @@ All of my containers have their data stored in the following locations (which ar
     └── wazuh-docker
 ```
 
-## Phobos
+### Phobos
 
 ```sh
 /ssd/docker/appdata/
@@ -341,7 +343,7 @@ All of my containers have their data stored in the following locations (which ar
     └── data
 ```
 
-## Tethys
+### Tethys
 
 ```sh
 ~/docker/appdata/

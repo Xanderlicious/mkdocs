@@ -155,6 +155,27 @@ http:
 
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
+### Dozzle (Titan)
+
+```yaml
+http:
+  routers:
+    dozzle:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: dozzle
+
+  services:
+    dozzle:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.150:8585"
+        passHostHeader: true
+```
+
 ### Prometheus (Titan)
 
 ```yaml

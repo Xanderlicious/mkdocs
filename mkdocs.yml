@@ -30,6 +30,7 @@ nav:
     - Homepage: homepage.md
     - Home Assistant: ha.md
     - Monitoring: monitoring.md
+    - Dozzle: dozzle.md
     - Uptime-Kuma: kuma.md
     - Motioneye: motioneye.md
     - Ghost: ghost.md

@@ -86,4 +86,4 @@ services:
 
 For dozzle, I have selected to create a dynamic file rather than use Traefik labels despite it being installed on Titan
 
-This Dynamic File can be found ![here](https://docs.xmsystems.co.uk/dynamic/#dozzle-titan)
+This Dynamic File can be found [here](https://docs.xmsystems.co.uk/dynamic/#dozzle-titan)

@@ -6,10 +6,11 @@ Welcome to the official documentation site for XM Systems
 
 I'm Xander (AKA Alex) and this site will provide you with all the nerdy details of my homelab.
 
-I work in IT, totally self-taught and I certainly don't claim to be an expert.  However, everything you are about to read will contain details about the different services I host.
+I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known Telecommunications company in the UK.
 
-For me though, this sites main purpose, is to document everything I can about my systems, the services I run and all the code that has been written.  
-*(will help me should anything need re-building)*
+The previous 8 years of working in this industry have enabled me to build and self-host multiple services popular with many homelabbers.
+
+This site documents everything in my homelab including the devices, the services I run aswell as detail all the code that has been written. 
 
 I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
 

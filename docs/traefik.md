@@ -171,11 +171,15 @@ metrics:
 ```
 ### Traefik Dashboard
 
-The dashboard will allow you to browse your configured routes, services and middlewares whilst also giving you an at a glance view of whats working and what isn't.
+The dashboard will allow you to see the entrypoints and ports configured, browse your configured routers, services and middlewares whilst also giving you an at a glance view of what's configured successfully and what's not.
 
 ![](images/traefik-dashboard.png)
 
 Care should be taken to ensure you are not exposing your dashboard to the wider internet.
+
+The lower portion of the dashboard will also show you your configured features and providers
+
+![](images/traefik-features-and-providers.png)
 
 ### Dynamic Files Directory
 

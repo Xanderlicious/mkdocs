@@ -9,7 +9,7 @@ nav:
     - Unifi USW-Lite-16-PoE: Unifi USW-Lite-16-PoE.md
     - Unifi Access Points: Unifi Access Points.md
   - Servers & Devices:
-    - TiTAN: titan.md
+    - Titan: titan.md
     - Phobos: phobos.md
     - Tethys: tethys.md
     - NCC-1702: NCC-1702.md

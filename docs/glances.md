@@ -8,14 +8,14 @@ Glances is a cross-platform monitoring tool.
 
 I have used the data that Glances obtains and have fed this into my [Homepage](https://docs.xmsystems.co.uk/homepage/) dashboard where it shows animated graphing of some key metrics (CPU, RAM & Network)  
 
-I have it installed on each server that I want to obtain metrics for (currently just TiTAN & Cuthbert)  
-Below is the web view for TiTAN.
+I have it installed on each server that I want to obtain metrics for (currently just Titan & Cuthbert)  
+Below is the web view for Titan.
 
 ![](<images/glances webview.png>)
 
 ## docker-compose.yml  
 
-=== "TiTAN"
+=== "Titan"
 
     ``` yaml
     networks:
@@ -26,7 +26,7 @@ Below is the web view for TiTAN.
     services:
 
         glances:
-            hostname: TiTAN
+            hostname: Titan
             container_name: glances
             image: nicolargo/glances:ubuntu-latest-full
             restart: always

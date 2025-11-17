@@ -41,7 +41,7 @@ This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring
 ### Phobos
 
 The "phobos-network" docker network has been created for all of the containers running on phobos  
-Just like TiTAN containers, they have all been provided with static IP Addresses.
+Just like Titan containers, they have all been provided with static IP Addresses.
 As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.   
 
 ```bash

@@ -30,7 +30,7 @@ services:
     sonarr:
         image: lscr.io/linuxserver/sonarr:latest
         container_name: sonarr
-        hostname: TiTAN
+        hostname: Titan
         volumes:
             - /ssd/appdata/Sonarr:/config
             - /downloads:/downloads
@@ -59,7 +59,7 @@ services:
     radarr:
         image: lscr.io/linuxserver/radarr:latest
         container_name: radarr
-        hostname: TiTAN
+        hostname: Titan
         environment:
             - PUID=1000
             - PGID=1000
@@ -89,7 +89,7 @@ services:
     lidarr:
         image: lscr.io/linuxserver/lidarr:latest
         container_name: lidarr
-        hostname: TiTAN
+        hostname: Titan
         environment:
             - PUID=1000
             - PGID=1000
@@ -117,7 +117,7 @@ services:
 
     readarr:
         image: lscr.io/linuxserver/readarr:develop
-        hostname: TiTAN
+        hostname: Titan
         container_name: readarr
         volumes:
             - /ssd/appdata/Readarr:/config

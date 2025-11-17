@@ -21,7 +21,7 @@ services:
 
     homepage:
         image:  ghcr.io/gethomepage/homepage:latest
-        hostname: TiTAN
+        hostname: Titan
         container_name: homepage
         networks:
           default:

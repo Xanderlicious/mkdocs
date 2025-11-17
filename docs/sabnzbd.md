@@ -16,7 +16,7 @@ services:
     sabnzbd:
         image: lscr.io/linuxserver/sabnzbd:latest
         container_name: sabnzbd
-        hostname: TiTAN
+        hostname: Titan
         volumes:
             - /ssd/appdata/SABnzbd:/config
             - /downloads:/downloads

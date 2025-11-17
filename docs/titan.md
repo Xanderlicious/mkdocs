@@ -1,4 +1,4 @@
-TiTAN is my primary server and is where the majority of my media and services live.
+Titan is my primary server and is where the majority of my media and services live.
 
 ![](images/titan-sysinfo.png)
 

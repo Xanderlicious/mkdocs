@@ -169,6 +169,13 @@ metrics:
         - 1.2
         - 5.0
 ```
+### Traefik Dashboard
+
+The dashboard will allow you to browse your configured routes, services and middlewares whilst also giving you an at a glance view of whats working and what isn't.
+
+![](images/traefik-dashboard.png)
+
+Care should be taken to ensure you are not exposing your dashboard to the wider internet.
 
 ### Dynamic Files Directory
 

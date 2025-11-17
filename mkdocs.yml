@@ -14,7 +14,6 @@ nav:
     - Tethys: tethys.md
     - NCC-1702: NCC-1702.md
     - NCC-1703: NCC-1703.md
-    - NCC-1704: NCC-1704.md
   - Docker: docker.md
   - Applications:
     - Traefik: traefik.md
@@ -32,6 +31,7 @@ nav:
     - Motioneye: motioneye.md
     - Ghost: ghost.md
     - phpMyAdmin: phpmyadmin.md
+    - NCC-1704: NCC-1704.md
     - Nebula-Sync: nebula-sync.md
   - Monitoring:
     - Grafana / Prometheus: grafana & prometheus.md

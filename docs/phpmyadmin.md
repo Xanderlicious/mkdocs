@@ -1,5 +1,5 @@
 
-![](images/phpmyadmin.png)
+![](images/phpmyadmin-resized.png)
 
 phpMyAdmin is software that enables you to administer your MySQL databases within a browser.
 

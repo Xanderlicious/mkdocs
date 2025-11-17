@@ -10,7 +10,7 @@ Duplicati is an application that runs on each server and essentially runs backup
 
 ## docker-compose.yml
 
-### TiTAN  
+### Titan  
 (with traefik labels)
 
 ``` yaml

@@ -20,7 +20,7 @@ services:
     tautulli:
         image: lscr.io/linuxserver/tautulli:latest
         container_name: tautulli
-        hostname: TiTAN
+        hostname: Titan
         environment:
             - PUID=1000
             - PGID=1000

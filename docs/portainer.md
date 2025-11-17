@@ -12,7 +12,7 @@ Portainer is installed and running on both servers where there are many containe
 
 ![](<images/Portainer Envs.png>)
 
-My main Portainer instance is installed on my primary server, [TiTAN](https://docs.xmsystems.co.uk/titan), as part of a stack with [Traefik](https://docs.xmsystems.co.uk/traefik/)
+My main Portainer instance is installed on my primary server, [Titan](https://docs.xmsystems.co.uk/titan), as part of a stack with [Traefik](https://docs.xmsystems.co.uk/traefik/)
 
 I install portainer on my other server using the below compose file which installs both Portainer and Portainer Agent
 
@@ -92,6 +92,6 @@ services:
 
 ### Dynamic File
 
-Even though I can reach the portainer environment for Phobos and Tethys through TiTAN, I have still setup their own individual domain names.
+Even though I can reach the portainer environment for Phobos and Tethys through Titan, I have still setup their own individual domain names.
 
 This requires the setup of a dynamic file which is detailed [here](https://docs.xmsystems.co.uk/dynamic/#portainer-phobos) for Phobos and [here](https://docs.xmsystems.co.uk/dynamic/#portainer-tethys) for Tethys

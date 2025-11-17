@@ -6,7 +6,7 @@ Welcome to the official documentation site for XM Systems
 
 I'm Xander (AKA Alex) and this site will provide you with all the nerdy details of my homelab.
 
-I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known Telecommunications company in the UK.
+I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
 
 The previous 8 years of working in this industry have enabled me to build and self-host multiple services popular with many homelabbers.
 

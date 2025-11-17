@@ -183,6 +183,10 @@ The lower portion of the dashboard will also show you your configured features a
 
 ### Dynamic Files Directory
 
+Traefik will allow you to provide a single file as a provider of Routers, Middlewares and Services.
+
+What I have selected to do, as you will see in the Dynamic Files section, is specify a directory where multiple dynamic files can be placed and this directory is watched by Traefik for new files and/or changes to existing files.
+
 Dynamic files can be very useful for services that are running on other hosts and are/aren't running in docker
 
 As its "dynamic" you can make changes to these files and they will instantly take effect without needing to restart traefik

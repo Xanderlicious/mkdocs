@@ -33,7 +33,7 @@ nav:
     - phpMyAdmin: phpmyadmin.md
     - NCC-1704: NCC-1704.md
     - Nebula-Sync: nebula-sync.md
-  - Monitoring:
+  - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
     - CheckMK: checkmk.md
     - Uptime-Kuma: kuma.md

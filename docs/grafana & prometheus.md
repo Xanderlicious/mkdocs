@@ -2,6 +2,8 @@
 
 I currently use (and will probably continue to use even after deploying CheckMK) Prometheus & Grafana (using node exporter and cadvisor alongside)
 
+## Monitoring - Titan
+
 ### docker-compose.yml
 
 ```yaml
@@ -131,7 +133,7 @@ Grafana will essentially allow me to create some very pretty looking graphs.
 
 As you can see from the prometheus.yml file detailed above, I have targets configured for "traefik", "node_exporter" & "cadvisor" (on both titan & phobos) and I have also installed and configured targets for some plex collectors (homers & ppe)
 
-## Monitoring stack on Phobos
+## Monitoring - Phobos
 
 As alluded to above, node_exporter & cadvisor have been installed onto Phobos which will allow prometheus on Titan to collect metrics (config required (and detailed above) in prometheus.yml to collect/obtain) This will then allow me to reference these nodes in Grafana so graphs can be created.
 

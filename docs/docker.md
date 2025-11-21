@@ -358,4 +358,4 @@ All of my containers have their data stored in the following locations (which ar
 Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
 These are services/applications that I am still either testing or refining.
 
-If I plan on implmenting them log term then I will be creating pages for these.
+If I plan on implmenting them long term then I will be creating pages for these.

@@ -8,7 +8,7 @@ To quote Portainer themselves:
 
 I use portainer (with portainer agent) to give me a quick and easy cursory overview of all of my containers and their status.
 
-Portainer is installed and running on both servers where there are many containers running.
+Portainer is installed and running on all servers where there are many containers running.
 
 ![](<images/Portainer Envs.png>)
 

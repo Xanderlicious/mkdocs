@@ -7,16 +7,17 @@ Phobos is a new build and has become a replacement for [Cuthbert](https://docs.x
 **Specs**
 
 - Jonsbo N4 NAS Case
-- Asus Prime B560M-A Motherboard
+- Asus Pro q570m-c Motherboard
 - Intel 10th Gen i5-10400 CPU
 - 32GB DDR4 RAM (4 x 8GB)
 - 1 X 1TB WD Black M.2 2280 NVMe
-- 5 X 4TB WD Red drives
+- 4 X 8TB WD Red drives
+- 1 X 4TB WD Red drive
 - 2 X 250GB Samsung 860 SSD's
 
 **Operating System**
 
-![](images/ubuntulogo.png)
+![](images/debian)
 
-My operating system of choice is Ubuntu Server  
-Current version - 24.04.2 LTS
+My operating system of choice is Debian 13
+Current version - 13.3 (trixie)

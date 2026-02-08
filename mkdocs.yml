@@ -94,6 +94,9 @@ markdown_extensions:
   - md_in_html
   - admonition
   - pymdownx.details
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
 
 repo_url: https://github.com/xanderlicious/mkdocs
 repo_name: xanderlicious/mkdocs

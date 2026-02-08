@@ -17,7 +17,7 @@ Phobos is a new build and has become a replacement for [Cuthbert](https://docs.x
 
 **Operating System**
 
-![](images/debian)
+![](images/debian.png)
 
 My operating system of choice is Debian 13
 Current version - 13.3 (trixie)

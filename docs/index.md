@@ -8,9 +8,9 @@ I'm Xander (AKA Alex) and this site will provide you with all the nerdy details 
 
 I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
 
-The previous 8 years of working in this industry have enabled me to build and self-host multiple services popular with many homelabbers.
+Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes aswell as self-host multiple services popular with many homelabbers.
 
-This documentation site runs through various aspects of my homelab and details:
+This site documents various aspects of my homelab and details:
 
     - Devices
     - Networking
@@ -24,6 +24,6 @@ I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try
 
 If you like what you see, please support me and buy me a beer using the link below.
 
-<a href="https://www.buymeacoffee.com/xanderlicious"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer&emoji=🍺&slug=xanderlicious&button_colour=BD5FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00" /></a>
+<a href="https://www.buymeacoffee.com/xanderlicious"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=xanderlicious&button_colour=ff57db&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 ***Thank You!***  

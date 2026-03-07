@@ -21,9 +21,6 @@ This site documents various aspects of my homelab and details:
 
 I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
 
-
-If you like what you see, please support me and buy me a beer using the link below.
-
 <a href="https://www.buymeacoffee.com/xanderlicious"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=xanderlicious&button_colour=ff57db&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 ***Thank You!***  

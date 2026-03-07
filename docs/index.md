@@ -23,4 +23,6 @@ I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try
 
 <a href="https://www.buymeacoffee.com/xanderlicious"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=xanderlicious&button_colour=ff57db&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
+![](images/bmac-qr-code.png)
+
 ***Thank You!***  

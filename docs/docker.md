@@ -8,9 +8,8 @@ Installation of docker within Ubuntu Server is done so by following the instruct
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 
-My servers are either running Ubuntu Server or Debian. Below are links to the official installation instructions for both.
+My servers are running Debian. Below are links to the official installation instructions.
 
-- [Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 - [Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
 
 Once installed, running `docker --version` should then return something similar to the following:  
@@ -21,7 +20,7 @@ Once installed, running `docker --version` should then return something similar 
 
 Before spinning up some docker containers, I need to ensure I have setup my docker networks.
 
-I use 4 docker networks (2 on titan, 1 on phobos & 1 on tethys)
+Below are example of some of the docker networks I have created and the commands used.
 
 ### Titan
 

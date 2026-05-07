@@ -155,16 +155,20 @@ http:
 
 The Pi-Hole's dynamic config file has a "redirectRegex" middleware to replace the URL specified with one that adds /admin onto the end of the URL which the Pi-Hole web interface requires.  This middleware is referenced in each of the pi-hole's dynamic files and the middleware config itself is outlined within the main config dynamic file along with the headers.
 
-Also, to allow traefik to handle the secure connection and not have pihole re-direct from 80 to 443, I have made the following amendments to the pihole.toml file located in /etc/pihole on each of the rasperry pi's:
+Also, to allow traefik to handle the secure connection and not have pi-hole re-direct from 80 to 443, I have amended the following lines in the `pihole.toml` file located in `/etc/pihole` on each Pi:
 
-``` toml
-domain = "subdomain.domain.co.uk" ### CHANGED, default = "pi.hole"
-
-port = "80" ### CHANGED, default = "80o,443os,[::]:80o,[::]:443os"
+``` toml linenums="898"
+[webserver]
+  # On which domain is the web interface served?
+  #
+  # Allowed values are:
+  #     A valid domain
+  domain = "subdomain.domain.co.uk" ### CHANGED, default = "pi.hole"
 ```
-
-This file, for the pi-hole running in docker, is located in the appdata directory
-
+``` toml linenums="964"
+#     A comma-separated list of <[ip_address:]port>
+  port = "80" ### CHANGED, default = "80o,443os,[::]:80o,[::]:443os"
+```
 
 ### Dozzle (Titan)
 

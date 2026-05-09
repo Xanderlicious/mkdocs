@@ -316,6 +316,27 @@ http:
         passHostHeader: true
 ```
 
+### PH-Intercept (Phobos)
+
+``` yaml
+http:
+  routers:
+    ph-intercept:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: ph-intercept
+
+  services:
+    ph-intercept:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.151:4653"
+        passHostHeader: true
+```
+
 ### Unifi (UCG)
 
 ``` yaml

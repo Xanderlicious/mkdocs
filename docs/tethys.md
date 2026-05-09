@@ -1,4 +1,4 @@
-Tethys is a dedicated host to serve [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk)
+Tethys is a dedicated host to serve not only [CheckMK](https://docs.xmsystems.co.uk/monitoring/#checkmk) but a whole bunch of other monitoring tools.
 
 ![](images/tethys.png)
 

@@ -4,6 +4,7 @@ site_url: https://docs.xmsystems.co.uk/
 nav:
   - Welcome: index.md
   - Overview: overview.md
+  - Homelab Infrastructure: homelabinfra.md
   - Network: 
     - Unifi Cloud Gateway Ultra: Unifi Cloud Gateway Ultra.md
     - Unifi USW-Lite-16-PoE: Unifi USW-Lite-16-PoE.md
@@ -97,6 +98,11 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 repo_url: https://github.com/xanderlicious/mkdocs
 repo_name: xanderlicious/mkdocs

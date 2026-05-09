@@ -6,7 +6,7 @@ Its a visualiser for pi-hole and it depicts a space battle where ads being block
 
 https://github.com/m00grin/ph-intercept
 
-!{}(images/ph-intercept-screenshot.png)
+![](images/ph-intercept-screenshot.png)
 
 ### docker-compose.yml
 

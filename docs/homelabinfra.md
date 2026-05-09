@@ -3,222 +3,197 @@
 This diagram shows the overall infrastructure of the homelab.
 
 ```mermaid
+# Homelab Infrastructure
+
+High-level overview of the homelab — network edge, three Docker hosts, and the Traefik-fronted services. Each section below drills into one area.
+
+## 1. High-level overview
+
+```mermaid
+%%{init: {'theme':'dark','flowchart':{'nodeSpacing':55,'rankSpacing':80,'curve':'basis','htmlLabels':true}}}%%
+flowchart LR
+    Internet([🌐 Internet]):::edge
+    CGU[XAN-CGU<br/>UCG Ultra · 10.36.100.1]:::net
+    SWU[USW Upstairs<br/>.10]:::net
+    SWD[USW Downstairs<br/>.11]:::net
+
+    subgraph HOSTS[Docker hosts]
+        direction TB
+        TITAN[TITAN<br/>10.36.100.150<br/>Traefik · Plex · *arrs]:::host
+        PHOBOS[PHOBOS<br/>10.36.100.151<br/>Portainer · Kuma · CF Tunnel]:::host
+        TETHYS[TETHYS<br/>10.36.100.152<br/>Prometheus · Grafana · CheckMK]:::host
+    end
+
+    DNS[(Pi-Hole HA cluster<br/>NCC-1702/1703/1704)]:::dns
+
+    Internet --> CGU
+    CGU --> SWU --> TITAN
+    CGU --> SWD --> PHOBOS
+    SWD --> TETHYS
+    SWU --> DNS
+    HOSTS -. "DNS" .-> DNS
+
+    classDef edge fill:#1e3a5f,stroke:#4f9eff,color:#fff
+    classDef net  fill:#2a4a3a,stroke:#5fbf7f,color:#fff
+    classDef host fill:#3a2a4a,stroke:#a060c0,color:#fff
+    classDef dns  fill:#4a2a2a,stroke:#c06060,color:#fff
+```
+
+## 2. Network, VLANs & Wi-Fi
+
+```mermaid
+%%{init: {'theme':'dark','flowchart':{'nodeSpacing':45,'rankSpacing':60}}}%%
 flowchart TB
-%% =======================
-%% External / Edge
-%% =======================
-Internet(["🌐 Internet<br/>WAN: 178.17.242.63"])
-Admin(["👤 Remote Admin / SSH"])
-CFT["Cloudflare Zero Trust Tunnel<br/>cloudflared on PHOBOS<br/>SSH access only"]
-LAN_Client(["🏠 LAN / VPN client"])
-VPN_Client(["🛰️ Remote VPN client"])
+    CGU[XAN-CGU · UCG Ultra<br/>10.36.100.1]:::net
+    SWU[USW Upstairs · .10]:::net
+    SWD[USW Downstairs · .11]:::net
+    AP1[UAP-AC-LR · .253]:::net
+    AP2[U6-Enterprise · .254]:::net
 
-Admin --> CFT
+    CGU -- "Port 3 · 3+1 GbE" --> SWU
+    CGU -- "Port 2 · 2+1 GbE" --> SWD
+    SWU -- "Port 7" --> AP1
+    SWD -- "Port 7" --> AP2
 
-%% =======================
-%% Network Infrastructure
-%% =======================
-subgraph NET[" 🛡️ Network Infrastructure "]
-direction TB
-CGU["XAN-CGU · UCG Ultra · 10.36.100.1<br/><br/>Port Forwards:<br/>WAN 80 → 10.36.100.150:81 (web-ext)<br/>WAN 443 → 10.36.100.150:444 (websecure-ext)<br/>WAN 25565 → 10.36.100.150:25565 (Minecraft)<br/>WAN 51822 → 10.36.100.2:51822 (PiVPN/Wireguard)"]
-SW_UP["XAN-USW-UPSTAIRS · USW Lite 16 PoE · .10"]
-SW_DN["XAN-USW-DOWNSTAIRS · USW Lite 16 PoE · .11"]
-AP1["UAP-AC-LR · .253"]
-AP2["U6-Enterprise · .254"]
+    subgraph VLANS[VLANs]
+        direction TB
+        V1[VLAN 1 · Core<br/>10.36.100.0/24]
+        V20[VLAN 20 · Servers<br/>10.36.20.0/28]
+        V101[VLAN 101 · Kids<br/>10.36.101.0/24]
+        V102[VLAN 102 · Cameras<br/>10.36.102.0/24]
+        V69[VLAN 69 · VPN<br/>10.69.69.0/24]
+    end
 
-CGU -- "Port 3 · 3+1 GbE" --> SW_UP
-CGU -- "Port 2 · 2+1 GbE" --> SW_DN
-SW_UP -- "Port 7" --> AP1
-SW_DN -- "Port 7" --> AP2
-end
-Internet --> CGU
+    subgraph SSIDS[SSIDs]
+        direction TB
+        S1((XanderNET · WPA2/3))
+        S2((XanderKids · Kids VLAN))
+        S3((XanderNET6 · WPA3 6 GHz))
+    end
 
-%% =======================
-%% VLANs / SSIDs
-%% =======================
-subgraph VLANS[" 🔀 VLANs (DHCP via UCG) & SSIDs "]
-direction TB
-V1["VLAN 1 · XAN-Core · 10.36.100.0/24"]
-V20["VLAN 20 · servers · 10.36.20.0/28"]
-V101["VLAN 101 · Kids · 10.36.101.0/24"]
-V102["VLAN 102 · Cameras · 10.36.102.0/24"]
-V69["VLAN 69 · vpn · 10.69.69.0/24"]
-SSID1(("XanderNET · WPA2/WPA3"))
-SSID2(("XanderKids · WPA2 · Kids VLAN"))
-SSID3(("XanderNET6 · WPA3 · 6GHz"))
-end
-CGU --- V1 & V20 & V101 & V102 & V69
-AP1 -.-> SSID1
-AP2 -.-> SSID1 & SSID2 & SSID3
+    CGU --- VLANS
+    AP1 -.-> S1
+    AP2 -.-> S1 & S2 & S3
 
-%% =======================
-%% Local DNS (Pi-Hole NCC-1702 also hosts PiVPN)
-%% =======================
-subgraph DNSGRP[" 🧱 Local DNS / Ad-blocking (3-node Pi-Hole HA, synced via nebula-sync) "]
-direction LR
-PI1["Pi-Hole NCC-1702<br/>10.36.100.2 · Primary<br/>+ PiVPN/Wireguard :51822"]
-PI2["Pi-Hole NCC-1703<br/>10.36.100.3 (on PHOBOS)"]
-PI3["Pi-Hole NCC-1704<br/>10.36.100.151 (Tertiary)"]
-end
-CGU -- "DHCP DNS" --> DNSGRP
-VPN_Client -. "Wireguard 51822/UDP via UCG" .-> PI1
-PI1 -. "tunnel" .-> LAN_Client
+    classDef net fill:#2a4a3a,stroke:#5fbf7f,color:#fff
+```
 
-%% =======================
-%% TITAN (10.36.100.150) — Traefik host
-%% =======================
-subgraph TITAN[" 🖥️ TITAN — 10.36.100.150 (12 CPU · 64 GiB · ~43 TB) "]
-direction TB
+## 3. External access & ingress
 
-subgraph TRAEFIK_BOX["traefik · 6 entrypoints · 43 routers / 41 services / 10 middlewares"]
-direction TB
-EP_WEB_EXT["web-ext :81 → redirect → websecure-ext"]
-EP_WS_EXT["websecure-ext :444"]
-EP_WEB_INT["web-int :80 → redirect → websecure-int"]
-EP_WS_INT["websecure-int :443"]
-EP_MC["minecraft :25565 (TCP)"]
-EP_METRICS["metrics :8088 (Prometheus scrape)"]
-end
+```mermaid
+%%{init: {'theme':'dark','flowchart':{'nodeSpacing':50,'rankSpacing':70}}}%%
+flowchart LR
+    WAN([🌐 WAN<br/>178.17.242.63]):::edge
+    Admin([👤 Remote Admin]):::edge
+    VPN([🛰️ Wireguard client]):::edge
+    LAN([🏠 LAN client]):::edge
 
-%% External-exposed services (websecure-ext)
-subgraph EXT_SVCS["External (websecure-ext)"]
-T_PLEX["plex"]
-T_SEERR["seerr (overseerr)"]
-T_SONARR_CAL["sonarr-calendar"]
-T_BLOG_XMS["blog-xms"]
-T_BLOG_LENNY["blog-lenny-sal"]
-T_BLOG_STAN["blog-stan-sal"]
-T_DOCS["docs (mkdocs proxy)"]
-end
+    CGU[UCG Ultra]:::net
+    PIVPN[PiVPN<br/>NCC-1702 :51822]:::dns
+    CFT[Cloudflare Tunnel<br/>cloudflared on PHOBOS]:::edge
 
-%% Internal-only services (websecure-int)
-subgraph INT_SVCS["Internal (websecure-int)"]
-T_ARRS["arrs<br/>Sonarr · Radarr · Lidarr"]
-T_TAUTULLI["tautulli"]
-T_NAVIDROME["navidrome (music)"]
-T_SAB["sabnzbd"]
-T_PODGRAB["podgrab"]
-T_HA["home-assistant"]
-T_HP["homepage (dash)"]
-T_GHOST["ghost (blog backend)"]
-T_IT["it-tools"]
-T_PMA["phpmyadmin"]
-T_TMGR["traefik-manager"]
-T_F2B["fail2ban"]
-T_WORKOUT["workout"]
-T_TF["tf · terraform"]
-T_SLZB["slzb"]
-end
+    subgraph TRAEFIK[Traefik on TITAN]
+        direction TB
+        EXT[websecure-ext :444]:::ep
+        INT[websecure-int :443]:::ep
+        MC[minecraft :25565]:::ep
+    end
 
-%% Minecraft passthrough
-T_MC_SVC["minecraft (game server)"]
+    WAN -- "443 → :444" --> EXT
+    WAN -- "80 → :81 → 443" --> EXT
+    WAN -- "25565" --> MC
+    WAN -- "51822/UDP" --> PIVPN
+    Admin -- "SSH only" --> CFT --> TRAEFIK
 
-%% On-host but routed via dynamic file (websecure-int)
-T_PROM["prometheus"]
-T_GRAF["grafana"]
-T_KUMA_DASH["uptime-kuma stack"]
-end
+    LAN -- "DNS" --> PIVPN
+    LAN -- "HTTPS" --> INT
+    VPN -. "via Wireguard" .-> LAN
 
-%% =======================
-%% PHOBOS (10.36.100.151)
-%% =======================
-subgraph PHOBOS[" 🖥️ PHOBOS — 10.36.100.151 (12 CPU · 32 GiB) "]
-direction TB
-PH_PORT["portainer (UI :9443) + agent"]
-PH_CF["cloudflared (SSH tunnel)"]
-PH_KUMA["uptime-kuma :3001"]
-PH_MK["mkdocs-material :8585"]
-PH_MON["monitoring<br/>node-exporter · cAdvisor · dozzle-agent"]
-PH_MOTION["motioneye :8765 (CCTV)"]
-PH_NEB["nebula-sync (Pi-Hole sync)"]
-PH_NGX["nginx :88"]
-PH_PHI["ph-intercept :4653"]
-PH_PI3["pihole NCC-1703"]
-end
+    classDef edge fill:#1e3a5f,stroke:#4f9eff,color:#fff
+    classDef net  fill:#2a4a3a,stroke:#5fbf7f,color:#fff
+    classDef dns  fill:#4a2a2a,stroke:#c06060,color:#fff
+    classDef ep   fill:#2a3a4a,stroke:#60a0c0,color:#fff
+```
 
-%% =======================
-%% TETHYS (10.36.100.152)
-%% =======================
-subgraph TETHYS[" 🖥️ TETHYS — 10.36.100.152 (4 CPU · 16 GiB) "]
-direction TB
-TE_PORT["portainer (UI :9443) + agent"]
-TE_CMK["checkmk :8000/:80"]
-TE_MON["monitoring<br/>Prometheus · Grafana · unpoller<br/>node-exporter · cAdvisor<br/>pihole-exporter · dozzle-agent"]
-end
+## 4. Traefik routing
 
-%% =======================
-%% Switch -> Hosts
-%% =======================
-SW_UP --> TITAN
-SW_DN --> PHOBOS
-SW_DN --> TETHYS
-SW_UP --> PI1
+```mermaid
+%%{init: {'theme':'dark','flowchart':{'nodeSpacing':40,'rankSpacing':60}}}%%
+flowchart LR
+    EXT[websecure-ext :444]:::ep
+    INT[websecure-int :443]:::ep
 
-%% =======================
-%% INGRESS PATHS
-%% =======================
-%% External web traffic
-CGU == "WAN 443 → :444" ==> EP_WS_EXT
-CGU == "WAN 80 → :81" ==> EP_WEB_EXT
-EP_WEB_EXT -. "redirect → HTTPS" .-> EP_WS_EXT
+    subgraph EXTSVC[External services]
+        direction TB
+        E1[plex]
+        E2[overseerr]
+        E3[sonarr-calendar]
+        E4[blog-xms / lenny / stan]
+        E5[docs]
+    end
 
-%% Minecraft
-CGU == "WAN 25565" ==> EP_MC
-EP_MC --> T_MC_SVC
+    subgraph INTSVC[Internal services on TITAN]
+        direction TB
+        I1[*arrs · sonarr · radarr · lidarr]
+        I2[tautulli · navidrome · sabnzbd · podgrab]
+        I3[home-assistant · homepage · ghost]
+        I4[it-tools · phpmyadmin · workout · tf]
+        I5[traefik-manager · fail2ban · slzb]
+        I6[prometheus · grafana]
+    end
 
-%% Internal LAN/VPN access (DNS via Pi-Holes -> Traefik)
-LAN_Client -- "DNS lookup" --> DNSGRP
-LAN_Client == "HTTPS :443" ==> EP_WS_INT
-LAN_Client -. "HTTP :80 (redirect)" .-> EP_WEB_INT
-EP_WEB_INT -. "redirect → HTTPS" .-> EP_WS_INT
+    subgraph DYN[Cross-host · dynamic@file]
+        direction TB
+        D1[Pi-Hole NCC-1702/1703/1704]
+        D2[motioneye · uptime-kuma]
+        D3[portainer TITAN/PHOBOS/TETHYS]
+        D4[checkmk · UCG UI]
+    end
 
-%% Cloudflare Tunnel (SSH only)
-CFT -. "SSH only" .-> PH_CF
-PH_CF -. "ssh" .-> TITAN
-PH_CF -. "ssh" .-> PHOBOS
-PH_CF -. "ssh" .-> TETHYS
+    EXT --> EXTSVC
+    INT --> INTSVC
+    INT -. "dynamic@file" .-> DYN
 
-%% =======================
-%% Traefik -> Backend services
-%% =======================
-EP_WS_EXT --> T_PLEX & T_SEERR & T_SONARR_CAL & T_BLOG_XMS & T_BLOG_LENNY & T_BLOG_STAN & T_DOCS
-EP_WS_INT --> T_ARRS & T_TAUTULLI & T_NAVIDROME & T_SAB & T_PODGRAB & T_HA & T_HP & T_GHOST & T_IT & T_PMA & T_TMGR & T_F2B & T_WORKOUT & T_TF & T_SLZB & T_PROM & T_GRAF
+    classDef ep fill:#2a3a4a,stroke:#60a0c0,color:#fff
+```
 
-%% Cross-host routes via dynamic files (all websecure-int)
-EP_WS_INT -. "dynamic@file" .-> PI1
-EP_WS_INT -. "dynamic@file" .-> PH_PI3
-EP_WS_INT -. "dynamic@file" .-> PI3
-EP_WS_INT -. "dynamic@file" .-> PH_MOTION
-EP_WS_INT -. "dynamic@file" .-> PH_KUMA
-EP_WS_INT -. "dynamic@file" .-> PH_PORT
-EP_WS_INT -. "dynamic@file" .-> TE_CMK
-EP_WS_INT -. "dynamic@file" .-> TE_PORT
-EP_WS_INT -. "dynamic@file" .-> CGU
+## 5. Hosts & containers
 
-%% =======================
-%% Pi-Hole sync + cross-host monitoring
-%% =======================
-PH_PI3 === PI2
-PH_NEB -. "syncs" .-> PI1 & PI2 & PI3
-EP_METRICS -. "scraped by" .-> T_PROM
-T_PROM -. "scrapes" .-> PH_MON & TE_MON
-TE_CMK -. "agents" .-> TITAN
-TE_CMK -. "agents" .-> PHOBOS
+```mermaid
+%%{init: {'theme':'dark','flowchart':{'nodeSpacing':40,'rankSpacing':55}}}%%
+flowchart TB
+    subgraph TITAN[🖥️ TITAN · 10.36.100.150 · 12 CPU / 64 GiB / ~43 TB]
+        direction TB
+        T_TR[traefik]:::ep
+        T_MEDIA[Plex · *arrs · sabnzbd · tautulli · navidrome · podgrab]
+        T_WEB[ghost · blogs · docs · homepage · it-tools · phpmyadmin]
+        T_AUTO[home-assistant · slzb · workout · tf]
+        T_OBS[prometheus · grafana · uptime-kuma stack]
+        T_GAME[minecraft]
+    end
 
-%% =======================
-%% Styling
-%% =======================
-classDef edge fill:#1e3a5f,stroke:#4f9eff,color:#fff
-classDef net fill:#2a4a3a,stroke:#5fbf7f,color:#fff
-classDef host fill:#3a2a4a,stroke:#a060c0,color:#fff
-classDef svc fill:#4a3a2a,stroke:#c08040,color:#fff
-classDef dns fill:#4a2a2a,stroke:#c06060,color:#fff
-classDef ep fill:#2a3a4a,stroke:#60a0c0,color:#fff
+    subgraph PHOBOS[🖥️ PHOBOS · 10.36.100.151 · 12 CPU / 32 GiB]
+        direction TB
+        P_MGMT[portainer · cloudflared]
+        P_DNS[pihole NCC-1703 · nebula-sync]
+        P_OBS[uptime-kuma · node-exporter · cAdvisor · dozzle-agent]
+        P_DOCS[mkdocs-material]
+        P_CCTV[motioneye]
+        P_NET[nginx · ph-intercept]
+    end
 
-class Internet,CFT,Admin,LAN_Client,VPN_Client edge
-class CGU,SW_UP,SW_DN,AP1,AP2 net
-class TITAN,PHOBOS,TETHYS host
-class EP_WEB_EXT,EP_WS_EXT,EP_WEB_INT,EP_WS_INT,EP_MC,EP_METRICS ep
-class T_PLEX,T_SEERR,T_SONARR_CAL,T_BLOG_XMS,T_BLOG_LENNY,T_BLOG_STAN,T_DOCS,T_ARRS,T_TAUTULLI,T_NAVIDROME,T_SAB,T_PODGRAB,T_HA,T_HP,T_GHOST,T_IT,T_PMA,T_TMGR,T_F2B,T_WORKOUT,T_TF,T_SLZB,T_PROM,T_GRAF,T_KUMA_DASH,T_MC_SVC,PH_PORT,PH_CF,PH_KUMA,PH_MK,PH_MON,PH_MOTION,PH_NEB,PH_NGX,PH_PHI,PH_PI3,TE_PORT,TE_CMK,TE_MON svc
-class PI1,PI2,PI3 dns
+    subgraph TETHYS[🖥️ TETHYS · 10.36.100.152 · 4 CPU / 16 GiB]
+        direction TB
+        TE_MGMT[portainer]
+        TE_MON[checkmk · prometheus · grafana · unpoller<br/>node-exporter · cAdvisor · pihole-exporter · dozzle-agent]
+    end
+
+    P_DNS === PI2[Pi-Hole NCC-1702 on Pi]:::dns
+    P_DNS -. "nebula-sync" .-> PI2
+    TE_MON -. "scrapes" .-> TITAN & PHOBOS
+    TE_MGMT -. "checkmk agents" .-> TITAN & PHOBOS
+
+    classDef ep  fill:#2a3a4a,stroke:#60a0c0,color:#fff
+    classDef dns fill:#4a2a2a,stroke:#c06060,color:#fff
+```
 ```

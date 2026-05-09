@@ -4,6 +4,8 @@ Simple container monitoring and logging.
 
 Dozzle allows you to view the logfiles for all of your containers in one place.
 
+I have incorporated dozzle into the monitoring docker-compose stacks on each host but before I used to run dozzle in its own compose file - these are detailed below
+
 ### Titan
 
 ```yaml

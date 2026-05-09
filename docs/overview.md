@@ -12,7 +12,7 @@ Other pages on this site will go into lots of detail of the different servers, t
 I have an FTTP internet connection provided by Zen here in the UK.  This is provided over the "City Fibre" full fibre network.
 
 This provides me with a symmetrical gigabit connection.  
-My Unifi Cloud Gateway Ultra is able to plug directly into the ONT.
+My ONT plugs directly into the WAN port on my UCG Ultra where a PPPoE connection is configured.
 
 
 ### DNS & VPN

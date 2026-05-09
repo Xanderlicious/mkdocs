@@ -48,5 +48,5 @@ services:
       - "4653:4653"
 ```
 
-This of course runs via traefik so it can be accessed using SSL/HTTPS.  Its dynamic file can be located [here](https://docs.xmsystems.co.uk/dynamic/#PH-Intercept-phobos) 
+This of course runs via traefik so it can be accessed using SSL/HTTPS.  Its dynamic file can be located [here](https://docs.xmsystems.co.uk/dynamic/#ph-intercept-phobos) 
 

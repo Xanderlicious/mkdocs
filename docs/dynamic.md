@@ -208,10 +208,10 @@ http:
     prom:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.150:9090"
+          - url: "http://10.36.100.152:9090"
         passHostHeader: true
 ```
-### Grafana (Titan)
+### Grafana (Tethys)
 
 ```yaml
 http:
@@ -228,7 +228,7 @@ http:
     graphs:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.150:3000"
+          - url: "http://10.36.100.152:3000"
         passHostHeader: true
 ```
 

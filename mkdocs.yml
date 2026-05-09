@@ -82,14 +82,6 @@ extra:
       make the documentation better.
 
 markdown_extensions:
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
   - attr_list
   - md_in_html
   - admonition
@@ -97,6 +89,14 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -106,3 +106,9 @@ markdown_extensions:
 repo_url: https://github.com/xanderlicious/mkdocs
 repo_name: xanderlicious/mkdocs
 
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/javascripts/mermaid-init.js
+
+extra_css:
+  - assets/stylesheets/extra.css

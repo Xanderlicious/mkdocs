@@ -1,4 +1,6 @@
-![](images/docker.png)
+# Docker
+
+![whale](images/docker.png)
 
 I like to host all of my services using docker.
 
@@ -14,7 +16,7 @@ My servers are running Debian. Below are links to the official installation inst
 
 Once installed, running `docker --version` should then return something similar to the following:  
 
-![](<images/docker version.png>)  
+![version](<images/docker version.png>)  
 
 ## Network Configuration
 
@@ -41,7 +43,7 @@ This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring
 
 The "phobos-network" docker network has been created for all of the containers running on phobos  
 Just like Titan containers, they have all been provided with static IP Addresses.
-As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.   
+As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
 
 ```bash
 docker network create --subnet 172.20.0.0/24 phobos-network
@@ -56,6 +58,7 @@ Similally with Phobos, I also have created a docker network for containers runni
 ```bash
 docker network create --subnet 172.20.0.0/24 tethys-network
 ```
+
 This creates a /24 subnet named ***tethys-network***  
 
 ## Docker Commands
@@ -80,17 +83,19 @@ docker compose pull; docker compose up -d --force-recreate
 
 This will ensure the container is re-created.
 
-## Compose Files
+## Compose Files & Appdata
 
-All of my compose files reside in the following locations
+All of my compose files ans the containers appdata reside in the following locations
 
 ### Titan
 
+
 ```sh
-/ssd/docker-compose/
+/ssd/docker/docker-compose/
+.
 ├── arrs
 │   └── docker-compose.yml
-├── dozzle
+├── fail2ban
 │   └── docker-compose.yml
 ├── ghost
 │   └── docker-compose.yml
@@ -98,13 +103,13 @@ All of my compose files reside in the following locations
 │   └── docker-compose.yml
 ├── homepage
 │   └── docker-compose.yml
-├── homers
-│   └── docker-compose.yml
 ├── it-tools
 │   └── docker-compose.yml
-├── navidrome
+├── minecraft
 │   └── docker-compose.yml
-├── overseerr
+├── monitoring
+│   └── docker-compose.yml
+├── navidrome
 │   └── docker-compose.yml
 ├── phpmyadmin
 │   └── docker-compose.yml
@@ -112,31 +117,58 @@ All of my compose files reside in the following locations
 │   └── docker-compose.yml
 ├── podgrab
 │   └── docker-compose.yml
-├── ppe
-│   └── docker-compose.yml
 ├── sabnzbd
 │   └── docker-compose.yml
-└── tautulli
+├── seerr
+│   └── docker-compose.yml
+├── tautulli
+│   └── docker-compose.yml
+├── traefik
+│   └── docker-compose.yml
+└── traefik-manager
     └── docker-compose.yml
 
-15 directories, 15 files
+17 directories, 17 files
+```
+
+```sh
+/ssd/docker/appdata/
+.
+├── dozzle
+├── fail2ban
+├── ghost
+├── ha
+├── homepage
+├── homers
+├── Lidarr
+├── minecraft
+├── Navidrome
+├── overseerr
+├── phpmyadmin
+├── Plex
+├── plex-monitoring-stack
+├── podgrab
+├── portainer
+├── Radarr
+├── Readarr
+├── SABnzbd
+├── seerr
+├── Sonarr
+├── Tautulli
+├── traefik
+└── traefik-manager
+
+24 directories
 ```
 
 ### Phobos
 
 ```sh
 /ssd/docker/docker-compose/
-├── checkmk
-│   └── docker-compose.yml
+.
 ├── cloudflare
 │   └── docker-compose.yml
-├── dockpeek
-│   └── docker-compose.yml
 ├── dozzle-agent
-│   └── docker-compose.yml
-├── frigate
-│   └── docker-compose.yml
-├── headscale
 │   └── docker-compose.yml
 ├── kuma
 │   └── docker-compose.yml
@@ -150,208 +182,62 @@ All of my compose files reside in the following locations
 │   └── docker-compose.yml
 ├── nginx
 │   └── docker-compose.yml
+├── ph-intercept
+│   └── docker-compose.yml
 ├── pihole
 │   └── docker-compose.yml
-├── portainer
-│   └── docker-compose.yml
-├── ubuntu
-│   └── docker-compose.yml
-├── vaultwarden
-│   └── docker-compose.yml
-└── wazuh-agent
-    ├── config
-    │   └── wazuh-agent-conf
+└── portainer
     └── docker-compose.yml
 
-10 directories, 11 files
+11 directories, 11 files
+```
+
+```sh
+/ssd/docker/appdata/
+.
+├── kumav2
+├── motioneye
+├── nginx
+├── ph-intercept
+├── pihole
+└── portainer_data
+
+7 directories
 ```
 
 ### Tethys
 
 ```sh
 /home/xander/docker/docker-compose/
+.
 ├── checkmk
 │   └── docker-compose.yml
 ├── dozzle-agent
 │   └── docker-compose.yml
+├── monitoring
+│   └── docker-compose.yml
 └── portainer
     └── docker-compose.yml
 
-3 directories, 3 files
+4 directories, 4 files
 ```
-
-## Appdata
-
-All of my containers have their data stored in the following locations (which are referenced in their respective compose files)
-
-### Titan
-
-```sh
-/ssd/docker/appdata/
-├── dozzle
-│   └── data
-├── ghost
-│   ├── db
-│   │   ├── db-default
-│   │   ├── db-lenny-sal
-│   │   ├── db-stan-sal
-│   │   └── db-xms
-│   ├── default
-│   ├── lenny-sal
-│   ├── stan-sal
-│   └── xms
-├── ha
-│   └── config
-├── homepage
-│   ├── app
-│   ├── bookmarks.yaml
-│   ├── custom.css
-│   ├── custom.js
-│   ├── docker.yaml
-│   ├── icons
-│   ├── images
-│   ├── kubernetes.yaml
-│   ├── logs
-│   ├── proxmox.yaml
-│   ├── services.yaml
-│   ├── settings.yaml
-│   └── widgets.yaml
-├── homers
-│   └── config.toml
-├── Lidarr
-├── monitoring
-│   ├── docker-compose.yml
-│   ├── grafana
-│   │   └── grafana-data
-│   └── prometheus
-│       └── prometheus.yml
-├── Navidrome
-│   ├── cache
-│   │   ├── backgrounds
-│   │   ├── images
-│   ├── navidrome.db
-│   ├── navidrome.db-shm
-│   ├── navidrome.db-wal
-│   └── plugins
-├── overseerr
-│   └── config
-│       ├── db
-│       ├── logs
-│       └── settings.json
-├── phpmyadmin
-│   ├── config.user.inc.php
-│   └── custom
-│       └── phpmyadmin
-│           └── theme
-├── Plex
-│   └── Library
-│       └── Application Support
-│           └── Plex Media Server
-├── podgrab
-│   └── config
-│       ├── backups
-│       └── podgrab.db
-├── portainer
-│   └── data
-├── Radarr
-├── Readarr
-├── Sonarr
-├── Tautulli
-├── traefik
-│   ├── data
-│   │   ├── acme.json
-│   │   ├── traefik.yml
-│   │   └── traefik.yml.bak
-│   ├── docker-compose.yml
-│   ├── dynamic
-│   │   ├── app-blog-lenny-sal.yml
-│   │   ├── app-blog-stan-sal.yml
-│   │   ├── app-blog-xms.yml
-│   │   ├── app-cctv.yml
-│   │   ├── app-cmk.yml
-│   │   ├── app-docs.yml
-│   │   ├── app-dozzle.yml
-│   │   ├── app-graphs.yml
-│   │   ├── app-kuma.yml
-│   │   ├── app-phpmyadmin.yml
-│   │   ├── app-pihole1.yml
-│   │   ├── app-pihole2.yml
-│   │   ├── app-pihole3.yml
-│   │   ├── app-portainer-phobos.yml
-│   │   ├── app-portainer-tethys.yml
-│   │   ├── app-prom.yml
-│   │   ├── app-ubuntu.yml
-│   │   ├── app-unifi.yml
-│   │   ├── app-vaultwarden.yml
-│   │   ├── app-wazuh.yml
-│   │   ├── app-workout.yml
-│   │   ├── config.yml
-│   │   └── tls.yml
-│   └── logs
-│       ├── access.log
-│       └── traefik.log
-└── wazuh
-    └── wazuh-docker
-```
-
-### Phobos
-
-```sh
-/ssd/docker/appdata/
-├── frigate
-│   └── config
-├── headscale
-│   ├── config
-│   │   └── config.yaml
-│   └── data
-├── kumav2
-│   ├── db-config.json
-│   ├── docker-tls
-│   ├── kuma.db
-│   ├── kuma.db-shm
-│   ├── kuma.db-wal
-│   ├── screenshots
-│   └── upload
-│       ├── logo1.png
-│       └── logo2.png
-├── motioneye
-│   ├── etc
-│   │   ├── camera-1.conf
-│   │   ├── camera-2.conf
-│   │   ├── motion.conf
-│   │   ├── motioneye.conf
-│   │   ├── prefs.json
-│   │   └── tasks.pickle
-│   └── shared
-│       └── recordings
-├── nginx
-│   ├── bicycle_crunches.gif
-│   ├── crunch_kicks.gif
-│   ├── done.gif
-│   ├── flutter_kicks.gif
-│   ├── index.html
-│   ├── jumping_jacks.gif
-│   ├── knee_sit_ups.gif
-│   ├── plank.gif
-│   └── rest.gif
-├── pihole
-│   ├── etc-dnsmasq.d
-│   └── etc-pihole
-├── portainer_data
-└── vaultwarden
-    └── data
-```
-
-### Tethys
 
 ```sh
 ~/docker/appdata/
+.
 ├── checkmk
 │   ├── cmkxms
+│   ├── notifications
 │   └── plugins
-│       └── mk_docker.py
-├── portainer
-└── portainer_data
+├── monitoring
+│   ├── grafana
+│   ├── pihole-exporter
+│   ├── prometheus
+│   └── unpoller
+└── portainer
+    └── portainer_data
+
+11 directories
 ```
 
 Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.

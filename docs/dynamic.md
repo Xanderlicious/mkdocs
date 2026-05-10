@@ -1,3 +1,4 @@
+# Dynamic Files for Traefik
 
 The Dynamic Files for Traefik allow you to configure **Routers**, **Services**, **Middlewares** & **Certificate Options** all while Traefik is running and without the need for any restarts.
 
@@ -165,6 +166,7 @@ Also, to allow traefik to handle the secure connection and not have pi-hole re-d
   #     A valid domain
   domain = "subdomain.domain.co.uk" ### CHANGED, default = "pi.hole"
 ```
+
 ``` toml linenums="964"
 #     A comma-separated list of <[ip_address:]port>
   port = "80" ### CHANGED, default = "80o,443os,[::]:80o,[::]:443os"
@@ -191,7 +193,7 @@ http:
         passHostHeader: true
 ```
 
-### Prometheus (Titan)
+### Prometheus (Tethys)
 
 ```yaml
 http:
@@ -211,6 +213,7 @@ http:
           - url: "http://10.36.100.152:9090"
         passHostHeader: true
 ```
+
 ### Grafana (Tethys)
 
 ```yaml
@@ -357,6 +360,7 @@ http:
           - url: "https://10.36.100.1:443"
         passHostHeader: true
 ```
+
 !!!note
     Unifi's Web UI listens on 443 so the URL needs to be HTTPS
 

@@ -4,7 +4,7 @@ I like to host all of my services using docker.
 
 ## Installation
 
-Installation of docker within Ubuntu Server is done so by following the instructions on the official docker documentation site  
+Installation of docker is done so by following the instructions on the official docker documentation site  
 
 - [Docker Docs](https://docs.docker.com/engine/install/)  
 

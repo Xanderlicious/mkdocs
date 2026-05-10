@@ -195,15 +195,13 @@ Grafana will essentially allow me to create some very pretty looking graphs.
 
 As you can see from the prometheus.yml file detailed above, I have targets configured for "traefik", "node_exporter" & "cadvisor" (on both titan & phobos) There are targets configured for some plex collectors (homers & ppe) and I even have collectors for Pi-Hole & Unifi (unpoller / pihole-exporter)
 
-## Monitoring - Phobos & Titan
+## Monitoring Stack - Phobos & Titan
 
 As alluded to above, node_exporter & cadvisor have been installed onto Phobos & Titan which will allow prometheus on Tethys to collect metrics (config required (and detailed above) in prometheus.yml to collect/obtain) This will then allow me to reference these nodes in Grafana so graphs can be created.
 
 This is very simply done with a docker compose stack as detailed below:
 
 ### Phobos
-
-### docker-compose.yml
 
 ```yaml
 networks:

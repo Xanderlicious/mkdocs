@@ -1,4 +1,4 @@
-# Dynamic Files for Traefik
+# Traefik - Dynamic Files
 
 The Dynamic Files for Traefik allow you to configure **Routers**, **Services**, **Middlewares** & **Certificate Options** all while Traefik is running and without the need for any restarts.
 

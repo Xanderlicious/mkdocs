@@ -1,12 +1,12 @@
 # Welcome
 
-Welcome to the official documentation site for XM Systems
+Welcome to XM Systems
 
-![](images/Brainiac.jpg)
+![](images/xmsystems_logo.svg)
 
-I'm Xander (AKA Alex) and this site will provide you with all the nerdy details of my homelab.
+This site will provide you with all the nerdy details of my homelab.
 
-I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
+My name is Alex and by day I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
 
 Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes aswell as self-host multiple services popular with many homelabbers.
 

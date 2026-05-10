@@ -85,7 +85,7 @@ This will ensure the container is re-created.
 
 ## Compose Files & Appdata
 
-All of my compose files ans the containers appdata reside in the following locations
+All of my compose files and the containers appdata reside in the following locations
 
 ### Titan
 

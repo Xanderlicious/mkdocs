@@ -12,10 +12,9 @@ This site documents various aspects of my homelab and details:
 
     - Devices
     - Networking
-    - Docker
-    - Reverse Proxy
-    - Applications and/or Services
-
+    - Docker Install/Setup
+    - Reverse Proxy/Load Balancing
+    - Applications/Services/Containers
 
 I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
 

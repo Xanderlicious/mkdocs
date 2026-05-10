@@ -1,12 +1,10 @@
-# Welcome
-
-Welcome to XM Systems
+# Welcome to XM Systems
 
 ![](images/xmsystems_logo.svg)
 
 This site will provide you with all the nerdy details of my homelab.
 
-My name is Alex and by day I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
+My name is Alex and I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
 
 Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes aswell as self-host multiple services popular with many homelabbers.
 

@@ -4,7 +4,7 @@ PH-Intercept is a fun little application that I have recently come across.
 
 Its a visualiser for pi-hole and it depicts a space battle where ads being blocked are shot at and destroyed.
 
-https://github.com/m00grin/ph-intercept
+[GitHub - PH-Intercept](https://github.com/m00grin/ph-intercept)
 
 ![](images/ph-intercept-screenshot.png)
 

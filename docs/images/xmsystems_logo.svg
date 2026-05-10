@@ -1,8 +1,8 @@
-<svg width="680" viewBox="0 0 680 420" role="img" xmlns="http://www.w3.org/2000/svg">
+<svg width="680" viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg">
   <title>XMSystems logo</title>
   <desc>XMSystems homelab logo featuring a geometric X mark in purple with neon green circuit trace accents, neon green XM wordmark, purple SYSTEMS text, and white tagline</desc>
 
-  <g transform="translate(150, 210)">
+  <g transform="translate(150, 150)">
     <line x1="-51" y1="-51" x2="-38" y2="-38" stroke="#39FF14" stroke-width="1.2" stroke-dasharray="2 3"/>
     <line x1="51"  y1="-51" x2="38"  y2="-38" stroke="#39FF14" stroke-width="1.2" stroke-dasharray="2 3"/>
     <line x1="-51" y1="51"  x2="-38" y2="38"  stroke="#39FF14" stroke-width="1.2" stroke-dasharray="2 3"/>
@@ -28,9 +28,9 @@
     <circle cx="55"  cy="55"  r="4" fill="#39FF14"/>
   </g>
 
-  <text x="270" y="190" font-family="'Courier New', monospace" font-size="72" font-weight="700" letter-spacing="-2" fill="#39FF14">XM</text>
-  <text x="272" y="240" font-family="'Courier New', monospace" font-size="36" font-weight="400" letter-spacing="6" fill="#7F77DD">SYSTEMS</text>
-  <line x1="270" y1="258" x2="580" y2="258" stroke="#39FF14" stroke-width="0.75"/>
-  <text x="272" y="278" font-family="'Courier New', monospace" font-size="13" letter-spacing="2" fill="#ffffff">self-hosted infrastructure</text>
+  <text x="270" y="100" font-family="'Courier New', monospace" font-size="72" font-weight="700" letter-spacing="-2" fill="#39FF14">XM</text>
+  <text x="272" y="150" font-family="'Courier New', monospace" font-size="36" font-weight="400" letter-spacing="6" fill="#7F77DD">SYSTEMS</text>
+  <line x1="270" y1="168" x2="580" y2="168" stroke="#39FF14" stroke-width="0.75"/>
+  <text x="272" y="188" font-family="'Courier New', monospace" font-size="13" letter-spacing="2" fill="#ffffff">self-hosted infrastructure</text>
 
 </svg>

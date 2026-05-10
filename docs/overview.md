@@ -1,11 +1,16 @@
-## Overview
+# Overview
 
 To give you an idea of what my setup looks like, this page will explain at a high level what sort of network I have and the different pieces of hardware I'm running.
 
+## Infrastructure
+
+The following site will provide you with a diagram of how my infrastructure and networking looks:
+
+[Infra Diagram](https://infrastructure.xmsystems.co.uk)
+
 Other pages on this site will go into lots of detail of the different servers, their OS's, the applications i'm running and my networking setup.
 
-
-### Internet
+## Internet
 
 ![](images/cityfibretransparent.png)
 
@@ -14,8 +19,7 @@ I have an FTTP internet connection provided by Zen here in the UK.  This is prov
 This provides me with a symmetrical gigabit connection.  
 My ONT plugs directly into the WAN port on my UCG Ultra where a PPPoE connection is configured.
 
-
-### DNS & VPN
+## DNS & VPN
 
 ![](images/pihole.png)
 
@@ -25,8 +29,7 @@ The primary Pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" pr
 
 I have 2 main servers and an assortment of PC's, mobile phones, laptops and a gaming console.
 
-
-### Applications
+## Applications
 
 ![](images/docker.png)
 
@@ -35,7 +38,7 @@ Pretty much everything I host on my 2 main servers (including this site), runs i
 
 All written and configured using docker compose.
 
-### Future Plans
+## Future Plans
 
 I do have some other, more powerful, hardware waiting to be deployed and I have plans to upgrade some of my existing networking gear.
 
@@ -44,4 +47,3 @@ For example, the Unifi Cloud Gateway Ultra is good and certainly performs better
 There are house improvements and/or a house move on the horizon which will allow for my expansion plans to go into overdrive.  
 
 I plan on blogging the whole thing as and when it happens.
-

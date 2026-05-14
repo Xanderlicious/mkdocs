@@ -7,7 +7,7 @@ The published sites are referenced from within the documentation itself and are 
 - 📘 **Main docs:** <https://docs.xmsystems.co.uk>
 - 🖥️ **Infrastructure:** <https://infrastructure.xmsystems.co.uk>
 
-The documentation walks through the Xanderlicious homelab — the hardware and devices used, how they fit together, and the `docker-compose` definitions that run the various applications hosted in the lab.
+The documentation walks through the XMSystems homelab — the hardware and devices used, how they fit together, and the `docker-compose` definitions that run the various applications hosted in the lab.
 
 ## What's in this repo
 

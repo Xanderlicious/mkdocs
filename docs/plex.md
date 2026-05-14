@@ -20,9 +20,7 @@ services:
     volumes:
       - /ssd/docker/appdata/Plex:/config
       - /megaraid/mediastore/Movies:/movies:ro
-      - /megaraid/mediastore/StandUp:/standup:ro
       - /megaraid/mediastore/TV:/tv:ro
-      - /megaraid/mediastore/Formula1:/F1:ro
     networks:
       default:
         ipv4_address: 172.19.0.100
@@ -36,8 +34,6 @@ services:
       - VERSION=docker
       - ADVERTISE_IP=https://subdomain.domain.co.uk:443
     ports:
-      - 32400:32400/tcp
-      - 32469:32469/tcp
       - 1900:1900/udp
       - 32410:32410/udp
       - 32412:32412/udp
@@ -46,10 +42,12 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.plex.loadbalancer.server.port=32400
+      - traefik.http.services.plex.loadbalancer.server.scheme=http
       - traefik.http.routers.plex.rule=Host(`subdomain.domain.co.uk`)
       - traefik.http.routers.plex.entrypoints=websecure-ext
       - traefik.http.routers.plex.tls=true
       - traefik.http.routers.plex.tls.certresolver=production
       - traefik.http.routers.plex.tls.domains[0].main=domain.co.uk
       - traefik.http.routers.plex.tls.domains[0].sans=*.domain.co.uk
+      - traefik.http.routers.plex.service=plex
 ```

@@ -1,6 +1,6 @@
 # MySQL Database
 
-![mysql-logo](images/mysql.png)
+![mysql-logo](images/mysql.webp)
 
 MySQL is used as the database of choice for a number of containers.
 

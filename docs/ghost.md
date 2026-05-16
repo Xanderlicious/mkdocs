@@ -5,7 +5,7 @@
 Ghost is an open source blog & newsletter platform
 
 I currently have my blog site and my son has his car photography site.  There is a 3rd instance but this is a WIP.
-Each ghost instance has its own database which is setup in MySQL.  This is a separate container and is detailed here
+Each ghost instance has its own database which is setup in MySQL. 
 
 ## docker-compose.yml
 

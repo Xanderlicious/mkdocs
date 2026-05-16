@@ -30,6 +30,7 @@ nav:
     - Homepage: homepage.md
     - Home Assistant: ha.md
     - Motioneye: motioneye.md
+    - MySQL: mysql.md
     - Ghost: ghost.md
     - phpMyAdmin: phpmyadmin.md
     - NCC-1704: NCC-1704.md

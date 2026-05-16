@@ -1,4 +1,6 @@
-![](images/dozzle.png)
+# Dozzle
+
+![dozzle-logo](images/dozzle.png)
 
 Simple container monitoring and logging.
 
@@ -6,7 +8,7 @@ Dozzle allows you to view the logfiles for all of your containers in one place.
 
 I have incorporated dozzle into the monitoring docker-compose stacks on each host but before I used to run dozzle in its own compose file - these are detailed below
 
-### Titan
+## Titan
 
 ```yaml
 networks:
@@ -34,7 +36,8 @@ services:
       - DOZZLE_HOSTNAME=Titan
     restart: always
 ```
-### Phobos
+
+## Phobos
 
 ```yaml
 networks:
@@ -59,7 +62,7 @@ services:
     restart: always
 ```
 
-### Tethys
+## Tethys
 
 ```yaml
 networks:
@@ -88,4 +91,4 @@ services:
 
 For dozzle, I have selected to create a dynamic file rather than use Traefik labels despite it being installed on Titan
 
-This Dynamic File can be found [here](https://docs.xmsystems.co.uk/dynamic/#dozzle-titan)
+This Dynamic File can be found here [dozzle-titan](https://docs.xmsystems.co.uk/dynamic/#dozzle-titan)

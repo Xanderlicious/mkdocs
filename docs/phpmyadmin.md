@@ -1,13 +1,14 @@
+# phpMyAdmin
 
-![](images/phpmyadmin-resized.png)
+![phpMyAdmin-logo](images/phpmyadmin-resized.png)
 
 phpMyAdmin is software that enables you to administer your MySQL databases within a browser.
 
 You can use phpMyAdmin to perform most administration tasks, including creating a database, running queries, and adding user accounts.  All from the comfort of a GUI
 
-I have set this up to give me easy administrative access to the databases used for the sites hosted using [ghost](https://docs.xmsystems.co.uk/ghost/)
+I have set this up primarily to give me easy administrative access to the databases used for the sites hosted using [ghost](https://docs.xmsystems.co.uk/ghost/)
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -20,7 +21,7 @@ services:
     image: phpmyadmin:latest
     container_name: phpmyadmin
     environment:
-      - PMA_HOSTS=ghost-db-xms,ghost-db-stan-sal,host-db-lenny-sal
+      - PMA_HOSTS=titan-mysql-db
     restart: always
     networks:
       default:
@@ -33,9 +34,8 @@ services:
       - /ssd/docker/appdata/phpmyadmin/custom/phpmyadmin/theme/:/www/themes/theme/
 ```
 
-### Dynamic File
+## Dynamic File
 
 Even though this is hosted on Titan, I have opted to setup a dynamic file rather than mess around with labels
 
-This file is located [here](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-titan)
-
+This file is located here [phpmyadmin-titan](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-titan)

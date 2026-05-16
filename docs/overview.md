@@ -12,7 +12,7 @@ Other pages on this site will go into lots of detail of the different servers, t
 
 ## Internet
 
-![](images/cityfibretransparent.png)
+![cityfibre-logo](images/cityfibretransparent.png)
 
 I have an FTTP internet connection provided by Zen here in the UK.  This is provided over the "City Fibre" full fibre network.
 
@@ -21,7 +21,7 @@ My ONT plugs directly into the WAN port on my UCG Ultra where a PPPoE connection
 
 ## DNS & VPN
 
-![](images/pihole.png)
+![pihole & PiVPN Logos](images/pihole.png)
 
 I am currently running two raspberry Pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are both kept in sync with [nebula-sync](https://github.com/mattwebbio/nebula-sync).
 
@@ -31,7 +31,7 @@ I have 2 main servers and an assortment of PC's, mobile phones, laptops and a ga
 
 ## Applications
 
-![](images/docker.png)
+![docker-logo](images/docker.png)
 
 Docker.....  
 Pretty much everything I host on my 2 main servers (including this site), runs in docker.  

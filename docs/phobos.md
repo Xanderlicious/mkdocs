@@ -10,6 +10,7 @@ Phobos is a new build and has become a replacement for [Cuthbert](https://docs.x
 - Asus Pro q570m-c Motherboard
 - Intel 10th Gen i5-10400 CPU
 - 32GB DDR4 RAM (4 x 8GB)
+- NVIDIA RTX 4000 SFF Ada Generation Graphics Card
 - 1 X 1TB WD Black M.2 2280 NVMe
 - 4 X 8TB WD Red drives
 - 1 X 4TB WD Red drive

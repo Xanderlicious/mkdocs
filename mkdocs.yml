@@ -36,6 +36,8 @@ nav:
     - NCC-1704: NCC-1704.md
     - Nebula-Sync: nebula-sync.md
     - PH-Intercept: ph-intercept.md
+    - Apache Guacamole: guacamole.md
+    - Firefly III: firefly.md
   - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
     - CheckMK: checkmk.md

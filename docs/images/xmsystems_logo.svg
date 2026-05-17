@@ -1,46 +1,78 @@
-<svg width="680" viewBox="0 0 680 300" role="img" xmlns="http://www.w3.org/2000/svg">
-  <title>XMSystems logo</title>
-  <desc>XMSystems homelab logo using system monospace font stack</desc>
+<svg width="680" viewBox="0 0 680 200" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>XMSystems logo — rack stack 3D</title>
+  <desc>Server rack mark with isometric 3D depth, 1U slots, status LEDs and XM Systems wordmark</desc>
 
-  <g transform="translate(150, 120)">
-    <line x1="-51" y1="-51" x2="-38" y2="-38" stroke="#39FF14" stroke-width="1.2" stroke-dasharray="2 3"/>
-    <line x1="51"  y1="-51" x2="38"  y2="-38" stroke="#39FF14" stroke-width="1.2" stroke-dasharray="2 3"/>
-    <line x1="-51" y1="51"  x2="-38" y2="38"  stroke="#FF10F0" stroke-width="1.2" stroke-dasharray="2 3"/>
-    <line x1="51"  y1="51"  x2="38"  y2="38"  stroke="#FF10F0" stroke-width="1.2" stroke-dasharray="2 3"/>
-    <line x1="-72" y1="0"  x2="-52" y2="0"  stroke="#888780" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <line x1="52"  y1="0"  x2="72"  y2="0"  stroke="#888780" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <line x1="0"   y1="-72" x2="0"  y2="-52" stroke="#888780" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <line x1="0"   y1="52"  x2="0"  y2="72"  stroke="#888780" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <circle cx="0" cy="0" r="52" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
-    <polygon points="-8,-8 -36,-36 -28,-44 0,-16" fill="#534AB7"/>
-    <polygon points="8,-8 36,-36 28,-44 0,-16" fill="#534AB7"/>
-    <polygon points="-8,8 -36,36 -28,44 0,16" fill="#534AB7"/>
-    <polygon points="8,8 36,36 28,44 0,16" fill="#534AB7"/>
-    <rect x="-11" y="-11" width="22" height="22" rx="3" fill="#7F77DD"/>
-    <rect x="-4" y="-4" width="8" height="8" rx="1" fill="#FF10F0"/>
-    <circle cx="-72" cy="0"  r="4" fill="#888780"/>
-    <circle cx="72"  cy="0"  r="4" fill="#888780"/>
-    <circle cx="0"  cy="-72" r="4" fill="#888780"/>
-    <circle cx="0"  cy="72"  r="4" fill="#888780"/>
-    <circle cx="-55" cy="-55" r="4" fill="#39FF14"/>
-    <circle cx="55"  cy="-55" r="4" fill="#39FF14"/>
-    <circle cx="-55" cy="55"  r="4" fill="#FF10F0"/>
-    <circle cx="55"  cy="55"  r="4" fill="#FF10F0"/>
-  </g>
+  <!-- Top face of chassis -->
+  <polygon points="28,20 42,12 162,12 148,20" fill="#2a2a3e" stroke="#444466" stroke-width="0.8"/>
 
-  <text x="270" y="88" font-family="ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Liberation Mono', Menlo, Monaco, 'Courier New', monospace"
-        font-size="72" font-weight="500" letter-spacing="-2"
-        fill="none" stroke="#ffffff" stroke-width="1.5"
-        stroke-linejoin="round" stroke-linecap="round">XM</text>
-  <text x="270" y="88" font-family="ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Liberation Mono', Menlo, Monaco, 'Courier New', monospace"
-        font-size="72" font-weight="500" letter-spacing="-2"
-        fill="#39FF14" stroke="#39FF14" stroke-width="1.5"
-        stroke-linejoin="round" stroke-linecap="round">XM</text>
+  <!-- Front face base fill -->
+  <rect x="28" y="20" width="120" height="130" fill="#0c0c18"/>
 
-  <text x="272" y="140" font-family="ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Liberation Mono', Menlo, Monaco, 'Courier New', monospace"
-        font-size="36" font-weight="400" letter-spacing="6" fill="#7F77DD">SYSTEMS</text>
-  <line x1="270" y1="158" x2="580" y2="158" stroke="#FF10F0" stroke-width="0.75"/>
-  <text x="272" y="178" font-family="ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Liberation Mono', Menlo, Monaco, 'Courier New', monospace"
-        font-size="13" letter-spacing="2" fill="#ffffff">self-hosted infrastructure</text>
+  <!-- rack ears -->
+  <rect x="28"  y="20" width="12" height="130" fill="#1a1a2e" stroke="#444466" stroke-width="0.8"/>
+  <rect x="136" y="20" width="12" height="130" fill="#1a1a2e" stroke="#444466" stroke-width="0.8"/>
+
+  <!-- ear screws -->
+  <circle cx="34"  cy="34"  r="2.5" fill="none" stroke="#555577" stroke-width="0.8"/>
+  <circle cx="34"  cy="136" r="2.5" fill="none" stroke="#555577" stroke-width="0.8"/>
+  <circle cx="142" cy="34"  r="2.5" fill="none" stroke="#555577" stroke-width="0.8"/>
+  <circle cx="142" cy="136" r="2.5" fill="none" stroke="#555577" stroke-width="0.8"/>
+
+  <!-- SLOT 1 -->
+  <rect x="44" y="28" width="88" height="14" rx="1" fill="#0d1f14" stroke="#a6e3a1" stroke-width="0.8"/>
+  <rect x="50" y="31" width="48" height="4" rx="1" fill="#a6e3a1" opacity="0.15"/>
+  <rect x="50" y="36" width="32" height="2" rx="1" fill="#a6e3a1" opacity="0.1"/>
+  <circle cx="122" cy="35" r="2.5" fill="#a6e3a1"/>
+
+  <!-- SLOT 2 -->
+  <rect x="44" y="46" width="88" height="14" rx="1" fill="#0d1f14" stroke="#a6e3a1" stroke-width="0.8"/>
+  <rect x="50" y="49" width="58" height="4" rx="1" fill="#a6e3a1" opacity="0.15"/>
+  <rect x="50" y="54" width="38" height="2" rx="1" fill="#a6e3a1" opacity="0.1"/>
+  <circle cx="122" cy="53" r="2.5" fill="#a6e3a1" opacity="0.7"/>
+
+  <!-- SLOT 3 — 2U purple -->
+  <rect x="44" y="64" width="88" height="26" rx="1" fill="#130d20" stroke="#cba6f7" stroke-width="0.8"/>
+  <rect x="50" y="68" width="42" height="4" rx="1" fill="#cba6f7" opacity="0.2"/>
+  <rect x="50" y="74" width="58" height="3" rx="1" fill="#cba6f7" opacity="0.1"/>
+  <rect x="50" y="79" width="28" height="2" rx="1" fill="#cba6f7" opacity="0.08"/>
+  <circle cx="122" cy="77" r="2.5" fill="#cba6f7"/>
+
+  <!-- SLOT 4 -->
+  <rect x="44" y="94"  width="88" height="14" rx="1" fill="#0d1f14" stroke="#a6e3a1" stroke-width="0.8"/>
+  <rect x="50" y="97"  width="36" height="4" rx="1" fill="#a6e3a1" opacity="0.15"/>
+  <circle cx="122" cy="101" r="2.5" fill="#39ff14" opacity="0.85"/>
+
+  <!-- SLOT 5 — dim -->
+  <rect x="44" y="112" width="88" height="14" rx="1" fill="#0a0a12" stroke="#313244" stroke-width="0.8"/>
+  <rect x="50" y="115" width="22" height="4" rx="1" fill="#313244" opacity="0.6"/>
+  <circle cx="122" cy="119" r="2.5" fill="#313244"/>
+
+  <!-- SLOT 6 — blank -->
+  <rect x="44" y="130" width="88" height="10" rx="1" fill="#07070a" stroke="#1e1e2e" stroke-width="0.5"/>
+
+  <!-- Front frame outline -->
+  <rect x="28" y="20" width="120" height="130" fill="none" stroke="#444466" stroke-width="1.5"/>
+
+  <!-- Right side face — drawn last -->
+  <polygon points="148,20 162,12 162,142 148,150" fill="#0d0d1a" stroke="#444466" stroke-width="1"/>
+  <line x1="148" y1="28"  x2="162" y2="20"  stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="42"  x2="162" y2="34"  stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="46"  x2="162" y2="38"  stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="60"  x2="162" y2="52"  stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="64"  x2="162" y2="56"  stroke="#1a1028" stroke-width="0.5"/>
+  <line x1="148" y1="90"  x2="162" y2="82"  stroke="#1a1028" stroke-width="0.5"/>
+  <line x1="148" y1="94"  x2="162" y2="86"  stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="108" x2="162" y2="100" stroke="#1a2e1a" stroke-width="0.5"/>
+  <line x1="148" y1="112" x2="162" y2="104" stroke="#111122" stroke-width="0.5"/>
+  <line x1="148" y1="126" x2="162" y2="118" stroke="#111122" stroke-width="0.5"/>
+  <line x1="148" y1="130" x2="162" y2="122" stroke="#0d0d18" stroke-width="0.5"/>
+  <line x1="148" y1="140" x2="162" y2="132" stroke="#0d0d18" stroke-width="0.5"/>
+
+  <!-- Wordmark -->
+  <text x="185" y="78"  font-family="ui-monospace,'Cascadia Code','Segoe UI Mono','Liberation Mono',Menlo,Monaco,'Courier New',monospace" font-size="44" font-weight="500" fill="none" stroke="#cdd6f4" stroke-width="0.6" stroke-linejoin="round">XM</text>
+  <text x="185" y="78"  font-family="ui-monospace,'Cascadia Code','Segoe UI Mono','Liberation Mono',Menlo,Monaco,'Courier New',monospace" font-size="44" font-weight="500" fill="#a6e3a1">XM</text>
+  <text x="187" y="112" font-family="ui-monospace,'Cascadia Code','Segoe UI Mono','Liberation Mono',Menlo,Monaco,'Courier New',monospace" font-size="21" font-weight="400" letter-spacing="5" fill="#7c86d4">SYSTEMS</text>
+  <line x1="185" y1="122" x2="480" y2="122" stroke="#f38ba8" stroke-width="0.75"/>
+  <text x="187" y="138" font-family="ui-monospace,'Cascadia Code','Segoe UI Mono','Liberation Mono',Menlo,Monaco,'Courier New',monospace" font-size="11" letter-spacing="2" fill="#cdd6f4">self-hosted infrastructure</text>
 
 </svg>

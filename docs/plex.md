@@ -2,7 +2,7 @@
 
 ![plex-logo](images/Plex.png)
 
-Having access to all of my Films, TV Shows & Music wherever I am and on whatever device I'm using is really what started my journey down this rabbit hole 
+Having access to all of my Films, TV Shows & Music wherever I am and on whatever device I'm using is really what started my journey down this rabbit hole.
 
 ## docker-compose.yml
 

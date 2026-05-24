@@ -360,9 +360,8 @@ services:
 ```
 
 I have created dynamic files for each of these:
-[Prometheus dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#prometheus-tethys)
-[Grafana dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#grafana-tethys)
+-[Prometheus dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#prometheus-tethys)
+-[Grafana dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#grafana-tethys)
 
 !!! note
-    As you will have noticed, there are, on each hosts monitoring stack, there is a service entry for "dozzle"
-    [dozzle application](https://docs.xmsystems.co.uk/dozzle)
+    As you will have noticed, there are, on each hosts monitoring stack, there is a service entry for [dozzle](https://docs.xmsystems.co.uk/dozzle)

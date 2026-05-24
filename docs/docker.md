@@ -241,6 +241,6 @@ All of my compose files and the containers appdata reside in the following locat
 ```
 
 !!! info
-Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
-These are services/applications that I am still either testing or refining.
-If I plan on implementing them long term then I will be creating pages for these.
+        Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
+        These are services/applications that I am still either testing or refining.
+        If I plan on implementing them long term then I will be creating pages for these.

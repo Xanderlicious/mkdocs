@@ -1,8 +1,11 @@
-![](images/grafana.png) ![](images/prometheus.png)
+# Grafana & Prometheus
+
+![grafana-logo](images/grafana.png) ![prometheus-logo](images/prometheus.png)
 
 I currently use (and will probably continue to use even after deploying CheckMK) Prometheus & Grafana (using node exporter and cadvisor alongside)
 
 My main monitoring stack is located on Tethys, with compose files for exporters and collectors on each of the other 2 hosts.
+
 ## Monitoring - Tethys
 
 ### docker-compose.yml
@@ -189,6 +192,11 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets: ['10.36.100.150:8083']
+
+  # wireguard exporter
+  - job_name: 'wireguard'
+    static_configs:
+      - targets: ['10.36.100.2:9586']
 ```
 
 Grafana will essentially allow me to create some very pretty looking graphs.
@@ -350,7 +358,11 @@ services:
       - TZ=Europe/London
     restart: unless-stopped
 ```
-I have created dynamic files for each of these [here](https://docs.xmsystems.co.uk/dynamic/#prometheus-tethys) & [here](https://docs.xmsystems.co.uk/dynamic/#grafana-tethys)
 
-As you will have noticed, there are, on each hosts monitoring stack, there is a service entry for "dozzle".  More details on this service are located [here](https://docs.xmsystems.co.uk/dozzle)
+I have created dynamic files for each of these:
+[Prometheus dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#prometheus-tethys)
+[Grafana dynamic configuration](https://docs.xmsystems.co.uk/dynamic/#grafana-tethys)
 
+!!! note
+    As you will have noticed, there are, on each hosts monitoring stack, there is a service entry for "dozzle"
+    [dozzle application](https://docs.xmsystems.co.uk/dozzle)

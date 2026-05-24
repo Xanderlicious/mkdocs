@@ -1,5 +1,7 @@
 # Fail2Ban
 
+![fail2ban-logo](images/Fail2ban_logo.png)
+
 Fail2Ban is an intrusion prevention framework that monitors log files and temporarily bans IP addresses that show signs of malicious activity, such as repeated failed authentication attempts.
 
 It works by scanning log files for patterns that match known attack signatures and then updating firewall rules to reject connections from those IP addresses for a configurable period of time.
@@ -9,28 +11,19 @@ I run Fail2Ban on Titan to protect my externally facing services from brute forc
 ## docker-compose.yml
 
 ```yaml
-networks:
-  default:
-    name: proxy
-    external: true
-
 services:
   fail2ban:
-    image: lscr.io/linuxserver/fail2ban:latest
+    image: crazymax/fail2ban:latest
     container_name: fail2ban
+    restart: unless-stopped
+    network_mode: host
     cap_add:
       - NET_ADMIN
       - NET_RAW
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
     volumes:
-      - /ssd/docker/appdata/fail2ban:/config
+      - /ssd/docker/appdata/traefik/logs:/var/log/traefik:ro
+      - /ssd/docker/appdata/fail2ban/data:/data
       - /var/log:/var/log:ro
-      - /ssd/appdata/traefik/data/logs:/remotelogs/traefik:ro
-    restart: unless-stopped
 ```
 
 !!! info

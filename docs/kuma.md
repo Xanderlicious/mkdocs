@@ -23,22 +23,25 @@ networks:
     external: true
 
 services:
-
-    uptime-kuma:
-        image: louislam/uptime-kuma:2
-        container_name: uptime-kuma
-        networks:
-          default:
-            ipv4_address: "172.20.0.5"
-        ports:
-            - 3001:3001
-        environment:
-            - TZ=Europe/London
-        restart: always
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock:ro
-            - /ssd/docker/appdata/kumav2:/app/data
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    networks:
+      default:
+        ipv4_address: "172.20.0.5"
+    ports:
+      - 3001:3001
+    environment:
+      - TZ=Europe/London
+      - NODE_EXTRA_CA_CERTS=/app/data/docker-tls/10.36.100.150/ca.pem
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /ssd/docker/appdata/kumav2:/app/data
 ```
+
+!!! note
+    `NODE_EXTRA_CA_CERTS` is required so Node.js trusts the private CA used for mTLS connections to remote Docker hosts. See the [Docker Daemon Security (mTLS)](mTLS.md) page for the full certificate setup and Kuma Docker host configuration.
 
 ### Dynamic File
 

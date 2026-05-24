@@ -8,7 +8,7 @@ CheckMK will allow me to not only monitor the health and status of many differen
 
 Above is a sample screenshot taken from somewhere on the internet
 
-I currently run CheckMK in a docker container as the .deb package to install directly isn't avaialble for Debian 13 just yet
+I currently run CheckMK in a docker container as the .deb package to install directly isn't available for Debian 13 just yet
 
 ### docker-compose.yml
 

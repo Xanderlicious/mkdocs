@@ -18,11 +18,11 @@ Instructions for installation of this have been taken from github:
 
 ## MongoDB
 
-I setup MongoDB seperately and as advised, I have pinned the version to 4.4.  
+I setup MongoDB separately and as advised, I have pinned the version to 4.4.  
 
 ###init-mongo.js
 
-As I have set this up seperately, I created the necessary init script (javascript file) to create my user.  This was then attached to the container as a read-only bind mount. 
+As I have set this up separately, I created the necessary init script (javascript file) to create my user.  This was then attached to the container as a read-only bind mount. 
 
 ```js
 db.getSiblingDB("MONGO_DBNAME").createUser({user: "MONGO_USER", pwd: "MONGO_PASS", roles: [{role: "dbOwner", db: "MONGO_DBNAME"}]});
@@ -120,7 +120,7 @@ ssh ubnt@<device-address>
 ```
 The default password for a Unifi Access Point will be ***ubnt***
 
-Once connected, run the following command to allow the controller to adobt the device:
+Once connected, run the following command to allow the controller to adopt the device:
 
 ``` bash
 set-inform http://<controller-address>:8080/inform

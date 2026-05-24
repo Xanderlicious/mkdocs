@@ -1,6 +1,6 @@
 ![](images/overseerr.png)
 
-Overseerr is a 3rd party application that gives your plex users the abillity to request content that you don't currently have listed.
+Overseerr is a 3rd party application that gives your plex users the ability to request content that you don't currently have listed.
 
 This "request" can then be approved or declined by the server admin
 

@@ -4,7 +4,7 @@
 Uptime-Kuma is a monitoring tool for HTTP(s) / TCP / HTTP(s) Keyword / HTTP(s) Json Query / Ping / DNS Record / Push / Steam Game Server / Docker Containers
 
 It is able to display a "Status" webpage which tell you if your services are up or down.
-It also provides the abillity to provide notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and many, many more.
+It also provides the ability to provide notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and many, many more.
 
 I have created 2 status pages - One to report on the status of all my docker containers and another to report on the status of the internal or external site.  There may be occassions where the docker container is reflected as "up" but the site is "down"
 

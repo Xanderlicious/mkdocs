@@ -6,7 +6,7 @@ This site will provide you with all the nerdy details of my homelab.
 
 My name is Alex and I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
 
-Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes aswell as self-host multiple services popular with many homelabbers.
+Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes as well as self-host multiple services popular with many homelabbers.
 
 This site documents various aspects of my homelab and details:
 

@@ -37,7 +37,7 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.services.dash.loadbalancer.server.port=3000
-            - traefik.http.routers.dash.rule=Host(`sudomain.domain.co.uk`)
+            - traefik.http.routers.dash.rule=Host(`subdomain.domain.co.uk`)
             - traefik.http.routers.dash.entrypoints=websecure-int
             - traefik.http.routers.dash.tls=true
             - traefik.http.routers.dash.tls.certresolver=production

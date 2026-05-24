@@ -11,7 +11,7 @@ I use Dynamic files mainly to route services that run on different hosts (differ
 I also have a dynamic "config.yml" file where I can specify middlewares that can then be called/referenced in other dynamic files which are individually created per service/application.
 
 !!! info
-    You can create just one dynamic file but I prefer to keep them seperate for ease of maintenance & manageabillity
+    You can create just one dynamic file but I prefer to keep them separate for ease of maintenance & manageability
 
 ### config.yml
 
@@ -21,19 +21,19 @@ http:
   middlewares:
     
     pihole1-redirect:
-      redirectRegex
+      redirectRegex:
         permanent: true
         regex: "^https://pihole1.domain.com/?$"
         replacement: "pihole1.domain.com/admin"
 
     pihole2-redirect:
-      redirectRegex
+      redirectRegex:
         permanent: true
         regex: "^https://pihole2.domain.com/?$"
         replacement: "pihole2.domain.com/admin"
 
     pihole3-redirect:
-      redirectRegex
+      redirectRegex:
         permanent: true
         regex: "^https://pihole3.domain.com/?$"
         replacement: "pihole3.domain.com/admin"

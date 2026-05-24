@@ -74,7 +74,7 @@ labels:
             - traefik.enable=true
             - traefik.http.services.navidrome.loadbalancer.server.port=4533
             - traefik.http.routers.navidrome.entrypoints=websecure-int
-            - traefik.http.routers.navidrome.rule=Host(`sudomain.domain.co.uk`)
+            - traefik.http.routers.navidrome.rule=Host(`subdomain.domain.co.uk`)
             - traefik.http.routers.navidrome.tls=true
             - traefik.http.routers.navidrome.tls.certresolver=production
             - traefik.http.routers.navidrome.tls.domains[0].main=domain.co.uk
@@ -93,7 +93,7 @@ http:
     kuma:
       entryPoints:
         - "websecure-int"
-      rule: "Host(`sudomain.domain.co.uk`)"
+      rule: "Host(`subdomain.domain.co.uk`)"
       tls:
         certResolver: production
       service: kuma

@@ -87,8 +87,7 @@ This will ensure the container is re-created.
 
 All of my compose files and the containers appdata reside in the following locations
 
-### Titan
-
+### Titan (Compose and Appdata)
 
 ```sh
 /ssd/docker/docker-compose/
@@ -161,7 +160,7 @@ All of my compose files and the containers appdata reside in the following locat
 24 directories
 ```
 
-### Phobos
+### Phobos (Compose & Appdata)
 
 ```sh
 /ssd/docker/docker-compose/
@@ -205,7 +204,7 @@ All of my compose files and the containers appdata reside in the following locat
 7 directories
 ```
 
-### Tethys
+### Tethys (Compose & Appdata)
 
 ```sh
 /home/xander/docker/docker-compose/

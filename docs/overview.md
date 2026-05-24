@@ -42,7 +42,7 @@ All written and configured using docker compose.
 
 I do have some other, more powerful, hardware waiting to be deployed and I have plans to upgrade some of my existing networking gear.
 
-For example, the Unifi Cloud Gateway Ultra is good and certainly performs better than the USG I user to have but I would very much like to change to a UDM Pro.  I also would like to upgrade to a 2.5Gb capable ethernet switch so my Unifi 6 Enterprise Access Point can perform to its fullest.
+For example, the Unifi Cloud Gateway Ultra is good and certainly performs better than the USG I used to have but I would very much like to change to a UDM Pro.  I also would like to upgrade to a 2.5Gb capable ethernet switch so my Unifi 6 Enterprise Access Point can perform to its fullest.
 
 There are house improvements and/or a house move on the horizon which will allow for my expansion plans to go into overdrive.  
 

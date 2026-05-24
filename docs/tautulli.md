@@ -30,7 +30,7 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.services.tautulli.loadbalancer.server.port=8181
-            - traefik.http.routers.tautulli.rule=Host(`sudomain.domain.co.uk`)
+            - traefik.http.routers.tautulli.rule=Host(`subdomain.domain.co.uk`)
             - traefik.http.routers.tautulli.entrypoints=websecure-int
             - traefik.http.routers.tautulli.tls=true
             - traefik.http.routers.tautulli.tls.certresolver=production

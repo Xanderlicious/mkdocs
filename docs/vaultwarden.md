@@ -69,7 +69,7 @@ Clients can be either a desktop app, a mobile app or even a browser extention.
 
 Each are configured to point to the self-hosted URL  
 Upon entering the Master Password, this then allows access to the data stored which is not just passwords,  I also hold various other sensitive information such as license keys and PIN numbers.  
-Features offered within the clients offer the abillity to "autofill" fields whenever there is a match detected.
+Features offered within the clients offer the ability to "autofill" fields whenever there is a match detected.
 
 ## Admin Page
 

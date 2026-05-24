@@ -8,7 +8,7 @@ It also uses Lets Encrypt and provides a valid SSL certificate
 
 ![alt text](<images/cloudflare + letsencrypt.png>)
 
-With Traefik, I also have the abillity to specify multiple entry points (2 internal and 2 external)  This allows me to keep my internal services internal and only have my external services showing to the world.  
+With Traefik, I also have the ability to specify multiple entry points (2 internal and 2 external)  This allows me to keep my internal services internal and only have my external services showing to the world.  
 The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) will explain more about these.
 
 ### docker-compose.yml
@@ -87,7 +87,7 @@ volumes:
 
 The traefik.yml file lives inside the "data" directory and is used to: 
 
-enable/disable the dashboard, define entry points, assign middleware at a global level (rather than at an application level), specify your certificate resolver details, detail your docker provider and the docker socket address aswell as dynamic files/directory location.  Finally you can also, optionally, provide the location of log files and details of any collector of metrics.
+enable/disable the dashboard, define entry points, assign middleware at a global level (rather than at an application level), specify your certificate resolver details, detail your docker provider and the docker socket address as well as dynamic files/directory location.  Finally you can also, optionally, provide the location of log files and details of any collector of metrics.
 
 
 ``` yaml
@@ -132,7 +132,7 @@ entryPoints:
 certificatesResolvers:
   production:
     acme:
-      email: <e-mail address>>
+      email: <email address>
       storage: acme.json
       dnsChallenge:
         provider: cloudflare

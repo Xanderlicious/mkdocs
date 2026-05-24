@@ -32,7 +32,7 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.services.sabnzbd.loadbalancer.server.port=8080
-            - traefik.http.routers.sabnzbd.rule=Host(`sudomain.domain.co.uk`)
+            - traefik.http.routers.sabnzbd.rule=Host(`subdomain.domain.co.uk`)
             - traefik.http.routers.sabnzbd.entrypoints=websecure-int
             - traefik.http.routers.sabnzbd.tls=true
             - traefik.http.routers.sabnzbd.tls.certresolver=production

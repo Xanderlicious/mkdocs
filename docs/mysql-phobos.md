@@ -9,7 +9,7 @@ MySQL is used as the database of choice for IPAM (will soon be used by Uptime-Ku
 ```yaml
 networks:
   default:
-    name: pphobos-network
+    name: phobos-network
     external: true
 
 services:

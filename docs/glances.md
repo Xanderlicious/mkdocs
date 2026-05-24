@@ -40,7 +40,7 @@ Below is the web view for Titan.
                 - "GLANCES_OPT=-w"
             labels:
                 - traefik.enable=true
-                - traefik.http.routers.tstats.rule=Host(`sudomain.domain.co.uk`)
+                - traefik.http.routers.tstats.rule=Host(`subdomain.domain.co.uk`)
                 - traefik.http.routers.tstats.entrypoints=websecure-int
                 - traefik.http.routers.tstats.tls.certresolver=production
                 - traefik.http.services.tstats.loadbalancer.server.port=61208

@@ -16,6 +16,7 @@ nav:
     - NCC-1702: NCC-1702.md
     - NCC-1703: NCC-1703.md
   - Docker: docker.md
+  - Docker Daemon mTLS: mTLS.md
   - Applications:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md

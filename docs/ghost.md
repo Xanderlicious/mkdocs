@@ -6,9 +6,8 @@ Ghost is an open source blog & newsletter platform
 
 I currently have my blog site and my son has his car photography site.
 
-!!! info
-    - `https://blog.xmsystems.co.uk`
-    - `https://cars.stansphotography.co.uk`
+- `https://blog.xmsystems.co.uk`
+- `https://cars.stansphotography.co.uk`
 
 Each ghost instance has its own database which is setup in MySQL. [titan-mysql-db](https://docs.xmsystems.co.uk/mysql-titan/)
 
@@ -76,5 +75,5 @@ services:
 
 Each of these have their own dynamic file to ensure they pass through traefik and are using a valid SSL cert
 
-- [XMS-Blog](https://docs.xmsystems.co.uk/dynamic/#xms-blog-titan)
-- [Stans Photography](https://docs.xmsystems.co.uk/dynamic/#stans-photography-titan)
+- [XMS-Blog Dynamic File](https://docs.xmsystems.co.uk/dynamic/#xms-blog-titan)
+- [Stans Photography Dynamic File](https://docs.xmsystems.co.uk/dynamic/#stans-photography-titan)

@@ -2,13 +2,16 @@
 
 ![phpMyAdmin-logo](images/phpmyadmin-resized.png)
 
-phpMyAdmin is software that enables you to administer your MySQL databases within a browser.
+phpMyAdmin is a web-based administration tool for MySQL databases. It allows you to manage databases, run queries, create and modify tables, manage user accounts and permissions — all from a browser GUI.
 
-You can use phpMyAdmin to perform most administration tasks, including creating a database, running queries, and adding user accounts.  All from the comfort of a GUI
+I run two separate instances of phpMyAdmin, one on each host that has a MySQL database:
 
-I have set this up primarily to give me easy administrative access to the databases used for the sites hosted using [ghost](https://docs.xmsystems.co.uk/ghost/)
+- **Titan** — administers `titan-mysql-db`, which serves [Ghost](https://docs.xmsystems.co.uk/ghost/), [Guacamole](https://docs.xmsystems.co.uk/guacamole/) and [Firefly III](https://docs.xmsystems.co.uk/firefly/)
+- **Phobos** — administers `phobos-mysql-db`, which currently serves [IPAM](https://docs.xmsystems.co.uk/ipam/) and will soon serve Uptime-Kuma
 
-## docker-compose.yml
+## Titan
+
+### docker-compose.yml
 
 ``` yaml
 networks:
@@ -34,8 +37,39 @@ services:
       - /ssd/docker/appdata/phpmyadmin/custom/phpmyadmin/theme/:/www/themes/theme/
 ```
 
-## Dynamic File
+### Dynamic File
 
-Even though this is hosted on Titan, I have opted to setup a dynamic file rather than mess around with labels
+Even though this is hosted on Titan, I have opted to use a dynamic file rather than labels.
 
 This file is located here [phpmyadmin-titan](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-titan)
+
+## Phobos
+
+### docker-compose.yml
+
+``` yaml
+networks:
+  default:
+    name: phobos-network
+    external: true
+
+services:
+  phpmyadmin-phobos:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin-phobos
+    environment:
+      - PMA_HOSTS=phobos-mysql-db
+    restart: always
+    networks:
+      default:
+        ipv4_address: "172.20.0.6"
+    ports:
+      - 84:80
+    volumes:
+      - /ssd/docker/appdata/phpmyadmin-phobos/sessions
+      - /ssd/docker/appdata/phpmyadmin-phobos/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+```
+
+### Dynamic File
+
+As this runs on a different host to Traefik, a dynamic file is used to route it through Traefik with SSL.

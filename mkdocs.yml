@@ -34,9 +34,9 @@ nav:
     - Motioneye: motioneye.md
     - MySQL - Titan: mysql-titan.md
     - MySQL - Phobos: mysql-phobos.md
+    - phpMyAdmin: phpmyadmin.md
     - IPAM: ipam.md
     - Ghost: ghost.md
-    - phpMyAdmin: phpmyadmin.md
     - NCC-1704: NCC-1704.md
     - Nebula-Sync: nebula-sync.md
     - PH-Intercept: ph-intercept.md

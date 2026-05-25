@@ -1,4 +1,6 @@
-![](images/PH-I.png)
+# PH-Intercept
+
+![ph-intercept-loading](images/PH-I.png)
 
 PH-Intercept is a fun little application that I have recently come across.
 
@@ -6,9 +8,9 @@ Its a visualiser for pi-hole and it depicts a space battle where ads being block
 
 [GitHub - PH-Intercept](https://github.com/m00grin/ph-intercept)
 
-![](images/ph-intercept-screenshot.png)
+![ph-intercept-screenshot](images/ph-intercept-screenshot.png)
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -48,5 +50,6 @@ services:
       - "4653:4653"
 ```
 
-This of course runs via traefik so it can be accessed using SSL/HTTPS.  Its dynamic file can be located [here](https://docs.xmsystems.co.uk/dynamic/#ph-intercept-phobos) 
+This of course runs via traefik so it can be accessed using SSL/HTTPS.  It has the following dynamic file
 
+- [ph-intercept Dynamic File](https://docs.xmsystems.co.uk/dynamic/#ph-intercept-phobos)

@@ -426,3 +426,45 @@ http:
           - url: "https://10.36.100.152:9443"
         passHostHeader: true
 ```
+
+### XMS-Blog (Titan)
+
+```yaml
+http:
+  routers:
+    blog-xms:
+      entryPoints:
+        - websecure-ext
+      rule: "Host(`blog.xmsystems.co.uk`)"
+      tls:
+        certResolver: production
+      service: blog-xms
+
+  services:
+    blog-xms:
+      loadBalancer:
+        servers:
+          - url: "http://ghost-xms:2368"
+        passHostHeader: true
+```
+
+### Stans Photography (Titan)
+
+```yaml
+http:
+  routers:
+    blog-stan-sal:
+      entryPoints:
+        - websecure-ext
+      rule: "Host(`cars.stansphotography.co.uk`)"
+      tls:
+        certResolver: production
+      service: blog-stan-sal
+
+  services:
+    blog-stan-sal:
+      loadBalancer:
+        servers:
+          - url: "http://ghost-stan-sal:2368"
+        passHostHeader: true
+```

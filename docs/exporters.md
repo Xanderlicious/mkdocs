@@ -8,14 +8,14 @@ Prometheus runs on **Tethys** and scrapes targets across Titan, Phobos, Tethys i
 
 |Exporter|Titan|Phobos|Tethys|NCC-1702|Port|
 |---|---|---|---|---|---|
-|Node Exporter|:white_check_mark:|:white_check_mark:|:white_check_mark:||9100|
-|cAdvisor|:white_check_mark:|:white_check_mark:|:white_check_mark:||8080 / 8087|
-|Traefik Metrics|:white_check_mark:||||8088|
-|Plex Exporter|:white_check_mark:||||9000|
-|Homers|:white_check_mark:||||8083|
-|Unpoller|||:white_check_mark:||9130|
-|Pi-Hole Exporter|||:white_check_mark:||9617|
-|Wireguard Exporter||||:white_check_mark:|9586|
+|Node Exporter|✅|✅|✅||9100|
+|cAdvisor|✅|✅|✅||8080 / 8087|
+|Traefik Metrics|✅||||8088|
+|Plex Exporter|✅||||9000|
+|Homers|✅||||8083|
+|Unpoller|||✅||9130|
+|Pi-Hole Exporter|||✅||9617|
+|Wireguard Exporter||||✅|9586|
 
 ---
 

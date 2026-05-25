@@ -45,7 +45,7 @@ nav:
     - Fail2Ban: fail2ban.md
   - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
-    - Prometheus Exporters & Scrapers: exporters.md
+    - Exporters & Scrapers: exporters.md
     - CheckMK: checkmk.md
     - Uptime-Kuma: kuma.md
     - Dozzle: dozzle.md

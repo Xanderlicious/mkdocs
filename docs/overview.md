@@ -2,7 +2,7 @@
 
 A high-level summary of my homelab — the hardware, networking, and services that make it up.  Each section links to its own dedicated page for the full details.
 
-![](images/arch.png)
+![](images/network-diagram.png)
 
 An interactive infrastructure diagram is also available at [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk).
 

@@ -6,8 +6,8 @@ Ghost is an open source blog & newsletter platform
 
 I currently have my blog site and my son has his car photography site.
 
-- `https://blog.xmsystems.co.uk`
-- `https://cars.stansphotography.co.uk`
+- [https://blog.xmsystems.co.uk](https://blog.xmsystems.co.uk`)
+- [https://cars.stansphotography.co.uk](https://cars.stansphotography.co.uk)
 
 Each ghost instance has its own database which is setup in MySQL. [titan-mysql-db](https://docs.xmsystems.co.uk/mysql-titan/)
 

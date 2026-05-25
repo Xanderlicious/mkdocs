@@ -9,9 +9,9 @@ I run two separate instances of phpMyAdmin, one on each host that has a MySQL da
 - **Titan** — administers `titan-mysql-db`, which serves [Ghost](https://docs.xmsystems.co.uk/ghost/), [Guacamole](https://docs.xmsystems.co.uk/guacamole/) and [Firefly III](https://docs.xmsystems.co.uk/firefly/)
 - **Phobos** — administers `phobos-mysql-db`, which currently serves [IPAM](https://docs.xmsystems.co.uk/ipam/) and will soon serve Uptime-Kuma
 
-## Titan
+## docker-compose
 
-### docker-compose.yml
+### Titan
 
 ``` yaml
 networks:
@@ -37,15 +37,13 @@ services:
       - /ssd/docker/appdata/phpmyadmin/custom/phpmyadmin/theme/:/www/themes/theme/
 ```
 
-### Dynamic File
-
 Even though this is hosted on Titan, I have opted to use a dynamic file rather than labels.
 
 This file is located here [phpmyadmin-titan](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-titan)
 
-## Phobos
+---
 
-### docker-compose.yml
+### Phobos
 
 ``` yaml
 networks:
@@ -70,6 +68,6 @@ services:
       - /ssd/docker/appdata/phpmyadmin-phobos/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
 ```
 
-### Dynamic File
-
 As this runs on a different host to Traefik, a dynamic file is used to route it through Traefik with SSL.
+
+This file is located here [phpmyadmin-phobos](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-phobos)

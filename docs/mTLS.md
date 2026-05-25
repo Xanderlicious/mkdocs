@@ -11,7 +11,7 @@ By default the Docker daemon exposes its TCP API without authentication. This pa
 
 Each Docker host listens on port **2376** (TLS) bound to its LAN IP only. Unauthenticated port 2375 is disabled on all hosts. A single private CA lives on Titan and signs all server and client certificates.
 
-``` bash
+```sh
 Phobos (Kuma / Homepage)
     └── mTLS :2376 ──→ Titan    (10.36.100.150)
     └── mTLS :2376 ──→ Tethys   (10.36.100.152)

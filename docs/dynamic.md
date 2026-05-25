@@ -4,7 +4,7 @@ The Dynamic Files for Traefik allow you to configure **Routers**, **Services**, 
 
 It compliments your existing static configuration.
 
-![](<images/traefik dynamic configuration.png>)
+![traefik-dynamic-files-image](<images/traefik dynamic configuration.png>)
 
 I use Dynamic files mainly to route services that run on different hosts (different to the host where traefik is installed) through traefik and assign valid SSL certificates.
 
@@ -13,7 +13,7 @@ I also have a dynamic "config.yml" file where I can specify middlewares that can
 !!! info
     You can create just one dynamic file but I prefer to keep them separate for ease of maintenance & manageability
 
-### config.yml
+## config.yml
 
 ``` yaml
 http:
@@ -66,7 +66,7 @@ This "default-headers" middleware is applied directly at each entrypoint within 
 
 TLS options are also specified in its own dynamic file.
 
-### tls.yml
+## tls.yml
 
 ```yaml
 tls:
@@ -240,19 +240,40 @@ http:
 ```yaml
 http:
   routers:
-    phpmyadmin:
+    phpmyadmin-titan:
       entryPoints:
         - websecure-int
       rule: "Host(`subdomain.domain.co.uk`)"
       tls:
         certResolver: production
-      service: phpmyadmin
+      service: phpmyadmin-titan
 
   services:
-    phpmyadmin:
+    phpmyadmin-titan:
       loadBalancer:
         servers:
-          - url: "http://10.36.100.150:84"
+          - url: "http://172.19.0.105:80"
+        passHostHeader: true
+```
+
+### phpMyAdmin (Phobos)
+
+``` yaml
+http:
+  routers:
+    phpmyadmin-phobos:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: phpmyadmin-phobos
+
+  services:
+    phpmyadmin-phobos:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.151:81"
         passHostHeader: true
 ```
 

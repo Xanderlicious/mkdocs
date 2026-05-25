@@ -19,50 +19,141 @@ I also have a dynamic "config.yml" file where I can specify middlewares that can
 http:
 
   middlewares:
-    
-    pihole1-redirect:
-      redirectRegex:
-        permanent: true
-        regex: "^https://pihole1.domain.com/?$"
-        replacement: "pihole1.domain.com/admin"
 
-    pihole2-redirect:
-      redirectRegex:
-        permanent: true
-        regex: "^https://pihole2.domain.com/?$"
-        replacement: "pihole2.domain.com/admin"
-
-    pihole3-redirect:
-      redirectRegex:
-        permanent: true
-        regex: "^https://pihole3.domain.com/?$"
-        replacement: "pihole3.domain.com/admin"
-
-    default-headers:
+    global-default-headers:
       headers:
         sslProxyHeaders:
           X-Forwarded-Proto: "https"
-        referrerPolicy: "same-origin"
         hostsProxyHeaders:
           - "X-Forwarded-Host"
+        referrerPolicy: "same-origin"
         frameDeny: true
-        browserXssFilter: true
         contentTypeNosniff: true
         forceSTSHeader: true
         stsIncludeSubdomains: true
         stsPreload: true
-        stsSeconds: 2592000
-        customFrameOptionsValue: ALLOW-FROM-SAMEDOMAIN
+        stsSeconds: 31536000
+        permissionsPolicy: "geolocation=(self), camera=(), microphone=()"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
         customResponseHeaders:
           X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
-          X-Forwarded-Proto: "https"
+          X-XSS-Protection: "0"
           server: ""
-        customRequestHeaders:
-          X-Forwarded-Proto: https
-        PermissionsPolicy: "geolocation=(self), camera=(), microphone=(),"
+
+    pihole1-redirect:
+      redirectRegex:
+        permanent: true
+        regex: "^https://subdomain.domain.co.uk/?$"
+        replacement: "https://subdomain.domain.co.uk/admin"
+
+    pihole2-redirect:
+      redirectRegex:
+        permanent: true
+        regex: "^https://subdomain.domain.co.uk/?$"
+        replacement: "https://subdomain.domain.co.uk/admin"
+
+    pihole3-redirect:
+      redirectRegex:
+        permanent: true
+        regex: "^https://subdomain.domain.co.uk/?$"
+        replacement: "https://subdomain.domain.co.uk/admin"
+
+    xms-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+          font-src 'self' https://fonts.gstatic.com;
+          img-src 'self' data: https://img.buymeacoffee.com;
+          connect-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'self' https://www.buymeacoffee.com;
+          upgrade-insecure-requests;
+
+    xms-infrastructure-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data:;
+          font-src 'self';
+          connect-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'none';
+          upgrade-insecure-requests;
+
+    xms-poker-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data:;
+          font-src 'self';
+          connect-src 'self' wss://subdomain.domain.co.uk ws://172.20.0.12:3003;
+          media-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'none';
+          upgrade-insecure-requests;
+
+    xms-ipam-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data:;
+          font-src 'self';
+          connect-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'none';
+          upgrade-insecure-requests;
+
+    xms-blog-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' 'unsafe-eval';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data: https://images.unsplash.com;
+          font-src 'self';
+          connect-src 'self';
+          frame-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'self';
+          upgrade-insecure-requests;
+
+    stan-csp-headers:
+      headers:
+        contentSecurityPolicy: >-
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' 'unsafe-eval';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data:;
+          font-src 'self';
+          connect-src 'self';
+          frame-src 'self';
+          frame-ancestors 'none';
+          base-uri 'self';
+          form-action 'self';
+          upgrade-insecure-requests;
+
+    calendar-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
 ```
 
-This "default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
+!!!info
+    This "global-default-headers" middleware is applied directly at each entrypoint within the traefik.yml file.  Therefore, they are applied immediately to any and all routes & services and as a result, they are not required to be referenced in any of the below dynamic files for each of my applications
 
 TLS options are also specified in its own dynamic file.
 
@@ -436,6 +527,8 @@ http:
       entryPoints:
         - websecure-ext
       rule: "Host(`blog.xmsystems.co.uk`)"
+      middlewares:
+        xms-blog-csp-headers
       tls:
         certResolver: production
       service: blog-xms
@@ -457,6 +550,8 @@ http:
       entryPoints:
         - websecure-ext
       rule: "Host(`cars.stansphotography.co.uk`)"
+      middlewares:
+        stan-csp-headers
       tls:
         certResolver: production
       service: blog-stan-sal

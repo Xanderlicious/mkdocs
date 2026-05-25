@@ -4,8 +4,13 @@
 
 Ghost is an open source blog & newsletter platform
 
-I currently have my blog site and my son has his car photography site.  There is a 3rd instance but this is a WIP.
-Each ghost instance has its own database which is setup in MySQL. 
+I currently have my blog site and my son has his car photography site.
+
+!!! info
+    - `https://blog.xmsystems.co.uk`
+    - `https://cars.stansphotography.co.uk`
+
+Each ghost instance has its own database which is setup in MySQL. [titan-mysql-db](https://docs.xmsystems.co.uk/mysql-titan/)
 
 ## docker-compose.yml
 
@@ -24,8 +29,6 @@ services:
     networks:
       default:
         ipv4_address: "172.19.0.93"
-    ports:
-      - 9889:2368
     environment:
       database__client: mysql
       database__connection__host: titan-mysql-db
@@ -41,8 +44,8 @@ services:
       mail__options__tls__rejectUnauthorized: "false"
       mail__options__host: smtp.office365.com
       mail__options__port: 587
-      mail__options__auth__user: admin@xmsystems.co.uk
-      mail__options__auth__pass: ${XMS_MAIL_PASSWORD}
+      mail__options__auth__user: name@e-mail.co.uk
+      mail__options__auth__pass: <password>
     volumes:
       - /ssd/docker/appdata/ghost/xms:/var/lib/ghost/content
 
@@ -53,41 +56,25 @@ services:
     networks:
       default:
         ipv4_address: "172.19.0.94"
-    ports:
-      - 9890:2368
     environment:
       database__client: mysql
       database__connection__host: titan-mysql-db
       database__connection__user: ghost_stan
       database__connection__password: ${DB_PASS_STAN}
       database__connection__database: ghost2
-      url: https://subdomain.domain.co.uk
-      mail__from: <E-MAIL_ADDRESS>
+      url: https://cars.stansphotography.co.uk
+      mail__from: name@e-mail.com
       mail__transport: SMTP
       mail__options__service: SMTP
       mail__options__host: smtp.gmail.com
       mail__options__port: 587
-      mail__options__auth__user: <E-MAIL_ADDRESS>
-      mail__options__auth__pass: ${STAN_EMAIL_PASSWORD}
+      mail__options__auth__user: name@email.com
+      mail__options__auth__pass: <password>
     volumes:
       - /ssd/docker/appdata/ghost/stan-sal:/var/lib/ghost/content
-
-  ghost3:
-    image: ghost
-    container_name: ghost-lenny-sal
-    restart: unless-stopped
-    networks:
-      default:
-        ipv4_address: "172.19.0.95"
-    ports:
-      - 9891:2368
-    environment:
-      database__client: mysql
-      database__connection__host: titan-mysql-db
-      database__connection__user: ghost_lenny
-      database__connection__password: ${DB_PASS_LENNY}
-      database__connection__database: ghost3
-      url: https://subdomain.domain.co.uk
-    volumes:
-      - /ssd/docker/appdata/ghost/lenny-sal:/var/lib/ghost/content
 ```
+
+Each of these have their own dynamic file to ensure they pass through traefik and are using a valid SSL cert
+
+- [XMS-Blog](https://docs.xmsystems.co.uk/dynamic/#xms-blog-titan)
+- [Stans Photography](https://docs.xmsystems.co.uk/dynamic/#stans-photography-titan)

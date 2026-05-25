@@ -7,7 +7,7 @@ This site documents my homelab: the hardware, networking, and self-hosted servic
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-network-wired:{ .lg .middle } **Network**
+-   :material-lan:{ .lg .middle } **Network**
 
     ---
 
@@ -15,7 +15,7 @@ This site documents my homelab: the hardware, networking, and self-hosted servic
 
     [:octicons-arrow-right-24: Explore](Unifi Cloud Gateway Ultra.md)
 
--   :fontawesome-solid-server:{ .lg .middle } **Servers & Devices**
+-   :material-server:{ .lg .middle } **Servers & Devices**
 
     ---
 
@@ -23,7 +23,7 @@ This site documents my homelab: the hardware, networking, and self-hosted servic
 
     [:octicons-arrow-right-24: Explore](titan.md)
 
--   :fontawesome-brands-docker:{ .lg .middle } **Docker**
+-   :material-docker:{ .lg .middle } **Docker**
 
     ---
 
@@ -31,7 +31,7 @@ This site documents my homelab: the hardware, networking, and self-hosted servic
 
     [:octicons-arrow-right-24: Explore](docker.md)
 
--   :fontawesome-solid-rocket:{ .lg .middle } **Applications**
+-   :material-rocket-launch:{ .lg .middle } **Applications**
 
     ---
 

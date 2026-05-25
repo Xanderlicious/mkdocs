@@ -149,6 +149,7 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         external: true
 
     services:
+
       node_exporter:
         image: quay.io/prometheus/node-exporter:latest
         container_name: node-exporter-titan
@@ -159,7 +160,7 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
             ipv4_address: "172.18.0.2"
         pid: host
         ports:
-          - 9100:9100
+          - "9100:9100"
         restart: unless-stopped
         volumes:
           - '/:/host:ro,rslave'
@@ -199,14 +200,22 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
       homers:
         image: mcth/homers
         container_name: homers
+        restart: unless-stopped
         networks:
           default:
             ipv4_address: "172.18.0.5"
         ports:
           - "8083:8000"
+        environment:
+          - PUID=1000
+          - PGID=1000
         volumes:
           - /ssd/docker/appdata/homers/config.toml:/app/config.toml
-        restart: always
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:8000"]
+          interval: 60s
+          timeout: 10s
+          retries: 3
 
       dozzle:
         image: amir20/dozzle:latest
@@ -214,8 +223,6 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock
           - /ssd/docker/appdata/dozzle/data:/data
-        ports:
-          - 8585:8080
         networks:
           default:
             ipv4_address: "172.18.0.6"

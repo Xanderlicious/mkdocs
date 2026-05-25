@@ -1,49 +1,112 @@
 # Overview
 
-To give you an idea of what my setup looks like, this page will explain at a high level what sort of network I have and the different pieces of hardware I'm running.
+A high-level summary of my homelab — the hardware, networking, and services that make it up.  Each section links to its own dedicated page for the full details.
 
-## Infrastructure
+![](images/arch.png)
 
-The following site will provide you with a diagram of how my infrastructure and networking looks:
+An interactive infrastructure diagram is also available at [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk).
 
-[Infra Diagram](https://infrastructure.xmsystems.co.uk)
+---
 
-Other pages on this site will go into lots of detail of the different servers, their OS's, the applications i'm running and my networking setup.
+## Network
 
-## Internet
+### Internet
 
 ![cityfibre-logo](images/cityfibretransparent.png)
 
-I have an FTTP internet connection provided by Zen here in the UK.  This is provided over the "City Fibre" full fibre network.
+Symmetrical gigabit FTTP provided by **Zen**, delivered over the **CityFibre** full fibre network.  The ONT connects directly to the WAN port of the Unifi Cloud Gateway Ultra with a PPPoE connection.
 
-This provides me with a symmetrical gigabit connection.  
-My ONT plugs directly into the WAN port on my UCG Ultra where a PPPoE connection is configured.
+### Routing & Switching
 
-## DNS & VPN
+- [**Unifi Cloud Gateway Ultra**](https://docs.xmsystems.co.uk/Unifi Cloud Gateway Ultra/) — router, firewall, and built-in network controller.  Manages the entire `10.36.100.0/24` LAN subnet and handles port-forwarding for external-facing services.
+- [**Unifi USW-Lite-16-PoE**](https://docs.xmsystems.co.uk/Unifi USW-Lite-16-PoE/) — 16-port PoE switch providing connectivity to all wired devices and powering the access points.
 
-![pihole & PiVPN Logos](images/pihole.png)
+### Wi-Fi
 
-I am currently running two raspberry Pi's which act as my DNS resolvers and provide ad-blocking through a service called Pi-Hole.  They are both kept in sync with [nebula-sync](https://github.com/mattwebbio/nebula-sync).
+Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi Access Points/) provide full house coverage with seamless roaming:
 
-The primary Pi runs [PiVPN](https://www.pivpn.io/) which uses the "Wireguard" protocol and allows me to connect to my internal-only facing services from outside of my network
+- **Unifi U6 Enterprise** — WiFi 6 on 2.4 GHz, 5 GHz and 6 GHz
+- **Unifi AC-LR** — 2.4 GHz and 5 GHz coverage
 
-I have 2 main servers and an assortment of PC's, mobile phones, laptops and a gaming console.
+### DNS & Ad-blocking
+
+![pihole-logo](images/pihole.png)
+
+Three Raspberry Pis act as DNS resolvers with ad-blocking via **Pi-Hole**:
+
+| Device | Role |
+|--------|------|
+| [NCC-1702](https://docs.xmsystems.co.uk/NCC-1702/) | Primary DNS |
+| [NCC-1703](https://docs.xmsystems.co.uk/NCC-1703/) | Secondary DNS |
+| [NCC-1704](https://docs.xmsystems.co.uk/NCC-1704/) | Tertiary DNS |
+
+All three instances are kept in sync using [Nebula-Sync](https://docs.xmsystems.co.uk/nebula-sync/).
+
+### VPN
+
+The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **WireGuard** protocol, providing secure remote access to internal-only services from outside the network.
+
+---
+
+## Servers
+
+### Titan
+
+[Titan](https://docs.xmsystems.co.uk/titan/) is the primary server and home to the majority of services and media storage.
+
+- Intel i5-12600 · 64 GB DDR4 RAM
+- Nvidia Quadro RTX 4000 (hardware transcoding)
+- ~32 TB usable storage via RAID6 (6 × 8 TB SAS) + 4 TB Ironwolf
+- Runs [Traefik](https://docs.xmsystems.co.uk/traefik/) as the reverse proxy for the entire lab
+- **OS:** Debian 13 (Trixie)
+
+### Phobos
+
+[Phobos](https://docs.xmsystems.co.uk/phobos/) is a NAS-focused secondary server in a Jonsbo N4 case.
+
+- Intel i5-10400 · 32 GB DDR4 RAM
+- Nvidia RTX 4000 SFF Ada Generation
+- 4 × 8 TB + 1 × 4 TB WD Red drives
+- Hosts services that don't need to live on Titan (Pi-Hole intercept, Uptime-Kuma, MotionEye)
+- **OS:** Debian 13 (Trixie)
+
+### Tethys
+
+[Tethys](https://docs.xmsystems.co.uk/tethys/) is a dedicated monitoring host — a repurposed HP 280 G2 SFF desktop.
+
+- Intel i5-6500 · 16 GB RAM
+- Runs [Grafana](https://docs.xmsystems.co.uk/grafana & prometheus/), [Prometheus](https://docs.xmsystems.co.uk/grafana & prometheus/) and [CheckMK](https://docs.xmsystems.co.uk/checkmk/)
+- **OS:** Debian 13 (Trixie)
+
+---
 
 ## Applications
 
 ![docker-logo](images/docker.png)
 
-Docker.....  
-Pretty much everything I host on my 2 main servers (including this site), runs in docker.  
+Every service runs in **Docker**, managed with Docker Compose.  Both Titan and Phobos have their own Docker networks with static IP addressing per container.
 
-All written and configured using docker compose.
+Services are exposed via [Traefik](https://docs.xmsystems.co.uk/traefik/) with valid SSL certificates issued by Let's Encrypt through a Cloudflare DNS challenge.  Internal and external services are separated across different entry points.
+
+Key applications include:
+
+| Category | Applications |
+|----------|-------------|
+| Media | Plex, Sonarr, Radarr, Lidarr, Readarr, SABnzbd, Navidrome, Podgrab, Tautulli, Overseerr |
+| Infrastructure | Traefik, Portainer, Homepage, Dozzle, Fail2Ban |
+| Monitoring | Grafana, Prometheus, CheckMK, Uptime-Kuma |
+| Home | Home Assistant, MotionEye |
+| Finance | Firefly III |
+| Networking | Pi-Hole, Nebula-Sync, PH-Intercept, Apache Guacamole |
+| Data | MySQL (Titan & Phobos), phpMyAdmin, IPAM |
+| Publishing | Ghost |
+
+---
 
 ## Future Plans
 
-I do have some other, more powerful, hardware waiting to be deployed and I have plans to upgrade some of my existing networking gear.
+- Upgrade from the UCG Ultra to a **UDM Pro** and a Unifi enterprise PoE switch — likely timed with a house move or extension
+- Deploy additional hardware that is currently waiting in the wings
+- Migrate Uptime-Kuma from SQLite to MySQL on Phobos
 
-For example, the Unifi Cloud Gateway Ultra is good and certainly performs better than the USG I used to have but I would very much like to change to a UDM Pro.  I also would like to upgrade to a 2.5Gb capable ethernet switch so my Unifi 6 Enterprise Access Point can perform to its fullest.
-
-There are house improvements and/or a house move on the horizon which will allow for my expansion plans to go into overdrive.  
-
-I plan on blogging the whole thing as and when it happens.
+I'll be documenting the whole thing on the [blog](https://blog.xmsystems.co.uk) as it happens.

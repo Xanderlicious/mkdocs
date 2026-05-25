@@ -1,25 +1,51 @@
-# Welcome to...
+# Welcome to XMS Docs
 
 ![](images/xmsystems_logo.svg)
 
-This site will provide you with all the nerdy details of my homelab.
+My name is Alex — an AWS Cloud Engineer and general computing enthusiast based in the UK.
+This site documents my homelab: the hardware, networking, and self-hosted services that keep it running.
 
-My name is Alex and I work in Infrastructure as an AWS Cloud Engineer and prior to this as an IT Professional for a well known telecommunications company in the UK.
+<div class="grid cards" markdown>
 
-Working in this industry and being a follower of all things computing has enabled me to build computers of all shapes & sizes as well as self-host multiple services popular with many homelabbers.
+-   :fontawesome-solid-network-wired:{ .lg .middle } **Network**
 
-This site documents various aspects of my homelab and details:
+    ---
 
-    - Devices
-    - Networking
-    - Docker Install/Setup
-    - Reverse Proxy/Load Balancing
-    - Applications/Services/Containers
+    Unifi UCG Ultra, PoE switch, access points, Pi-Hole DNS and WireGuard VPN
 
-I have also created a [blog site](https://blog.xmsystems.co.uk) where I will try and post about things I get upto on a regular basis.  Please check this out and subscribe.
+    [:octicons-arrow-right-24: Explore](Unifi Cloud Gateway Ultra.md)
+
+-   :fontawesome-solid-server:{ .lg .middle } **Servers & Devices**
+
+    ---
+
+    Titan, Phobos, Tethys and the Raspberry Pi fleet
+
+    [:octicons-arrow-right-24: Explore](titan.md)
+
+-   :fontawesome-brands-docker:{ .lg .middle } **Docker**
+
+    ---
+
+    How Docker is installed, configured and organised across all hosts
+
+    [:octicons-arrow-right-24: Explore](docker.md)
+
+-   :fontawesome-solid-rocket:{ .lg .middle } **Applications**
+
+    ---
+
+    Media, monitoring, networking, finance and more — all self-hosted
+
+    [:octicons-arrow-right-24: Explore](traefik.md)
+
+</div>
+
+---
+
+I also run a [blog](https://blog.xmsystems.co.uk) where I write about what I get up to in the lab.
+Check it out and subscribe if you're interested.
 
 <a href="https://www.buymeacoffee.com/xanderlicious"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=xanderlicious&button_colour=ff57db&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
 ![](images/bmac-qr-code.png)
-
-***Thank You!***  

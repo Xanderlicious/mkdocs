@@ -2,9 +2,9 @@
 
 A high-level summary of my homelab — the hardware, networking, and services that make it up.  Each section links to its own dedicated page for the full details.
 
-![](images/network-diagram.png)
+<iframe src="https://infrastructure.xmsystems.co.uk" style="width:100%; height:600px; border:none; border-radius:4px;" title="Infrastructure Diagram" loading="lazy"></iframe>
 
-An interactive infrastructure diagram is also available at [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk).
+[Open in full screen :octicons-link-external-16:](https://infrastructure.xmsystems.co.uk){ .md-button }
 
 ---
 

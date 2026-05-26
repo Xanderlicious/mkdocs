@@ -125,3 +125,51 @@ Notes:
 Manual `devices:` mappings in compose are not needed — the nvidia runtime handles device passthrough automatically
 Do not mount `/usr/lib/x86_64-linux-gnu/nvidia` as a volume — this conflicts with the nvidia runtime's own injection mechanism and causes container startup failures
 The `LD_LIBRARY_PATH` environment variable persists across container recreations as it's in the compose file
+
+---
+
+# Plex Secure Connections via Traefik — Titan setup notes
+
+## Problem
+
+Plex was showing insecure connections for viewers because it was falling back to plain HTTP, bypassing Traefik's SSL termination.
+
+## Root Causes
+
+Traefik's config.yml middleware (global-default-headers) wasn't loading due to a file watcher race condition at startup, causing all routers referencing it to be disabled
+Plex was only trusting 10.36.100.0/24 (home LAN) and rejecting connections from Traefik's Docker network (172.19.0.0/24)
+Traefik was connecting to Plex over HTTP, which Plex rejects when secureConnections is set to Required
+Real client IPs weren't being forwarded through Traefik to Plex
+
+## Changes Made
+
+- config.yml (Traefik dynamic config)
+
+Added plex-headers middleware with X-Forwarded-Proto: https and sslProxyHeaders
+
+- traefik.yml (Traefik static config)
+
+Added forwardedHeaders.trustedIPs to both websecure-ext and websecure-int entrypoints, trusting 172.19.0.0/24 and 10.36.100.0/24
+
+- Plex docker-compose.yml
+
+Changed loadbalancer.server.scheme from http to https so Traefik connects to Plex over TLS
+Added traefik.http.routers.plex.middlewares=plex-headers@file
+Added websecure-int to the entrypoints label alongside websecure-ext
+
+- Pi-hole
+
+Added a local DNS record for pointing to Titan's local IP, enabling split-horizon DNS so internal clients route directly to Titan rather than hairpinning through the router
+
+- Plex Preferences.xml
+
+Added allowedNetworks="172.19.0.0/24,10.36.100.0/24" to trust Traefik's Docker network
+Updated LanNetworksBandwidth to include 172.19.0.0/24
+Added trustedProxies="172.19.0.0/24" so Plex reads forwarded IP headers from Traefik
+Set secureConnections="0" (Required)
+
+## End Result
+
+All connections to Plex are now secure (HTTPS required)
+Internal and external clients both route correctly through Traefik
+Real client IPs are visible in Plex/Tautulli rather than Traefik's internal Docker IP

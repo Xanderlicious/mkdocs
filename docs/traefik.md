@@ -18,37 +18,50 @@ Sensitive information is placed in a hidden .env file which is then referenced w
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
+    external: true
+  monitoring:
     external: true
 
 services:
 
   traefik:
-    image: traefik:3.1.0-rc3
+    image: ghcr.io/traefik/traefik
     container_name: traefik
-    restart: always
+    restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.2"
+      monitoring:
+        ipv4_address: "172.18.0.2"
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     ports:
       - 80:80
       - 81:81
       - 443:443
       - 444:444
       - 8088:8088
+      - 25565:25565
+    mem_limit: 2g
+    mem_reservation: 128m
     environment:
       - CF_API_EMAIL=${CF_API_EMAIL}
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /ssd/appdata/traefik/data/traefik.yml:/traefik.yml:ro
-      - /ssd/appdata/traefik/data/acme.json:/acme.json
-      - /ssd/appdata/traefik/dynamic:/ssd/appdata/traefik/dynamic
-      - traefik-logs:/var/log/traefik
+      - /ssd/docker/appdata/traefik/data/traefik.yml:/traefik.yml:ro
+      - /ssd/docker/appdata/traefik/data/acme.json:/acme.json
+      - /ssd/docker/appdata/traefik/dynamic:/ssd/docker/appdata/traefik/dynamic
+      - /ssd/docker/appdata/traefik/logs:/var/log/traefik
     labels:
       - traefik.enable=true
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
       - traefik.http.routers.traefik_https.rule=Host(`subdomain.domain.co.uk`)
       - traefik.http.routers.traefik_https.entrypoints=websecure-int
       - traefik.http.routers.traefik_https.tls=true
@@ -58,16 +71,16 @@ services:
       - traefik.http.routers.traefik_https.service=api@internal
 
   portainer:
-    image: portainer/portainer-ee:2.19.5
-    container_name: portainer
+    image: portainer/portainer-ee:lts
+    container_name: portainer_T
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.3"
     command: -H unix:///var/run/docker.sock
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - /ssd/docker/appdata/portainer/data:/data
     labels:
       - traefik.enable=true
       - traefik.http.services.portainer.loadbalancer.server.port=9000
@@ -77,10 +90,6 @@ services:
       - traefik.http.routers.portainer.tls.certresolver=production
       - traefik.http.routers.portainer.tls.domains[0].main=domain.co.uk
       - traefik.http.routers.portainer.tls.domains[0].sans=*.domain.co.uk
-
-volumes:
-  portainer_data:
-  traefik-logs:
 ```
 
 ### traefik.yml
@@ -99,7 +108,10 @@ api:
   dashboard: true
   debug: true
 
+ping: {}
+
 entryPoints:
+
 #internal
   web-int:
     address: :80
@@ -108,11 +120,21 @@ entryPoints:
         entryPoint:
           to: websecure-int
           scheme: https
+
   websecure-int:
     address: :443
     http:
       middlewares:
         - global-default-headers@file
+      encodedCharacters:
+        allowEncodedSlash: false
+        allowEncodedBackSlash: false
+        allowEncodedNullCharacter: false
+        allowEncodedSemicolon: false
+        allowEncodedPercent: false
+        allowEncodedQuestionMark: false
+        allowEncodedHash: false
+
 #external
   web-ext:
     address: :81
@@ -121,18 +143,46 @@ entryPoints:
         entryPoint:
           to: websecure-ext
           scheme: https
+
   websecure-ext:
     address: :444
+    forwardedHeaders:
+      trustedIPs:
+        - "172.19.0.0/24"
+        - "10.36.100.0/24"
     http:
       middlewares:
         - global-default-headers@file
+      encodedCharacters:
+        allowEncodedSlash: false
+        allowEncodedBackSlash: false
+        allowEncodedNullCharacter: false
+        allowEncodedSemicolon: false
+        allowEncodedPercent: false
+        allowEncodedQuestionMark: false
+        allowEncodedHash: false
+
+#prometheus
   metrics:
     address: :8088
+    http:
+      encodedCharacters:
+        allowEncodedSlash: false
+        allowEncodedBackSlash: false
+        allowEncodedNullCharacter: false
+        allowEncodedSemicolon: false
+        allowEncodedPercent: false
+        allowEncodedQuestionMark: false
+        allowEncodedHash: false
+
+#minecraft
+  minecraft:
+    address: :25565
 
 certificatesResolvers:
   production:
     acme:
-      email: <email address>
+      email: xander.france@gmail.com
       storage: acme.json
       dnsChallenge:
         provider: cloudflare
@@ -145,18 +195,21 @@ serversTransport:
 
 providers:
   docker:
-    endpoint: "unix:///var/run/docker.sock"
+    endpoint: unix:///var/run/docker.sock
     exposedByDefault: false
   file:
-    directory: /ssd/appdata/traefik/dynamic/
+    directory: /ssd/docker/appdata/traefik/dynamic/
     watch: true
 
 log:
   level: "INFO"
-  filePath: "/var/log/traefik/traefik.log"
 
 accessLog:
   filePath: "/var/log/traefik/access.log"
+  format: json
+  filters:
+    statusCodes:
+      - "400-599"
 
 metrics:
   prometheus:

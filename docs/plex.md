@@ -40,7 +40,7 @@ services:
       - PUID=1000
       - TZ=Europe/London
       - VERSION=docker
-      - ADVERTISE_IP=https://subdomain.domain.co.uk:443
+      - ADVERTISE_IP=https://plex.xanderman.co.uk
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
       - LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvidia/current
@@ -53,13 +53,14 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.plex.loadbalancer.server.port=32400
-      - traefik.http.services.plex.loadbalancer.server.scheme=http
+      - traefik.http.services.plex.loadbalancer.server.scheme=https
       - traefik.http.routers.plex.rule=Host(`subdomain.domain.co.uk`)
-      - traefik.http.routers.plex.entrypoints=websecure-ext
+      - traefik.http.routers.plex.entrypoints=websecure-ext,websecure-int
       - traefik.http.routers.plex.tls=true
       - traefik.http.routers.plex.tls.certresolver=production
       - traefik.http.routers.plex.tls.domains[0].main=domain.co.uk
       - traefik.http.routers.plex.tls.domains[0].sans=*.domain.co.uk
+      - traefik.http.routers.plex.middlewares=plex-headers@file
       - traefik.http.routers.plex.service=plex
 ```
 
@@ -128,20 +129,20 @@ The `LD_LIBRARY_PATH` environment variable persists across container recreations
 
 ---
 
-# Plex Secure Connections via Traefik — Titan setup notes
+## Plex Secure Connections via Traefik — Titan Setup Notes
 
-## Problem
+### Problem
 
 Plex was showing insecure connections for viewers because it was falling back to plain HTTP, bypassing Traefik's SSL termination.
 
-## Root Causes
+### Root Causes
 
 Traefik's config.yml middleware (global-default-headers) wasn't loading due to a file watcher race condition at startup, causing all routers referencing it to be disabled
 Plex was only trusting 10.36.100.0/24 (home LAN) and rejecting connections from Traefik's Docker network (172.19.0.0/24)
 Traefik was connecting to Plex over HTTP, which Plex rejects when secureConnections is set to Required
 Real client IPs weren't being forwarded through Traefik to Plex
 
-## Changes Made
+### Changes Made
 
 - config.yml (Traefik dynamic config)
 
@@ -159,7 +160,7 @@ Added websecure-int to the entrypoints label alongside websecure-ext
 
 - Pi-hole
 
-Added a local DNS record for pointing to Titan's local IP, enabling split-horizon DNS so internal clients route directly to Titan rather than hairpinning through the router
+Added a local DNS record pointing at Titan's local IP, enabling split-horizon DNS so internal clients route directly to Titan rather than hairpinning through the router
 
 - Plex Preferences.xml
 
@@ -168,7 +169,7 @@ Updated LanNetworksBandwidth to include 172.19.0.0/24
 Added trustedProxies="172.19.0.0/24" so Plex reads forwarded IP headers from Traefik
 Set secureConnections="0" (Required)
 
-## End Result
+### End Result
 
 All connections to Plex are now secure (HTTPS required)
 Internal and external clients both route correctly through Traefik

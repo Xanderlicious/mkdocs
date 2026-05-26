@@ -27,7 +27,7 @@ http:
         hostsProxyHeaders:
           - "X-Forwarded-Host"
         referrerPolicy: "same-origin"
-        frameDeny: true
+        frameDeny: true                 # X-Frame-Options: DENY (stricter than SAMEORIGIN)
         contentTypeNosniff: true
         forceSTSHeader: true
         stsIncludeSubdomains: true
@@ -44,20 +44,27 @@ http:
     pihole1-redirect:
       redirectRegex:
         permanent: true
-        regex: "^https://subdomain.domain.co.uk/?$"
-        replacement: "https://subdomain.domain.co.uk/admin"
+        regex: "^https://ncc-1702.xanderman.co.uk/?$"
+        replacement: "https://ncc-1702.xanderman.co.uk/admin"
 
     pihole2-redirect:
       redirectRegex:
         permanent: true
-        regex: "^https://subdomain.domain.co.uk/?$"
-        replacement: "https://subdomain.domain.co.uk/admin"
+        regex: "^https://ncc-1703.xanderman.co.uk/?$"
+        replacement: "https://ncc-1703.xanderman.co.uk/admin"
 
     pihole3-redirect:
       redirectRegex:
         permanent: true
-        regex: "^https://subdomain.domain.co.uk/?$"
-        replacement: "https://subdomain.domain.co.uk/admin"
+        regex: "^https://ncc-1704.xanderman.co.uk/?$"
+        replacement: "https://ncc-1704.xanderman.co.uk/admin"
+
+    plex-headers:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        sslProxyHeaders:
+          X-Forwarded-Proto: "https"
 
     xms-csp-headers:
       headers:
@@ -68,6 +75,7 @@ http:
           font-src 'self' https://fonts.gstatic.com;
           img-src 'self' data: https://img.buymeacoffee.com;
           connect-src 'self';
+          frame-src https://infrastructure.xmsystems.co.uk;
           frame-ancestors 'none';
           base-uri 'self';
           form-action 'self' https://www.buymeacoffee.com;
@@ -75,6 +83,8 @@ http:
 
     xms-infrastructure-csp-headers:
       headers:
+        customResponseHeaders:
+          X-Frame-Options: ""
         contentSecurityPolicy: >-
           default-src 'self';
           script-src 'self' 'unsafe-inline';
@@ -82,7 +92,7 @@ http:
           img-src 'self' data:;
           font-src 'self';
           connect-src 'self';
-          frame-ancestors 'none';
+          frame-ancestors https://docs.xmsystems.co.uk;
           base-uri 'self';
           form-action 'none';
           upgrade-insecure-requests;
@@ -95,7 +105,7 @@ http:
           style-src 'self' 'unsafe-inline';
           img-src 'self' data:;
           font-src 'self';
-          connect-src 'self' wss://subdomain.domain.co.uk ws://172.20.0.12:3003;
+          connect-src 'self' wss://poker.xmsystems.co.uk ws://172.20.0.12:3003;
           media-src 'self';
           frame-ancestors 'none';
           base-uri 'self';

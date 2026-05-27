@@ -6,7 +6,7 @@ Built as a custom solution consisting of a Node.js REST API backend, a static HT
 It also has a dedicated database on the shared `phobos-mysql-db` instance.
 
 **URL:** [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk)  
-**Host:** Phobos  
+**Host:** Phobos
 
 ---
 
@@ -168,31 +168,31 @@ http:
 
 ## Data Import Scripts
 
-A set of Python scripts live on Phobos at `/ssd/docker/appdata/ipam/scripts/` for populating the IPAM from existing infrastructure.
+Python scripts live on Phobos at `/ssd/docker/appdata/ipam/scripts/`. All scrapers are upsert-safe — they add new records and update existing ones. Safe to run at any time.
 
 ### Docker scraper
 
-Connects to Phobos (local socket), Titan, Tethys and NCC-1702 (TLS) and imports all Docker networks and container IPs.
+Connects to Phobos (local socket), Titan, Tethys and NCC-1702 (TLS) and imports all Docker networks and container IPs. Marks containers that are no longer running as offline.
 
 ```bash
 python3 docker-ipam-scraper.py
 ```
 
-Uses TLS certs from `/etc/docker/certs/` for remote hosts. Safe to re-run — skips anything already in the IPAM.
+Uses TLS certs from `/etc/docker/certs/` for remote hosts.
 
 ### UniFi scraper
 
-Pulls all networks and DHCP clients from the UniFi gateway at `10.36.100.1`. Also imports DHCP ranges for each network.
+Pulls all networks, DHCP clients and DHCP ranges from the UniFi gateway at `10.36.100.1`. Updates hostname, MAC and online/offline status on existing hosts.
 
 ```bash
 python3 unifi-ipam-scraper.py
 ```
 
-Only creates a network in the IPAM if at least one host is present. Sets online/offline status based on current connection state.
+Only creates a network in the IPAM if at least one host is present.
 
 ### Pi-hole scraper
 
-Pulls local DNS records from Pi-hole v6 on NCC-1702 via the API at `http://10.36.100.2/api/config/dns/hosts`. Automatically links records to existing hosts where the IP matches.
+Pulls local DNS records from Pi-hole v6 on NCC-1702 via the API at `http://10.36.100.2/api/config/dns/hosts`. Updates records where the IP has changed and removes records that no longer exist in Pi-hole.
 
 ```bash
 python3 pihole-ipam-scraper.py
@@ -200,13 +200,31 @@ python3 pihole-ipam-scraper.py
 
 ### PiVPN / WireGuard scraper
 
-SSHes to NCC-1702 using the `ncc-1702` SSH config entry and reads WireGuard peer config from `/etc/wireguard/wg0.conf`. Prompts for SSH key passphrase if required.
+SSHes to NCC-1702 using the `ncc-1702` SSH config entry and reads WireGuard peer config from `/etc/wireguard/wg0.conf`. Prompts for SSH key passphrase if required. Run manually only.
 
 ```bash
 python3 pivpn-ipam-scraper.py
 ```
 
 Imports the WireGuard network, gateway host, and all peers with their VPN IPs and names. Checks live handshake status via `wg show` to set online/offline.
+
+---
+
+## Automated Refresh
+
+The Docker, UniFi and Pi-hole scrapers run automatically every 6 hours via cron. The WireGuard scraper is excluded as VPN peers rarely change and it requires an interactive SSH passphrase.
+
+### Cron entry (Phobos)
+
+```sh
+0 */6 * * * /ssd/docker/appdata/ipam/scripts/ipam-refresh.sh
+```
+
+### Wrapper script
+
+`/ssd/docker/appdata/ipam/scripts/ipam-refresh.sh` runs all three scrapers in sequence and writes output to a daily log file.
+
+Logs are stored at `/ssd/docker/appdata/ipam/logs/` and automatically cleaned up after 7 days.
 
 ---
 

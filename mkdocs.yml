@@ -37,6 +37,7 @@ nav:
     - phpMyAdmin: phpmyadmin.md
     - IPAM: ipam.md
     - Ghost: ghost.md
+    - Poker Clock: poker.md
     - NCC-1704: NCC-1704.md
     - Nebula-Sync: nebula-sync.md
     - PH-Intercept: ph-intercept.md

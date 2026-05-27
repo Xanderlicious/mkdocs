@@ -82,17 +82,17 @@ This is where I will write out everything the container needs in a YAML file.
 
 To pull and deploy the image according to the details in the YAML, from the same directory as where the compose file resides, I would run the following command:
 
-```sh
-docker compose pull; docker compose up -d
-```
+    ```sh
+    docker compose pull; docker compose up -d
+    ```
 
 The -d at the end will run the container ***detached*** meaning the terminal window can be closed and the container will continue running.
 
 Should I need to make changes to my YAML configuration (change some environment settings or change the docker image being used), I can re-deploy the container with a similar command:
 
-```sh
-docker compose pull; docker compose up -d --force-recreate
-```
+    ```sh
+    docker compose pull; docker compose up -d --force-recreate
+    ```
 
 This will ensure the container is re-created.
 

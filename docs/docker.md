@@ -30,8 +30,6 @@ Below are example of some of the docker networks I have created and the commands
 
     The creation of the network is a simple command and is one that specifies a subnet.  
 
-    The reason for specifying a subnet is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
-
         ```sh
         docker network create --subnet 172.19.0.0/24 proxy
         docker network create --subnet 172.18.0.0/24 monitoring
@@ -42,34 +40,39 @@ Below are example of some of the docker networks I have created and the commands
 === "phobos"
 
     The "phobos-network" docker network has been created for all of the containers running on phobos  
-    Just like Titan containers, they have all been provided with static IP Addresses.
-    As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
+    As this is a totally seperate host, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
 
         ```sh
         docker network create --subnet 172.20.0.0/24 phobos-network
+        docker network create --subnet 172.18.0.0/24 monitoring
         ```
 
-    This creates a /24 subnet named ***phobos-network***
+    This creates a /24 subnet named ***phobos-network*** and a /24 subnet named ***monitoring***
 
 === "tethys"
 
-    Similally with Phobos, I also have created a docker network for containers running on Tethys.
+    The "tethys-network" docker network has been created for all of the containers running on tethys  
+    As this is a totally seperate host, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
 
         ```sh
         docker network create --subnet 172.20.0.0/24 tethys-network
+        docker network create --subnet 172.18.0.0/24 monitoring
         ```
 
-    This creates a /24 subnet named ***tethys-network***  
+    This creates a /24 subnet named ***tethys-network*** and a /24 subnet named ***monitoring***
 
 === "ncc-1702"
 
     My primary Pi-Hole also runs docker and in keeping with the other servers, this also has a docker network and subnet specified.
+    Currently there is only portainer-agent and a wireguard exporter running here so didn't feel the need to specify multiple different networks like the other hosts.
 
         ```sh
         docker network create --subnet 172.21.0.0/24 pihole1-network
         ```
 
     This creates a /24 network named ***pihole1-network***
+
+ The reason for specifying subnets is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
 
 ## Docker Commands
 
@@ -258,6 +261,6 @@ All of my compose files and the containers appdata reside in the following locat
         ```
 
 !!! info
-        Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
-        These are services/applications that I am still either testing or refining.
-        If I plan on implementing them long term then I will be creating pages for these.
+    Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.
+    These are services/applications that I am still either testing or refining.
+    If I plan on implementing them long term then I will be creating pages for these.

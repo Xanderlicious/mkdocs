@@ -24,42 +24,52 @@ Before spinning up some docker containers, I need to ensure I have setup my dock
 
 Below are example of some of the docker networks I have created and the commands used.
 
-### Titan
+=== "titan"
 
-Titan runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
+    Titan runs a Reverse Proxy in the form of [Traefik](https://docs.xmsystems.co.uk/traefik/). To ensure that all applications (that need to be proxied) pass through Traefik, I would need to associate them with this network.
 
-The creation of the network is a simple command and is one that specifies a subnet.  
+    The creation of the network is a simple command and is one that specifies a subnet.  
 
-The reason for specifying a subnet is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
+    The reason for specifying a subnet is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
 
-```bash
-docker network create --subnet 172.19.0.0/24 proxy
-docker network create --subnet 172.18.0.0/24 monitoring
-```  
+        ```sh
+        docker network create --subnet 172.19.0.0/24 proxy
+        docker network create --subnet 172.18.0.0/24 monitoring
+        ```
 
-This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring***
+    This creates a /24 subnet named ***proxy*** and a /24 subnet named ***monitoring***
 
-### Phobos
+=== "phobos"
 
-The "phobos-network" docker network has been created for all of the containers running on phobos  
-Just like Titan containers, they have all been provided with static IP Addresses.
-As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
+    The "phobos-network" docker network has been created for all of the containers running on phobos  
+    Just like Titan containers, they have all been provided with static IP Addresses.
+    As this is a totally seperate system, I'm unable to associate docker containers here with the network that traefik is running on.  Therefore, any container that needs to run through traefik, a [dynamic file](https://docs.xmsystems.co.uk/dynamic/) needs to be created.
 
-```bash
-docker network create --subnet 172.20.0.0/24 phobos-network
-```  
+        ```sh
+        docker network create --subnet 172.20.0.0/24 phobos-network
+        ```
 
-This creates a /24 subnet named ***phobos-network***
+    This creates a /24 subnet named ***phobos-network***
 
-### Tethys
+=== "tethys"
 
-Similally with Phobos, I also have created a docker network for containers running on Tethys.
+    Similally with Phobos, I also have created a docker network for containers running on Tethys.
 
-```bash
-docker network create --subnet 172.20.0.0/24 tethys-network
-```
+        ```sh
+        docker network create --subnet 172.20.0.0/24 tethys-network
+        ```
 
-This creates a /24 subnet named ***tethys-network***  
+    This creates a /24 subnet named ***tethys-network***  
+
+=== "ncc-1702"
+
+    My primary Pi-Hole also runs docker and in keeping with the other servers, this also has a docker network and subnet specified.
+
+        ```sh
+        docker network create --subnet 172.21.0.0/24 pihole1-network
+        ```
+
+    This creates a /24 network named ***pihole1-network***
 
 ## Docker Commands
 
@@ -69,7 +79,7 @@ This is where I will write out everything the container needs in a YAML file.
 
 To pull and deploy the image according to the details in the YAML, from the same directory as where the compose file resides, I would run the following command:
 
-```bash
+```sh
 docker compose pull; docker compose up -d
 ```
 
@@ -77,167 +87,175 @@ The -d at the end will run the container ***detached*** meaning the terminal win
 
 Should I need to make changes to my YAML configuration (change some environment settings or change the docker image being used), I can re-deploy the container with a similar command:
 
-```bash
+```sh
 docker compose pull; docker compose up -d --force-recreate
 ```
 
 This will ensure the container is re-created.
 
-## Compose Files & Appdata
+## Compose Files
 
 All of my compose files and the containers appdata reside in the following locations
 
-### Titan (Compose and Appdata)
+=== "titan"
 
-```sh
-/ssd/docker/docker-compose/
-.
-├── arrs
-│   └── docker-compose.yml
-├── fail2ban
-│   └── docker-compose.yml
-├── ghost
-│   └── docker-compose.yml
-├── ha
-│   └── docker-compose.yml
-├── homepage
-│   └── docker-compose.yml
-├── it-tools
-│   └── docker-compose.yml
-├── minecraft
-│   └── docker-compose.yml
-├── monitoring
-│   └── docker-compose.yml
-├── navidrome
-│   └── docker-compose.yml
-├── phpmyadmin
-│   └── docker-compose.yml
-├── plex
-│   └── docker-compose.yml
-├── podgrab
-│   └── docker-compose.yml
-├── sabnzbd
-│   └── docker-compose.yml
-├── seerr
-│   └── docker-compose.yml
-├── tautulli
-│   └── docker-compose.yml
-├── traefik
-│   └── docker-compose.yml
-└── traefik-manager
-    └── docker-compose.yml
+        ```sh
+        /ssd/docker/docker-compose/
+        .
+        ├── arrs
+        │   └── docker-compose.yml
+        ├── fail2ban
+        │   └── docker-compose.yml
+        ├── ghost
+        │   └── docker-compose.yml
+        ├── ha
+        │   └── docker-compose.yml
+        ├── homepage
+        │   └── docker-compose.yml
+        ├── it-tools
+        │   └── docker-compose.yml
+        ├── minecraft
+        │   └── docker-compose.yml
+        ├── monitoring
+        │   └── docker-compose.yml
+        ├── navidrome
+        │   └── docker-compose.yml
+        ├── phpmyadmin
+        │   └── docker-compose.yml
+        ├── plex
+        │   └── docker-compose.yml
+        ├── podgrab
+        │   └── docker-compose.yml
+        ├── sabnzbd
+        │   └── docker-compose.yml
+        ├── seerr
+        │   └── docker-compose.yml
+        ├── tautulli
+        │   └── docker-compose.yml
+        ├── traefik
+        │   └── docker-compose.yml
+        └── traefik-manager
+            └── docker-compose.yml
 
-17 directories, 17 files
-```
+        17 directories, 17 files
+        ```
 
-```sh
-/ssd/docker/appdata/
-.
-├── dozzle
-├── fail2ban
-├── ghost
-├── ha
-├── homepage
-├── homers
-├── Lidarr
-├── minecraft
-├── Navidrome
-├── overseerr
-├── phpmyadmin
-├── Plex
-├── plex-monitoring-stack
-├── podgrab
-├── portainer
-├── Radarr
-├── Readarr
-├── SABnzbd
-├── seerr
-├── Sonarr
-├── Tautulli
-├── traefik
-└── traefik-manager
+=== "Phobos"
 
-24 directories
-```
+        ```sh
+        /ssd/docker/docker-compose/
+        .
+        ├── cloudflare
+        │   └── docker-compose.yml
+        ├── dozzle-agent
+        │   └── docker-compose.yml
+        ├── kuma
+        │   └── docker-compose.yml
+        ├── mkdocs
+        │   └── docker-compose.yml
+        ├── monitoring
+        │   └── docker-compose.yml
+        ├── motioneye
+        │   └── docker-compose.yml
+        ├── nebula-sync
+        │   └── docker-compose.yml
+        ├── nginx
+        │   └── docker-compose.yml
+        ├── ph-intercept
+        │   └── docker-compose.yml
+        ├── pihole
+        │   └── docker-compose.yml
+        └── portainer
+            └── docker-compose.yml
 
-### Phobos (Compose & Appdata)
+        11 directories, 11 files
+        ```
 
-```sh
-/ssd/docker/docker-compose/
-.
-├── cloudflare
-│   └── docker-compose.yml
-├── dozzle-agent
-│   └── docker-compose.yml
-├── kuma
-│   └── docker-compose.yml
-├── mkdocs
-│   └── docker-compose.yml
-├── monitoring
-│   └── docker-compose.yml
-├── motioneye
-│   └── docker-compose.yml
-├── nebula-sync
-│   └── docker-compose.yml
-├── nginx
-│   └── docker-compose.yml
-├── ph-intercept
-│   └── docker-compose.yml
-├── pihole
-│   └── docker-compose.yml
-└── portainer
-    └── docker-compose.yml
+=== "Tethys"
 
-11 directories, 11 files
-```
+        ```sh
+        /home/xander/docker/docker-compose/
+        .
+        ├── checkmk
+        │   └── docker-compose.yml
+        ├── dozzle-agent
+        │   └── docker-compose.yml
+        ├── monitoring
+        │   └── docker-compose.yml
+        └── portainer
+            └── docker-compose.yml
 
-```sh
-/ssd/docker/appdata/
-.
-├── kumav2
-├── motioneye
-├── nginx
-├── ph-intercept
-├── pihole
-└── portainer_data
+        4 directories, 4 files
+        ```
 
-7 directories
-```
+## Appdata
 
-### Tethys (Compose & Appdata)
+=== "titan"
 
-```sh
-/home/xander/docker/docker-compose/
-.
-├── checkmk
-│   └── docker-compose.yml
-├── dozzle-agent
-│   └── docker-compose.yml
-├── monitoring
-│   └── docker-compose.yml
-└── portainer
-    └── docker-compose.yml
+        ```sh
+        /ssd/docker/appdata/
+        .
+        ├── dozzle
+        ├── fail2ban
+        ├── ghost
+        ├── ha
+        ├── homepage
+        ├── homers
+        ├── Lidarr
+        ├── minecraft
+        ├── Navidrome
+        ├── overseerr
+        ├── phpmyadmin
+        ├── Plex
+        ├── plex-monitoring-stack
+        ├── podgrab
+        ├── portainer
+        ├── Radarr
+        ├── Readarr
+        ├── SABnzbd
+        ├── seerr
+        ├── Sonarr
+        ├── Tautulli
+        ├── traefik
+        └── traefik-manager
 
-4 directories, 4 files
-```
+        24 directories
+        ```
 
-```sh
-~/docker/appdata/
-.
-├── checkmk
-│   ├── cmkxms
-│   ├── notifications
-│   └── plugins
-├── monitoring
-│   ├── grafana
-│   ├── pihole-exporter
-│   ├── prometheus
-│   └── unpoller
-└── portainer
-    └── portainer_data
+=== "phobos"
 
-11 directories
-```
+        ```sh
+        /ssd/docker/appdata/ (phobos appdata)
+        .
+        ├── kumav2
+        ├── motioneye
+        ├── nginx
+        ├── ph-intercept
+        ├── pihole
+        └── portainer_data
+
+        7 directories
+        ```
+
+=== "tethys"
+
+        ```sh
+        ~/docker/appdata/
+        .
+        ├── checkmk
+        │   ├── cmkxms
+        │   ├── notifications
+        │   └── plugins
+        ├── monitoring
+        │   ├── grafana
+        │   ├── pihole-exporter
+        │   ├── prometheus
+        │   └── unpoller
+        └── portainer
+            └── portainer_data
+
+        11 directories
+        ```
 
 !!! info
         Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.

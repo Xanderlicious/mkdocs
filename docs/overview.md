@@ -2,7 +2,7 @@
 
 A high-level summary of my homelab — the hardware, networking, and services that make it up.  Each section links to its own dedicated page for the full details.
 
-[Infrastructure Diagram](https://infrastructure.xmsystems.co.uk)
+<iframe src="https://infrastructure.xmsystems.co.uk" style="width:100%; height:600px; border:none; border-radius:4px;" title="Infrastructure Diagram" loading="lazy"></iframe>
 
 [Open in full screen :octicons-link-external-16:](https://infrastructure.xmsystems.co.uk){ .md-button }
 
@@ -18,12 +18,12 @@ Symmetrical gigabit FTTP provided by **Zen**, delivered over the **CityFibre** f
 
 ### Routing & Switching
 
-- [**Unifi Cloud Gateway Ultra**](https://docs.xmsystems.co.uk/Unifi Cloud Gateway Ultra/) — router, firewall, and built-in network controller.  Manages the entire `10.36.100.0/24` LAN subnet and handles port-forwarding for external-facing services.
-- [**Unifi USW-Lite-16-PoE**](https://docs.xmsystems.co.uk/Unifi USW-Lite-16-PoE/) — 16-port PoE switch providing connectivity to all wired devices and powering the access points.
+- [**Unifi Cloud Gateway Ultra**](https://docs.xmsystems.co.uk/Unifi%20Cloud%20Gateway%20Ultra/) — router, firewall, and built-in network controller.  Manages the entire `10.36.100.0/24` LAN subnet and handles port-forwarding for external-facing services.
+- [**Unifi USW-Lite-16-PoE**](https://docs.xmsystems.co.uk/Unifi%20USW-Lite-16-PoE/) — 16-port PoE switch providing connectivity to all wired devices and powering the access points.
 
 ### Wi-Fi
 
-Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi Access Points/) provide full house coverage with seamless roaming:
+Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi%20Access%20Points/) provide full house coverage with seamless roaming:
 
 - **Unifi U6 Enterprise** — WiFi 6 on 2.4 GHz, 5 GHz and 6 GHz
 - **Unifi AC-LR** — 2.4 GHz and 5 GHz coverage
@@ -35,7 +35,7 @@ Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi Access Points/) pro
 Three Raspberry Pis act as DNS resolvers with ad-blocking via **Pi-Hole**:
 
 | Device | Role |
-|--------|------|
+| --- | --- |
 | [NCC-1702](https://docs.xmsystems.co.uk/NCC-1702/) | Primary DNS |
 | [NCC-1703](https://docs.xmsystems.co.uk/NCC-1703/) | Secondary DNS |
 | [NCC-1704](https://docs.xmsystems.co.uk/NCC-1704/) | Tertiary DNS |
@@ -75,7 +75,7 @@ The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **W
 [Tethys](https://docs.xmsystems.co.uk/tethys/) is a dedicated monitoring host — a repurposed HP 280 G2 SFF desktop.
 
 - Intel i5-6500 · 16 GB RAM
-- Runs [Grafana](https://docs.xmsystems.co.uk/grafana & prometheus/), [Prometheus](https://docs.xmsystems.co.uk/grafana & prometheus/) and [CheckMK](https://docs.xmsystems.co.uk/checkmk/)
+- Runs [Grafana](https://docs.xmsystems.co.uk/grafana), [Prometheus](https://docs.xmsystems.co.uk/prometheus/) and [CheckMK](https://docs.xmsystems.co.uk/checkmk/)
 - **OS:** Debian 13 (Trixie)
 
 ---
@@ -91,7 +91,7 @@ Services are exposed via [Traefik](https://docs.xmsystems.co.uk/traefik/) with v
 Key applications include:
 
 | Category | Applications |
-|----------|-------------|
+| ---------- | ------------- |
 | Media | Plex, Sonarr, Radarr, Lidarr, Readarr, SABnzbd, Navidrome, Podgrab, Tautulli, Overseerr |
 | Infrastructure | Traefik, Portainer, Homepage, Dozzle, Fail2Ban |
 | Monitoring | Grafana, Prometheus, CheckMK, Uptime-Kuma |

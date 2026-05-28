@@ -109,11 +109,13 @@ All of my compose files and the containers appdata reside in the following locat
         │   └── docker-compose.yml
         ├── fail2ban
         │   └── docker-compose.yml
+        ├── firefly
+        │   └── docker-compose.yml
         ├── ghost
         │   └── docker-compose.yml
-        ├── ha
+        ├── guacamole
         │   └── docker-compose.yml
-        ├── homepage
+        ├── home-assistant
         │   └── docker-compose.yml
         ├── it-tools
         │   └── docker-compose.yml
@@ -129,29 +131,37 @@ All of my compose files and the containers appdata reside in the following locat
         │   └── docker-compose.yml
         ├── podgrab
         │   └── docker-compose.yml
+        ├── README.md
         ├── sabnzbd
         │   └── docker-compose.yml
         ├── seerr
         │   └── docker-compose.yml
         ├── tautulli
         │   └── docker-compose.yml
+        ├── titan-mysql-db
+        │   └── docker-compose.yml
         ├── traefik
         │   └── docker-compose.yml
         └── traefik-manager
             └── docker-compose.yml
 
-        17 directories, 17 files
+        19 directories, 20 files
         ```
 
-=== "Phobos"
+=== "phobos"
 
         ```sh
         /ssd/docker/docker-compose/
         .
-        ├── cloudflare
-        │   └── docker-compose.yml
         ├── dozzle-agent
         │   └── docker-compose.yml
+        ├── homepage
+        │   └── docker-compose.yml
+        ├── ipam-backend
+        │   ├── docker-compose.yml
+        │   ├── Dockerfile
+        │   ├── package.json
+        │   └── server.js
         ├── kuma
         │   └── docker-compose.yml
         ├── mkdocs
@@ -164,20 +174,26 @@ All of my compose files and the containers appdata reside in the following locat
         │   └── docker-compose.yml
         ├── nginx
         │   └── docker-compose.yml
+        ├── ollama
+        │   └── docker-compose.yml
         ├── ph-intercept
+        │   └── docker-compose.yml
+        ├── phobos-mysql-db
+        │   └── docker-compose.yml
+        ├── phpmyadmin
         │   └── docker-compose.yml
         ├── pihole
         │   └── docker-compose.yml
         └── portainer
             └── docker-compose.yml
 
-        11 directories, 11 files
+        15 directories, 18 files
         ```
 
-=== "Tethys"
+=== "tethys"
 
         ```sh
-        /home/xander/docker/docker-compose/
+        /ssd/docker/docker-compose/
         .
         ├── checkmk
         │   └── docker-compose.yml
@@ -191,6 +207,19 @@ All of my compose files and the containers appdata reside in the following locat
         4 directories, 4 files
         ```
 
+=== "ncc-1702"
+
+        ```sh
+        /home/xander/docker/docker-compose
+        .
+        ├── portainer
+        │   └── docker-compose.yml
+        └── wireguard-exporter
+            └── docker-compose.yml
+
+        3 directories, 2 files
+        ```
+
 ## Appdata
 
 === "titan"
@@ -200,6 +229,7 @@ All of my compose files and the containers appdata reside in the following locat
         .
         ├── dozzle
         ├── fail2ban
+        ├── firefly
         ├── ghost
         ├── ha
         ├── homepage
@@ -210,7 +240,6 @@ All of my compose files and the containers appdata reside in the following locat
         ├── overseerr
         ├── phpmyadmin
         ├── Plex
-        ├── plex-monitoring-stack
         ├── podgrab
         ├── portainer
         ├── Radarr
@@ -219,31 +248,39 @@ All of my compose files and the containers appdata reside in the following locat
         ├── seerr
         ├── Sonarr
         ├── Tautulli
+        ├── titan-mysql-db
         ├── traefik
         └── traefik-manager
 
-        24 directories
+        25 directories
         ```
 
 === "phobos"
 
         ```sh
-        /ssd/docker/appdata/ (phobos appdata)
+        /ssd/docker/appdata/
         .
+        ├── homepage
+        ├── ipam
         ├── kumav2
         ├── motioneye
         ├── nginx
+        ├── ollama
+        ├── open-webui
         ├── ph-intercept
+        ├── phobos-mysql-db
+        ├── phpmyadmin
         ├── pihole
+        ├── poker
         └── portainer_data
 
-        7 directories
+        13 directories
         ```
 
 === "tethys"
 
         ```sh
-        ~/docker/appdata/
+        /ssd/docker/appdata/
         .
         ├── checkmk
         │   ├── cmkxms
@@ -259,6 +296,10 @@ All of my compose files and the containers appdata reside in the following locat
 
         11 directories
         ```
+
+=== "ncc-1702"
+
+        `no appdata directory required`
 
 !!! info
     Across all hosts, you will see here that there are numerous services listed that are not mentioned or detailed within this documentation site.

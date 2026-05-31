@@ -27,7 +27,6 @@ http:
         hostsProxyHeaders:
           - "X-Forwarded-Host"
         referrerPolicy: "same-origin"
-        frameDeny: true                 # X-Frame-Options: DENY (stricter than SAMEORIGIN)
         contentTypeNosniff: true
         forceSTSHeader: true
         stsIncludeSubdomains: true
@@ -68,6 +67,7 @@ http:
 
     xms-csp-headers:
       headers:
+        frameDeny: true
         contentSecurityPolicy: >-
           default-src 'self';
           script-src 'self' 'unsafe-inline';
@@ -99,6 +99,7 @@ http:
 
     xms-poker-csp-headers:
       headers:
+        frameDeny: true
         contentSecurityPolicy: >-
           default-src 'self';
           script-src 'self' 'unsafe-inline';
@@ -128,6 +129,7 @@ http:
 
     xms-blog-csp-headers:
       headers:
+        frameDeny: true
         contentSecurityPolicy: >-
           default-src 'self';
           script-src 'self' 'unsafe-inline' 'unsafe-eval';
@@ -143,6 +145,7 @@ http:
 
     stan-csp-headers:
       headers:
+        frameDeny: true
         contentSecurityPolicy: >-
           default-src 'self';
           script-src 'self' 'unsafe-inline' 'unsafe-eval';

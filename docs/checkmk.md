@@ -1,4 +1,6 @@
-![](images/checkmk.png)
+# CheckMK
+
+![checkmk-logo](images/checkmk.png)
 
 In my honest opinion, one of the best, if not THE best here is CheckMK.  This is quite an advanced monitoring tool with many features but it needs to be implemented properly and ideally have dedicated hardware.
 
@@ -10,7 +12,7 @@ Above is a sample screenshot taken from somewhere on the internet
 
 I currently run CheckMK in a docker container as the .deb package to install directly isn't available for Debian 13 just yet
 
-### docker-compose.yml
+## docker-compose.yml
 
 ```yaml
 networks:
@@ -44,4 +46,6 @@ volumes:
   checkmk:
 ```
 
-To allow a connection to its dashboard via my domain (and using SSL) I have created a dynamic file for traefik [here](https://docs.xmsystems.co.uk/dynamic/#checkmk-tethys)
+To allow a connection to its dashboard via my domain (and using SSL) I have created a dynamic file for traefik.
+
+- [CheckMK Dynamic File COnfiguration](https://docs.xmsystems.co.uk/dynamic/#checkmk-tethys)

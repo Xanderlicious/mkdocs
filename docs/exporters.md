@@ -145,8 +145,7 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
 
     ```yaml
     networks:
-      default:
-        name: monitoring
+      monitoring:
         external: true
 
     services:
@@ -157,8 +156,8 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         command:
           - '--path.rootfs=/host'
         networks:
-          default:
-            ipv4_address: "172.18.0.2"
+          monitoring:
+            ipv4_address: "172.18.0.3"
         pid: host
         ports:
           - "9100:9100"
@@ -170,8 +169,8 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: gcr.io/cadvisor/cadvisor
         container_name: cadvisor-titan
         networks:
-          default:
-            ipv4_address: "172.18.0.3"
+          monitoring:
+            ipv4_address: "172.18.0.4"
         ports:
           - "8087:8080"
         volumes:
@@ -189,13 +188,13 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: ghcr.io/timothystewart6/prometheus-plex-exporter
         container_name: plex-exporter
         networks:
-          default:
-            ipv4_address: "172.18.0.4"
+          monitoring:
+            ipv4_address: "172.18.0.5"
         ports:
           - "9000:9000"
         environment:
-          PLEX_SERVER: "https://subdomain.domain.co.uk"
-          PLEX_TOKEN: "plex-token"
+          PLEX_SERVER: "https://plex.xanderman.co.uk"
+          PLEX_TOKEN: "Jq1eEGzU-k8bXJzhxyxN"
         restart: unless-stopped
 
       homers:
@@ -203,8 +202,8 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         container_name: homers
         restart: unless-stopped
         networks:
-          default:
-            ipv4_address: "172.18.0.5"
+          monitoring:
+            ipv4_address: "172.18.0.6"
         ports:
           - "8083:8000"
         environment:
@@ -225,10 +224,10 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
           - /var/run/docker.sock:/var/run/docker.sock
           - /ssd/docker/appdata/dozzle/data:/data
         networks:
-          default:
-            ipv4_address: "172.18.0.6"
+          monitoring:
+            ipv4_address: "172.18.0.7"
         environment:
-          - DOZZLE_REMOTE_AGENT=10.36.100.151:7007,10.36.100.152:7007
+          - DOZZLE_REMOTE_AGENT=10.36.100.151:7007,10.36.100.152:7007,10.36.100.2:7007
           - DOZZLE_ENABLE_ACTIONS=true
           - DOZZLE_ENABLE_SHELL=true
           - DOZZLE_AUTH_PROVIDER=simple
@@ -413,7 +412,7 @@ Node Exporter is the standard Prometheus exporter for hardware and OS-level metr
 
 **Image:** `gcr.io/cadvisor/cadvisor`  
 **Hosts:** Titan, Phobos, Tethys, NCC-1702  
-**Ports:** `8080` (Tethys, on the monitoring Docker network), `8087` (Titan & Phobos, mapped to host)
+**Ports:** `8080` (Tethys, on the monitoring Docker network), `8087` (Titan, Phobos & NCC-1702, mapped to host)
 
 cAdvisor (Container Advisor) collects resource usage and performance metrics for every running Docker container. It runs in privileged mode with access to the host cgroup filesystem.
 

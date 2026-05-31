@@ -1,28 +1,24 @@
 
 # Sonarr - Radarr - Lidarr - Readarr
 
-![](images/Sonarr.png)
+![sonarr-logo](images/Sonarr.png)
 *Sonarr = TV Shows*
 
-![](images/radarr.png)
+![radarr-logo](images/radarr.png)
 *Radarr = Films*
 
-![](images/lidarr.png)
+![lidarr-logo](images/lidarr.png)
 *Lidarr = Music*
-
-![](images/readarr.png)
-*Readarr = Books*
 
 They allow easy organisation of all of your media.  It has the ability to rename everything appropriately according to a naming convention you specify.
 
 It also has the ability to link in with a newsreader (I use [SABnzbd](https://docs.xmsystems.co.uk/sabnzbd/))
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -37,7 +33,7 @@ services:
             - /downloads/Incomplete:/Incomplete
             - /megaraid/mediastore/TV:/tv
         networks:
-          default:
+          proxy:
             ipv4_address: 172.19.0.102
         environment:
             - PUID=1000
@@ -80,7 +76,7 @@ services:
             - traefik.http.routers.radarr.tls.domains[0].main=domain.co.uk
             - traefik.http.routers.radarr.tls.domains[0].sans=*.domain.co.uk
         networks:
-          default:
+          proxy:
             ipv4_address: 172.19.0.103
         ports:
             - 7878:7878
@@ -109,38 +105,9 @@ services:
             - traefik.http.routers.lidarr.tls.domains[0].main=domain.co.uk
             - traefik.http.routers.lidarr.tls.domains[0].sans=*.domain.co.uk
         networks:
-          default:
+          proxy:
             ipv4_address: 172.19.0.104
         ports:
             - 8686:8686
-        restart: unless-stopped
-
-    readarr:
-        image: lscr.io/linuxserver/readarr:develop
-        hostname: Titan
-        container_name: readarr
-        volumes:
-            - /ssd/appdata/Readarr:/config
-            - /downloads:/downloads
-            - /downloads/Incomplete:/Incomplete
-            - /megaraid/mediastore/Books:/books
-        networks:
-          default:
-            ipv4_address: 172.19.0.105
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=Europe/London
-        labels:
-            - traefik.enable=true
-            - traefik.http.services.readarr.loadbalancer.server.port=8787
-            - traefik.http.routers.readarr.rule=Host(`subdomain.domain.co.uk`)
-            - traefik.http.routers.readarr.entrypoints=websecure-int
-            - traefik.http.routers.readarr.tls=true
-            - traefik.http.routers.readarr.tls.certresolver=production
-            - traefik.http.routers.readarr.tls.domains[0].main=domain.co.uk
-            - traefik.http.routers.readarr.tls.domains[0].sans=*.domain.co.uk
-        ports:
-            - 8787:8787
         restart: unless-stopped
 ```

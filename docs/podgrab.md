@@ -10,33 +10,32 @@ It provides a simple web interface for managing podcast subscriptions and browsi
 
 ```yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
 
-    podgrab:
-        image: akhilrex/podgrab
-        container_name: podgrab
-        environment:
-            - CHECK_FREQUENCY=240
-        volumes:
-            - /ssd/docker/appdata/podgrab/config:/config
-            - /ironwolf/music/Podcasts:/assets
-        labels:
-            - traefik.enable=true
-            - traefik.http.services.podgrab.loadbalancer.server.port=8080
-            - traefik.http.routers.podgrab.rule=Host(`subdomain.domain.co.uk`)
-            - traefik.http.routers.podgrab.entrypoints=websecure-int
-            - traefik.http.routers.podgrab.tls=true
-            - traefik.http.routers.podgrab.tls.certresolver=production
-            - traefik.http.routers.podgrab.tls.domains[0].main=domain.co.uk
-            - traefik.http.routers.podgrab.tls.domains[0].sans=*.domain.co.uk
-        networks:
-          default:
-            ipv4_address: 172.19.0.106
-        restart: unless-stopped
+  podgrab:
+    image: akhilrex/podgrab
+    container_name: podgrab
+    environment:
+      - CHECK_FREQUENCY=240
+    volumes:
+      - /ssd/docker/appdata/podgrab/config:/config
+      - /ironwolf/music/Podcasts:/assets
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.podgrab.loadbalancer.server.port=8080
+      - traefik.http.routers.podgrab.rule=Host(`subdomain.domain.co.uk`)
+      - traefik.http.routers.podgrab.entrypoints=websecure-int
+      - traefik.http.routers.podgrab.tls=true
+      - traefik.http.routers.podgrab.tls.certresolver=production
+      - traefik.http.routers.podgrab.tls.domains[0].main=domain.co.uk
+      - traefik.http.routers.podgrab.tls.domains[0].sans=*.domain.co.uk
+    networks:
+      proxy:
+        ipv4_address: 172.19.0.106
+    restart: unless-stopped
 ```
 
 !!! info

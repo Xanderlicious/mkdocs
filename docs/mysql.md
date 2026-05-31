@@ -25,7 +25,7 @@ MySQL is used as the database of choice and is setup on three hosts:
 
     ```yaml
     networks:
-        proxy:
+      proxy:
         external: true
 
     services:
@@ -40,6 +40,12 @@ MySQL is used as the database of choice and is setup on three hosts:
         networks:
           proxy:
             ipv4_address: "172.19.0.200"
+        healthcheck:
+          test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 30s
     ```
 
 === "Phobos"

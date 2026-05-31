@@ -1,17 +1,18 @@
+# Home Assistant
 
-![](images/homeassistant.png)
+![ha-logo](images/homeassistant.png)
 
 Home Assistant is my smart home automation hub. It started with just energy monitoring but has grown to include Zigbee lighting, temperature and humidity sensors, and Google Home integration via Nabu Casa.
 
 ---
 
-### Zigbee
+## Zigbee
 
 Zigbee devices are managed through ZHA (Zigbee Home Automation), using a **SMLIGHT SLZB-06U** coordinator connected via ethernet rather than USB, which keeps it off the host machine and avoids interference issues.
 
 ---
 
-### Lights
+## Lights
 
 All lights are Zigbee and managed through ZHA.
 
@@ -23,7 +24,7 @@ All lights are Zigbee and managed through ZHA.
 
 ---
 
-### Sensors
+## Sensors
 
 Two **eWeLink SNZB-02P** Zigbee temperature and humidity sensors are deployed:
 
@@ -34,15 +35,15 @@ Two **eWeLink SNZB-02P** Zigbee temperature and humidity sensors are deployed:
 
 ---
 
-### Energy Monitoring
+## Energy Monitoring
 
 Energy monitoring is provided by a **Hildebrand Glow (DCC)** smart meter bridge, which reads both the electricity and gas smart meters directly. Usage and cost data for today is surfaced as sensors within HA.
 
-![](images/energyusage.png)
+![energy-screenshot](images/energyusage.png)
 
 ---
 
-### Nabu Casa (Home Assistant Cloud)
+## Nabu Casa (Home Assistant Cloud)
 
 Nabu Casa is enabled, which provides:
 
@@ -52,12 +53,11 @@ Nabu Casa is enabled, which provides:
 
 ---
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -66,7 +66,7 @@ services:
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: home-assistant
     networks:
-      default:
+      proxy:
         ipv4_address: 172.19.0.222
     ports:
       - 8123:8123

@@ -78,8 +78,7 @@ The Docker image is approximately 20 MB and requires no volumes or environment v
 
 ```yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -88,7 +87,7 @@ services:
     container_name: it-tools
     restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.4"
     labels:
       - traefik.enable=true

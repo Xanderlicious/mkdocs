@@ -63,14 +63,14 @@ Below are example of some of the docker networks I have created and the commands
 
 === "ncc-1702"
 
-    My primary Pi-Hole also runs docker and in keeping with the other servers, this also has a docker network and subnet specified.
-    Currently there is only portainer-agent and a wireguard exporter running here so didn't feel the need to specify multiple different networks like the other hosts.
+    My primary Pi-Hole also runs docker and in keeping with the other servers, this also has a docker networks and subnets specified.
 
         ```sh
         docker network create --subnet 172.21.0.0/24 pihole1-network
+        docker network create --subnet 172.18.0.0/24 monitoring
         ```
 
-    This creates a /24 network named ***pihole1-network***
+    This creates a /24 network named ***pihole1-network*** & and a /24 subnet named ***monitoring***
 
  The reason for specifying subnets is so I can provide a static IP Address to each of my services.  This also assists with connectivity between containers and keeps everything organised.
 

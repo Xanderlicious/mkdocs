@@ -8,8 +8,7 @@ Firefly III is a free and open source finance manager
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -19,7 +18,7 @@ services:
     container_name: firefly
     restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.201"
     volumes:
       - /ssd/docker/appdata/firefly/upload:/var/www/html/storage/upload
@@ -37,7 +36,7 @@ services:
     container_name: firefly-cron
     restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.202"
     env_file: .env
     command: >

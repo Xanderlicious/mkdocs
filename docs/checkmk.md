@@ -14,8 +14,7 @@ I currently run CheckMK in a docker container as the .deb package to install dir
 
 ```yaml
 networks:
-  default:
-    name: tethys-network
+  tethys-network:
     external: true
 
 services:
@@ -27,7 +26,7 @@ services:
       - TZ=Europe/London
       - CMK_SITE_ID=cmkxms
     networks:
-      default:
+      tethys-network:
         ipv4_address: "172.21.0.4"
     ports:
       - 80:5000

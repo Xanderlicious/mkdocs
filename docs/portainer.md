@@ -43,8 +43,7 @@ I install portainer agent on my other server that are running docker and connect
 
       ```yaml
       networks:
-        default:
-          name: tethys-network
+        tethys-network
           external: true
 
       services:
@@ -53,7 +52,7 @@ I install portainer agent on my other server that are running docker and connect
             - 9001:9001
           container_name: portainer_agent
           networks:
-            default:
+            tethys-network:
               ipv4_address: "172.21.0.2"
           restart: unless-stopped
           volumes:
@@ -66,8 +65,7 @@ I install portainer agent on my other server that are running docker and connect
 
       ```yaml
       networks:
-        default:
-          name: pihole1-network
+        pihole1-network:
           external: true
 
       services:
@@ -76,7 +74,7 @@ I install portainer agent on my other server that are running docker and connect
             - 9001:9001
           container_name: portainer_agent
           networks:
-            default:
+            pihole1-network:
               ipv4_address: "172.22.0.2"
           restart: unless-stopped
           volumes:

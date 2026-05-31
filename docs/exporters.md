@@ -30,8 +30,9 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
 
     ```yaml
     networks:
-      default:
-        name: monitoring
+      monitoring:
+        external: true
+      tethys-network:
         external: true
 
     services:
@@ -39,10 +40,16 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: prom/prometheus:latest
         container_name: prometheus
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.2"
         ports:
           - 9090:9090
+        healthcheck:
+          test: ["CMD-SHELL", "wget -qO /dev/null http://localhost:9090/-/healthy || exit 1"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 30s
         volumes:
           - /ssd/docker/appdata/monitoring/prometheus/config:/etc/prometheus
           - /ssd/docker/appdata/monitoring/prometheus/data:/prometheus
@@ -55,22 +62,36 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: grafana/grafana:latest
         container_name: grafana
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.3"
+          tethys-network:
+            ipv4_address: "172.21.0.3"
         ports:
           - 3000:3000
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 30s
         volumes:
           - /ssd/docker/appdata/monitoring/grafana/data:/var/lib/grafana
           - /ssd/docker/appdata/monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
         user: "1000"
         restart: unless-stopped
+        environment:
+          - GF_DATABASE_TYPE=mysql
+          - GF_DATABASE_HOST=tethys-mysql-db:3306
+          - GF_DATABASE_NAME=grafana
+          - GF_DATABASE_USER=grafana
+          - GF_DATABASE_PASSWORD=${GF_DATABASE_PASSWORD}
         depends_on:
           - prometheus
 
       unpoller:
         image: ghcr.io/unpoller/unpoller:latest
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.4"
         restart: unless-stopped
         container_name: unpoller
@@ -83,13 +104,19 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: quay.io/prometheus/node-exporter:latest
         container_name: node-exporter-tethys
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.5"
         command:
           - --path.rootfs=/host
         pid: host
         ports:
           - 9100:9100
+        healthcheck:
+          test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9100/metrics"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 5s
         restart: unless-stopped
         volumes:
           - /:/host:ro,rslave
@@ -98,8 +125,14 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: gcr.io/cadvisor/cadvisor
         container_name: cadvisor-tethys
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.6"
+        healthcheck:
+          test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/healthz"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 15s
         volumes:
           - /:/rootfs:ro
           - /var/run:/var/run:ro
@@ -115,19 +148,21 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         image: 'ekofr/pihole-exporter:latest'
         container_name: pihole-exporter
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.7"
-        ports:
+        healthcheck:
+          disable: true
+          ports:
           - '9617:9617'
         env_file:
-        - /ssd/docker/appdata/monitoring/pihole-exporter/.env
+          - /ssd/docker/appdata/monitoring/pihole-exporter/.env
         restart: unless-stopped
 
       dozzle-agent:
         image: amir20/dozzle:latest
         container_name: dozzle-agent
         networks:
-          default:
+          monitoring:
             ipv4_address: "172.18.0.8"
         command: agent
         environment:

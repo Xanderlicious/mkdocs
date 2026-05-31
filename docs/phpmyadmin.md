@@ -45,8 +45,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
     ```yaml
     networks:
-      default:
-        name: phobos-network
+      phobos-network:
         external: true
 
     services:
@@ -57,7 +56,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
           - PMA_HOSTS=phobos-mysql-db
         restart: unless-stopped
         networks:
-          default:
+          phobos-network:
             ipv4_address: "172.20.0.6"
         ports:
           - 84:80
@@ -70,12 +69,11 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
     This file is located here [phpmyadmin-phobos](https://docs.xmsystems.co.uk/dynamic/#phpmyadmin-phobos)
 
-=== "NCC-1702"
+=== "Tethys"
 
     ```yaml
     networks:
-      default:
-        name: proxy
+      tethys-network
         external: "true"
 
     services:

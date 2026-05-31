@@ -378,6 +378,27 @@ http:
         passHostHeader: true
 ```
 
+### phpMyAdmin (Tethys)
+
+``` yaml
+http:
+  routers:
+    phpmyadmin-tethys:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: phpmyadmin-tethys
+
+  services:
+    phpmyadmin-tethys:
+      loadBalancer:
+        servers:
+          - url: "http://10.36.100.152:81"
+        passHostHeader: true
+```
+
 ### MotionEye (Phobos)
 
 ``` yaml

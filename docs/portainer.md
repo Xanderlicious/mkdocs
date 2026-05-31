@@ -21,8 +21,7 @@ I install portainer agent on my other server that are running docker and connect
 
       ```yaml
       networks:
-        default:
-          name: phobos-network
+        phobos-network:
           external: true
 
       services:
@@ -31,7 +30,7 @@ I install portainer agent on my other server that are running docker and connect
             - 9001:9001
           container_name: portainer_agent
           networks:
-            default:
+            phobos-network:
               ipv4_address: "172.20.0.2"
           restart: unless-stopped
           volumes:

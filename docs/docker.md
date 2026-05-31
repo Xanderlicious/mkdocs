@@ -153,8 +153,6 @@ All of my compose files and the containers appdata reside in the following locat
         ```sh
         /ssd/docker/docker-compose/
         .
-        ├── dozzle-agent
-        │   └── docker-compose.yml
         ├── homepage
         │   └── docker-compose.yml
         ├── ipam-backend
@@ -187,7 +185,7 @@ All of my compose files and the containers appdata reside in the following locat
         └── portainer
             └── docker-compose.yml
 
-        15 directories, 18 files
+        14 directories, 17 files
         ```
 
 === "tethys"

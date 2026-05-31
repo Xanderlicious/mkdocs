@@ -36,9 +36,8 @@ nav:
     - Motioneye: motioneye.md
     - MySQL Database: mysql.md
     - phpMyAdmin: phpmyadmin.md
-    - IPAM: ipam.md
+    - Nginx Web Server: nginx.md
     - Ghost: ghost.md
-    - Poker Clock: poker.md
     - PH-Intercept: ph-intercept.md
     - Apache Guacamole: guacamole.md
     - Firefly III: firefly.md

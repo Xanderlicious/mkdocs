@@ -10,8 +10,7 @@ What sets this apart from other tools that can do a similar (or better) job is t
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -21,7 +20,14 @@ services:
     container_name: guacd
     restart: unless-stopped
     networks:
-      - default
+      proxy:
+        ipv4_address: "172.19.0.112"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "4822"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
   guacamole:
     image: guacamole/guacamole
@@ -37,8 +43,14 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TOTP_ENABLED: "true"
     networks:
-      default:
-        ipv4_address: "172.19.0.112"
+      proxy:
+        ipv4_address: "172.19.0.113"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/guacamole/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     labels:
       - traefik.enable=true
       - traefik.http.routers.guacamole.rule=Host(`subdomain.domain.co.uk`)

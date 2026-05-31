@@ -16,8 +16,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
     ```yaml
     networks:
-      default:
-        name: proxy
+      proxy:
         external: "true"
 
     services:
@@ -28,7 +27,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
           - PMA_HOSTS=titan-mysql-db
         restart: unless-stopped
         networks:
-          default:
+          proxy:
             ipv4_address: "172.19.0.105"
         ports:
           - 84:80

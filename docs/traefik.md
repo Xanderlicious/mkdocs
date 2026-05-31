@@ -1,17 +1,18 @@
+# Traefik
 
-![](images/traefik.png)
+![traefik-logo](images/traefik.png)
 
 Traefik is the beating heart of my homelab.  Every connection comes into traefik which then routes the traffic to the application being requested/served
 
 I have a domain with Cloudflare and have created subdomains for all of my services.  
 It also uses Lets Encrypt and provides a valid SSL certificate  
 
-![alt text](<images/cloudflare + letsencrypt.png>)
+![cloudflare-letsencrypt-logo](<images/cloudflare + letsencrypt.png>)
 
 With Traefik, I also have the ability to specify multiple entry points (2 internal and 2 external)  This allows me to keep my internal services internal and only have my external services showing to the world.  
 The section [Traefik Entry Points](https://docs.xmsystems.co.uk/entrypoints/) will explain more about these.
 
-### docker-compose.yml
+## docker-compose.yml
 
 Below is the Docker Compose file (you will notice this also includes [Portainer](https://docs.xmsystems.co.uk/portainer/))
 Sensitive information is placed in a hidden .env file which is then referenced within the docker-compose.
@@ -94,10 +95,9 @@ services:
 
 ### traefik.yml
 
-The traefik.yml file lives inside the "data" directory and is used to: 
+The traefik.yml file lives inside the "data" directory and is used to:
 
 enable/disable the dashboard, define entry points, assign middleware at a global level (rather than at an application level), specify your certificate resolver details, detail your docker provider and the docker socket address as well as dynamic files/directory location.  Finally you can also, optionally, provide the location of log files and details of any collector of metrics.
-
 
 ``` yaml
 global:
@@ -222,17 +222,18 @@ metrics:
         - 1.2
         - 5.0
 ```
+
 ### Traefik Dashboard
 
 *Care should be taken to ensure you are not exposing your dashboard to the wider internet.*
 
 The dashboard will allow you to see the entrypoints and ports configured, browse your configured routers, services and middlewares whilst also giving you an at a glance view of what's configured successfully and what's not.
 
-![](images/traefik-dashboard.png)
+![traefik-dashboard-screenshot](images/traefik-dashboard.png)
 
 The lower portion of the dashboard will also show you your configured features and providers
 
-![](images/traefik-features-and-providers.png)
+![traefik-features and providers-screenshot](images/traefik-features-and-providers.png)
 
 ### Dynamic Files Directory
 

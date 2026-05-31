@@ -15,8 +15,7 @@ Each ghost instance has its own database which is setup in MySQL. [titan-mysql-d
 
 ```yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -26,7 +25,7 @@ services:
     container_name: ghost-xms
     restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.93"
     environment:
       database__client: mysql
@@ -53,7 +52,7 @@ services:
     container_name: ghost-stan-sal
     restart: unless-stopped
     networks:
-      default:
+      proxy:
         ipv4_address: "172.19.0.94"
     environment:
       database__client: mysql

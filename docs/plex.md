@@ -8,8 +8,7 @@ Having access to all of my Films, TV Shows & Music wherever I am and on whatever
 
 ``` yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
@@ -25,7 +24,7 @@ services:
       - /megaraid/mediastore/StandUp:/standup:ro
       - /megaraid/mediastore/TV:/tv:ro
     networks:
-      default:
+      proxy:
         ipv4_address: 172.19.0.100
     deploy:
       resources:

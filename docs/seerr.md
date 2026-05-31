@@ -1,32 +1,38 @@
-![](images/overseerr.png)
+# Seerr
 
-Overseerr is a 3rd party application that gives your plex users the ability to request content that you don't currently have listed.
+![Seerr-logo](images/overseerr.png)
+
+Seerr is a 3rd party application that gives your plex users the ability to request content that you don't currently have listed.
 
 This "request" can then be approved or declined by the server admin
 
-### docker-compose.yml
+## docker-compose.yml
 
 ```yaml
 networks:
-  default:
-    name: proxy
+  proxy:
     external: true
 
 services:
-  overseerr:
-    image: linuxserver/overseerr
-    container_name: overseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - /ssd/docker/appdata/overseerr/config:/config
-    ports:
-      - 5055:5055
+      - /ssd/docker/appdata/seerr/config:/app/config
     restart: unless-stopped
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     networks:
-      default:
+      proxy:
         ipv4_address: 172.19.0.109
     labels:
       - traefik.enable=true

@@ -14,8 +14,7 @@ Its a visualiser for pi-hole and it depicts a space battle where ads being block
 
 ``` yaml
 networks:
-  default:
-    name: phobos-network
+  phobos-network:
     external: true
 
 services:
@@ -29,7 +28,7 @@ services:
         limits:
           memory: 256m
     networks:
-      default:
+      phobos-network:
         ipv4_address: "172.20.0.12"
     environment:
       PIHOLE_URL: "https://subdomain.domain.co.uk/api"

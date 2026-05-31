@@ -14,8 +14,7 @@ The below screenshot shows a recent iteration but I'm always swapping and changi
 
 ``` yaml
 networks:
-  default:
-    name: phobos-network
+  phobos-network:
     external: true
 
 services:
@@ -25,7 +24,7 @@ services:
     hostname: Phobos
     container_name: homepage
     networks:
-      default:
+      phobos-network:
         ipv4_address: 172.20.0.3
     environment:
       HOMEPAGE_ALLOWED_HOSTS: dash.xanderman.co.uk

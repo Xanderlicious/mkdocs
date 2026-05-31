@@ -1,16 +1,16 @@
+# MotionEye
 
-![](images/motioneye.png)
+![motioneye-logo](images/motioneye.png)
 
 Motioneye is a video surveillance program that offers motion detection.
 
 I have this setup in constant record where data is recorded and stored for upto a month
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
-  default:
-    name: phobos-network
+  phobos-network:
     external: true
 
 services:
@@ -20,7 +20,7 @@ services:
     container_name: motioneye
     hostname: XMS-CAMERAS
     networks:
-      default:
+      phobos-network:
         ipv4_address: "172.20.0.7"
     restart: unless-stopped
     ports:
@@ -38,19 +38,19 @@ services:
 
 As this is hosted on a different host to where Traefik is running, a dynamic file is required for it to be routed through Traefik and with SSL.
 
-This file is located [here](https://docs.xmsystems.co.uk/dynamic/#motioneye-phobos)
+- [motioneye dynamic file configuration](https://docs.xmsystems.co.uk/dynamic/#motioneye-phobos)
 
-## Cameras
+### Cameras
 
-![](images/dahua.png)
+![dahua camera](images/dahua.png)
 
 Connected to MotionEye currently is a Dahua camera which overlooks the front of my house and my cars.
 
 I also have a Reolink wifi camera which is being used internally as kind of a pet and toddler camera.
 
-## Future Plans
+### Future Plans
 
 I do like Motioneye and have been using it for quite some time.  
-My future plans unfortunately don't include Motioneye.  I will be getting more cameras (mainly external) and I plan on using BlueIris. 
+My future plans unfortunately don't include Motioneye.  I will be getting more cameras (mainly external) and I plan on using BlueIris.
 
 I have also been looking into Frigate with the use of a Coral TPU for object detection.

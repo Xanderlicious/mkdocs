@@ -1,7 +1,8 @@
+# Nebula-Sync
+
 ![Nebula-Sync](images/nebula-sync.png)
 
 *credit to [TechnoTim](https://technotim.live/) for the image*
-
 
 Nebula-Sync is used to keep multiple pi-holes in sync.
 
@@ -17,8 +18,7 @@ There is an example on the applications github page but my example is shown belo
 
 ```yaml
 networks:
-  default:
-    name: phobos-network
+  phobos-network:
     external: true
 
 services:
@@ -26,7 +26,7 @@ services:
     image: ghcr.io/lovelaze/nebula-sync:latest
     container_name: nebula-sync
     networks:
-      default:
+      phobos-network:
         ipv4_address: "172.20.0.13"
     restart: always
     environment:

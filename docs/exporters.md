@@ -8,14 +8,15 @@ Prometheus runs on **Tethys** and scrapes targets across Titan, Phobos, Tethys i
 
 |Exporter|Titan|Phobos|Tethys|NCC-1702|Port|
 |---|---|---|---|---|---|
-|Node Exporter|✅|✅|✅||9100|
-|cAdvisor|✅|✅|✅||8080 / 8087|
+|Node Exporter|✅|✅|✅|✅|9100|
+|cAdvisor|✅|✅|✅|✅|8080 / 8087|
 |Traefik Metrics|✅||||8088|
 |Plex Exporter|✅||||9000|
 |Homers|✅||||8083|
 |Unpoller|||✅||9130|
 |Pi-Hole Exporter|||✅||9617|
 |Wireguard Exporter||||✅|9586|
+|Dozzle|✅|✅|✅|✅|8080 / 7007|
 
 ---
 
@@ -299,10 +300,77 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
 
 === "NCC-1702"
 
-    NCC-1702 runs the Wireguard Exporter, exposing VPN peer metrics to Prometheus on port `9586`.
+    NCC-1702 runs node_exporter and cAdvisor for host and container metrics, plus a Dozzle agent. 
+    It also runs the Wireguard Exporter, exposing VPN peer metrics to Prometheus on port `9586`.
 
     ```yaml
+    networks:
+      monitoring:
+        external: true
+
     services:
+
+      node_exporter:
+        image: quay.io/prometheus/node-exporter:latest
+        container_name: node-exporter-ncc-1702
+        command:
+          - '--path.rootfs=/host'
+        networks:
+          monitoring:
+            ipv4_address: "172.18.0.2"
+        pid: host
+        ports:
+          - 9100:9100
+        healthcheck:
+          test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9100/metrics"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 5s
+        restart: unless-stopped
+        volumes:
+          - '/:/host:ro,rslave'
+
+      cadvisor:
+        image: gcr.io/cadvisor/cadvisor
+        container_name: cadvisor-ncc-1702
+        networks:
+          monitoring:
+            ipv4_address: "172.18.0.3"
+        ports:
+          - "8087:8080"
+        healthcheck:
+          test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/healthz"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 15s
+        volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:ro
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+          - /dev/disk/:/dev/disk:ro
+        devices:
+          - /dev/kmsg
+        restart: unless-stopped
+        privileged: true
+
+      dozzle-agent:
+        image: amir20/dozzle:latest
+        container_name: dozzle-agent
+        networks:
+          monitoring:
+            ipv4_address: "172.18.0.4"
+        command: agent
+        environment:
+          - DOZZLE_HOSTNAME=NCC-1702
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+        ports:
+          - 7007:7007
+        restart: unless-stopped
+
       wireguard-exporter:
         image: mindflavor/prometheus-wireguard-exporter:latest
         container_name: wireguard-exporter
@@ -323,7 +391,7 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
 ## Node Exporter
 
 **Image:** `quay.io/prometheus/node-exporter`  
-**Hosts:** Titan, Phobos, Tethys  
+**Hosts:** Titan, Phobos, Tethys, NCC-1702
 **Port:** `9100`
 
 Node Exporter is the standard Prometheus exporter for hardware and OS-level metrics. It exposes a wide range of system statistics by reading from the host's `/proc` and `/sys` filesystems (mounted as `/host` inside the container).
@@ -344,7 +412,7 @@ Node Exporter is the standard Prometheus exporter for hardware and OS-level metr
 ## cAdvisor
 
 **Image:** `gcr.io/cadvisor/cadvisor`  
-**Hosts:** Titan, Phobos, Tethys  
+**Hosts:** Titan, Phobos, Tethys, NCC-1702  
 **Ports:** `8080` (Tethys, on the monitoring Docker network), `8087` (Titan & Phobos, mapped to host)
 
 cAdvisor (Container Advisor) collects resource usage and performance metrics for every running Docker container. It runs in privileged mode with access to the host cgroup filesystem.

@@ -16,8 +16,8 @@ nav:
     - NCC-1703: NCC-1703.md
   - Docker:
     - Install, Config & Usage: docker.md
-    - Docker Daemon Security: mTLS.md
-    - Docker Health Checks: healthchecks.md
+    - Daemon Security (mTLS): mTLS.md
+    - Health Checks: healthchecks.md
   - Applications:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md

@@ -82,4 +82,4 @@ MySQL is used as the database of choice and is setup on three hosts:
         networks:
           tethys-network:
             ipv4_address: "172.21.0.200"
-      ```
+    ```

@@ -14,7 +14,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
 === "Titan"
 
-``` yaml
+    ```yaml
     networks:
       default:
         name: proxy
@@ -44,7 +44,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
 === "Phobos"
 
-``` yaml
+    ```yaml
     networks:
       default:
         name: phobos-network
@@ -73,7 +73,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
 === "NCC-1702"
 
-```yaml
+    ```yaml
     networks:
       default:
         name: proxy

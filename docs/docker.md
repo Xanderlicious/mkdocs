@@ -195,14 +195,12 @@ All of my compose files and the containers appdata reside in the following locat
         .
         ├── checkmk
         │   └── docker-compose.yml
-        ├── dozzle-agent
-        │   └── docker-compose.yml
         ├── monitoring
         │   └── docker-compose.yml
         └── portainer
             └── docker-compose.yml
 
-        4 directories, 4 files
+        3 directories, 3 files
         ```
 
 === "ncc-1702"

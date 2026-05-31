@@ -4,22 +4,22 @@
 
 MySQL is used as the database of choice and is setup on three hosts:
 
-## Titan
+- **Titan**
 
 - Ghost
 - Guacamole
 - Firefly III
 
-## Phobos
+- **Phobos**
 
 - IPAM
 - Uptime-Kuma
 
-## Tethys
+- **Tethys**
 
 - Grafana
 
-### docker-compose.yml
+## docker-compose.yml
 
 === "Titan"
 

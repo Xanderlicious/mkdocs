@@ -34,8 +34,7 @@ nav:
     - Homepage: homepage.md
     - Home Assistant: ha.md
     - Motioneye: motioneye.md
-    - MySQL - Titan: mysql-titan.md
-    - MySQL - Phobos: mysql-phobos.md
+    - MySQL Database: mysql.md
     - phpMyAdmin: phpmyadmin.md
     - IPAM: ipam.md
     - Ghost: ghost.md

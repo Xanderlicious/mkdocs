@@ -41,7 +41,6 @@ nav:
     - Ghost: ghost.md
     - PH-Intercept: ph-intercept.md
     - Apache Guacamole: guacamole.md
-    - Firefly III: firefly.md
     - Fail2Ban: fail2ban.md
     - Nebula-Sync: nebula-sync.md
   - Monitoring, Alerting & Logging:
@@ -84,6 +83,9 @@ theme:
     repo: fontawesome/brands/github
 
 extra:
+  analytics:
+    provider: google
+    property: G-3XSJT56P7R
   consent:
     title: Cookie consent
     description: >- 

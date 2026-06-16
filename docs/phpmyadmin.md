@@ -6,7 +6,7 @@ phpMyAdmin is a web-based administration tool for MySQL databases. It allows you
 
 I run three separate instances of phpMyAdmin, one on each host that has a MySQL database:
 
-- **Titan** — administers [titan-mysql-db](https://docs.xmsystems.co.uk/mysql/#__tabbed_1_1), which serves [Ghost](https://docs.xmsystems.co.uk/ghost/), [Guacamole](https://docs.xmsystems.co.uk/guacamole/) and [Firefly III](https://docs.xmsystems.co.uk/firefly/)
+- **Titan** — administers [titan-mysql-db](https://docs.xmsystems.co.uk/mysql/#__tabbed_1_1), which serves [Ghost](https://docs.xmsystems.co.uk/ghost/) and [Guacamole](https://docs.xmsystems.co.uk/guacamole/)
 - **Phobos** — administers [phobos-mysql-db](https://docs.xmsystems.co.uk/mysql/#__tabbed_1_2), which currently serves [IPAM](https://docs.xmsystems.co.uk/ipam/) and will soon serve Uptime-Kuma
 - **Tethys** - administers [tethys-mysql-db](https://docs.xmsystems.co.uk/mysql/#__tabbed_1_3), which currently serves [Grafana](https://docs.xmsystems.co.uk/grafana%20%26%20prometheus/)
 

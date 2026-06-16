@@ -8,7 +8,6 @@ MySQL is used as the database of choice and is setup on three hosts:
 
 - Ghost
 - Guacamole
-- Firefly III
 
 === "Phobos"
 

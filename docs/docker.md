@@ -109,8 +109,6 @@ All of my compose files and the containers appdata reside in the following locat
         │   └── docker-compose.yml
         ├── fail2ban
         │   └── docker-compose.yml
-        ├── firefly
-        │   └── docker-compose.yml
         ├── ghost
         │   └── docker-compose.yml
         ├── guacamole
@@ -225,7 +223,6 @@ All of my compose files and the containers appdata reside in the following locat
         .
         ├── dozzle
         ├── fail2ban
-        ├── firefly
         ├── ghost
         ├── ha
         ├── homepage

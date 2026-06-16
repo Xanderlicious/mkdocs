@@ -96,7 +96,6 @@ Key applications include:
 | Infrastructure | Traefik, Portainer, Homepage, Dozzle, Fail2Ban |
 | Monitoring | Grafana, Prometheus, CheckMK, Uptime-Kuma |
 | Home | Home Assistant, MotionEye |
-| Finance | Firefly III |
 | Networking | Pi-Hole, Nebula-Sync, PH-Intercept, Apache Guacamole |
 | Data | MySQL (Titan & Phobos), phpMyAdmin, IPAM |
 | Publishing | Ghost |

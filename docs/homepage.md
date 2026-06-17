@@ -27,7 +27,7 @@ services:
       phobos-network:
         ipv4_address: 172.20.0.3
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: dash.xanderman.co.uk
+      HOMEPAGE_ALLOWED_HOSTS: subdomain.domain.co.uk
     volumes:
       - /ssd/docker/appdata/homepage:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro

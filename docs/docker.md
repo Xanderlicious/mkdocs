@@ -138,12 +138,14 @@ All of my compose files and the containers appdata reside in the following locat
         │   └── docker-compose.yml
         ├── titan-mysql-db
         │   └── docker-compose.yml
+        ├── tracearr
+        │   └── docker-compose.yml
         ├── traefik
         │   └── docker-compose.yml
         └── traefik-manager
             └── docker-compose.yml
 
-        19 directories, 20 files
+        20 directories, 21 files
         ```
 
 === "phobos"
@@ -242,10 +244,14 @@ All of my compose files and the containers appdata reside in the following locat
         ├── Sonarr
         ├── Tautulli
         ├── titan-mysql-db
+        ├── tracearr
+        │   ├── backups
+        │   ├── db
+        │   └── redis
         ├── traefik
         └── traefik-manager
 
-        25 directories
+        29 directories
         ```
 
 === "phobos"

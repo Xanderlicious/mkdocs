@@ -1,5 +1,7 @@
 # Tracearr
 
+![tracearr-logo](images/tracearr.png)
+
 Tracearr is a modern, self-hosted monitoring platform for media servers.
 
 It provides real-time session tracking across Plex, Jellyfin, and Emby from a single unified dashboard. Key features include geolocation intelligence, bandwidth analytics, stream heatmaps, automation rules for stream limits and geo-restrictions, and a companion mobile app for iOS and Android.

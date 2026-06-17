@@ -1,5 +1,7 @@
 # Trivial Pursuit
 
+![Trivial Pursuit logo](../images/trivial-pursuit-logo.svg)
+
 A digital Trivial Pursuit board game for 2–6 players. Players move tokens around a circular board, answer category questions, and collect wedges. The host manages game flow from a separate panel; players can follow along or interact from their own phones.
 
 **URL:** [trivial.xmsystems.co.uk](https://trivial.xmsystems.co.uk)
@@ -19,12 +21,12 @@ A digital Trivial Pursuit board game for 2–6 players. Players move tokens arou
 
 | Colour | Category |
 | ------ | -------- |
-| 🔵 Blue | Geography |
-| 🟡 Yellow | History |
-| 🟠 Orange | Sports & Leisure |
-| 🟢 Green | Science & Nature |
-| 🩷 Pink | Entertainment |
-| 🟤 Brown | Art & Literature |
+| 🟦 Blue | Geography |
+| 🟪 Pink | Entertainment |
+| 🟨 Yellow | History |
+| 🟫 Brown | Art & Literature |
+| 🟩 Green | Science & Nature |
+| 🟧 Orange | Sports & Leisure |
 
 ---
 

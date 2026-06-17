@@ -1,5 +1,7 @@
 # Who Wants to Be a Millionaire
 
+![Who Wants to Be a Millionaire logo](../images/millionaire-logo.png)
+
 A digital recreation of the classic TV game show. One contestant answers 15 questions of increasing difficulty worth up to £1,000,000. The host controls all game flow from a separate panel, while the audience can vote on answers from their phones.
 
 **URL:** [millionaire.xmsystems.co.uk](https://millionaire.xmsystems.co.uk)

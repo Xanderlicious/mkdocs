@@ -575,6 +575,27 @@ http:
         passHostHeader: true
 ```
 
+### Tracearr (Titan)
+
+```yaml
+http:
+  routers:
+    tracearr:
+      entryPoints:
+        - websecure-int
+      rule: "Host(`subdomain.domain.co.uk`)"
+      tls:
+        certResolver: production
+      service: tracearr
+
+  services:
+    tracearr:
+      loadBalancer:
+        servers:
+          - url: "http://tracearr:3000"
+        passHostHeader: true
+```
+
 ### Stans Photography (Titan)
 
 ```yaml

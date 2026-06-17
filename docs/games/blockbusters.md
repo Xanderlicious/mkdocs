@@ -1,5 +1,7 @@
 # Blockbusters
 
+![Blockbusters logo](../images/blockbusters-game-image.jpg)
+
 A digital version of the classic Blockbusters TV quiz game. Two teams compete on a hexagonal letter board — one team tries to connect top-to-bottom, the other left-to-right. Players buzz in from their phones to answer questions and claim hexes.
 
 **URL:** [blockbusters.xmsystems.co.uk](https://blockbusters.xmsystems.co.uk)

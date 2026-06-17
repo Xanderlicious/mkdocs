@@ -1,5 +1,7 @@
 # Cards Against Humanity
 
+![Cards Against Humanity logo](../images/cah-logo.png){ width="200" }
+
 A self-hosted, multi-device party card game. Players join a room from their phones; one rotating Card Czar picks the winning answer each round. Uses the official deck (71 packs, 4,655 white cards and 1,037 black cards) bundled under CC BY-NC-SA 2.0 — this is a non-commercial private build.
 
 **URL:** [cah.xmsystems.co.uk](https://cah.xmsystems.co.uk)

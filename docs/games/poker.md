@@ -1,5 +1,7 @@
 # Poker Clock
 
+![Poker Clock logo](../images/poker.png)
+
 A self-hosted poker tournament dashboard with real-time multi-device sync. Manages blind levels, timers, rebuys, eliminations, and prize pool calculations across all connected devices simultaneously. Protected by nginx Basic Auth.
 
 **URL:** [poker.xmsystems.co.uk](https://poker.xmsystems.co.uk)

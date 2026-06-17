@@ -6,6 +6,8 @@ XMS Games is a self-hosted party game platform running on Phobos, accessible at 
 
 ## The Games Hub
 
+![Blockbusters logo](../images/XMSGames.png)
+
 **URL:** [games.xmsystems.co.uk](https://games.xmsystems.co.uk)  
 **File:** `/ssd/docker/appdata/nginx/games.html`
 
@@ -65,7 +67,7 @@ server {
 
 All games follow the same general pattern:
 
-```
+```shell
 Browser / Phone
     └── Traefik (Titan)
             └── nginx (Phobos :88)

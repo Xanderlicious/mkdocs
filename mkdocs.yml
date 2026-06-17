@@ -44,6 +44,13 @@ nav:
     - Apache Guacamole: guacamole.md
     - Fail2Ban: fail2ban.md
     - Nebula-Sync: nebula-sync.md
+  - Games:
+    - Overview: games/games-overview.md
+    - Blockbusters: games/blockbusters.md
+    - Who Wants to Be a Millionaire: games/millionaire.md
+    - Trivial Pursuit: games/trivial.md
+    - Cards Against Humanity: games/cah.md
+    - Poker Clock: games/poker.md
   - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
     - Exporters & Scrapers: exporters.md

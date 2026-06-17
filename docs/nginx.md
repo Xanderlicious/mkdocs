@@ -10,7 +10,8 @@ nginx runs as a Docker container on Phobos on port 88, acting as the primary web
 | ------- | --- | ----------- |
 | Infrastructure Overview | [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk) | Interactive network and infrastructure diagram — embedded on the [Overview](overview.md) page |
 | IPAM | [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk) | Custom-built IP Address Management tool |
-| Poker Clock | `poker.[internal]` | Tournament dashboard with real-time multi-device sync |
+| XMS Games Hub | [games.xmsystems.co.uk](https://games.xmsystems.co.uk) | Party game platform — see [Games](games/games-overview.md) |
+| Poker Clock | [poker.xmsystems.co.uk](https://poker.xmsystems.co.uk) | Tournament dashboard with real-time multi-device sync — see [Poker Clock](games/poker.md) |
 | Workout Timer | `workout.[internal]` | Timer and workout reference page |
 
 ---

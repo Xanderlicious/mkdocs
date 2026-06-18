@@ -90,6 +90,9 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
+extra_css:
+  - assets/stylesheets/extra.css
+
 extra:
   analytics:
     provider: google

@@ -32,13 +32,13 @@ Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi%20Access%20Points/)
 
 ![pihole-logo](images/pihole.png)
 
-Three Raspberry Pis act as DNS resolvers with ad-blocking via **Pi-Hole**:
+Two Raspberry Pis and a Dockerised instance on Phobos act as DNS resolvers. All three run **Pi-Hole** for ad-blocking, paired with [**Unbound**](https://docs.xmsystems.co.uk/unbound/) as a local recursive DNS resolver:
 
-| Device | Role |
-| --- | --- |
-| [NCC-1702](https://docs.xmsystems.co.uk/NCC-1702/) | Primary DNS |
-| [NCC-1703](https://docs.xmsystems.co.uk/NCC-1703/) | Secondary DNS |
-| [NCC-1704](https://docs.xmsystems.co.uk/NCC-1704/) | Tertiary DNS |
+| Device | Host | Role |
+| --- | --- | --- |
+| [NCC-1702](https://docs.xmsystems.co.uk/NCC-1702/) | Raspberry Pi 4 | Primary DNS |
+| [NCC-1703](https://docs.xmsystems.co.uk/NCC-1703/) | Raspberry Pi 3 | Secondary DNS |
+| [NCC-1704](https://docs.xmsystems.co.uk/NCC-1704/) | Docker (Phobos) | Tertiary DNS |
 
 All three instances are kept in sync using [Nebula-Sync](https://docs.xmsystems.co.uk/nebula-sync/).
 
@@ -67,7 +67,7 @@ The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **W
 - Intel i5-10400 · 32 GB DDR4 RAM
 - Nvidia RTX 4000 SFF Ada Generation
 - 4 × 8 TB + 1 × 4 TB WD Red drives
-- Hosts services that don't need to live on Titan (Pi-Hole intercept, Uptime-Kuma, MotionEye)
+- Hosts services that don't need to live on Titan (NCC-1704, PH-Intercept, Uptime-Kuma, MotionEye)
 - **OS:** Debian 13 (Trixie)
 
 ### Tethys
@@ -84,7 +84,7 @@ The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **W
 
 ![docker-logo](images/docker.png)
 
-Every service runs in **Docker**, managed with Docker Compose.  Both Titan and Phobos have their own Docker networks with static IP addressing per container.
+Every service runs in **Docker**, managed with Docker Compose.  Titan, Phobos, and Tethys each have their own Docker networks with static IP addressing per container.
 
 Services are exposed via [Traefik](https://docs.xmsystems.co.uk/traefik/) with valid SSL certificates issued by Let's Encrypt through a Cloudflare DNS challenge.  Internal and external services are separated across different entry points.
 
@@ -96,8 +96,8 @@ Key applications include:
 | Infrastructure | Traefik, Portainer, Homepage, Dozzle, Fail2Ban |
 | Monitoring | Grafana, Prometheus, CheckMK, Uptime-Kuma |
 | Home | Home Assistant, MotionEye |
-| Networking | Pi-Hole, Nebula-Sync, PH-Intercept, Apache Guacamole |
-| Data | MySQL (Titan & Phobos), phpMyAdmin, IPAM |
+| Networking | Pi-Hole, Unbound, Nebula-Sync, PH-Intercept, Apache Guacamole |
+| Data | MySQL (Titan, Phobos & Tethys), phpMyAdmin, IPAM |
 | Publishing | Ghost |
 
 ---

@@ -24,6 +24,7 @@ nav:
     - Traefik - Dynamic Files: dynamic.md
     - Portainer: portainer.md
     - NCC-1704: NCC-1704.md
+    - Unbound: unbound.md
     - Plex: plex.md
     - Navidrome: navidrome.md
     - Podgrab: podgrab.md

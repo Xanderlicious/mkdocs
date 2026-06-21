@@ -1,5 +1,7 @@
 # Unbound
 
+![unbound-logo](/docs/images/unbound.svg)
+
 Unbound is a recursive DNS resolver installed on [NCC-1702](NCC-1702.md), [NCC-1703](NCC-1703.md), and [NCC-1704](NCC-1704.md) to handle upstream DNS resolution for Pi-hole.
 
 ## Why Unbound instead of a forwarding resolver?

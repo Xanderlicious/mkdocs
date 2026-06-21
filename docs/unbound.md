@@ -31,6 +31,22 @@ sudo systemctl restart unbound
 
 This should be done periodically (a few times a year is sufficient — the root hints change rarely but do change).
 
+For a Docker install, the root hints file is baked into the image at build time. To keep it persistent and independently updatable, it is bind-mounted from the host:
+
+```yaml
+volumes:
+  - /ssd/docker/appdata/pihole/unbound/root.hints:/opt/unbound/etc/unbound/root.hints:ro
+```
+
+Note the path inside the container — `mvance/unbound` builds Unbound from source into `/opt/unbound/` rather than using the system paths of a bare-metal install.
+
+To update the hints on the Docker install:
+
+```bash
+wget -O /ssd/docker/appdata/pihole/unbound/root.hints https://www.internic.net/domain/named.root
+docker restart unbound
+```
+
 ## Bare-metal configuration (NCC-1702 & NCC-1703)
 
 On the Raspberry Pi devices, Unbound is installed directly via apt and listens on port `5335` to avoid conflicting with any system resolver on port 53.

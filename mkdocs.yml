@@ -52,6 +52,7 @@ nav:
     - Trivial Pursuit: games/trivial.md
     - Cards Against Humanity: games/cah.md
     - Poker Clock: games/poker.md
+    - Boggle: games/boggle.md
   - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
     - Exporters & Scrapers: exporters.md

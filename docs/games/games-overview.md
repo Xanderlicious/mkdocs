@@ -23,6 +23,7 @@ Each game (except the Poker Clock) has a dedicated info page on the hub domain:
 | `/millionaire` | Who Wants to Be a Millionaire | `game-info-millionaire.html` |
 | `/trivial` | Trivial Pursuit | `game-info-trivial.html` |
 | `/cah` | Cards Against Humanity | `game-info-cah.html` |
+| `/boggle` | Boggle | `boggle.html` |
 
 Each info page shows how to play the game and provides launch buttons for the game display, host panel, and player views where applicable. The Poker Clock tile links directly to the game since it needs no instructions.
 
@@ -51,6 +52,11 @@ server {
     location = /cah {
         root /usr/share/nginx/html;
         try_files /game-info-cah.html =404;
+    }
+
+    location = /boggle {
+        root /usr/share/nginx/html;
+        try_files /game-info-boggle.html =404;
     }
 
     location / {
@@ -86,6 +92,7 @@ The **backend** for each game is a lightweight Node.js server (Express + Socket.
 | `trivial-server` | `172.20.0.24` | Trivial Pursuit |
 | `cah` | `172.20.0.25` | Cards Against Humanity |
 | `poker-server` | `172.20.0.21` | Poker Clock |
+| `boggle` | `172.20.0.205` | Boggle |
 
 All containers sit on `phobos-network`. nginx proxies WebSocket traffic from each game subdomain through to the appropriate backend container.
 
@@ -103,3 +110,4 @@ All containers sit on `phobos-network`. nginx proxies WebSocket traffic from eac
 | [Trivial Pursuit](trivial.md) | [trivial.xmsystems.co.uk](https://trivial.xmsystems.co.uk) | `/host` | `/player` |
 | [Cards Against Humanity](cah.md) | [cah.xmsystems.co.uk](https://cah.xmsystems.co.uk) | In-game | In-game |
 | [Poker Clock](poker.md) | [poker.xmsystems.co.uk](https://poker.xmsystems.co.uk) | — | — |
+| [Boggle](boggle.md) | [boggle.xmsystems.co.uk](https://boggle.xmsystems.co.uk) | — | `/play` |

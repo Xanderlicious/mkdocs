@@ -56,7 +56,6 @@ nav:
   - Monitoring, Alerting & Logging:
     - Grafana / Prometheus: grafana & prometheus.md
     - Exporters & Scrapers: exporters.md
-    - CheckMK: checkmk.md
     - Uptime-Kuma: kuma.md
     - Dozzle: dozzle.md
     - Storage Monitoring: storage.md
@@ -66,6 +65,7 @@ nav:
     - Glances: glances.md
     - Vaultwarden: vaultwarden.md
     - Cuthbert: cuthbert.md
+    - CheckMK: checkmk.md
 
 theme:
   logo: images/server-solid.svg

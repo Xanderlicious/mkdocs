@@ -1,5 +1,9 @@
+# Vaultwarden
 
-![](images/vaultwarden.png)  
+![vaultwarden-logo](images/vaultwarden.png) 
+
+!!!info
+    Retired
 
 Vaultwarden is an alternative implementation of Bitwarden server API which is able to be self-hosted.
 
@@ -16,7 +20,7 @@ Features included:
 - YubiKey and Duo support
 - Emergency Access
 
-### docker-compose.yml
+## docker-compose.yml
 
 ``` yaml
 networks:
@@ -40,9 +44,10 @@ services:
       - ADMIN_TOKEN=${ADMIN_TOKEN}
       - DOMAIN=${DOMAIN}
 ```
-### Dynamic File
 
-### Vaultwarden (Cuthbert)
+## Dynamic File
+
+## Vaultwarden (Cuthbert)
 
 ``` yaml
 http:
@@ -79,5 +84,4 @@ To enable the admin page, you need to set an authentication token. This token ca
 
 More information about this and everything else Vaultwarden is detailed in their [Wiki](https://github.com/dani-garcia/vaultwarden/wiki)
 
-![](images/adminpage.png)
-
+![screenshot-adminpage](images/adminpage.png)

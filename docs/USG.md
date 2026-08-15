@@ -2,7 +2,7 @@
 ![](images/unifi.jpeg)
 
 !!!info
-    RETIRED!
+    Retired
 
 As previously mentioned, my router and access points are Unifi.
 

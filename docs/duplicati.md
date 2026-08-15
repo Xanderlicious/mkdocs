@@ -2,7 +2,7 @@
 ![](images/duplicati.png)
 
 !!!info
-    I have retired duplicati for the time being
+    Retired
 
 Duplicati is an application that runs on each server and essentially runs backup tasks every 3 days to back up my "Appdata" and "Docker Volumes" to Google Drive
 

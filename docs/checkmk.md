@@ -2,6 +2,9 @@
 
 ![checkmk-logo](images/checkmk.png)
 
+!!!info
+    Retired
+
 In my honest opinion, one of the best, if not THE best here is CheckMK.  This is quite an advanced monitoring tool with many features but it needs to be implemented properly and ideally have dedicated hardware.
 
 CheckMK will allow me to not only monitor the health and status of many different aspects of each of my devices (servers and desktops) but will also allow me to monitor the health and status of my router and access points via SNMP.

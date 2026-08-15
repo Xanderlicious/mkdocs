@@ -2,7 +2,7 @@
 ![](images/glances.png)
 
 !!!info
-    For now, I have retired glances from running as I have found I wasn't really using it - My homepage setup has changed and no longer utilises the data this provides
+    Retired
 
 Glances is a cross-platform monitoring tool.  
 

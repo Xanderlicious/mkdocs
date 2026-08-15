@@ -59,6 +59,7 @@ nav:
     - CheckMK: checkmk.md
     - Uptime-Kuma: kuma.md
     - Dozzle: dozzle.md
+    - Storage Monitoring: storage.md
   - Archive:
     - USG: USG.md
     - Duplicati: duplicati.md

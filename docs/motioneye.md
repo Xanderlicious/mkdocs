@@ -6,6 +6,17 @@ Motioneye is a video surveillance program that offers motion detection.
 
 I have this setup in constant record where data is recorded and stored for upto a month
 
+## Migration to motioneye-project fork
+
+The original `ccrisan/motioneye` image had been unmaintained since 2020. In August 2026 I migrated to the actively maintained community fork, [motioneye-project/motioneye](https://github.com/motioneye-project/motioneye), which picked development back up and has since shipped fixes including CVE-2026-46488.
+
+At the same time I:
+
+- Dropped `privileged: true` from the container — both cameras connect over RTSP, not as local devices, so it was never actually needed.
+- Moved `/var/lib/motioneye` from an anonymous Docker volume to an explicit bind mount, so all container state lives under `/ssd/docker/appdata/motioneye/`.
+
+The existing camera and motion-detection config carried over cleanly with no changes needed. The only casualty was a stale browser/app session on a phone that had the old live-view page open — the new version's auth scheme is HMAC-based rather than the old signed-username scheme, so any old session just needs a fresh login.
+
 ## docker-compose.yml
 
 ``` yaml
@@ -15,22 +26,24 @@ networks:
 
 services:
   motioneye:
-    privileged: True
-    image: ccrisan/motioneye:master-amd64
+    image: ghcr.io/motioneye-project/motioneye:0.44.0
     container_name: motioneye
-    hostname: XMS-CAMERAS
+    hostname: XMS-Cameras
     networks:
       phobos-network:
-        ipv4_address: "172.20.0.7"
+        ipv4_address: "172.20.0.15"
     restart: unless-stopped
     ports:
       - "8765:8765"
       - "8081:8081"
       - "8082:8082"
+    environment:
+      TZ: Europe/London
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /home/xander/appdata/motioneye/shared:/shared
-      - /home/xander/appdata/motioneye/etc:/etc/motioneye
+      - /ssd/docker/appdata/motioneye/shared:/shared
+      - /ssd/docker/appdata/motioneye/etc:/etc/motioneye
+      - /ssd/docker/appdata/motioneye/var-lib:/var/lib/motioneye
       - /disk1/cctv/recordings/xan-cam/:/recordings
 ```
 

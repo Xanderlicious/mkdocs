@@ -15,6 +15,7 @@ nav:
     - NCC-1702: NCC-1702.md
     - NCC-1703: NCC-1703.md
     - Unattended Upgrades: unattended-upgrades.md
+    - Backups: backups.md
   - Docker:
     - Install, Config & Usage: docker.md
     - Daemon Security (mTLS): mTLS.md

@@ -141,3 +141,9 @@ Edit the `OnCalendar` line in that host's `/etc/systemd/system/unattended-upgrad
 sudo systemctl daemon-reload
 sudo systemctl restart unattended-upgrades-weekly.timer
 ```
+
+---
+
+## Related
+
+- [Backups](backups.md) — the daily rsync/mysqldump jobs deliberately scheduled ahead of this timer's 03:00 window.

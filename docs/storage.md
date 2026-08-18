@@ -2,7 +2,7 @@
 
 `storage.xmsystems.co.uk` — live RAID health dashboard for Titan's LSI MegaRAID SAS 9260-8i controller.
 
-![storage-screenshot](/docs/images/storage-screenshot.png)
+![storage-screenshot](images/storage-screenshot.png)
 
 ## What it shows
 

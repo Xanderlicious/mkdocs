@@ -115,6 +115,12 @@ WantedBy=timers.target
 
 ---
 
+## Live status dashboard
+
+**[updates.xmsystems.co.uk](https://updates.xmsystems.co.uk)** shows this at a glance for all five hosts — last run time, what was installed/removed, whether a reboot was needed and whether it actually happened, and the next scheduled run. It's a small per-host API (`update-status-api`, port 9879, same pattern as `disk-smart-api` — see [storage monitor](titan.md)) that parses each host's own `unattended-upgrades.log` and `unattended-upgrades-weekly.timer`, proxied through Phobos nginx and Traefik like the other internal dashboards. No auth, internal-only (`websecure-int`).
+
+Useful as the first stop instead of the manual commands below — reach for those only when you need more detail than the dashboard shows (full log context, dry-run testing, etc).
+
 ## Checking status
 
 ```bash

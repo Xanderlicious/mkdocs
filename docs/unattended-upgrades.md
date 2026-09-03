@@ -117,7 +117,23 @@ WantedBy=timers.target
 
 ## Live status dashboard
 
-**[updates.xmsystems.co.uk](https://updates.xmsystems.co.uk)** shows this at a glance for all five hosts — last run time, what was installed/removed, whether a reboot was needed and whether it actually happened, and the next scheduled run. It's a small per-host API (`update-status-api`, port 9879, same pattern as `disk-smart-api` — see [storage monitor](titan.md)) that parses each host's own `unattended-upgrades.log` and `unattended-upgrades-weekly.timer`, proxied through Phobos nginx and Traefik like the other internal dashboards. No auth, internal-only (`websecure-int`).
+**[updates.xmsystems.co.uk](https://updates.xmsystems.co.uk)** shows this at a glance for all five hosts — last run time, what was installed/removed, whether a reboot was needed and whether it actually happened, and the next scheduled run.
+
+![updates-screenshot](images/updates-screenshot.png)
+
+It's a small per-host API (`update-status-api`, port 9879, same pattern as `disk-smart-api` — see [storage monitor](storage.md)) that parses each host's own `unattended-upgrades.log` and `unattended-upgrades-weekly.timer`, proxied through Phobos nginx and Traefik like the other internal dashboards. No auth, internal-only (`websecure-int`).
+
+The page itself only checks in **once every 24 hours** (`REFRESH IN` countdown, top right) — since each host's upgrade run is weekly anyway, per-minute polling had nothing to gain from checking more often than that. Like the other internal dashboards, it sits over a full-page background image with a `🚀 BACKGROUND` toggle in the header (persisted via `localStorage`) to strip it back to plain opaque cards, and each host card's header sits flush on the card body with no separate background box — the same single-tone card style used on Storage Monitor, Server Health, and Pi-hole Status.
+
+Each host card shows one status badge for its last run:
+
+| Badge | Meaning |
+| --- | --- |
+| **OK** | Last run finished cleanly, no reboot pending |
+| **REBOOT PENDING** | Last run flagged `reboot-required` and the host hasn't rebooted since |
+| **INCOMPLETE** | The log parser couldn't find a recognised end-of-run line for the last attempt |
+| **NEVER RUN** | No `unattended-upgrades.log` entries found on that host at all |
+| **UNREACHABLE** | The dashboard couldn't reach that host's `update-status-api` |
 
 Useful as the first stop instead of the manual commands below — reach for those only when you need more detail than the dashboard shows (full log context, dry-run testing, etc).
 
@@ -153,3 +169,7 @@ sudo systemctl restart unattended-upgrades-weekly.timer
 ## Related
 
 - [Backups](backups.md) — the daily rsync/mysqldump jobs deliberately scheduled ahead of this timer's 03:00 window.
+- [Storage Monitoring](storage.md) — same dashboard theme, updates every 30s
+- [Server Health](moon-fleet.md) — same theme, static snapshot refreshed every 4 hours
+- [Pi-hole Status](piholes.md) — same theme, 1-minute static snapshot cadence
+- [Automatic Container Updates](container-updates.md) — the docker-update schedule staggered one day after this one, per host

@@ -96,6 +96,11 @@ Should I need to make changes to my YAML configuration (change some environment 
 
 This will ensure the container is re-created.
 
+I don't run this by hand every week though — see [Automatic Container
+Updates](container-updates.md) for how this same `pull && up -d
+--force-recreate` command runs on its own schedule across titan, phobos,
+tethys, and ncc-1702, and the dashboard that shows what it did.
+
 ## Compose Files
 
 All of my compose files and the containers appdata reside in the following locations

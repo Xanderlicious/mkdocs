@@ -11,7 +11,7 @@ nginx runs as a Docker container on Phobos on port 88, acting as the primary web
 | XMSystems Homepage | [xmsystems.co.uk](https://xmsystems.co.uk) | Fleet-wide launcher — quick links to every internal dashboard and self-hosted app |
 | Infrastructure Overview | [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk) | Interactive network and infrastructure diagram — embedded on the [Overview](overview.md) page |
 | IPAM | [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk) | Custom-built IP Address Management tool — see [IPAM](ipam.md) |
-| Server Health | [health.xmsystems.co.uk](https://health.xmsystems.co.uk) | Cross-fleet health dashboard (disk usage, journal errors, uptime), regenerated every 4 hours |
+| Server Health | [health.xmsystems.co.uk](https://health.xmsystems.co.uk) | Cross-fleet health dashboard — see [Server Health](moon-fleet.md) |
 | Pi-hole Status | [piholes.xmsystems.co.uk](https://piholes.xmsystems.co.uk) | DNS fleet status board — see [Pi-hole Status](piholes.md) |
 | Update Status | [updates.xmsystems.co.uk](https://updates.xmsystems.co.uk) | Unattended-upgrades status per host — see [Unattended Upgrades](unattended-upgrades.md) |
 | Container Updates | [containers.xmsystems.co.uk](https://containers.xmsystems.co.uk) | Weekly Docker Compose update results per host — see [Automatic Container Updates](container-updates.md) |
@@ -227,6 +227,8 @@ server {
 ---
 
 ### Server Health
+
+See [Server Health](moon-fleet.md) for what the page shows and how it's generated.
 
 ```nginx
 server {

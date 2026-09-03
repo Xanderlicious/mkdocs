@@ -15,11 +15,13 @@ nav:
     - NCC-1702: NCC-1702.md
     - NCC-1703: NCC-1703.md
     - Unattended Upgrades: unattended-upgrades.md
+    - Server Health Checks: moon-fleet.md
     - Backups: backups.md
   - Docker:
     - Install, Config & Usage: docker.md
     - Daemon Security (mTLS): mTLS.md
     - Health Checks: healthchecks.md
+    - Automatic Container Updates: container-updates.md
   - Applications:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md
@@ -61,6 +63,7 @@ nav:
     - Uptime-Kuma: kuma.md
     - Dozzle: dozzle.md
     - Storage Monitoring: storage.md
+    - Pi-hole Status: piholes.md
     - PADD: padd.md
   - Archive:
     - USG: USG.md

@@ -8,11 +8,19 @@ nginx runs as a Docker container on Phobos on port 88, acting as the primary web
 
 | Service | URL | Description |
 | ------- | --- | ----------- |
+| XMSystems Homepage | [xmsystems.co.uk](https://xmsystems.co.uk) | Fleet-wide launcher — quick links to every internal dashboard and self-hosted app |
 | Infrastructure Overview | [infrastructure.xmsystems.co.uk](https://infrastructure.xmsystems.co.uk) | Interactive network and infrastructure diagram — embedded on the [Overview](overview.md) page |
-| IPAM | [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk) | Custom-built IP Address Management tool |
+| IPAM | [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk) | Custom-built IP Address Management tool — see [IPAM](ipam.md) |
+| Server Health | [health.xmsystems.co.uk](https://health.xmsystems.co.uk) | Cross-fleet health dashboard (disk usage, journal errors, uptime), regenerated every 4 hours |
+| Pi-hole Status | [piholes.xmsystems.co.uk](https://piholes.xmsystems.co.uk) | DNS fleet status board — see [Pi-hole Status](piholes.md) |
+| Update Status | [updates.xmsystems.co.uk](https://updates.xmsystems.co.uk) | Unattended-upgrades status per host — see [Unattended Upgrades](unattended-upgrades.md) |
+| Container Updates | [containers.xmsystems.co.uk](https://containers.xmsystems.co.uk) | Weekly Docker Compose update results per host — see [Automatic Container Updates](container-updates.md) |
+| Storage Monitor | [storage.xmsystems.co.uk](https://storage.xmsystems.co.uk) | Live storage/disk health dashboard — see [Storage Monitor](storage.md) |
+| Downloads | [downloads.xmsystems.co.uk](https://downloads.xmsystems.co.uk) | Shared downloads folder browser with an on-demand zip-download API |
 | XMS Games Hub | [games.xmsystems.co.uk](https://games.xmsystems.co.uk) | Party game platform — see [Games](games/games-overview.md) |
 | Poker Clock | [poker.xmsystems.co.uk](https://poker.xmsystems.co.uk) | Tournament dashboard with real-time multi-device sync — see [Poker Clock](games/poker.md) |
 | Workout Timer | `workout.[internal]` | Timer and workout reference page |
+| Terraform Guide | `tf.[internal]` | Personal static Terraform learning/reference page |
 
 ---
 
@@ -196,6 +204,216 @@ server {
 ```
 
 **File:** `/ssd/docker/appdata/nginx/workout/index.html`
+
+---
+
+### XMSystems Homepage
+
+```nginx
+server {
+    listen       80;
+    server_name  xmsystems.co.uk;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  fleet-control.html;
+        try_files $uri $uri/ /fleet-control.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/fleet-control.html`
+
+---
+
+### Server Health
+
+```nginx
+server {
+    listen 80;
+    server_name health.xmsystems.co.uk;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  serverstatus.html;
+        try_files $uri $uri/ /serverstatus.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/serverstatus.html`, regenerated every 4 hours by `/home/xander/scripts/healthchecks/generate-serverstatus.sh`.
+
+---
+
+### Pi-hole Status
+
+See [Pi-hole Status](piholes.md) for what the page shows and how it's generated.
+
+```nginx
+server {
+    listen 80;
+    server_name piholes.xmsystems.co.uk;
+
+    location / {
+        root      /usr/share/nginx/html;
+        index     piholestatus.html;
+        try_files $uri $uri/ /piholestatus.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/piholestatus.html`
+
+---
+
+### Update Status
+
+See [Unattended Upgrades](unattended-upgrades.md) for what the page shows and the backend behind it. Proxies one `/api/updates/<host>/` location per host to that host's own `update-status-api` (port 9879); the block below repeats identically for phobos, tethys, ncc-1702 and ncc-1703.
+
+```nginx
+server {
+    listen 80;
+    server_name updates.xmsystems.co.uk;
+
+    location /api/updates/titan/ {
+        proxy_pass            http://10.36.100.150:9879/;
+        proxy_set_header      Host $host;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout    10s;
+    }
+    # ...one identical location block per remaining host
+
+    location / {
+        root      /usr/share/nginx/html;
+        index     updates.html;
+        try_files $uri $uri/ /updates.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/updates.html`
+
+---
+
+### Container Updates
+
+See [Automatic Container Updates](container-updates.md) for what the page shows and the backend behind it. Proxies one `/api/containers/<host>/` location per host to that host's `container-status-api` (port 9881); the block below repeats identically for phobos, tethys and ncc-1702.
+
+```nginx
+server {
+    listen 80;
+    server_name containers.xmsystems.co.uk;
+
+    location /api/containers/titan/ {
+        proxy_pass            http://10.36.100.150:9881/;
+        proxy_set_header      Host $host;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout    10s;
+    }
+    # ...one identical location block per remaining host
+
+    location / {
+        root      /usr/share/nginx/html;
+        index     containers.html;
+        try_files $uri $uri/ /containers.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/containers.html`
+
+---
+
+### Storage Monitor
+
+See [Storage Monitor](storage.md) for what the page shows and the backend behind it. Proxies `/api/` to `megaraid-api` (titan, port 9877) and one `/api/disks/<host>/` location per host to that host's `disk-smart-api` (port 9878).
+
+```nginx
+server {
+    listen 80;
+    server_name storage.xmsystems.co.uk;
+
+    location /api/ {
+        proxy_pass            http://10.36.100.150:9877/;
+        proxy_set_header      Host $host;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout    10s;
+    }
+
+    location /api/disks/titan/ {
+        proxy_pass            http://10.36.100.150:9878/;
+        proxy_set_header      Host $host;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout    10s;
+    }
+    # ...one identical /api/disks/<host>/ block per remaining host (phobos, tethys)
+
+    location / {
+        root      /usr/share/nginx/html;
+        index     storage.html;
+        try_files $uri $uri/ /storage.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/storage.html`
+
+---
+
+### Downloads
+
+```nginx
+server {
+    listen 80;
+    server_name downloads.xmsystems.co.uk;
+
+    location /files/ {
+        alias /usr/share/nginx/html/downloads-files/;
+        autoindex on;
+        autoindex_format json;
+    }
+
+    location /api/zip/ {
+        proxy_pass            http://10.36.100.151:9880/zip/;
+        proxy_set_header      Host $host;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout    600s;
+        proxy_buffering       off;
+    }
+
+    location / {
+        root      /usr/share/nginx/html;
+        index     downloads.html;
+        try_files $uri $uri/ /downloads.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/downloads.html`, browsable files under `/ssd/docker/appdata/nginx/downloads-files/`. Backend: `downloads-zip-api` (systemd service, port 9880).
+
+---
+
+### Terraform Guide
+
+```nginx
+server {
+    listen 80;
+    server_name tf.[internal];
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  tf-index.html;
+        try_files $uri $uri/ /tf-index.html;
+    }
+}
+```
+
+**File:** `/ssd/docker/appdata/nginx/tf-index.html`
 
 ---
 

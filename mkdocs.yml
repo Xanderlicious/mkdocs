@@ -21,7 +21,7 @@ nav:
     - Install, Config & Usage: docker.md
     - Daemon Security (mTLS): mTLS.md
     - Health Checks: healthchecks.md
-    - Automatic Container Updates: container-updates.md
+    - Container Updates: container-updates.md
   - Applications:
     - Traefik: traefik.md
     - Traefik - Entry Points: entrypoints.md
@@ -45,7 +45,6 @@ nav:
     - phpMyAdmin: phpmyadmin.md
     - Nginx Web Server: nginx.md
     - Ghost: ghost.md
-    - PH-Intercept: ph-intercept.md
     - Apache Guacamole: guacamole.md
     - Fail2Ban: fail2ban.md
     - Nebula-Sync: nebula-sync.md

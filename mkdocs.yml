@@ -30,6 +30,7 @@ nav:
     - NCC-1704: NCC-1704.md
     - Unbound: unbound.md
     - Plex: plex.md
+    - Jellyfin: jellyfin.md
     - Navidrome: navidrome.md
     - Podgrab: podgrab.md
     - Seerr: seerr.md
@@ -39,6 +40,7 @@ nav:
     - SABnzbd: sabnzbd.md
     - IT-Tools: it-tools.md
     - Homepage: homepage.md
+    - IPAM: ipam.md
     - Home Assistant: ha.md
     - Motioneye: motioneye.md
     - MySQL Database: mysql.md
@@ -71,6 +73,7 @@ nav:
     - Vaultwarden: vaultwarden.md
     - Cuthbert: cuthbert.md
     - CheckMK: checkmk.md
+    - PH-Intercept: ph-intercept.md
 
 theme:
   logo: images/server-solid.svg

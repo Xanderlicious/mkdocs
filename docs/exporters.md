@@ -13,8 +13,10 @@ Prometheus runs on **Tethys** and scrapes targets across Titan, Phobos, Tethys i
 |Traefik Metrics|✅||||8088|
 |Plex Exporter|✅||||9000|
 |Homers|✅||||8083|
+|Nvidia GPU Exporter|✅|✅|||9835|
 |Unpoller|||✅||9130|
 |Pi-Hole Exporter|||✅||9617|
+|Storage Bridge Exporter|||✅||9922|
 |Wireguard Exporter||||✅|9586|
 |Dozzle|✅|✅|✅|✅|8080 / 7007|
 
@@ -26,7 +28,7 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
 
 === "Tethys"
 
-    Tethys hosts the core monitoring stack (Prometheus, Grafana) alongside the exporters for its own host metrics and the remote scrapers for UniFi and Pi-Hole.
+    Tethys hosts the core monitoring stack (Prometheus, Grafana) alongside the exporters for its own host metrics, the remote scrapers for UniFi and Pi-Hole, and the Storage Bridge Exporter.
 
     ```yaml
     networks:
@@ -172,11 +174,24 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         ports:
           - 7007:7007
         restart: unless-stopped
+
+      storage-bridge-exporter:
+        build: /ssd/docker/appdata/monitoring/storage-bridge-exporter
+        image: storage-bridge-exporter:latest
+        pull_policy: build
+        container_name: storage-bridge-exporter
+        networks:
+          monitoring:
+            ipv4_address: "172.18.0.9"
+        user: "1000"
+        restart: unless-stopped
+        ports:
+          - 9922:9922
     ```
 
 === "Titan"
 
-    Titan runs node_exporter, cAdvisor, Plex Exporter, and Homers alongside the primary Dozzle instance.
+    Titan runs node_exporter, cAdvisor, Plex Exporter, Homers, and the Nvidia GPU Exporter alongside the primary Dozzle instance.
 
     ```yaml
     networks:
@@ -269,11 +284,22 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
           - DOZZLE_HOSTNAME=Titan
           - TZ=Europe/London
         restart: unless-stopped
+
+      nvidia-gpu-exporter:
+        image: utkuozdemir/nvidia_gpu_exporter:1.2.0
+        container_name: nvidia-gpu-exporter
+        restart: unless-stopped
+        runtime: nvidia
+        environment:
+          - NVIDIA_VISIBLE_DEVICES=all
+          - NVIDIA_DRIVER_CAPABILITIES=utility
+        ports:
+          - "9835:9835"
     ```
 
 === "Phobos"
 
-    Phobos runs node_exporter and cAdvisor for host and container metrics, plus a Dozzle agent.
+    Phobos runs node_exporter and cAdvisor for host and container metrics, the Nvidia GPU Exporter, plus a Dozzle agent.
 
     ```yaml
     networks:
@@ -330,6 +356,17 @@ The monitoring exporters are deployed via Docker Compose on each host. The full 
         ports:
           - 7007:7007
         restart: unless-stopped
+
+      nvidia-gpu-exporter:
+        image: utkuozdemir/nvidia_gpu_exporter:1.2.0
+        container_name: nvidia-gpu-exporter
+        restart: unless-stopped
+        runtime: nvidia
+        environment:
+          - NVIDIA_VISIBLE_DEVICES=all
+          - NVIDIA_DRIVER_CAPABILITIES=utility
+        ports:
+          - "9835:9835"
     ```
 
 === "NCC-1702"
@@ -588,3 +625,41 @@ A Prometheus exporter that reads WireGuard peer statistics directly from the ker
 - Interface-level statistics
 
 **Grafana usage:** WireGuard dashboard showing which VPN peers are active, their last connection time, and data transferred per peer.
+
+---
+
+## Nvidia GPU Exporter
+
+**Image:** `utkuozdemir/nvidia_gpu_exporter:1.2.0`  
+**Hosts:** Titan, Phobos  
+**Port:** `9835`
+
+Exposes NVIDIA GPU metrics by shelling out to `nvidia-smi` inside the container (mounted in via the `nvidia` runtime with `NVIDIA_DRIVER_CAPABILITIES=utility`). Runs on both GPU-equipped hosts — Titan's Quadro RTX 4000 (Plex/Jellyfin transcoding) and Phobos's GPU.
+
+**Metrics collected:**
+
+- GPU utilisation and memory usage
+- GPU temperature
+- Power draw
+- Fan speed (where supported)
+
+**Grafana usage:** GPU Temperature dashboard.
+
+---
+
+## Storage Bridge Exporter
+
+**Image:** locally built (`storage-bridge-exporter:latest`, `build:` from `/ssd/docker/appdata/monitoring/storage-bridge-exporter`)  
+**Host:** Tethys  
+**Scrapes:** `disk-smart-api` on Titan and Phobos, via [Storage Monitoring](storage.md)'s own API (`storage.xmsystems.co.uk/api`)  
+**Port:** `9922`
+
+A small custom Python exporter (`exporter.py`) that bridges the existing `disk-smart-api`/`megaraid-api` JSON endpoints behind the Storage Monitoring dashboard into Prometheus text exposition format, rather than duplicating SMART polling logic in a second place.
+
+**Metrics collected:**
+
+- Per-drive SMART health (`smartctl_device_healthy`), temperature, power-on hours, capacity
+- Reallocated/pending/uncorrectable sector counts, UDMA CRC errors, media errors
+- Scrape success/failure per host (`scrape_up`)
+
+**Grafana usage:** SMART General dashboard.

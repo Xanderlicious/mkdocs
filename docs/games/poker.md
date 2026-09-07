@@ -56,7 +56,7 @@ server {
     listen 80;
     server_name poker.xmsystems.co.uk;
 
-    auth_basic "Kelly's Card Club";
+    auth_basic "XMS Poker";
     auth_basic_user_file /etc/nginx/.htpasswd;
 
     location / {

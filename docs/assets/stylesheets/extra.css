@@ -5,3 +5,33 @@
 .md-typeset .grid.cards {
   grid-template-columns: repeat(4, 1fr);
 }
+
+/* ── Background image + frosted-glass scrim (Saturn) ── */
+body {
+  background: linear-gradient(rgba(10,6,16,0.32), rgba(10,6,16,0.48)), url('../../images/docs-bg.jpg') center/cover fixed no-repeat;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: hsla(280, 20%, 10%, 0.62);
+}
+
+.md-header {
+  background-color: rgba(30, 12, 40, 0.4);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+
+.md-sidebar__scrollwrap {
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+}
+
+.md-content {
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+}
+
+.md-footer {
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+}

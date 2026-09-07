@@ -59,28 +59,32 @@ pinned/skipped, next run), then one card per host:
 ## Why some stacks are pinned or skipped
 
 Only two kinds of stack are deliberately left out of the update-and-recreate
-step — everything else, including the mysql instances and Portainer's own
-agent, goes through `pull && up -d --force-recreate` like any other stack:
+step — everything else, including the mysql instances, Titan's
+`traefik`/`portainer-ee` stack, and Portainer's own agent elsewhere, goes
+through `pull && up -d --force-recreate` like any other stack:
 
 | Reason | Which stacks | Why |
 | --- | --- | --- |
-| `pinned` | Titan's `traefik`, Phobos's `kuma` | Pinned to an **exact patch release** (`traefik:3.7.12`, `uptime-kuma:2.5.3`) — a version bump here is a deliberate, tested decision, not something to apply blind and unattended |
+| `pinned` | Phobos's `kuma` | Pinned to an **exact patch release** (`uptime-kuma:2.5.3`) — a version bump here is a deliberate, tested decision, not something to apply blind and unattended |
 | `local` | Phobos's `boggle`, `cah`, `trivial`, `blockbusters`, `millionaire`, `poker`, `ipam-backend` | Built from a local Dockerfile (`build:` in the compose file) — there's no registry image to pull, `docker compose pull` can't find anything newer regardless |
 
 The mysql stacks (`titan-mysql-db`, `phobos-mysql-db`, `tethys-mysql-db`)
 are **not** skipped, even though `mysql:8.4` looks like a pinned tag at a
 glance — it's a floating *minor*-version tag that MySQL republishes with
 each patch release (8.4.0 → 8.4.1 → …), so pulling it does pick up genuine
-patch updates. Only a full `major.minor.patch` pin like `traefik:3.7.12`
-stops receiving anything new under the same tag.
+patch updates. Only a full `major.minor.patch` pin stops receiving anything
+new under the same tag.
+
+Titan's `traefik` stack (which bundles a `portainer-ee:lts` container in
+the same compose file) used to be skipped as `pinned` — Traefik's image was
+tagged `traefik:3.7.12`, an exact patch release. That pin was deliberately
+removed in favour of a floating `:latest` tag, matching the rest of the
+fleet, so both containers now update automatically with everything else.
 
 Reasons are classified dynamically by reading each skipped stack's own
 compose file at run time (a `build:` key → local; a non-floating,
 full-version tag → pinned), rather than hardcoded, so the label stays
-correct if a compose file changes later. Titan's `traefik` stack also
-bundles a `portainer-ee:lts` container in the same compose file — it rides
-along as skipped too, simply because it's in the same stack, not because
-Portainer itself is treated specially anymore.
+correct if a compose file changes later.
 
 ## How it works
 

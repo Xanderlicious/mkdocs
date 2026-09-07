@@ -93,7 +93,7 @@ CMD ["node", "server.js"]
 {
   "name": "poker-state-server",
   "version": "1.0.0",
-  "description": "WebSocket state server for Kelly's Card Club",
+  "description": "WebSocket state server for XMS Poker",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -118,7 +118,7 @@ server {
     listen 80;
     server_name poker.[REDACTED];
 
-    auth_basic "Kelly's Card Club";
+    auth_basic "XMS Poker";
     auth_basic_user_file /etc/nginx/.htpasswd;
 
     # Serve the HTML dashboard

@@ -1,5 +1,5 @@
 
-# Sonarr - Radarr - Lidarr - Readarr
+# Sonarr - Radarr - Lidarr
 
 ![sonarr-logo](images/Sonarr.png)
 *Sonarr = TV Shows*
@@ -24,11 +24,11 @@ networks:
 services:
 
     sonarr:
-        image: lscr.io/linuxserver/sonarr:latest
+        image: linuxserver/sonarr
         container_name: sonarr
-        hostname: Titan
+        hostname: TiTAN
         volumes:
-            - /ssd/appdata/Sonarr:/config
+            - /ssd/docker/appdata/Sonarr:/config
             - /downloads:/downloads
             - /downloads/Incomplete:/Incomplete
             - /megaraid/mediastore/TV:/tv
@@ -48,20 +48,18 @@ services:
             - traefik.http.routers.sonarr.tls.certresolver=production
             - traefik.http.routers.sonarr.tls.domains[0].main=domain.co.uk
             - traefik.http.routers.sonarr.tls.domains[0].sans=*.domain.co.uk
-        ports:
-            - 8989:8989
         restart: unless-stopped
 
     radarr:
-        image: lscr.io/linuxserver/radarr:latest
+        image: linuxserver/radarr
         container_name: radarr
-        hostname: Titan
+        hostname: TiTAN
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - /ssd/appdata/Radarr:/config
+            - /ssd/docker/appdata/Radarr:/config
             - /megaraid/mediastore/Movies:/movies
             - /megaraid/mediastore/StandUp:/StandUp
             - /downloads:/downloads
@@ -78,20 +76,18 @@ services:
         networks:
           proxy:
             ipv4_address: 172.19.0.103
-        ports:
-            - 7878:7878
         restart: unless-stopped
 
     lidarr:
-        image: lscr.io/linuxserver/lidarr:latest
+        image: linuxserver/lidarr
         container_name: lidarr
-        hostname: Titan
+        hostname: TiTAN
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - /ssd/appdata/Lidarr:/config
+            - /ssd/docker/appdata/Lidarr:/config
             - /ironwolf/music/MusicCollection:/music
             - /downloads:/downloads
             - /downloads/Incomplete:/Incomplete
@@ -107,7 +103,5 @@ services:
         networks:
           proxy:
             ipv4_address: 172.19.0.104
-        ports:
-            - 8686:8686
         restart: unless-stopped
 ```

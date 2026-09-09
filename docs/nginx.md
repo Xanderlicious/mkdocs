@@ -26,7 +26,7 @@ nginx runs as a Docker container on Phobos on port 88, acting as the primary web
 
 ## Docker Setup
 
-nginx and the Poker WebSocket backend are managed together in a single compose file.
+nginx and the Poker WebSocket backend used to be managed together in one compose file — they've since been split into separate compose stacks, though they still share the `phobos-network` Docker network so nginx can proxy `/ws` straight to the poker container by name.
 
 **File:** `/ssd/docker/docker-compose/nginx/docker-compose.yml`
 
@@ -51,15 +51,23 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Europe/London
-    depends_on:
-      - poker-server
+```
 
+**File:** `/ssd/docker/docker-compose/poker/docker-compose.yml`
+
+```yaml
+networks:
+  default:
+    name: phobos-network
+    external: true
+
+services:
   poker-server:
     build: /ssd/docker/appdata/poker
-    container_name: poker-server
+    container_name: poker-clock
     restart: unless-stopped
     networks:
-      phobos-network:
+      default:
         ipv4_address: '172.20.0.21'
     environment:
       - TZ=Europe/London
@@ -68,20 +76,24 @@ services:
 | Container | Image | IP |
 | --------- | ----- | -- |
 | `nginx` | `nginx` (official) | `172.20.0.20` |
-| `poker-server` | Local Dockerfile | `172.20.0.21` |
+| `poker-clock` (service name `poker-server`) | Local Dockerfile | `172.20.0.21` |
 | `ipam-backend` | Local Dockerfile | `172.20.0.201` (separate compose) |
 
 ### Updating
 
-From `/ssd/docker/docker-compose/nginx/`:
+nginx, from `/ssd/docker/docker-compose/nginx/`:
 
 ```bash
-docker compose pull; docker compose build; docker compose up -d --force-recreate
+docker compose pull; docker compose up -d --force-recreate
 ```
 
-- `pull` — updates the nginx image
-- `build` — rebuilds the poker-server from the local Dockerfile
-- `--force-recreate` — restarts both containers
+The poker backend, from `/ssd/docker/docker-compose/poker/`:
+
+```bash
+docker compose build; docker compose up -d --force-recreate
+```
+
+`build` rebuilds `poker-server` from the local Dockerfile — the image isn't pulled from a registry.
 
 ---
 
@@ -100,13 +112,13 @@ server {
 
     location / {
         root /usr/share/nginx/html;
-        index infrastructure.html;
-        try_files $uri $uri/ =404;
+        index infra-index.html;
+        try_files $uri $uri/ /infra-index.html;
     }
 }
 ```
 
-**File:** `/ssd/docker/appdata/nginx/infrastructure.html`
+**File:** `/ssd/docker/appdata/nginx/infra-index.html`
 
 ---
 

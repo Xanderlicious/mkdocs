@@ -65,33 +65,32 @@ networks:
 
 services:
   boggle:
-    image: node:22-alpine
+    image: boggle:latest
+    build:
+      context: /ssd/docker/appdata/boggle
     container_name: boggle
-    working_dir: /app
-    command: node server.js
-    volumes:
-      - /ssd/docker/appdata/boggle:/app
     environment:
-      - PORT=3002
+      - PORT=3003
       - NODE_ENV=production
     networks:
       phobos-network:
         ipv4_address: 172.20.0.205
     ports:
-      - "3003:3002"
+      - "3003:3003"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3002/"]
+      test: ["CMD", "wget", "-qO-", "http://localhost:3003/"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 15s
 ```
 
-The container runs the appdata directory directly as a volume using the stock `node:22-alpine` image — no custom build step needed. To apply code changes, restart the container:
+The image is built from a Dockerfile in the appdata directory rather than bind-mounting the stock `node` image. To apply code changes, rebuild and recreate:
 
 ```bash
 cd /ssd/docker/docker-compose/boggle
+docker compose build
 docker compose up -d --force-recreate
 ```
 

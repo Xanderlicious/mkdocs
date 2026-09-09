@@ -22,8 +22,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /ssd/docker/appdata/dozzle/data:/data
-    ports:
-      - 8585:8080
     networks:
       monitoring:
         ipv4_address: "172.18.0.7"
@@ -33,7 +31,8 @@ services:
       - DOZZLE_ENABLE_SHELL=true
       - DOZZLE_AUTH_PROVIDER=simple
       - DOZZLE_HOSTNAME=Titan
-    restart: always
+      - TZ=Europe/London
+    restart: unless-stopped
 ```
 
 ## Phobos
@@ -57,7 +56,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 7007:7007
-    restart: always
+    restart: unless-stopped
 ```
 
 ## Tethys
@@ -81,7 +80,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 7007:7007
-    restart: always
+    restart: unless-stopped
 ```
 
 ## NCC-1702
@@ -105,7 +104,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 7007:7007
-    restart: always
+    restart: unless-stopped
 ```
 
 ## Dynamic File

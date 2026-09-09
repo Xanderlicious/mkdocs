@@ -19,8 +19,6 @@ services:
     networks:
       proxy:
         ipv4_address: "172.19.0.99"
-    ports:
-      - 4533:4533
     environment:
       - PUID=1000
       - PGID=1000
@@ -29,8 +27,9 @@ services:
       - ND_SPOTIFY_SECRET=<random string>
     restart: unless-stopped
     volumes:
-      - /ssd/appdata/Navidrome:/data
+      - /ssd/docker/appdata/Navidrome:/data
       - /ironwolf/music/MusicCollection:/music:ro
+      - /ironwolf/music/Soundtracks:/Soundtracks:ro
     labels:
       - traefik.enable=true
       - traefik.http.services.navidrome.loadbalancer.server.port=4533

@@ -25,7 +25,7 @@ services:
     container_name: homepage
     networks:
       phobos-network:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 172.20.0.14
     environment:
       HOMEPAGE_ALLOWED_HOSTS: subdomain.domain.co.uk
     volumes:
@@ -34,6 +34,10 @@ services:
       - /titan/megaraid:/megaraid:ro
       - /titan/ironwolf:/ironwolf:ro
       - /titan/ssd:/ssd:ro
+      - /disk1:/disk1:ro
+      - /disk2:/disk2:ro
+      - /disk3:/disk3:ro
+      - /disk4:/disk4:ro
       - /ssd/docker/appdata/homepage/icons:/app/public/icons
       - /ssd/docker/appdata/homepage/images:/app/public/images
     ports:

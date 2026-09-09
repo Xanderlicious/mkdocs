@@ -29,9 +29,10 @@ MySQL is used as the database of choice and is setup on three hosts:
 
     services:
       titan-mysql-db:
-        image: mysql:8.0
+        image: mysql:8.4
         container_name: titan-mysql-db
         restart: unless-stopped
+        user: "999:999"
         environment:
           MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         volumes:
@@ -55,9 +56,10 @@ MySQL is used as the database of choice and is setup on three hosts:
         external: true
 
     services:
-      titan-mysql-db:
-        image: mysql:8.0
+      phobos-mysql-db:
+        image: mysql:8.4
         container_name: phobos-mysql-db
+        user: "999:999"
         restart: unless-stopped
         environment:
           MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -66,6 +68,11 @@ MySQL is used as the database of choice and is setup on three hosts:
         networks:
           phobos-network:
             ipv4_address: "172.20.0.200"
+        healthcheck:
+          test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+          interval: 10s
+          timeout: 5s
+          retries: 10
     ```
 
 === "Tethys"
@@ -77,14 +84,21 @@ MySQL is used as the database of choice and is setup on three hosts:
 
     services:
       tethys-mysql-db:
-        image: mysql:8.0
+        image: mysql:8.4
         container_name: tethys-mysql-db
+        user: "999:999"
         restart: unless-stopped
         environment:
           MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         volumes:
-          - /ssd/docker/appdata/phobos-mysql-db:/var/lib/mysql
+          - /ssd/docker/appdata/tethys-mysql-db:/var/lib/mysql
         networks:
           tethys-network:
             ipv4_address: "172.21.0.200"
+        healthcheck:
+          test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+          interval: 30s
+          timeout: 10s
+          retries: 3
+          start_period: 30s
     ```

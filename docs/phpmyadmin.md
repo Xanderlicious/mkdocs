@@ -20,7 +20,7 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
         external: "true"
 
     services:
-      phpmyadmin-titan:
+      phpmyadmin:
         image: phpmyadmin:latest
         container_name: phpmyadmin-titan
         environment:
@@ -29,8 +29,6 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
         networks:
           proxy:
             ipv4_address: "172.19.0.105"
-        ports:
-          - 84:80
         volumes:
           - /ssd/docker/appdata/phpmyadmin/sessions
           - /ssd/docker/appdata/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
@@ -49,20 +47,21 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
         external: true
 
     services:
-      phpmyadmin-phobos:
+      phpmyadmin:
         image: phpmyadmin:latest
         container_name: phpmyadmin-phobos
         environment:
           - PMA_HOSTS=phobos-mysql-db
         restart: unless-stopped
+        ports:
+          - 81:80
         networks:
           phobos-network:
-            ipv4_address: "172.20.0.6"
-        ports:
-          - 84:80
+            ipv4_address: "172.20.0.11"
         volumes:
-          - /ssd/docker/appdata/phpmyadmin-phobos/sessions
-          - /ssd/docker/appdata/phpmyadmin-phobos/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+          - /ssd/docker/appdata/phpmyadmin/sessions
+          - /ssd/docker/appdata/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+          - /ssd/docker/appdata/phpmyadmin/custom/phpmyadmin/theme/:/www/themes/theme/
     ```
 
     As this runs on a different host to Traefik, a dynamic file is used to route it through Traefik with SSL.
@@ -73,11 +72,11 @@ I run three separate instances of phpMyAdmin, one on each host that has a MySQL 
 
     ```yaml
     networks:
-      tethys-network
+      tethys-network:
         external: "true"
 
     services:
-      phpmyadmin-tethys:
+      phpmyadmin:
         image: phpmyadmin:latest
         container_name: phpmyadmin-tethys
         environment:

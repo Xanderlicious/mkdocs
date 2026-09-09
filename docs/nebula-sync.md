@@ -28,14 +28,33 @@ services:
     networks:
       phobos-network:
         ipv4_address: "172.20.0.13"
-    restart: always
+    restart: unless-stopped
     environment:
-    - TZ=Europe/London
-    - PRIMARY=https://pi-hole1.domain.com|${PRIMARY_PASSWORD}
-    - REPLICAS=https://pi-hole2.domain.com|${REPLICA1_PASSWORD},https://pi-hole3.domain.com|${REPLICA2_PASSWORD}
-    - FULL_SYNC=true
-    - RUN_GRAVITY=true
-    - CRON=0 * * * *
+      - TZ=Europe/London
+      - CLIENT_RETRY_DELAY_SECONDS=20
+      - PRIMARY=https://pi-hole1.domain.com|${PRIMARY_PASSWORD}
+      - REPLICAS=https://pi-hole2.domain.com|${REPLICA1_PASSWORD},https://pi-hole3.domain.com|${REPLICA2_PASSWORD}
+      - FULL_SYNC=false
+      - SYNC_CONFIG_DNS=true
+      - SYNC_CONFIG_DNS_EXCLUDE=upstreams
+      - SYNC_CONFIG_DHCP=true
+      - SYNC_CONFIG_NTP=true
+      - SYNC_CONFIG_RESOLVER=true
+      - SYNC_CONFIG_DATABASE=true
+      - SYNC_CONFIG_MISC=true
+      - SYNC_CONFIG_DEBUG=true
+      - SYNC_GRAVITY_DHCP_LEASES=true
+      - SYNC_GRAVITY_GROUP=true
+      - SYNC_GRAVITY_AD_LIST=true
+      - SYNC_GRAVITY_AD_LIST_BY_GROUP=true
+      - SYNC_GRAVITY_DOMAIN_LIST=true
+      - SYNC_GRAVITY_DOMAIN_LIST_BY_GROUP=true
+      - SYNC_GRAVITY_CLIENT=true
+      - SYNC_GRAVITY_CLIENT_BY_GROUP=true
+      - RUN_GRAVITY=true
+      - CRON=0 * * * *
 ```
 
 I have also created a ".env" file within the same location/directory as the compose file which contains the passwords for both pi-holes.  This is then called/referenced with the corresponding variable.
+
+`FULL_SYNC` is left `false` and `SYNC_CONFIG_DNS_EXCLUDE=upstreams` so each replica can keep its own upstream DNS server (Unbound running locally on each Pi) rather than blindly copying the primary's upstream config — everything else (DNS config, DHCP, NTP, resolver, database, gravity lists, groups, clients) syncs on the granular per-category flags instead of one blanket switch.

@@ -83,17 +83,23 @@ server {
 
 ## Backend
 
-The poker server is managed in the same compose file as nginx itself.
+The poker server has its own compose stack, sharing the `phobos-network` Docker network with nginx so it can be reached by container name.
 
-**Docker Compose:** `/ssd/docker/docker-compose/nginx/docker-compose.yml`
+**Docker Compose:** `/ssd/docker/docker-compose/poker/docker-compose.yml`
 
 ```yaml
+networks:
+  default:
+    name: phobos-network
+    external: true
+
+services:
   poker-server:
     build: /ssd/docker/appdata/poker
-    container_name: poker-server
+    container_name: poker-clock
     restart: unless-stopped
     networks:
-      phobos-network:
+      default:
         ipv4_address: '172.20.0.21'
     environment:
       - TZ=Europe/London

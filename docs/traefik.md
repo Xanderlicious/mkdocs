@@ -27,7 +27,7 @@ networks:
 services:
 
   traefik:
-    image: ghcr.io/traefik/traefik
+    image: ghcr.io/traefik/traefik:latest
     container_name: traefik
     restart: unless-stopped
     networks:
@@ -47,7 +47,6 @@ services:
       - 443:443
       - 444:444
       - 8088:8088
-      - 25565:25565
     mem_limit: 2g
     mem_reservation: 128m
     environment:
@@ -59,6 +58,7 @@ services:
       - /ssd/docker/appdata/traefik/data/traefik.yml:/traefik.yml:ro
       - /ssd/docker/appdata/traefik/data/acme.json:/acme.json
       - /ssd/docker/appdata/traefik/dynamic:/ssd/docker/appdata/traefik/dynamic
+      - /ssd/docker/appdata/traefik/htpasswd:/ssd/docker/appdata/traefik/htpasswd:ro
       - /ssd/docker/appdata/traefik/logs:/var/log/traefik
     labels:
       - traefik.enable=true
@@ -73,7 +73,7 @@ services:
 
   portainer:
     image: portainer/portainer-ee:lts
-    container_name: portainer_T
+    container_name: portainer
     networks:
       proxy:
         ipv4_address: "172.19.0.3"
@@ -174,10 +174,6 @@ entryPoints:
         allowEncodedPercent: false
         allowEncodedQuestionMark: false
         allowEncodedHash: false
-
-#minecraft
-  minecraft:
-    address: :25565
 
 certificatesResolvers:
   production:

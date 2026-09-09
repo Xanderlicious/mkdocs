@@ -67,7 +67,7 @@ The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **W
 - Intel i5-10400 · 32 GB DDR4 RAM
 - Nvidia RTX 4000 SFF Ada Generation
 - 4 × 8 TB + 1 × 4 TB WD Red drives
-- Hosts services that don't need to live on Titan (NCC-1704, PH-Intercept, Uptime-Kuma, MotionEye)
+- Hosts services that don't need to live on Titan (NCC-1704, Uptime-Kuma, MotionEye)
 - **OS:** Debian 13 (Trixie)
 
 ### Tethys
@@ -75,7 +75,7 @@ The primary Pi (NCC-1702) also runs [PiVPN](https://www.pivpn.io/) using the **W
 [Tethys](https://docs.xmsystems.co.uk/tethys/) is a dedicated monitoring host — a repurposed HP 280 G2 SFF desktop.
 
 - Intel i5-6500 · 16 GB RAM
-- Runs [Grafana](https://docs.xmsystems.co.uk/grafana), [Prometheus](https://docs.xmsystems.co.uk/prometheus/) and [CheckMK](https://docs.xmsystems.co.uk/checkmk/)
+- Runs [Grafana, Prometheus](https://docs.xmsystems.co.uk/grafana%20%26%20prometheus/) and Unpoller
 - **OS:** Debian 13 (Trixie)
 
 ---
@@ -92,11 +92,11 @@ Key applications include:
 
 | Category | Applications |
 | ---------- | ------------- |
-| Media | Plex, Sonarr, Radarr, Lidarr, Readarr, SABnzbd, Navidrome, Podgrab, Tautulli, Overseerr |
+| Media | Plex, Jellyfin, Sonarr, Radarr, Lidarr, SABnzbd, Navidrome, Podgrab, Tautulli, Tracearr, Seerr |
 | Infrastructure | Traefik, Portainer, Homepage, Dozzle, Fail2Ban |
-| Monitoring | Grafana, Prometheus, CheckMK, Uptime-Kuma |
+| Monitoring | Grafana, Prometheus, Unpoller, Uptime-Kuma |
 | Home | Home Assistant, MotionEye |
-| Networking | Pi-Hole, Unbound, Nebula-Sync, PH-Intercept, Apache Guacamole |
+| Networking | Pi-Hole, Unbound, Nebula-Sync, Apache Guacamole |
 | Data | MySQL (Titan, Phobos & Tethys), phpMyAdmin, IPAM |
 | Publishing | Ghost |
 

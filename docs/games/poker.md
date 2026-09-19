@@ -124,10 +124,9 @@ CMD ["node", "server.js"]
 
 ### Rebuilding
 
-The poker server is rebuilt as part of the nginx compose stack:
+From `/ssd/docker/docker-compose/poker/`:
 
 ```bash
-cd /ssd/docker/docker-compose/nginx
 docker compose build
 docker compose up -d --force-recreate
 ```

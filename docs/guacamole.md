@@ -19,6 +19,10 @@ services:
     image: guacamole/guacd
     container_name: guacd
     restart: unless-stopped
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["fc-cache -f && exec /opt/guacamole/entrypoint.sh"]
+    volumes:
+      - /ssd/docker/appdata/guacd/fonts:/usr/share/fonts/truetype/nerd-fonts:ro
     networks:
       proxy:
         ipv4_address: "172.19.0.112"
@@ -61,3 +65,19 @@ services:
       - traefik.http.routers.guacamole.tls.domains[0].sans=*.domain.co.uk
       - traefik.http.services.guacamole.loadbalancer.server.port=8080
 ```
+
+## Nerd Font in SSH terminals
+
+`guacd` renders the SSH terminal server-side (glyphs are drawn to an image stream), so a font has to live inside the `guacd` container itself — installing one in the browser has no effect.
+
+A Nerd Font ([JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads)) is bind-mounted into the container from `/ssd/docker/appdata/guacd/fonts` on Titan. Since the mount happens at runtime rather than image build time, the entrypoint is overridden to rebuild the fontconfig cache (`fc-cache -f`) before handing off to the image's normal startup script.
+
+Only the fixed-width "Mono" variant is used, so glyph widths line up correctly in a monospace terminal grid.
+
+With the font installed, each SSH connection still needs to be told to use it — set under the connection's edit page, **Display → Font name**:
+
+```
+JetBrainsMono Nerd Font Mono
+```
+
+There's no global default font in Guacamole; it's a per-connection parameter.

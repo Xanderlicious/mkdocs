@@ -24,7 +24,7 @@ networks:
 
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:2
+    image: louislam/uptime-kuma:2.5.5
     container_name: uptime-kuma
     networks:
       default:
@@ -42,6 +42,27 @@ services:
 
 !!! note
     `NODE_EXTRA_CA_CERTS` is required so Node.js trusts the private CA used for mTLS connections to remote Docker hosts. See the [Docker Daemon Security (mTLS)](mTLS.md) page for the full certificate setup and Kuma Docker host configuration.
+
+### Database
+
+Uptime-Kuma is configured to use the shared `phobos-mysql-db` MySQL instance rather than its default SQLite storage. The connection is defined in a JSON file that Kuma reads at startup — it is not set via environment variables in the compose file.
+
+**File:** `/ssd/docker/appdata/kumav2/db-config.json`
+
+```json
+{
+    "type": "mariadb",
+    "port": 3306,
+    "hostname": "phobos-mysql-db",
+    "username": "uptimekuma",
+    "password": "${KUMA_DB_PASSWORD}",
+    "dbName": "uptimekuma"
+}
+```
+
+The database and user are created manually on `phobos-mysql-db`. See [phpMyAdmin](phpmyadmin.md) for the Phobos instance that administers this database.
+
+---
 
 ### Dynamic File
 

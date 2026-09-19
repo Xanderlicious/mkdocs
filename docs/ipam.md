@@ -1,5 +1,7 @@
 # IPAM
 
+![ipam-logo](images/ipam.webp)
+
 A self-hosted IP Address Management tool for tracking networks, hosts, containers and DNS records across my entire infrastructure.
 
 Built as a custom solution consisting of a Node.js REST API backend, a static HTML/JS frontend served by the existing nginx container on Phobos.  

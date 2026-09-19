@@ -153,6 +153,56 @@ Browser
     live under the *directory* bind mount, which just re-resolves paths on
     every request and has no equivalent gotcha.
 
+## S.M.A.R.T. trend history
+
+Each drive pill (RAID array members excluded — they're covered by `megaraid-api`,
+not `disk-smart-api`) also shows a muted line under its chips: `TRACKING N
+WKS SINCE <date>`, plus a highlighted delta chip (e.g. `REALLOC +2 SINCE 12
+Sept`) whenever a slow-moving counter — reallocated/pending/uncorrectable
+sectors on ATA drives, media errors or wear % on NVMe — has actually grown
+since the first recorded snapshot. A drive with no change shows the tracking
+line and nothing else.
+
+This exists because a single S.M.A.R.T. snapshot can't say whether a
+non-zero counter (e.g. Titan's IronWolf sitting at 8 reallocated sectors)
+is old and stable or actively climbing — added 2026-09-12 after exactly that
+question came up.
+
+```text
+Timer (per host, staggered day, 05:00 — one day after that host's
+docker-update run)
+  └─▶ smart-trend-log (root, systemd oneshot)
+        ├─▶ GET http://127.0.0.1:9878/  (that host's own disk-smart-api,
+        │     reused rather than shelling out to smartctl again)
+        └─▶ appends today's snapshot per drive to
+              /var/log/smart-trend/history.json
+                └─▶ disk-smart-api's own `/history` route serves it back
+                      └─▶ nginx's existing /api/disks/<host>/ proxy prefix
+                            already covers it, no new config needed
+```
+
+- Source: `smart-trend-log.py` in `~/scripts/smart-trend/` (deployed as
+  near-identical copies per host, only `HOST` differs — same convention as
+  `docker-update-check.py`), full write-up in that directory's `README.md`.
+- `disk-smart-api` itself gained a `HISTORY_PATH` constant and a `/history`
+  GET route returning that JSON file's contents — a small in-place patch,
+  not tracked in this repo any more than `disk-smart-api`'s own source is
+  (see the warning below); the patch is documented in
+  `~/scripts/smart-trend/README.md` in case the service is ever redeployed
+  from scratch.
+- History is capped at 104 weekly entries per drive (~2 years) and stored
+  as a plain JSON dict keyed by drive name (mount point).
+- Deliberately a text delta summary, not a sparkline — a handful of weekly
+  points isn't enough data yet to make a chart worthwhile, and "has this
+  counter grown, and since when" is the actionable question.
+
+!!! note "Running it on demand"
+    ```bash
+    ssh <host> sudo /usr/local/bin/smart-trend-log
+    ```
+    Safe to re-run — a second run on the same UTC date overwrites that
+    day's entry instead of appending a duplicate.
+
 ## Status colours
 
 For RAID controller/array/drive state:
@@ -200,6 +250,7 @@ blended with) the temperature figure:
 - **A host's card shows UNREACHABLE** — check `systemctl status disk-smart-api` on that host, and that its nginx proxy target (`10.36.100.150:9878` Titan / `10.36.100.151:9878` Phobos / `10.36.100.152:9878` Tethys) is reachable.
 - **Config edits to `default.conf` not taking effect** — see the bind-mount warning above; you likely need `docker restart nginx`, not just `nginx -s reload`.
 - **Duplicated info after refresh** — historical bug in the array-storage render (fixed: it was appending a new usage block into the card instead of replacing it).
+- **No "TRACKING" line under a drive pill** — `smart-trend-weekly.timer` hasn't fired yet on that host (check `systemctl list-timers smart-trend-weekly.timer`), or `/var/log/smart-trend/history.json` doesn't have an entry for that drive yet. Run `sudo /usr/local/bin/smart-trend-log` on the host to seed one immediately.
 
 ---
 

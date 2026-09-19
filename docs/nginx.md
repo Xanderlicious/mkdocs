@@ -439,8 +439,6 @@ The infrastructure diagram is a self-contained static HTML page served directly 
 
 ## IPAM Tool
 
-![ipam-logo](images/ipam.webp)
-
 A self-hosted IP Address Management tool for tracking networks, hosts, containers, and DNS records across the entire infrastructure. Built as a custom solution: a Node.js REST API backend, a static HTML/JS frontend, and a dedicated database on the shared `phobos-mysql-db` instance.
 
 **URL:** [ipam.xmsystems.co.uk](https://ipam.xmsystems.co.uk)
@@ -619,8 +617,6 @@ The Docker, UniFi and Pi-hole scrapers run every 6 hours via cron on Phobos. The
 
 ## Poker Clock Dashboard
 
-![poker-clock](images/poker.png)
-
 A self-hosted poker tournament dashboard with real-time multi-device sync via WebSockets. Protected by nginx Basic Auth.
 
 | Component | Technology |
@@ -714,8 +710,6 @@ http:
 ---
 
 ## Workout Timer App
-
-![workout-logo](images/workout.png)
 
 A static single-page application serving a workout timer and exercise reference. Hosted internally via nginx on Phobos.
 

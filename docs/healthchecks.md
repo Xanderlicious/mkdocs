@@ -4,6 +4,8 @@ Docker health checks allow the daemon to actively probe whether a container is w
 
 This page documents the health checks configured across the homelab stack, the reasoning behind each, and why certain containers deliberately have no health check defined.
 
+![healthchecks-screenshot](images/healthchecks-screenshot.png)
+
 ---
 
 ## How Health Checks Work

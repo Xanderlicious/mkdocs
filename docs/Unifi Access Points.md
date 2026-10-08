@@ -8,7 +8,7 @@ This provide a true WiFi 6 connection to the devices that support it as well as 
 
 ### Unifi U7 Pro XG
 
-A WiFi 7 access point broadcasting on the 2.4GHz, 5GHz and 6GHz bands, with a 10GbE uplink. It replaced the older AC-LR (which only supported 2.4GHz and 5GHz) and allows seamless roaming with the U6E when moving around the house.
+A WiFi 7 access point broadcasting on the 2.4GHz, 5GHz and 6GHz bands, with a 10GbE-capable uplink — though for now it only connects at 1Gb, as the [USW-Lite-16-PoE](Unifi%20USW-Lite-16-PoE.md) only has gigabit ports. It replaced the older AC-LR (which only supported 2.4GHz and 5GHz) and allows seamless roaming with the U6E when moving around the house.
 
 
 Both of these are suitably placed to provide excellent wifi coverage regardless of the device being used.

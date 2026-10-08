@@ -26,7 +26,7 @@ Symmetrical gigabit FTTP provided by **Zen**, delivered over the **CityFibre** f
 Two [Unifi access points](https://docs.xmsystems.co.uk/Unifi%20Access%20Points/) provide full house coverage with seamless roaming:
 
 - **Unifi U6 Enterprise** — WiFi 6 on 2.4 GHz, 5 GHz and 6 GHz
-- **Unifi U7 Pro XG** — WiFi 7 on 2.4 GHz, 5 GHz and 6 GHz, 10GbE uplink
+- **Unifi U7 Pro XG** — WiFi 7 on 2.4 GHz, 5 GHz and 6 GHz (10GbE-capable, currently on a 1Gb uplink)
 
 ### DNS & Ad-blocking
 

@@ -106,6 +106,5 @@ Key applications include:
 
 - Upgrade from the UCG Ultra to a **UDM Pro** and a Unifi enterprise PoE switch — likely timed with a house move or extension
 - Deploy additional hardware that is currently waiting in the wings
-- Migrate Uptime-Kuma from SQLite to MySQL on Phobos
 
 I'll be documenting the whole thing on the [blog](https://blog.xmsystems.co.uk) as it happens.

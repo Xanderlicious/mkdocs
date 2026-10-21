@@ -1,19 +1,23 @@
-![](images/U6e.avif)
+# Unifi Access Points
 
-I have 2 unifi access points covering the house.
+![unifi-ap-image](images/U6e.avif)
 
-### Unifi U6 Enterprise
+I have 3 unifi access points covering the house.
+
+## Unifi U7 Pro XG
+
+A WiFi 7 access point broadcasting on the 2.4GHz, 5GHz and 6GHz bands, with a 10GbE-capable uplink — though for now it only connects at 1Gb, as the [USW-Lite-16-PoE](Unifi%20USW-Lite-16-PoE.md) only has gigabit ports. It replaced the older [AC-LR](#unifi-ac-lr) as the main access point and allows seamless roaming with the U6E when moving around the house.
+
+## Unifi U6 Enterprise
 
 This provide a true WiFi 6 connection to the devices that support it as well as WiFi on the 2.4GHz and 5GHz bands
 
-### Unifi U7 Pro XG
+## Unifi AC-LR
 
-A WiFi 7 access point broadcasting on the 2.4GHz, 5GHz and 6GHz bands, with a 10GbE-capable uplink — though for now it only connects at 1Gb, as the [USW-Lite-16-PoE](Unifi%20USW-Lite-16-PoE.md) only has gigabit ports. It replaced the older AC-LR (which only supported 2.4GHz and 5GHz) and allows seamless roaming with the U6E when moving around the house.
+An older WiFi 5 (802.11ac) long-range access point, broadcasting on the 2.4GHz and 5GHz bands only. It was originally replaced by the U7 Pro XG, but I've since redeployed it as a third access point to fill in coverage at the edges of the house. It's powered over PoE and is adopted into the same UniFi network as the other two, so devices can roam between all three.
 
-
-Both of these are suitably placed to provide excellent wifi coverage regardless of the device being used.
+All three are suitably placed to provide excellent wifi coverage regardless of the device being used.
 
 ### Camera VLAN WiFi Network — "XanderC"
 
 WiFi-only cameras (e.g. the [Tapo C121](motioneye.md)) have no PoE/Ethernet port, so they can't reach the isolated camera VLAN (102) the way the wired Reolink and Dahua cameras do. To let them attach directly to VLAN 102 over WiFi, I created a dedicated, hidden SSID — **XanderC** — broadcast from both the U6 Enterprise and U7 Pro XG, tagged straight onto VLAN 102 rather than the main LAN. Any WiFi camera joining this network is isolated from the LAN and internet exactly like a wired VLAN 102 device, with no separate firewall rules needed.
-

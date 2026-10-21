@@ -16,6 +16,27 @@ services:
     image: crazymax/fail2ban:latest
     container_name: fail2ban
     restart: unless-stopped
+A total of 562 factions have been scheduled to participate in 281 ranked wars starting later this week
+Information
+Name:Xanderlicious
+
+Money:$0
+
+Level:100
+
+Points:25[use]
+
+Energy:250/150OVER
+Nerve:42/13500:10
+Happy:4525/4525FULL
+Life:7500/7500FULL
+Chain:
+
+0/10
+
+00:00
+
+
     network_mode: host
     cap_add:
       - NET_ADMIN

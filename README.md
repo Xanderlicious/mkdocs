@@ -1,6 +1,6 @@
 # XMSystems Documentation Site
 
-This repository contains the source for the **XMSystems** documentation sites, built with [MkDocs](https://www.mkdocs.org/) and the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme, and deployed via **Docker**.
+This repository contains the source for the **XMSystems** documentation sites, built with [MkDocs](https://www.mkdocs.org/) and the [MaterialX](https://jaywhj.github.io/mkdocs-materialx/) theme (a maintained fork of Material for MkDocs), and deployed via **Docker**.
 
 The published sites are referenced from within the documentation itself and are available at:
 
@@ -30,7 +30,7 @@ The site is organised into the following top-level sections (see `mkdocs.yml` fo
 
 ## Theme & features
 
-The site uses the Material theme with the following highlights (configured in `mkdocs.yml`):
+The site uses the MaterialX theme (a maintained fork of Material for MkDocs) with the following highlights (configured in `mkdocs.yml`):
 
 - `slate` colour scheme with a purple primary / green accent palette.
 - Roboto typography.
@@ -46,7 +46,7 @@ The site uses the Material theme with the following highlights (configured in `m
 
 ## Running locally with Docker
 
-The site is built and served using the official [`squidfunk/mkdocs-material`](https://hub.docker.com/r/squidfunk/mkdocs-material) image, which ships with MkDocs, the Material theme and all of the `pymdown-extensions` referenced in `mkdocs.yml`.
+The site is built and served using a local image, `mkdocs-materialx`, built from the `Dockerfile` in the repo root with `docker build -t mkdocs-materialx .` It ships with MkDocs, the MaterialX theme and all of the `pymdown-extensions` referenced in `mkdocs.yml`.
 
 ### Live preview (with auto-reload)
 
@@ -56,7 +56,7 @@ From the root of the repo:
 docker run --rm -it \
   -p 8000:8000 \
   -v "${PWD}:/docs" \
-  squidfunk/mkdocs-material
+  mkdocs-materialx
 ```
 
 Then browse to <http://localhost:8000>. Edits to files under `docs/` will hot-reload in your browser.
@@ -68,7 +68,7 @@ To generate the static site into `./site`:
 ```bash
 docker run --rm -it \
   -v "${PWD}:/docs" \
-  squidfunk/mkdocs-material build
+  mkdocs-materialx build
 ```
 
 ### docker-compose (optional)
@@ -78,7 +78,7 @@ A minimal `docker-compose.yml` for local development:
 ```yaml
 services:
   docs:
-    image: squidfunk/mkdocs-material
+    image: mkdocs-materialx
     container_name: xms-docs
     ports:
       - "8000:8000"

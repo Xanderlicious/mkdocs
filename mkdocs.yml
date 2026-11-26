@@ -78,7 +78,9 @@ nav:
 
 theme:
   logo: images/server-solid.svg
-  name: 'material'
+  name: 'materialx'
+  topbar:
+    style: primary
   palette:
     scheme: slate
     primary: purple

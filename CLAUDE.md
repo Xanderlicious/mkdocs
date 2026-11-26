@@ -4,23 +4,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-XMS Docs — a [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) site documenting a homelab (hardware, networking, self-hosted services). Published at <https://docs.xmsystems.co.uk>.
+XMS Docs — a [MaterialX](https://jaywhj.github.io/mkdocs-materialx/) (a maintained fork of Material for MkDocs) site documenting a homelab (hardware, networking, self-hosted services). Published at <https://docs.xmsystems.co.uk>.
 
 ## Local development
 
 Live preview with hot-reload (browse to <http://localhost:8000>):
 
 ```bash
-docker run --rm -it -p 8000:8000 -v "${PWD}:/docs" squidfunk/mkdocs-material
+docker run --rm -it -p 8000:8000 -v "${PWD}:/docs" mkdocs-materialx
 ```
 
 Static build into `./site`:
 
 ```bash
-docker run --rm -it -v "${PWD}:/docs" squidfunk/mkdocs-material build
+docker run --rm -it -v "${PWD}:/docs" mkdocs-materialx build
 ```
 
-No pip install or Python environment needed — the Docker image includes MkDocs, the Material theme, and all pymdownx extensions.
+Build the local image once from the repo `Dockerfile` with `docker build -t mkdocs-materialx .` - it includes MkDocs, the MaterialX theme, and all pymdownx extensions. No other Python setup is needed.
 
 ## Architecture
 

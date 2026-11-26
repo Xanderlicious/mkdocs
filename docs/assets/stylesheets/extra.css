@@ -5,3 +5,10 @@
 .md-typeset .grid.cards {
   grid-template-columns: repeat(4, 1fr);
 }
+
+/* MaterialX adds extra vertical padding to sidebar links; tighten it
+   back to roughly the spacing Material for MkDocs had */
+.md-sidebar .md-nav__link {
+  padding-top: 0.22rem;
+  padding-bottom: 0.22rem;
+}
